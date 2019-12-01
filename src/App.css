@@ -66,8 +66,10 @@
   padding: 5px 24px;
 }
 
+.App-Button:active,
+.App-Button:focus,
 .App-Button:hover {
-  background-color: var(--color-dorado);
-  border-color: var(--color-dorado);
-  color: var(--color-negro);
+  background-color: var(--color-dorado) !important;
+  border-color: var(--color-dorado) !important;
+  color: var(--color-negro) !important;
 }
