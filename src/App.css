@@ -13,6 +13,16 @@
   height: 60px;
 }
 
+.App-Navbar {
+  background-color: var(--color-dorado);
+}
+
+@media (min-width: 768px) {
+  .App-Navbar {
+    background-color: var(--color-blanco);
+  }
+}
+
 .App-Navbar-Link-List {
   margin-left: 3.5vw;
   margin-right: 3.5vw;
@@ -59,11 +69,17 @@
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   color: var(--color-negro);
-  background-color: var(--color-blanco);
+  background-color: var(--color-dorado);
   border-width: 1px;
   border-color: var(--color-negro);
   border-radius: 1.5em;
   padding: 5px 24px;
+}
+
+@media (min-width: 768px) {
+  .App-Button {
+    background-color: var(--color-blanco);
+  }
 }
 
 .App-Button:active,
