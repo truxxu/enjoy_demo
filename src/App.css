@@ -3,6 +3,7 @@
   --color-negro: #333333;
   --color-blanco: #ffffff;
   --color-dorado: #e7d787;
+  --color-gris-claro: #f2f2f2;
 }
 
 .App {
@@ -152,4 +153,28 @@
 
 .App-Category-List-Item-Image {
   height: 180px;
+}
+
+.App-Description {
+  background-color: var(--color-gris-claro);
+}
+
+.App-Description h1 {
+  font-family: 'MontserratSemiBold', sans-serif;
+  font-size: 1.1em;
+}
+
+.App-Description-Image {
+  width: 280px;
+}
+
+.App-Description-Text p {
+  font-family: 'LatoRegular', sans-serif;
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .App-Description h1 {
+    text-align: left;
+  }
 }

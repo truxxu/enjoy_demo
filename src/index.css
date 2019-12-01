@@ -33,6 +33,21 @@ body {
 }
 
 @font-face {
+  font-family: 'LatoBold';
+  src: local('LatoBold'), url(./fonts/Lato-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LatoLight';
+  src: local('LatoLight'), url(./fonts/Lato-Light.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'LatoRegular';
+  src: local('LatoRegular'), url(./fonts/Lato-Regular.ttf) format('truetype');
+}
+
+@font-face {
   font-family: 'icomoon';
   src:  url('fonts/icomoon.eot?ar3k7f');
   src:  url('fonts/icomoon.eot?ar3k7f#iefix') format('embedded-opentype'),
