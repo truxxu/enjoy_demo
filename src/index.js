@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
+import App from './App';
 import './fonts/Montserrat-Bold.ttf';
+import './fonts/Montserrat-Medium.ttf';
 import './fonts/icomoon.eot';
 import './fonts/icomoon.svg';
 import './fonts/icomoon.ttf';
 import './fonts/icomoon.woff';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

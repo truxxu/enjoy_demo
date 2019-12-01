@@ -1,6 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Button from 'react-bootstrap/Button'
 
 import './App.css';
 import logo from './logo.png';
@@ -26,6 +27,9 @@ function App() {
               <a href="https://instagram.com"><span className="icon-instagram"></span></a>
               <a href="https://facebook.com"><span className="icon-facebook"></span></a>
             </div>
+          </div>
+          <div className="col-auto d-flex align-items-center">
+            <Button className="App-Button">Acceder</Button>
           </div>
         </Row>
       </Container>

@@ -1,11 +1,12 @@
 :root {
   --color-verde-claro: #bbe4d5;
   --color-negro: #333333;
+  --color-blanco: #ffffff;
+  --color-dorado: #e7d787;
 }
 
 .App {
   text-align: center;
-  background-color: var(--color-blanco);
 }
 
 .App-logo {
@@ -50,4 +51,23 @@
 .App-Social-Links a:visited,
 .App-Social-Links a:hover {
   text-decoration: none;
+}
+
+.App-Button {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: var(--color-negro);
+  background-color: var(--color-blanco);
+  border-width: 1px;
+  border-color: var(--color-negro);
+  border-radius: 1.5em;
+  padding: 5px 24px;
+}
+
+.App-Button:hover {
+  background-color: var(--color-dorado);
+  border-color: var(--color-dorado);
+  color: var(--color-negro);
 }
