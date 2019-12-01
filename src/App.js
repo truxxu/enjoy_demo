@@ -21,6 +21,12 @@ function App() {
               <a href="#" className="App-Navbar-Link">Mascotas</a>
             </div>
           </div>
+          <div className="col-auto d-flex align-items-center">
+            <div className="App-Social-Links">
+              <a href="https://instagram.com"><span className="icon-instagram"></span></a>
+              <a href="https://facebook.com"><span className="icon-facebook"></span></a>
+            </div>
+          </div>
         </Row>
       </Container>
     </div>

@@ -30,3 +30,24 @@
   color: var(--color-verde-claro);
   text-decoration: none;
 }
+
+.App-Social-Links span[class^='icon-'],
+.App-Social-Links span[class*=' icon-'] {
+  color: var(--color-negro);
+}
+
+.App-Social-Links span[class^='icon-']:hover,
+.App-Social-Links span[class*=' icon-']:hover {
+  color: var(--color-verde-claro);
+}
+
+.App-Social-Links span {
+  margin-left: 0.1vw;
+  margin-right: 0.1vw;
+}
+
+.App-Social-Links a,
+.App-Social-Links a:visited,
+.App-Social-Links a:hover {
+  text-decoration: none;
+}
