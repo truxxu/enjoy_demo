@@ -134,3 +134,22 @@
     width: 500px;
   }
 }
+
+.App-Category-List-Text p {
+  font-family: 'MontserratSemiBold', sans-serif;
+  font-size: 1.1em;
+}
+
+.App-Category-List-Text p a {
+  color: var(--color-negro);
+  text-decoration: underline;
+}
+
+.App-Category-List-Item p {
+  font-family: 'MontserratBold', sans-serif;
+  text-transform: uppercase;
+}
+
+.App-Category-List-Item-Image {
+  height: 180px;
+}
