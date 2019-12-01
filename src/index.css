@@ -8,8 +8,27 @@ body {
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'MontserratBlack';
+  src: local('Montserrat'), url(./fonts/Montserrat-Black.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MontserratExtraBold';
+  src: local('Montserrat'), url(./fonts/Montserrat-ExtraBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MontserratBold';
   src: local('Montserrat'), url(./fonts/Montserrat-Bold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MontserratSemiBold';
+  src: local('Montserrat'), url(./fonts/Montserrat-SemiBold.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'MontserratMedium';
   src: local('Montserrat'), url(./fonts/Montserrat-Medium.ttf) format('truetype');
 }
 

@@ -4,8 +4,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
+import './fonts/Montserrat-Black.ttf';
 import './fonts/Montserrat-Bold.ttf';
+import './fonts/Montserrat-ExtraBold.ttf';
+import './fonts/Montserrat-ExtraLight.ttf';
+import './fonts/Montserrat-Light.ttf';
 import './fonts/Montserrat-Medium.ttf';
+import './fonts/Montserrat-Regular.ttf';
+import './fonts/Montserrat-SemiBold.ttf';
+import './fonts/Montserrat-Thin.ttf';
 import './fonts/icomoon.eot';
 import './fonts/icomoon.svg';
 import './fonts/icomoon.ttf';
