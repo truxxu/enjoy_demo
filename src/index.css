@@ -33,6 +33,11 @@ body {
 }
 
 @font-face {
+  font-family: 'MontserratRegular';
+  src: local('Montserrat'), url(./fonts/Montserrat-Regular.ttf) format('truetype');
+}
+
+@font-face {
   font-family: 'LatoBold';
   src: local('LatoBold'), url(./fonts/Lato-Bold.ttf) format('truetype');
 }

@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import Swiper from 'react-id-swiper';
 
 import './App.css';
 import logo from './logo.png';
@@ -12,8 +13,27 @@ import categoriaHombre from './images/hombre.png';
 import categoriaNiños from './images/niños.png';
 import categoriaMascotas from './images/mascotas.png';
 import descripcion from './images/descripcion.png';
+import avon from './images/avon.png';
+import maybelline from './images/maybelline.png';
+import loreal from './images/loreal.png';
+import anamaria from './images/anamaria.png';
 
 function App() {
+  const swiperParams = {
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    slidesPerView: 1,
+    spaceBetween: 30,
+    breakpoints: {
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 30
+      },
+    }
+  }
   return (
     <div className="App">
       <Container fluid>
@@ -96,6 +116,25 @@ function App() {
               </p>
               <p>Tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
             </div>
+          </div>
+        </Row>
+        <Row className="App-Allies justify-content-center py-5">
+          <div className="col-auto col-md-8">
+            <h1 className="mb-5">Nuestros aliados</h1>
+            <Swiper {...swiperParams}>
+              <div>
+                <img src={loreal} className="App-Allies-Image" alt="loreal" />
+              </div>
+              <div>
+                <img src={maybelline} className="App-Allies-Image" alt="maybelline" />
+              </div>
+              <div>
+                <img src={avon} className="App-Allies-Image" alt="avon" />
+              </div>
+              <div>
+                <img src={anamaria} className="App-Allies-Image" alt="anamaria" />
+              </div>
+            </Swiper>
           </div>
         </Row>
       </Container>
