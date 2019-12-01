@@ -14,7 +14,7 @@ function App() {
             <img src={logo} className="App-logo" alt="logo" />
           </div>
           <div className="col-auto d-flex align-items-center">
-            <div className="App-Navbar-Links">
+            <div className="App-Navbar-Link-List">
               <a href="#" className="App-Navbar-Link">Mujer</a>
               <a href="#" className="App-Navbar-Link">Hombre</a>
               <a href="#" className="App-Navbar-Link">Niños</a>

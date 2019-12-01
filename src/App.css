@@ -6,7 +6,7 @@
   height: 60px;
 }
 
-.App-Navbar-Links {
+.App-Navbar-Link-List {
   margin-left: 3.5vw;
   margin-right: 3.5vw;
 }
@@ -15,5 +15,8 @@
   text-transform: uppercase;
   margin-left: 1.5vw;
   margin-right: 1.5vw;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
 }
 
