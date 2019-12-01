@@ -1,5 +1,11 @@
+:root {
+  --color-verde-claro: #bbe4d5;
+  --color-negro: #333333;
+}
+
 .App {
   text-align: center;
+  background-color: var(--color-blanco);
 }
 
 .App-logo {
@@ -15,8 +21,12 @@
   text-transform: uppercase;
   margin-left: 1.5vw;
   margin-right: 1.5vw;
-  color: black;
+  color: var(--color-negro);
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
 }
 
+.App-Navbar-Link:hover {
+  color: var(--color-verde-claro);
+  text-decoration: none;
+}
