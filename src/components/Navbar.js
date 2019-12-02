@@ -10,7 +10,9 @@ function Navbar() {
   return (
     <Row className="App-Navbar justify-content-between justify-content-md-center py-4">
       <div className="col-auto">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Link to="/">
+          <img src={logo} className="App-logo" alt="logo" />
+        </Link>
       </div>
       <div className="col-auto d-none d-md-flex align-items-center">
         <div className="App-Navbar-Link-List">
