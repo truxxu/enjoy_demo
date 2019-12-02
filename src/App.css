@@ -4,6 +4,7 @@
   --color-blanco: #ffffff;
   --color-dorado: #e7d787;
   --color-gris-claro: #f2f2f2;
+  --color-gris-oscuro: #666666;
 }
 
 .App {
@@ -192,5 +193,76 @@
 @media (min-width: 768px) {
   .App-Allies-Image {
     width: 180px;
+  }
+}
+
+.App-Footer {
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-family: 'LatoRegular', sans-serif;
+}
+
+.App-Footer-Logo {
+  height: 45px;
+}
+
+.App-Footer-Link-List {
+  margin-left: 3.8vw;
+  margin-right: 3.8vw;
+}
+
+.App-Footer-Link {
+  margin-left: 1.2vw;
+  margin-right: 1.2vw;
+  color: var(--color-blanco);
+  font-size: 0.8em;
+}
+
+.App-Footer-Link:hover {
+  color: var(--color-verde-claro);
+  text-decoration: none;
+}
+
+.App-Footer-Social-Links span[class^='icon-'],
+.App-Footer-Social-Links span[class*=' icon-'] {
+  color: var(--color-blanco);
+}
+
+.App-Footer-Social-Links span[class^='icon-']:hover,
+.App-Footer-Social-Links span[class*=' icon-']:hover {
+  color: var(--color-verde-claro);
+}
+
+.App-Footer-Social-Links span {
+  margin-left: 0.1vw;
+  margin-right: 0.1vw;
+  font-size: 2em;
+}
+
+.App-Footer-Social-Links a,
+.App-Footer-Social-Links a:visited,
+.App-Footer-Social-Links a:hover {
+  text-decoration: none;
+}
+
+.App-Footer-Bottom {
+  font-size: 0.8em;
+  border-top: 0.05rem solid var(--color-gris-oscuro);
+}
+
+.App-Footer-Bottom span {
+  color: var(--color-verde-claro);
+}
+
+.App-Footer-Bottom p {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .App-Footer-Bottom {
+    border: none;
+  }
+  .App-Footer-Bottom p {
+    margin-bottom: 0;
   }
 }

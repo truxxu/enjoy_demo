@@ -7,7 +7,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Swiper from 'react-id-swiper';
 
 import './App.css';
-import logo from './logo.png';
+import logo from './images/logo.png';
+import footerLogo from './images/footer_logo.png';
 import categoriaMujer from './images/mujer.png';
 import categoriaHombre from './images/hombre.png';
 import categoriaNiños from './images/niños.png';
@@ -136,6 +137,28 @@ function App() {
               </div>
             </Swiper>
           </div>
+        </Row>
+        <Row className="App-Footer">
+          <Container className="pt-3 pb-1">
+            <Row className="flex-column flex-md-row justify-content-center justify-content-md-between align-items-center mt-3">
+              <img src={footerLogo} className="App-Footer-Logo" alt="logo" />
+              <div className="App-Footer-Link-List d-flex flex-column flex-md-row mt-4 mt-md-0">
+                <a href="#" className="App-Footer-Link mt-2 mt-md-0">Sobre en joy!</a>
+                <a href="#" className="App-Footer-Link mt-2 mt-md-0">Preguntas frecuentes</a>
+                <a href="#" className="App-Footer-Link mt-2 mt-md-0">Contáctenos</a>
+                <a href="#" className="App-Footer-Link mt-2 mt-md-0">Política de privacidad</a>
+                <a href="#" className="App-Footer-Link mt-2 mt-md-0">Soy un salón</a>
+              </div>
+              <div className="App-Footer-Social-Links mt-3 mt-md-0">
+                <a href="https://instagram.com"><span className="icon-instagram"></span></a>
+                <a href="https://facebook.com"><span className="icon-facebook"></span></a>
+              </div>
+            </Row>
+            <Row className="App-Footer-Bottom justify-content-center justify-content-md-between mt-4 pt-2">
+              <p>Todos los derechos reservados EN JOY!-s &copy; {(new Date().getFullYear())}</p>
+              <p>Hecho con <span className="icon-corazones"></span> por #wopudev</p>
+            </Row>
+          </Container>
         </Row>
       </Container>
     </div>
