@@ -102,9 +102,17 @@
   text-decoration: underline;
 }
 
-.App-Category-List-Item p {
+.App-Category-List-Item a p {
   font-family: "MontserratBold", sans-serif;
   text-transform: uppercase;
+  color: var(--color-negro);
+}
+
+.App-Category-List-Item a:hover {
+  text-decoration: none;
+}
+.App-Category-List-Item p:hover {
+  color: var(--color-verde-claro);
 }
 
 .App-Category-List-Item-Image {

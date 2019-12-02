@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
+import { Link } from "react-router-dom";
 
 import logo from "../images/logo.png";
 import "../styles/Navbar.css";
@@ -13,18 +14,18 @@ function Navbar() {
       </div>
       <div className="col-auto d-none d-md-flex align-items-center">
         <div className="App-Navbar-Link-List">
-          <a href="#" className="App-Navbar-Link">
+          <Link to="/services" className="App-Navbar-Link">
             Mujer
-          </a>
-          <a href="#" className="App-Navbar-Link">
+          </Link>
+          <Link to="/services" className="App-Navbar-Link">
             Hombre
-          </a>
-          <a href="#" className="App-Navbar-Link">
+          </Link>
+          <Link to="/services" className="App-Navbar-Link">
             Niños
-          </a>
-          <a href="#" className="App-Navbar-Link">
+          </Link>
+          <Link to="/services" className="App-Navbar-Link">
             Mascotas
-          </a>
+          </Link>
         </div>
       </div>
       <div className="col-auto d-none d-md-flex align-items-center">
