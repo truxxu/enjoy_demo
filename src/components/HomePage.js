@@ -1,14 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Swiper from "react-id-swiper";
 
 import "../styles/HomePage.css";
 import logo from "../images/logo.png";
-import footerLogo from "../images/footer_logo.png";
 import categoriaMujer from "../images/mujer.png";
 import categoriaHombre from "../images/hombre.png";
 import categoriaNiños from "../images/niños.png";
@@ -18,6 +16,8 @@ import avon from "../images/avon.png";
 import maybelline from "../images/maybelline.png";
 import loreal from "../images/loreal.png";
 import anamaria from "../images/anamaria.png";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 function HomePage() {
   const swiperParams = {
@@ -38,40 +38,7 @@ function HomePage() {
   return (
     <div className="App">
       <Container fluid>
-        <Row className="App-Navbar justify-content-between justify-content-md-center py-4">
-          <div className="col-auto">
-            <img src={logo} className="App-logo" alt="logo" />
-          </div>
-          <div className="col-auto d-none d-md-flex align-items-center">
-            <div className="App-Navbar-Link-List">
-              <a href="#" className="App-Navbar-Link">
-                Mujer
-              </a>
-              <a href="#" className="App-Navbar-Link">
-                Hombre
-              </a>
-              <a href="#" className="App-Navbar-Link">
-                Niños
-              </a>
-              <a href="#" className="App-Navbar-Link">
-                Mascotas
-              </a>
-            </div>
-          </div>
-          <div className="col-auto d-none d-md-flex align-items-center">
-            <div className="App-Social-Links">
-              <a href="https://instagram.com">
-                <span className="icon-instagram"></span>
-              </a>
-              <a href="https://facebook.com">
-                <span className="icon-facebook"></span>
-              </a>
-            </div>
-          </div>
-          <div className="col-auto d-flex align-items-center">
-            <Button className="App-Button">Acceder</Button>
-          </div>
-        </Row>
+        <Navbar />
         <Row className="App-Header d-flex flex-column py-2">
           <div className="col-auto d-none d-md-flex align-self-center mt-5">
             <img className="App-Header-Image" src={logo} alt="logo" />
@@ -192,47 +159,7 @@ function HomePage() {
             </Swiper>
           </div>
         </Row>
-        <Row className="App-Footer">
-          <Container className="pt-3 pb-1">
-            <Row className="flex-column flex-md-row justify-content-center justify-content-md-between align-items-center mt-3">
-              <img src={footerLogo} className="App-Footer-Logo" alt="logo" />
-              <div className="App-Footer-Link-List d-flex flex-column flex-md-row mt-4 mt-md-0">
-                <a href="#" className="App-Footer-Link mt-2 mt-md-0">
-                  Sobre en joy!
-                </a>
-                <a href="#" className="App-Footer-Link mt-2 mt-md-0">
-                  Preguntas frecuentes
-                </a>
-                <a href="#" className="App-Footer-Link mt-2 mt-md-0">
-                  Contáctenos
-                </a>
-                <a href="#" className="App-Footer-Link mt-2 mt-md-0">
-                  Política de privacidad
-                </a>
-                <a href="#" className="App-Footer-Link mt-2 mt-md-0">
-                  Soy un salón
-                </a>
-              </div>
-              <div className="App-Footer-Social-Links mt-3 mt-md-0">
-                <a href="https://instagram.com">
-                  <span className="icon-instagram"></span>
-                </a>
-                <a href="https://facebook.com">
-                  <span className="icon-facebook"></span>
-                </a>
-              </div>
-            </Row>
-            <Row className="App-Footer-Bottom justify-content-center justify-content-md-between mt-4 pt-2">
-              <p>
-                Todos los derechos reservados EN JOY!-s &copy;{" "}
-                {new Date().getFullYear()}
-              </p>
-              <p>
-                Hecho con <span className="icon-corazones"></span> por #wopudev
-              </p>
-            </Row>
-          </Container>
-        </Row>
+        <Footer />
       </Container>
     </div>
   );
