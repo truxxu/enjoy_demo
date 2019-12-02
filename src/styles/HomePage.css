@@ -1,35 +1,3 @@
-.App-logo {
-  height: 45px;
-}
-
-.App-Navbar {
-  background-color: var(--color-dorado);
-}
-
-@media (min-width: 768px) {
-  .App-Navbar {
-    background-color: var(--color-blanco);
-  }
-}
-
-.App-Navbar-Link-List {
-  margin-left: 3.5vw;
-  margin-right: 3.5vw;
-}
-
-.App-Navbar-Link {
-  text-transform: uppercase;
-  margin-left: 1.5vw;
-  margin-right: 1.5vw;
-  color: var(--color-negro);
-  font-family: "MontserratBold", sans-serif;
-}
-
-.App-Navbar-Link:hover {
-  color: var(--color-verde-claro);
-  text-decoration: none;
-}
-
 .App-Social-Links span[class^="icon-"],
 .App-Social-Links span[class*=" icon-"] {
   color: var(--color-negro);
