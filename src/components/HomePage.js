@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Swiper from "react-id-swiper";
+import { Link } from "react-router-dom";
 
 import "../styles/HomePage.css";
 import logo from "../images/logo.png";
@@ -64,43 +65,59 @@ function HomePage() {
         <Row className="App-Category-List-Text justify-content-center py-4 px-5 mt-md-3">
           <div className="col-auto">
             <p>
-              Haz <a href="#">click</a> y agenda tu cita a domicilio o en el
+              Haz <Link to="/">click</Link> y agenda tu cita a domicilio o en el
               salón
             </p>
           </div>
         </Row>
         <Row className="App-Category-List justify-content-center mb-4">
           <div className="col-auto App-Category-List-Item">
-            <img
-              src={categoriaMujer}
-              className="App-Category-List-Item-Image"
-              alt="mujer"
-            />
-            <p className="mt-3">Mujer</p>
+            <Link to="/services">
+              <img
+                src={categoriaMujer}
+                className="App-Category-List-Item-Image"
+                alt="mujer"
+              />
+            </Link>
+            <Link to="/services">
+              <p className="mt-3"> Mujer</p>
+            </Link>
           </div>
           <div className="col-auto App-Category-List-Item">
-            <img
-              src={categoriaHombre}
-              className="App-Category-List-Item-Image"
-              alt="hombre"
-            />
-            <p className="mt-3">Hombre</p>
+            <Link to="/services">
+              <img
+                src={categoriaHombre}
+                className="App-Category-List-Item-Image"
+                alt="hombre"
+              />
+            </Link>
+            <Link to="/services">
+              <p className="mt-3">Hombre</p>
+            </Link>
           </div>
           <div className="col-auto App-Category-List-Item">
-            <img
-              src={categoriaNiños}
-              className="App-Category-List-Item-Image"
-              alt="niños"
-            />
-            <p className="mt-3">Niños</p>
+            <Link to="/services">
+              <img
+                src={categoriaNiños}
+                className="App-Category-List-Item-Image"
+                alt="niños"
+              />
+            </Link>
+            <Link to="/services">
+              <p className="mt-3">Niños</p>
+            </Link>
           </div>
           <div className="col-auto App-Category-List-Item">
-            <img
-              src={categoriaMascotas}
-              className="App-Category-List-Item-Image"
-              alt="mascotas"
-            />
-            <p className="mt-3">Mascotas</p>
+            <Link to="/services">
+              <img
+                src={categoriaMascotas}
+                className="App-Category-List-Item-Image"
+                alt="mascotas"
+              />
+            </Link>
+            <Link to="/services">
+              <p className="mt-3">Mascotas</p>
+            </Link>
           </div>
         </Row>
         <Row className="App-Description align-items-center justify-content-center py-5">
