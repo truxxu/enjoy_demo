@@ -1,0 +1,255 @@
+.App-logo {
+  height: 45px;
+}
+
+.App-Navbar {
+  background-color: var(--color-dorado);
+}
+
+@media (min-width: 768px) {
+  .App-Navbar {
+    background-color: var(--color-blanco);
+  }
+}
+
+.App-Navbar-Link-List {
+  margin-left: 3.5vw;
+  margin-right: 3.5vw;
+}
+
+.App-Navbar-Link {
+  text-transform: uppercase;
+  margin-left: 1.5vw;
+  margin-right: 1.5vw;
+  color: var(--color-negro);
+  font-family: "MontserratBold", sans-serif;
+}
+
+.App-Navbar-Link:hover {
+  color: var(--color-verde-claro);
+  text-decoration: none;
+}
+
+.App-Social-Links span[class^="icon-"],
+.App-Social-Links span[class*=" icon-"] {
+  color: var(--color-negro);
+}
+
+.App-Social-Links span[class^="icon-"]:hover,
+.App-Social-Links span[class*=" icon-"]:hover {
+  color: var(--color-verde-claro);
+}
+
+.App-Social-Links span {
+  margin-left: 0.1vw;
+  margin-right: 0.1vw;
+}
+
+.App-Social-Links a,
+.App-Social-Links a:visited,
+.App-Social-Links a:hover {
+  text-decoration: none;
+}
+
+.App-Button {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-family: "MontserratMedium", sans-serif;
+  font-weight: 500;
+  color: var(--color-negro);
+  background-color: var(--color-dorado);
+  border-width: 1px;
+  border-color: var(--color-negro);
+  border-radius: 1.5em;
+  padding: 5px 24px;
+}
+
+@media (min-width: 768px) {
+  .App-Button {
+    background-color: var(--color-blanco);
+  }
+}
+
+.App-Button:active,
+.App-Button:focus,
+.App-Button:hover {
+  background-color: var(--color-dorado) !important;
+  border-color: var(--color-dorado) !important;
+  color: var(--color-negro) !important;
+}
+
+.App-Header {
+  background-color: var(--color-dorado);
+  color: var(--color-negro);
+  text-transform: uppercase;
+}
+
+.App-Header-Image {
+  height: 120px;
+}
+
+.App-Header-Title {
+  font-size: 1.2em;
+  font-family: "MontserratMedium", sans-serif;
+}
+
+.App-Header-Subtitle {
+  font-family: "MontserratBlack", sans-serif;
+  font-size: 1.3em;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+.App-Header-Search input {
+  border-radius: 1.5em;
+  font-family: "MontserratMedium", sans-serif;
+  border: none;
+}
+
+.App-Header-Search .input-group-text {
+  background-color: var(--color-blanco);
+  border: none;
+  border-radius: 1.5em;
+}
+
+@media (min-width: 768px) {
+  .App-Header-Title {
+    font-size: 2.3em;
+  }
+  .App-Header-Subtitle {
+    font-size: 1.3em;
+  }
+  .App-Header-Search {
+    width: 500px;
+  }
+}
+
+.App-Category-List-Text p {
+  font-family: "MontserratSemiBold", sans-serif;
+  font-size: 1.1em;
+}
+
+.App-Category-List-Text p a {
+  color: var(--color-negro);
+  text-decoration: underline;
+}
+
+.App-Category-List-Item p {
+  font-family: "MontserratBold", sans-serif;
+  text-transform: uppercase;
+}
+
+.App-Category-List-Item-Image {
+  height: 180px;
+}
+
+.App-Description {
+  background-color: var(--color-gris-claro);
+}
+
+.App-Description h1 {
+  font-family: "MontserratSemiBold", sans-serif;
+  font-size: 1.1em;
+}
+
+.App-Description-Image {
+  width: 280px;
+}
+
+.App-Description-Text p {
+  font-family: "LatoRegular", sans-serif;
+  text-align: justify;
+}
+
+@media (min-width: 768px) {
+  .App-Description h1 {
+    text-align: left;
+  }
+}
+
+.App-Allies h1 {
+  font-family: "MontserratRegular", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.3em;
+}
+
+.App-Allies-Image {
+  width: 300px;
+}
+
+@media (min-width: 768px) {
+  .App-Allies-Image {
+    width: 180px;
+  }
+}
+
+.App-Footer {
+  background-color: var(--color-negro);
+  color: var(--color-blanco);
+  font-family: "LatoRegular", sans-serif;
+}
+
+.App-Footer-Logo {
+  height: 45px;
+}
+
+.App-Footer-Link-List {
+  margin-left: 3.8vw;
+  margin-right: 3.8vw;
+}
+
+.App-Footer-Link {
+  margin-left: 1.2vw;
+  margin-right: 1.2vw;
+  color: var(--color-blanco);
+  font-size: 0.8em;
+}
+
+.App-Footer-Link:hover {
+  color: var(--color-verde-claro);
+  text-decoration: none;
+}
+
+.App-Footer-Social-Links span[class^="icon-"],
+.App-Footer-Social-Links span[class*=" icon-"] {
+  color: var(--color-blanco);
+}
+
+.App-Footer-Social-Links span[class^="icon-"]:hover,
+.App-Footer-Social-Links span[class*=" icon-"]:hover {
+  color: var(--color-verde-claro);
+}
+
+.App-Footer-Social-Links span {
+  margin-left: 0.1vw;
+  margin-right: 0.1vw;
+  font-size: 2em;
+}
+
+.App-Footer-Social-Links a,
+.App-Footer-Social-Links a:visited,
+.App-Footer-Social-Links a:hover {
+  text-decoration: none;
+}
+
+.App-Footer-Bottom {
+  font-size: 0.8em;
+  border-top: 0.05rem solid var(--color-gris-oscuro);
+}
+
+.App-Footer-Bottom span {
+  color: var(--color-verde-claro);
+}
+
+.App-Footer-Bottom p {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .App-Footer-Bottom {
+    border: none;
+  }
+  .App-Footer-Bottom p {
+    margin-bottom: 0;
+  }
+}
