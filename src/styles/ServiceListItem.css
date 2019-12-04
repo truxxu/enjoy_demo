@@ -1,0 +1,108 @@
+/* .Service-Item */
+
+.Service-Item {
+  height: 280px;
+}
+
+/* Service-Img */
+
+.Salon-Img {
+  object-fit: cover;
+  width: 100%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  transition: transform 0.5s ease;
+}
+
+.Salon-Img:hover {
+  transform: scale(1.5);
+}
+
+.Service-Img .icon-corazones {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  font-size: 2em;
+}
+.Service-Img .icon-corazones:hover {
+  color: var(--color-blanco);
+  height: 50px;
+}
+
+.Service-Img {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Salon-Service */
+
+.Salon-Service {
+  background-color: var(--color-blanco);
+  overflow: hidden;
+}
+
+.Salon-Description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.Salon-Description p {
+  height: 100px;
+}
+
+.Salon-Description p::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(transparent 10px, white);
+}
+
+/* .Service-Description */
+
+.Service-Description {
+  border-left-style: solid;
+  border-color: var(--color-gris-claro);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background-color: var(--color-blanco);
+}
+.Service-Time {
+  font-size: 13px;
+  font-family: "MontserratSemiBold";
+  color: var(--color-verde-claro);
+}
+
+.Service-Discount-Price {
+  text-decoration: line-through;
+  color: var(--color-gris-oscuro);
+}
+
+.Service-Buttons .App-Button1 {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-family: "MontserratMedium", sans-serif;
+  font-weight: 500;
+  color: var(--color-negro);
+  background-color: var(--color-gris-claro);
+  border-width: 1px;
+  border-color: var(--color-negro);
+  border-radius: 1.5em;
+  padding: 5px 24px;
+}
+.Service-Buttons .App-Button1:hover {
+  background-color: var(--color-dorado) !important;
+  border-color: var(--color-dorado) !important;
+  color: var(--color-negro) !important;
+}
+
+/* * */
+p {
+  font-family: "MontserratRegular";
+}
+
+h3 h4 {
+  font-family: "MontserratSemiBold";
+}

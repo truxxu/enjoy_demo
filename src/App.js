@@ -8,12 +8,10 @@ import ServiceListPage from "./components/ServiceListPage";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/services" exact component={ServiceListPage} />
-        </Switch>
-      </div>
+      <Switch>
+        <Route path="/" exact component={HomePage} />
+        <Route path="/services" exact component={ServiceListPage} />
+      </Switch>
     </BrowserRouter>
   );
 }
