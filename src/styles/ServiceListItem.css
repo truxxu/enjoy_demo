@@ -1,78 +1,179 @@
 /* .Service-Item */
 
-.Service-Item {
-  height: 280px;
-}
-
 /* Service-Img */
+@media (min-width: 768px) {
+  .Salon-Img {
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    transition: transform 0.5s ease;
+  }
 
-.Salon-Img {
-  object-fit: cover;
-  width: 100%;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  transition: transform 0.5s ease;
-}
+  .Salon-Img:hover {
+    transform: scale(1.5);
+  }
 
-.Salon-Img:hover {
-  transform: scale(1.5);
-}
+  .Service-Img .icon-corazones {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    font-size: 2em;
+  }
+  .Service-Img .icon-corazones:hover {
+    color: var(--color-blanco);
+    height: 50px;
+  }
 
-.Service-Img .icon-corazones {
-  position: absolute;
-  left: 30px;
-  top: 30px;
-  font-size: 2em;
+  .Service-Img {
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+  }
 }
-.Service-Img .icon-corazones:hover {
-  color: var(--color-blanco);
-  height: 50px;
-}
-
-.Service-Img {
-  position: relative;
-  overflow: hidden;
+@media (max-width: 768px) {
+  .Service-Img .icon-corazones {
+    position: absolute;
+    left: 260px;
+    top: 25px;
+    font-size: 2em;
+  }
+  .Salon-Img {
+    object-fit: cover;
+    width: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
 }
 
 /* Salon-Service */
+@media (min-width: 768px) {
+  .Salon-Service {
+    background-color: var(--color-blanco);
+    overflow: hidden;
+  }
 
-.Salon-Service {
-  background-color: var(--color-blanco);
-  overflow: hidden;
-}
+  .Salon-Description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+  }
+  .Salon-Description p {
+    height: 100px;
+  }
 
-.Salon-Description {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
+  .Salon-Description p::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(transparent 10px, white);
+  }
 }
-.Salon-Description p {
-  height: 100px;
-}
+@media (max-width: 768px) {
+  .Salon-Service {
+    background-color: var(--color-blanco);
+  }
+  .Salon-Service h4 {
+    font-size: 1.1em;
+  }
+  .Salon-Description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+  }
+  .Salon-Description p {
+    height: 66px;
+  }
 
-.Salon-Description p::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: linear-gradient(transparent 10px, white);
+  .Salon-Description p::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(transparent 10px, white);
+  }
 }
 
 /* .Service-Description */
-
-.Service-Description {
-  border-left-style: solid;
-  border-color: var(--color-gris-claro);
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  background-color: var(--color-blanco);
+@media (min-width: 768px) {
+  .Service-Description {
+    border-left-style: solid;
+    border-color: var(--color-gris-claro);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: var(--color-blanco);
+  }
+  .Service-Buttons .Gray-Button {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-gris-claro);
+    border-width: 1px;
+    border-color: var(--color-gris-claro);
+    border-radius: 1.5em;
+    padding: 5px 24px;
+  }
+  .Service-Buttons .Button {
+    text-transform: uppercase;
+    font-size: 0.7em;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-blanco);
+    border-width: 1px;
+    border-color: var(--color-negro);
+    border-radius: 1.5em;
+    padding: 5px 24px;
+  }
+  .Service-Time {
+    font-size: 13px;
+    font-family: "MontserratSemiBold";
+    color: var(--color-verde-claro);
+  }
 }
-.Service-Time {
-  font-size: 13px;
-  font-family: "MontserratSemiBold";
-  color: var(--color-verde-claro);
+@media (max-width: 768px) {
+  .Service-Description {
+    border-top-style: solid;
+    border-color: var(--color-gris-claro);
+    background-color: var(--color-blanco);
+  }
+  .Service-Buttons .Gray-Button {
+    text-transform: uppercase;
+    font-size: 0.5em;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-gris-claro);
+    border-width: 1px;
+    border-color: var(--color-gris-claro);
+    border-radius: 1.5em;
+    padding: 5px 24px;
+  }
+  .Service-Buttons .Button {
+    text-transform: uppercase;
+    font-size: 0.5em;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-dorado);
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 1.5em;
+    padding: 5px 24px;
+  }
+  .Service-Time {
+    font-size: 10px;
+    font-family: "MontserratSemiBold";
+    color: var(--color-verde-claro);
+  }
 }
 
 .Service-Discount-Price {
@@ -80,29 +181,32 @@
   color: var(--color-gris-oscuro);
 }
 
-.Service-Buttons .App-Button1 {
-  text-transform: uppercase;
-  font-size: 0.8em;
-  font-family: "MontserratMedium", sans-serif;
-  font-weight: 500;
-  color: var(--color-negro);
-  background-color: var(--color-gris-claro);
-  border-width: 1px;
-  border-color: var(--color-negro);
-  border-radius: 1.5em;
-  padding: 5px 24px;
+.Service-Buttons .Gray-Button:hover {
+  background-color: var(--color-dorado) !important;
+  border-color: var(--color-dorado) !important;
+  color: var(--color-negro) !important;
 }
-.Service-Buttons .App-Button1:hover {
+.Service-Buttons .Button:hover {
   background-color: var(--color-dorado) !important;
   border-color: var(--color-dorado) !important;
   color: var(--color-negro) !important;
 }
 
-/* * */
-p {
+/* Gerenal Css */
+@media (max-width: 768px) {
+  p {
+    font-size: 0.7em;
+  }
+  h3,
+  h4 {
+    font-size: 0.9em;
+  }
+}
+p,
+h3 {
   font-family: "MontserratRegular";
 }
 
-h3 h4 {
+h4 {
   font-family: "MontserratSemiBold";
 }
