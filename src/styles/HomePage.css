@@ -96,23 +96,28 @@
 .App-Category-List-Item a:hover {
   text-decoration: none;
 }
+
 .App-Category-List-Item p:hover {
   color: var(--color-verde-claro);
 }
+
 .App-Category-List-Item-Container {
   border-radius: 100%;
   overflow: hidden;
   width: 180px;
   height: 180px;
 }
+
 .App-Category-List-Item-Image {
   transition: transform 0.5s, filter 0.1s ease;
   border-radius: 100%;
   object-fit: cover;
 }
+
 .App-Category-List-Item-Image:hover {
   transform: scale(1.1);
 }
+
 .App-Category-List-Item-Container:hover {
   filter: grayscale(100%);
 }
