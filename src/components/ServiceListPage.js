@@ -11,7 +11,6 @@ function ServiceListPage() {
     <Container fluid className="Service-List">
       <Navbar />
       <Container>
-        <h1>ServiceListPage</h1>
         <ServiceListItem />
       </Container>
       <Footer />
