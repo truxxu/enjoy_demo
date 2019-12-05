@@ -1,0 +1,18 @@
+.App-Header-Search input {
+    border-radius: 1.5em;
+    font-family: "MontserratMedium", sans-serif;
+    border: none;
+  }
+  
+  .App-Header-Search .input-group-text {
+    background-color: var(--color-blanco);
+    border: none;
+    border-radius: 1.5em;
+  }
+
+  @media (min-width: 768px) {
+    .App-Header-Search {
+      width: 500px;
+    }
+  }
+  
