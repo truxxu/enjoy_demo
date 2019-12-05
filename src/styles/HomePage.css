@@ -68,8 +68,6 @@
   bottom: 0.35rem;
 }
 
-
-
 @media (min-width: 768px) {
   .App-Header-Title {
     font-size: 2.3em;
@@ -98,12 +96,30 @@
 .App-Category-List-Item a:hover {
   text-decoration: none;
 }
+
 .App-Category-List-Item p:hover {
   color: var(--color-verde-claro);
 }
 
-.App-Category-List-Item-Image {
+.App-Category-List-Item-Container {
+  border-radius: 100%;
+  overflow: hidden;
+  width: 180px;
   height: 180px;
+}
+
+.App-Category-List-Item-Image {
+  transition: transform 0.5s, filter 0.1s ease;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.App-Category-List-Item-Image:hover {
+  transform: scale(1.1);
+}
+
+.App-Category-List-Item-Container:hover {
+  filter: grayscale(100%);
 }
 
 .App-Description {
