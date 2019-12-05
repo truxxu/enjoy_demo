@@ -63,11 +63,13 @@ function HomePage() {
         <Row className="App-Category-List justify-content-center mb-4">
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <img
-                src={categoriaMujer}
-                className="App-Category-List-Item-Image"
-                alt="mujer"
-              />
+              <div className="App-Category-List-Item-Container d-flex">
+                <img
+                  src={categoriaMujer}
+                  className="App-Category-List-Item-Image"
+                  alt="mujer"
+                />
+              </div>
             </Link>
             <Link to="/services">
               <p className="mt-3"> Mujer</p>
@@ -75,11 +77,13 @@ function HomePage() {
           </div>
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <img
-                src={categoriaHombre}
-                className="App-Category-List-Item-Image"
-                alt="hombre"
-              />
+              <div className="App-Category-List-Item-Container d-flex">
+                <img
+                  src={categoriaHombre}
+                  className="App-Category-List-Item-Image"
+                  alt="hombre"
+                />
+              </div>
             </Link>
             <Link to="/services">
               <p className="mt-3">Hombre</p>
@@ -87,11 +91,13 @@ function HomePage() {
           </div>
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <img
-                src={categoriaNiños}
-                className="App-Category-List-Item-Image"
-                alt="niños"
-              />
+              <div className="App-Category-List-Item-Container d-flex">
+                <img
+                  src={categoriaNiños}
+                  className="App-Category-List-Item-Image"
+                  alt="niños"
+                />
+              </div>
             </Link>
             <Link to="/services">
               <p className="mt-3">Niños</p>
@@ -99,11 +105,13 @@ function HomePage() {
           </div>
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <img
-                src={categoriaMascotas}
-                className="App-Category-List-Item-Image"
-                alt="mascotas"
-              />
+              <div className="App-Category-List-Item-Container d-flex">
+                <img
+                  src={categoriaMascotas}
+                  className="App-Category-List-Item-Image"
+                  alt="mascotas"
+                />
+              </div>
             </Link>
             <Link to="/services">
               <p className="mt-3">Mascotas</p>
