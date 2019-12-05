@@ -19,6 +19,7 @@ import loreal from "../images/loreal.png";
 import anamaria from "../images/anamaria.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import SearchInput from "./SearchInput";
 
 function HomePage() {
   const swiperParams = {
@@ -49,18 +50,7 @@ function HomePage() {
             <br />
             <span className="App-Header-Subtitle">es para todos</span>
           </h1>
-          <InputGroup className="App-Header-Search align-self-center mb-4 px-2">
-            <FormControl
-              placeholder="Buscar un servicio o un salón"
-              aria-label="search"
-              aria-describedby="basic-addon1"
-            />
-            <InputGroup.Append>
-              <InputGroup.Text id="basic-addon1">
-                <span className="icon-lupa"></span>
-              </InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
+          <SearchInput />
         </Row>
         <Row className="App-Category-List-Text justify-content-center py-4 px-5 mt-md-3">
           <div className="col-auto">
