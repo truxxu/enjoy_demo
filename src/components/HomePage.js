@@ -60,7 +60,7 @@ function HomePage() {
             </p>
           </div>
         </Row>
-        <Row className="App-Category-List justify-content-center mb-4">
+        <Row className="App-Category-List justify-content-around mb-4 mx-4">
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
               <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
