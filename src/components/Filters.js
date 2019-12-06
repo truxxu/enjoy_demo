@@ -10,11 +10,10 @@ function Filters() {
     <React.Fragment>
         <Row className="ServiceList-Filter">
           <Dropdown>
-            <Dropdown.Toggle>
-              <span className="icon-campana"></span>
+            <Dropdown.Toggle className="Filter-Button">
+              <span className="icon-campana Filter-Icon"></span>
               Buscar Reserva
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
               <Dropdown.Item href="#">A domicilio</Dropdown.Item>
               <Dropdown.Item href="#">En salón</Dropdown.Item>
@@ -22,17 +21,16 @@ function Filters() {
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown>
-            <Dropdown.Toggle>
-              <span className="icon-controles"></span>
+            <Dropdown.Toggle className="Filter-Button">
+              <span className="icon-controles Filter-Icon"></span>
               Servicio
             </Dropdown.Toggle>
           </Dropdown>
           <Dropdown>
-            <Dropdown.Toggle>
-              <span className="icon-ubicacion"></span>
+            <Dropdown.Toggle className="Filter-Button">
+              <span className="icon-ubicacion Filter-Icon"></span>
               Ciudad
             </Dropdown.Toggle>
-
             <Dropdown.Menu>
               <Dropdown.Item href="#">Bogotá</Dropdown.Item>
               <Dropdown.Item href="#">Cali</Dropdown.Item>
@@ -41,8 +39,8 @@ function Filters() {
             </Dropdown.Menu>
           </Dropdown>
           <Dropdown>
-            <Dropdown.Toggle>
-              <span className="icon-objetivo"></span>
+            <Dropdown.Toggle className="Filter-Button">
+              <span className="icon-objetivo Filter-Icon"></span>
               Zona
             </Dropdown.Toggle>
           </Dropdown>
