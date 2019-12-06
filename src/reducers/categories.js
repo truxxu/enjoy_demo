@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
     case GET_CATEGORIES:
       return {
         ...state,
-        business: action.payload
+        list: action.payload
       };
     // case GET_CURRENT_BUSINESS:
     //   return {

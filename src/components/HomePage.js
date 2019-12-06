@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
 import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import "../styles/HomePage.css";
 import logo from "../images/logo.png";
@@ -20,8 +20,15 @@ import anamaria from "../images/anamaria.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import SearchInput from "./SearchInput";
+import { getCategories } from "../actions/categories";
 
-function HomePage() {
+function HomePage(props) {
+  const { getCategories } = props;
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   const swiperParams = {
     loop: true,
     autoplay: {
@@ -180,4 +187,19 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+const mapStateToProps = state => {
+  return {
+    list: state.categories.list
+  };
+};
+
+const mapDispatchToProps = {
+  getCategories
+};
+
+HomePage.prototype = {
+  list: PropTypes.array.isRequired,
+  getCategories: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
