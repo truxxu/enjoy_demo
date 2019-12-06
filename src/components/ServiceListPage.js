@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import ServiceListItem from "./ServiceListItem";
 import "../styles/ServiceListPage.css";
 import Header from "./Header";
-
+import Filters from "./Filters";
 
 function ServiceListPage() {
   return (
@@ -14,6 +14,7 @@ function ServiceListPage() {
       <Navbar />
       <Header />
       <Container>
+        <Filters />
         <ServiceListItem />
       </Container>
       <Footer />
