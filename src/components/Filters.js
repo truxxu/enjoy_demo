@@ -1,5 +1,4 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 
@@ -7,56 +6,57 @@ import "../styles/Filters.css";
 
 function Filters() {
   return (
-    <React.Fragment>
-        <Row className="ServiceList-Filter">
-          <Dropdown>
-            <Dropdown.Toggle className="Filter-Button">
-              <span className="icon-campana Filter-Icon"></span>
-              Buscar Reserva
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#">A domicilio</Dropdown.Item>
-              <Dropdown.Item href="#">En salón</Dropdown.Item>
-              <Dropdown.Item href="#">Otro</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Dropdown>
-            <Dropdown.Toggle className="Filter-Button">
-              <span className="icon-controles Filter-Icon"></span>
-              Servicio
-            </Dropdown.Toggle>
-          </Dropdown>
-          <Dropdown>
-            <Dropdown.Toggle className="Filter-Button">
-              <span className="icon-ubicacion Filter-Icon"></span>
-              Ciudad
-            </Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#">Bogotá</Dropdown.Item>
-              <Dropdown.Item href="#">Cali</Dropdown.Item>
-              <Dropdown.Item href="#">Medellín</Dropdown.Item>
-              <Dropdown.Item href="#">Barranquilla</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Dropdown>
-            <Dropdown.Toggle className="Filter-Button">
-              <span className="icon-objetivo Filter-Icon"></span>
-              Zona
-            </Dropdown.Toggle>
-          </Dropdown>
-          <div>
-            Ver ofertas
-            <Form>
-              <Form.Check
-                type="switch"
-                id="custom-switch"
-                label=""
-              />
-            </Form>
-          </div>
-        </Row>
-
-    </React.Fragment>
+    <div className="ServiceList-Filter d-flex justify-content-center">
+      <Dropdown>
+        <Dropdown.Toggle className="Filter-Button">
+          <span className="icon-campana Filter-Icon"></span>
+          Buscar Reserva
+          <span className="icon-despleg Filter-Icon-Arrow"></span>
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item href="#">A domicilio</Dropdown.Item>
+          <Dropdown.Item href="#">En salón</Dropdown.Item>
+          <Dropdown.Item href="#">Otro</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      <Dropdown>
+        <Dropdown.Toggle className="Filter-Button">
+          <span className="icon-controles Filter-Icon"></span>
+          Servicio
+          <span className="icon-despleg Filter-Icon-Arrow"></span>
+        </Dropdown.Toggle>
+      </Dropdown>
+      <Dropdown>
+        <Dropdown.Toggle className="Filter-Button">
+          <span className="icon-ubicacion Filter-Icon"></span>
+          Ciudad
+          <span className="icon-despleg Filter-Icon-Arrow"></span>
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item href="#">Bogotá</Dropdown.Item>
+          <Dropdown.Item href="#">Cali</Dropdown.Item>
+          <Dropdown.Item href="#">Medellín</Dropdown.Item>
+          <Dropdown.Item href="#">Barranquilla</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      <Dropdown>
+        <Dropdown.Toggle className="Filter-Button">
+          <span className="icon-objetivo Filter-Icon"></span>
+          Zona
+          <span className="icon-despleg Filter-Icon-Arrow"></span>
+        </Dropdown.Toggle>
+      </Dropdown>
+      <div className="Filter-Switch d-flex align-items-center">
+        Ver ofertas
+        <Form className="Filter-Switch-Text">
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            label=""
+          />
+        </Form>
+      </div>
+    </div>
   );
 }
 

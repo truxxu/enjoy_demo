@@ -13,8 +13,8 @@ function ServiceListPage() {
     <Container fluid className="Service-List">
       <Navbar />
       <Header />
+      <Filters />
       <Container>
-        <Filters />
         <ServiceListItem />
       </Container>
       <Footer />

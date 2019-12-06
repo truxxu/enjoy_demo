@@ -1,16 +1,19 @@
 .ServiceList-Filter {
   background-color: var(--color-blanco);
+  font-family: "LatoRegular", sans-serif;
+  color: var(--color-gris-oscuro);
 }
 
 .Filter-Button,
 .Filter-Button:hover,
 .Filter-Button:active,
 .Filter-Button:focus {
-  color: var(--color-negro) !important;
+  color: var(--color-gris-oscuro) !important;
   background-color: var(--color-blanco) !important;
-  font-family: "LatoRegular", sans-serif;
   border-color: var(--color-gris-claro) !important;
   border-radius: 0;
+  padding: 1em;
+  border-width: 1px;
 }
 
 .Filter-Button:after {
@@ -20,4 +23,19 @@
 .Filter-Icon {
   margin-right: 5px;
   color: var(--color-gris-oscuro);
+}
+
+.Filter-Icon-Arrow {
+  margin-left: 10px;
+}
+
+
+.Filter-Switch {
+  border-color: var(--color-gris-claro);
+  border-width: 1px;
+  padding: 1em;
+}
+
+.Filter-Switch-Text {
+  margin-left: 10px;
 }
