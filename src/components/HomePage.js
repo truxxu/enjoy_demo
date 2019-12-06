@@ -60,10 +60,10 @@ function HomePage() {
             </p>
           </div>
         </Row>
-        <Row className="App-Category-List justify-content-center mb-4">
+        <Row className="App-Category-List justify-content-around mb-4 mx-4">
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex">
+              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
                 <img
                   src={categoriaMujer}
                   className="App-Category-List-Item-Image"
@@ -77,7 +77,7 @@ function HomePage() {
           </div>
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex">
+              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
                 <img
                   src={categoriaHombre}
                   className="App-Category-List-Item-Image"
@@ -91,7 +91,7 @@ function HomePage() {
           </div>
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex">
+              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
                 <img
                   src={categoriaNiños}
                   className="App-Category-List-Item-Image"
@@ -105,7 +105,7 @@ function HomePage() {
           </div>
           <div className="col-auto App-Category-List-Item">
             <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex">
+              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
                 <img
                   src={categoriaMascotas}
                   className="App-Category-List-Item-Image"
