@@ -1,3 +1,4 @@
+import { GET_CATEGORIES } from "../actions/index";
 const initialState = {
   list: [],
   activeItem: null
@@ -5,12 +6,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    // case GET_BUSINESS:
-    //   return {
-    //     ...state,
-    //     business: action.payload,
-    //     isLoading: true
-    //   };
+    case GET_CATEGORIES:
+      return {
+        ...state,
+        business: action.payload
+      };
     // case GET_CURRENT_BUSINESS:
     //   return {
     //     ...state,
