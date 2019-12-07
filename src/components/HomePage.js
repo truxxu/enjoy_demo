@@ -23,7 +23,7 @@ import SearchInput from "./SearchInput";
 import { getCategories } from "../actions/categories";
 
 function HomePage(props) {
-  const { getCategories } = props;
+  const { getCategories, list } = props;
 
   useEffect(() => {
     getCategories();
@@ -43,6 +43,24 @@ function HomePage(props) {
         spaceBetween: 30
       }
     }
+  };
+  const renderCategory = category => {
+    return (
+      <div className="col-auto App-Category-List-Item">
+        <Link to="/services">
+          <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
+            <img
+              src={category.image}
+              className="App-Category-List-Item-Image"
+              alt="{category.name}"
+            />
+          </div>
+        </Link>
+        <Link to="/services">
+          <p className="mt-3">{category.name}</p>
+        </Link>
+      </div>
+    );
   };
   return (
     <div className="App">
@@ -68,62 +86,7 @@ function HomePage(props) {
           </div>
         </Row>
         <Row className="App-Category-List justify-content-around mb-4 mx-4">
-          <div className="col-auto App-Category-List-Item">
-            <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
-                <img
-                  src={categoriaMujer}
-                  className="App-Category-List-Item-Image"
-                  alt="mujer"
-                />
-              </div>
-            </Link>
-            <Link to="/services">
-              <p className="mt-3"> Mujer</p>
-            </Link>
-          </div>
-          <div className="col-auto App-Category-List-Item">
-            <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
-                <img
-                  src={categoriaHombre}
-                  className="App-Category-List-Item-Image"
-                  alt="hombre"
-                />
-              </div>
-            </Link>
-            <Link to="/services">
-              <p className="mt-3">Hombre</p>
-            </Link>
-          </div>
-          <div className="col-auto App-Category-List-Item">
-            <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
-                <img
-                  src={categoriaNiños}
-                  className="App-Category-List-Item-Image"
-                  alt="niños"
-                />
-              </div>
-            </Link>
-            <Link to="/services">
-              <p className="mt-3">Niños</p>
-            </Link>
-          </div>
-          <div className="col-auto App-Category-List-Item">
-            <Link to="/services">
-              <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
-                <img
-                  src={categoriaMascotas}
-                  className="App-Category-List-Item-Image"
-                  alt="mascotas"
-                />
-              </div>
-            </Link>
-            <Link to="/services">
-              <p className="mt-3">Mascotas</p>
-            </Link>
-          </div>
+          {list.map(category => renderCategory(category))}
         </Row>
         <Row className="App-Description align-items-center justify-content-center py-5">
           <div className="col-auto d-none d-md-flex align-items-end">
