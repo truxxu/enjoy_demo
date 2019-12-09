@@ -12,7 +12,7 @@ export const getCategories = () => dispatch => {
         payload: res.data
       });
     })
-    .catch(err => window.alert("No se pudo cargarga las categorias."));
+    .catch(err => window.alert("No se pudieron cargar las categorias."));
 };
 
 export const setCategory = category => dispatch => {
