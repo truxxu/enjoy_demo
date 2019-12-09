@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { env } from "../env";
-import { GET_CATEGORIES, SER_CATEGORY } from ".";
+import { GET_CATEGORIES, SET_CATEGORY } from ".";
 
 export const getCategories = () => dispatch => {
   axios
@@ -17,7 +17,7 @@ export const getCategories = () => dispatch => {
 
 export const setCategory = category => dispatch => {
   dispatch({
-    type: SER_CATEGORY,
+    type: SET_CATEGORY,
     payload: category
   });
 };
