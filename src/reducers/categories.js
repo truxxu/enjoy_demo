@@ -1,4 +1,4 @@
-import { GET_CATEGORIES } from "../actions/index";
+import { GET_CATEGORIES, SER_CATEGORY } from "../actions/index";
 const initialState = {
   list: [],
   activeItem: null
@@ -10,6 +10,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         list: action.payload
+      };
+    case SER_CATEGORY:
+      return {
+        ...state,
+        activeItem: action.payload
       };
     // case GET_CURRENT_BUSINESS:
     //   return {
