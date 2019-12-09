@@ -8,10 +8,6 @@ import PropTypes from "prop-types";
 
 import "../styles/HomePage.css";
 import logo from "../images/logo.png";
-import categoriaMujer from "../images/mujer.png";
-import categoriaHombre from "../images/hombre.png";
-import categoriaNiños from "../images/niños.png";
-import categoriaMascotas from "../images/mascotas.png";
 import descripcion from "../images/descripcion.png";
 import avon from "../images/avon.png";
 import maybelline from "../images/maybelline.png";
@@ -20,10 +16,10 @@ import anamaria from "../images/anamaria.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import SearchInput from "./SearchInput";
-import { getCategories } from "../actions/categories";
+import { getCategories, setCategory } from "../actions/categories";
 
 function HomePage(props) {
-  const { getCategories, list } = props;
+  const { getCategories, list, setCategory } = props;
 
   useEffect(() => {
     getCategories();
@@ -44,10 +40,15 @@ function HomePage(props) {
       }
     }
   };
+
+  const setActiveItem = item => {
+    setCategory(item);
+  };
+
   const renderCategory = category => {
     return (
-      <div className="col-auto App-Category-List-Item">
-        <Link to="/services">
+      <div className="col-auto App-Category-List-Item" key={category.id}>
+        <Link to="/services" onClick={() => setActiveItem(category)}>
           <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
             <img
               src={category.image}
@@ -56,7 +57,7 @@ function HomePage(props) {
             />
           </div>
         </Link>
-        <Link to="/services">
+        <Link to="/services" onClick={() => setActiveItem(category)}>
           <p className="mt-3">{category.name}</p>
         </Link>
       </div>
@@ -157,12 +158,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getCategories
+  getCategories,
+  setCategory
 };
 
 HomePage.prototype = {
   list: PropTypes.array.isRequired,
-  getCategories: PropTypes.func.isRequired
+  getCategories: PropTypes.func.isRequired,
+  setCategory: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
