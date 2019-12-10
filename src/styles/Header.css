@@ -15,7 +15,7 @@
     font-size: 1.3em;
     position: relative;
     bottom: 0.35rem;
-  }  
+  }
 
 .Header-Search{
     position: absolute;
@@ -26,7 +26,6 @@
   object-fit: cover;
   width: 100%;
 }
-
 
 @media (max-width: 768px) {
     .Header-Title {
@@ -39,4 +38,4 @@
 }
 
 
-  
+

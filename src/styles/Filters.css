@@ -2,7 +2,6 @@
   background-color: var(--color-blanco);
   font-family: "LatoRegular", sans-serif;
   color: var(--color-gris-oscuro);
-  padding: 0 !important;
 }
 
 .Filter-Button,
@@ -46,7 +45,8 @@
   margin: 0;
   border-radius: 0 0 20px 20px;
   height: 100px;
-  overflow-y: auto
+  overflow-y: auto;
+  width: 100%;
 }
 
 .Filter-List-Item:active {
@@ -57,3 +57,4 @@
   color: var(--color-verde-claro);
   background-color: transparent !important;
 }
+

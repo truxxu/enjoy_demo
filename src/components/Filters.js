@@ -6,7 +6,7 @@ import "../styles/Filters.css";
 
 function Filters() {
   return (
-    <div className="ServiceList-Filter d-flex justify-content-center">
+    <div className="ServiceList-Filter d-md-flex justify-content-center d-none d-md-block">
       <Dropdown>
         <Dropdown.Toggle className="Filter-Button">
           <span className="icon-campana Filter-Icon"></span>
