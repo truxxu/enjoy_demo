@@ -2,6 +2,7 @@
   background-color: var(--color-blanco);
   font-family: "LatoRegular", sans-serif;
   color: var(--color-gris-oscuro);
+  padding: 0 !important;
 }
 
 .Filter-Button,
@@ -12,8 +13,9 @@
   background-color: var(--color-blanco) !important;
   border-color: var(--color-gris-claro) !important;
   border-radius: 0;
-  padding: 1em;
-  border-width: 1px;
+  padding: 1.5em 1em 1.5em 1em;
+  border-width: 0 0 0 1px;
+  box-shadow: none !important;
 }
 
 .Filter-Button:after {
@@ -29,13 +31,29 @@
   margin-left: 10px;
 }
 
-
 .Filter-Switch {
+  padding: 1.5em 0.5em 1.5em 1em;
+  border-style: solid;
+  border-width: 0 1px 0 1px;
   border-color: var(--color-gris-claro);
-  border-width: 1px;
-  padding: 1em;
 }
 
 .Filter-Switch-Text {
   margin-left: 10px;
+}
+
+.Filter-Dropdown-List {
+  margin: 0;
+  border-radius: 0 0 20px 20px;
+  height: 100px;
+  overflow-y: auto
+}
+
+.Filter-List-Item:active {
+  background-color: transparent !important;
+}
+
+.Filter-List-Item:hover {
+  color: var(--color-verde-claro);
+  background-color: transparent !important;
 }

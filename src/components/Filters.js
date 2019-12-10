@@ -13,10 +13,10 @@ function Filters() {
           Buscar Reserva
           <span className="icon-despleg Filter-Icon-Arrow"></span>
         </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item href="#">A domicilio</Dropdown.Item>
-          <Dropdown.Item href="#">En salón</Dropdown.Item>
-          <Dropdown.Item href="#">Otro</Dropdown.Item>
+        <Dropdown.Menu className="Filter-Dropdown-List">
+          <Dropdown.Item href="#" className="Filter-List-Item">A domicilio</Dropdown.Item>
+          <Dropdown.Item href="#" className="Filter-List-Item">En salón</Dropdown.Item>
+          <Dropdown.Item href="#" className="Filter-List-Item">Otro</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown>
@@ -32,11 +32,11 @@ function Filters() {
           Ciudad
           <span className="icon-despleg Filter-Icon-Arrow"></span>
         </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item href="#">Bogotá</Dropdown.Item>
-          <Dropdown.Item href="#">Cali</Dropdown.Item>
-          <Dropdown.Item href="#">Medellín</Dropdown.Item>
-          <Dropdown.Item href="#">Barranquilla</Dropdown.Item>
+        <Dropdown.Menu className="Filter-Dropdown-List">
+          <Dropdown.Item href="#" className="Filter-List-Item">Bogotá</Dropdown.Item>
+          <Dropdown.Item href="#" className="Filter-List-Item">Cali</Dropdown.Item>
+          <Dropdown.Item href="#" className="Filter-List-Item">Medellín</Dropdown.Item>
+          <Dropdown.Item href="#" className="Filter-List-Item">Barranquilla</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Dropdown>
