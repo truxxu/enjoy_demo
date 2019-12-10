@@ -7,7 +7,6 @@ import ServiceListItem from "./ServiceListItem";
 import "../styles/ServiceListPage.css";
 import Header from "./Header";
 
-
 function ServiceListPage() {
   return (
     <Container fluid className="Service-List">
