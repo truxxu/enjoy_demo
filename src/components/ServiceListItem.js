@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 
 import salon from "../images/salon.jpeg";
 import "../styles/ServiceListItem.css";
@@ -51,7 +52,9 @@ function ServiceListItem() {
         </div>
         <div className="Service-Buttons pb-4 d-flex flex-row justify-content-around">
           <Button className="Button mr-2">RESERVAR YA</Button>
-          <Button className="Gray-Button ">VER SALÓN</Button>
+          <Link className="Gray-Button " to="/salon">
+            VER SALÓN
+          </Link>
         </div>
       </div>
     </div>

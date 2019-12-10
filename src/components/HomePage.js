@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Swiper from "react-id-swiper";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -9,12 +8,9 @@ import PropTypes from "prop-types";
 import "../styles/HomePage.css";
 import logo from "../images/logo.png";
 import descripcion from "../images/descripcion.png";
-import avon from "../images/avon.png";
-import maybelline from "../images/maybelline.png";
-import loreal from "../images/loreal.png";
-import anamaria from "../images/anamaria.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import AlliesSlider from "./AlliesSlider";
 import SearchInput from "./SearchInput";
 import { getCategories, setCategory } from "../actions/categories";
 
@@ -24,22 +20,6 @@ function HomePage(props) {
   useEffect(() => {
     getCategories();
   }, []);
-
-  const swiperParams = {
-    loop: true,
-    autoplay: {
-      delay: 2500,
-      disableOnInteraction: false
-    },
-    slidesPerView: 1,
-    spaceBetween: 30,
-    breakpoints: {
-      768: {
-        slidesPerView: 4,
-        spaceBetween: 30
-      }
-    }
-  };
 
   const setActiveItem = item => {
     setCategory(item);
@@ -118,33 +98,7 @@ function HomePage(props) {
             </div>
           </div>
         </Row>
-        <Row className="App-Allies justify-content-center py-5">
-          <div className="col-auto col-md-8">
-            <h1 className="mb-5">Nuestros aliados</h1>
-            <Swiper {...swiperParams}>
-              <div>
-                <img src={loreal} className="App-Allies-Image" alt="loreal" />
-              </div>
-              <div>
-                <img
-                  src={maybelline}
-                  className="App-Allies-Image"
-                  alt="maybelline"
-                />
-              </div>
-              <div>
-                <img src={avon} className="App-Allies-Image" alt="avon" />
-              </div>
-              <div>
-                <img
-                  src={anamaria}
-                  className="App-Allies-Image"
-                  alt="anamaria"
-                />
-              </div>
-            </Swiper>
-          </div>
-        </Row>
+        <AlliesSlider />
         <Footer />
       </Container>
     </div>
