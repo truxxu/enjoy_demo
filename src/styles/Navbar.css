@@ -29,3 +29,12 @@
   color: var(--color-verde-claro);
   text-decoration: none;
 }
+
+.App_Navbar_Width_Full{
+  width: 100% !important;
+  
+}
+
+.App_Navbar_Mar_Search{
+  margin-bottom: -25px;
+}
