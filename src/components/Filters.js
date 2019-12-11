@@ -1,11 +1,18 @@
-import React from "react";
+import React, {useState} from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 import "../styles/Filters.css";
 
 function Filters() {
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <div className="ServiceList-Filter d-md-flex justify-content-center d-none d-md-block">
@@ -60,10 +67,67 @@ function Filters() {
         </div>
       </div>
       <div className="ServiceList-Filter-Mobile">
-        <Button variant="none" className="Mobile-Filter-Button">
+        <Button
+          onClick={handleShow}
+          variant="none"
+          className="Mobile-Filter-Button">
             <span className="icon-controles"></span>
         </Button>
       </div>
+      <Modal className="Filter-Modal" show={show} onHide={handleClose}>
+        <div className="div">
+          Filtra
+        </div>
+        <div className="Filter-Switch d-flex align-items-center">
+          Ver ofertas
+          <Form className="Filter-Switch-Text">
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label=""
+            />
+          </Form>
+        </div>
+        <Dropdown>
+          <Dropdown.Toggle className="Filter-Button">
+            <span className="icon-campana Filter-Icon"></span>
+            Buscar Reserva
+            <span className="icon-despleg Filter-Icon-Arrow"></span>
+          </Dropdown.Toggle>
+          <Dropdown.Menu className="Filter-Dropdown-List">
+            <Dropdown.Item href="#" className="Filter-List-Item">A domicilio</Dropdown.Item>
+            <Dropdown.Item href="#" className="Filter-List-Item">En salón</Dropdown.Item>
+            <Dropdown.Item href="#" className="Filter-List-Item">Otro</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <Dropdown>
+          <Dropdown.Toggle className="Filter-Button">
+            <span className="icon-controles Filter-Icon"></span>
+            Servicio
+            <span className="icon-despleg Filter-Icon-Arrow"></span>
+          </Dropdown.Toggle>
+        </Dropdown>
+        <Dropdown>
+          <Dropdown.Toggle className="Filter-Button">
+            <span className="icon-ubicacion Filter-Icon"></span>
+            Ciudad
+            <span className="icon-despleg Filter-Icon-Arrow"></span>
+          </Dropdown.Toggle>
+          <Dropdown.Menu className="Filter-Dropdown-List">
+            <Dropdown.Item href="#" className="Filter-List-Item">Bogotá</Dropdown.Item>
+            <Dropdown.Item href="#" className="Filter-List-Item">Cali</Dropdown.Item>
+            <Dropdown.Item href="#" className="Filter-List-Item">Medellín</Dropdown.Item>
+            <Dropdown.Item href="#" className="Filter-List-Item">Barranquilla</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        <Dropdown>
+          <Dropdown.Toggle className="Filter-Button">
+            <span className="icon-objetivo Filter-Icon"></span>
+            Zona
+            <span className="icon-despleg Filter-Icon-Arrow"></span>
+          </Dropdown.Toggle>
+        </Dropdown>
+      </Modal>
     </div>
   );
 }

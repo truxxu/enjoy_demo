@@ -88,6 +88,22 @@
   .Mobile-Filter-Button:hover {
     background-color: rgba(231,215,135, 0.75);
   }
+
+  .Filter-Modal {
+    margin: 0;
+    height: 100vh;
+    background-color: white;
+  }
+
+  .modal-content {
+    align-items: center;
+    border: none;
+  }
+
+  .Filter-Button,
+  .Filter-Switch {
+    border: none;
+  }
 }
 
 @media (min-width: 768px) {
