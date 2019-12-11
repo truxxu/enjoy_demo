@@ -30,18 +30,11 @@
   text-decoration: none;
 }
 
-.App_Navbar_Dorado{
-  background-color: var(--color-dorado);
-}
-
-.App_Navbar_Blanco{
-  background-color: var(--color-blanco);
-}
-
 .App_Navbar_Width_Full{
-  width: 100%;
+  width: 100% !important;
+  
 }
 
-.App_Navbar_Justify_Center{
-  justify-content:center!important;
+.App_Navbar_Mar_Search{
+  margin-bottom: -25px;
 }
