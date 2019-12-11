@@ -65,6 +65,21 @@
   background-color: transparent !important;
 }
 
+.custom-control-input:checked~.custom-control-label::before {
+  background-color: gray;
+  border-color: black;
+  box-shadow: none;
+}
+
+.custom-switch .custom-control-label::before {
+  border-color: black;
+  box-shadow: none;
+}
+
+.custom-switch .custom-control-input:checked~.custom-control-label::after {
+  background-color: var(--color-verde-claro);
+}
+
 @media (max-width: 767px) {
   .ServiceList-Filter-Mobile {
     position: fixed;

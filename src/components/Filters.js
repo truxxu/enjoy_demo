@@ -15,7 +15,9 @@ function Filters() {
 
   return (
     <div>
-      <div className="ServiceList-Filter d-md-flex justify-content-center d-none d-md-block">
+      <div
+        className="ServiceList-Filter d-md-flex
+        justify-content-center d-none d-md-block">
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-campana Filter-Icon"></span>
@@ -23,9 +25,21 @@ function Filters() {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item href="#" className="Filter-List-Item">A domicilio</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">En salón</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Otro</Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              A domicilio
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              En salón
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Otro
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -42,10 +56,26 @@ function Filters() {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item href="#" className="Filter-List-Item">Bogotá</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Cali</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Medellín</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Barranquilla</Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Bogotá
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Cali
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Medellín
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Barranquilla
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -62,6 +92,8 @@ function Filters() {
               type="switch"
               id="custom-switch"
               label=""
+                        variant="none"
+
             />
           </Form>
         </div>
@@ -80,10 +112,15 @@ function Filters() {
           <div>
             Filtra
           </div>
-          <a href="" className="Modal-Close">X</a>
+          <a
+            href=""
+            onClick={handleClose}
+            className="Modal-Close">
+            X
+          </a>
         </div>
         <div className="Filter-Switch">
-          <div className="">
+          <div>
             Ver ofertas
           </div>
           <Form className="Filter-Switch-Text">
@@ -103,14 +140,26 @@ function Filters() {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item href="#" className="Filter-List-Item">A domicilio</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">En salón</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Otro</Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              A domicilio
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              En salón
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Otro
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div className="">
+            <div>
               <span className="icon-controles Filter-Icon"></span>
               Servicio
             </div>
@@ -119,17 +168,33 @@ function Filters() {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div className="">
+            <div>
             <span className="icon-ubicacion Filter-Icon"></span>
             Ciudad
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item href="#" className="Filter-List-Item">Bogotá</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Cali</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Medellín</Dropdown.Item>
-            <Dropdown.Item href="#" className="Filter-List-Item">Barranquilla</Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Bogotá
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Cali
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Medellín
+            </Dropdown.Item>
+            <Dropdown.Item
+              href="#"
+              className="Filter-List-Item">
+              Barranquilla
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
