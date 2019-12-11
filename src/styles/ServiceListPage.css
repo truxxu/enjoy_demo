@@ -1,3 +1,10 @@
 .Service-List {
   background-color: var(--color-gris-claro);
-}
+/*  padding: 0;
+*/}
+
+/*@media (max-width: 767px) {
+  .Service-List {
+    padding: 0 15px;
+  }
+}*/
