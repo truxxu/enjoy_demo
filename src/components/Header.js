@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -13,12 +13,6 @@ import { getCategories, setCategory } from "../actions/categories";
 function Header(props) {
   const { getCategories, list, setCategory } = props;
   
-  
-  useEffect(() => {
-    getCategories();
-  }, []);
-  
-console.log(props.activeItem);
   return (
     <React.Fragment>
         <Row className="Header-Row flex flex-column">
@@ -45,15 +39,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = {
-  getCategories,
-  setCategory
-};
-
-Header.prototype = {
-  list: PropTypes.array.isRequired,
-  getCategories: PropTypes.func.isRequired,
-  setCategory: PropTypes.func.isRequired
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps)(Header);
