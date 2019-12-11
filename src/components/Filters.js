@@ -75,11 +75,17 @@ function Filters() {
         </Button>
       </div>
       <Modal className="Filter-Modal" show={show} onHide={handleClose}>
-        <div className="div">
-          Filtra
+        <div className="Filter-Modal-Title">
+          <a style={{visibility: "hidden"}}>X</a>
+          <div>
+            Filtra
+          </div>
+          <a href="" className="Modal-Close">X</a>
         </div>
-        <div className="Filter-Switch d-flex align-items-center">
-          Ver ofertas
+        <div className="Filter-Switch">
+          <div className="">
+            Ver ofertas
+          </div>
           <Form className="Filter-Switch-Text">
             <Form.Check
               type="switch"
@@ -90,8 +96,10 @@ function Filters() {
         </div>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <span className="icon-campana Filter-Icon"></span>
-            Buscar Reserva
+            <div className="">
+              <span className="icon-campana Filter-Icon"></span>
+              Buscar Reserva
+            </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
@@ -102,15 +110,19 @@ function Filters() {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <span className="icon-controles Filter-Icon"></span>
-            Servicio
+            <div className="">
+              <span className="icon-controles Filter-Icon"></span>
+              Servicio
+            </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
+            <div className="">
             <span className="icon-ubicacion Filter-Icon"></span>
             Ciudad
+            </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
@@ -122,8 +134,10 @@ function Filters() {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <span className="icon-objetivo Filter-Icon"></span>
-            Zona
+            <div className="">
+              <span className="icon-objetivo Filter-Icon"></span>
+              Zona
+            </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
         </Dropdown>

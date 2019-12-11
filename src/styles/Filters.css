@@ -1,6 +1,5 @@
 .ServiceList-Filter {
   background-color: var(--color-blanco);
-  font-family: "LatoRegular", sans-serif;
   color: var(--color-gris-oscuro);
 }
 
@@ -15,6 +14,7 @@
   padding: 1.5em 1em 1.5em 1em;
   border-width: 0 0 0 1px;
   box-shadow: none !important;
+  font-family: "LatoRegular", sans-serif;
 }
 
 .Filter-Button:after {
@@ -35,6 +35,8 @@
   border-style: solid;
   border-width: 0 1px 0 1px;
   border-color: var(--color-gris-claro);
+  font-family: "LatoRegular", sans-serif;
+  color: var(--color-gris-oscuro);
 }
 
 .Filter-Switch-Text {
@@ -47,6 +49,11 @@
   height: 100px;
   overflow-y: auto;
   width: 100%;
+}
+
+.Filter-List-Item {
+  font-family: "LatoRegular", sans-serif;
+  color: var(--color-gris-oscuro);
 }
 
 .Filter-List-Item:active {
@@ -100,9 +107,49 @@
     border: none;
   }
 
-  .Filter-Button,
+  .dropdown {
+    width: 100vw;
+    display: grid;
+    height: 75px;
+  }
+
   .Filter-Switch {
-    border: none;
+    padding: 1.5em;
+    border-style: solid;
+    width: 100vw;
+    border-width: 0 0 1px 0;
+    border-color: var(--color-gris-claro);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .Filter-Button,
+  .Filter-Button:active
+  .Filter-Button:focus {
+    border-width: 0 0 1px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5em;
+  }
+
+
+  .Filter-Modal-Title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-family: "LatoRegular", sans-serif;
+    color: var(--color-gris-oscuro);
+    margin: 3em 0 2em 0;
+    padding: 0 1.5em;
+    width: 100%;
+  }
+
+  .Modal-Close {
+    color: var(--color-gris-oscuro);
+    font-size: 20;
   }
 }
 
