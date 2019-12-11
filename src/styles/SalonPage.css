@@ -1,0 +1,70 @@
+.Salon-Page {
+  /* text-align: center; */
+}
+.SalonPage-Container {
+  background-color: var(--color-gris-claro);
+}
+
+.SalonPage-Header-Row {
+  overflow: hidden;
+  color: white;
+}
+.SalonPage-Img {
+  width: 100%;
+}
+.SalonPage-Header {
+  position: absolute;
+  height: 385px;
+}
+
+.Header-Title {
+  text-transform: uppercase;
+  font-family: "MontserratBold";
+}
+
+span.icon-furgoneta {
+  font-size: 1.4em;
+}
+span.icon-tienda {
+  font-size: 1.4em;
+}
+
+@media (max-width: 768px) {
+  .SalonPage-Header-Row {
+    height: 280px;
+  }
+  .SalonPage-Header p {
+    font-size: 0.6em;
+  }
+  .SalonPage-Header h5 {
+    font-size: 0.8em;
+  }
+
+  .Open-Close {
+    max-width: 100%;
+    text-transform: uppercase;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: #b73639;
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 0.5em;
+  }
+}
+@media (min-width: 768px) {
+  .Open-Close {
+    text-transform: uppercase;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-dorado);
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 0.5em;
+    /* padding: 6px; */
+  }
+  .SalonPage-Header-Row {
+    height: 385px;
+  }
+}

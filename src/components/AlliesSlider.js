@@ -6,6 +6,7 @@ import avon from "../images/avon.png";
 import maybelline from "../images/maybelline.png";
 import loreal from "../images/loreal.png";
 import anamaria from "../images/anamaria.png";
+import "../styles/AlliesSlider.css";
 
 function AlliesSlider() {
   const swiperParams = {
