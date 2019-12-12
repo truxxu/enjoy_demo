@@ -15,7 +15,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/services" exact component={ServiceListPage} />
-          <Route path="/salon" exact component={SalonPage} />
+          <Route path="/salon/:id" exact component={SalonPage} />
         </Switch>
       </BrowserRouter>
     </Provider>
