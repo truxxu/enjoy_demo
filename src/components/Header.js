@@ -7,11 +7,8 @@ import SearchInput from "./SearchInput";
 import banner from "../images/banner_servicios_ninos.jpg";
 import "../styles/Header.css"; 
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { getCategories, setCategory } from "../actions/categories";
 
 function Header(props) {
-  const { getCategories, list, setCategory } = props;
   
   return (
     <React.Fragment>
