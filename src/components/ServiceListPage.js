@@ -6,10 +6,10 @@ import Navbar from "./Navbar";
 import ServiceListItem from "./ServiceListItem";
 import "../styles/ServiceListPage.css";
 import Header from "./Header";
-import getServices from "../actions/services";
+import { getServices } from "../actions/services";
 
 function ServiceListPage(props) {
-  const { getServices, list } = props;
+  const { list } = props;
 
   useEffect(() => {
     getServices();
