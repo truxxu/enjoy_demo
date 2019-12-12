@@ -1,7 +1,4 @@
 .Salon-Page {
-  /* text-align: center; */
-}
-.SalonPage-Container {
   background-color: var(--color-gris-claro);
 }
 
@@ -9,12 +6,17 @@
   overflow: hidden;
   color: white;
 }
+
 .SalonPage-Img {
   width: 100%;
+  object-fit: cover;
+  background-color: rgba(0, 0, 0, 0.8);
+  filter: brightness(0.6);
 }
+
 .SalonPage-Header {
   position: absolute;
-  height: 385px;
+  z-index: 2;
 }
 
 .Header-Title {
@@ -25,6 +27,7 @@
 span.icon-furgoneta {
   font-size: 1.4em;
 }
+
 span.icon-tienda {
   font-size: 1.4em;
 }
@@ -33,11 +36,22 @@ span.icon-tienda {
   .SalonPage-Header-Row {
     height: 280px;
   }
+
+  .SalonPage-Header {
+    height: 280px;
+  }
+
   .SalonPage-Header p {
     font-size: 0.6em;
   }
+
   .SalonPage-Header h5 {
     font-size: 0.8em;
+  }
+
+  .SalonPage-Img {
+    width: 375px;
+    /* max-width: 100%; */
   }
 
   .Open-Close {
@@ -62,9 +76,17 @@ span.icon-tienda {
     border-width: 1px;
     border-color: var(--color-dorado);
     border-radius: 0.5em;
-    /* padding: 6px; */
   }
+
   .SalonPage-Header-Row {
     height: 385px;
+  }
+
+  .SalonPage-Header {
+    height: 385px;
+  }
+
+  .SalonPage-Container {
+    max-width: 880px;
   }
 }

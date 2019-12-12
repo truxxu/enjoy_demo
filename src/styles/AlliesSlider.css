@@ -1,6 +1,9 @@
 .App-Allies h1 {
   text-align: center;
 }
+.App-Allies {
+  background-color: var(--color-blanco);
+}
 .App-Allies h1 {
   font-family: "MontserratRegular", sans-serif;
   text-transform: uppercase;
