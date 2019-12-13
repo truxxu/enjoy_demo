@@ -6,12 +6,14 @@ import Modal from "react-bootstrap/Modal";
 
 import "../styles/Filters.css";
 
-function Filters() {
+function Filters(props) {
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  console.log(props.data)
 
   return (
     <div>
@@ -56,26 +58,14 @@ function Filters() {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Bogotá
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Cali
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Medellín
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Barranquilla
-            </Dropdown.Item>
+            {
+              props.data.map(city => {
+              return(
+                <Dropdown.Item key={city.id} className="Filter-List-Item">
+                  {city.name}
+                </Dropdown.Item>
+              )})
+            }
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -92,9 +82,7 @@ function Filters() {
               type="switch"
               id="custom-switch"
               label=""
-                        variant="none"
-
-            />
+              variant="none"/>
           </Form>
         </div>
       </div>

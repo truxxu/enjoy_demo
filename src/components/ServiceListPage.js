@@ -11,7 +11,6 @@ import Header from "./Header";
 import Filters from "./Filters";
 import { getServices, getCities } from "../actions/services";
 
-
 function ServiceListPage(props) {
   const { getServices, list, getCities, cities } = props;
 
@@ -33,7 +32,7 @@ function ServiceListPage(props) {
     <Container fluid className="Service-List">
       <Navbar />
       <Header />
-      <Filters />
+      <Filters data={cities}/>
       <Container>
         {
           list.map(service => renderService(service))
