@@ -49,6 +49,7 @@
   height: 100px;
   overflow-y: auto;
   width: 100%;
+  min-width: 0;
 }
 
 .Filter-List-Item {

@@ -18,13 +18,13 @@ function Filters() {
       <div
         className="ServiceList-Filter d-md-flex
         justify-content-center d-none d-md-block">
-        <Dropdown>
+        <Dropdown className="d-inline-block">
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-campana Filter-Icon"></span>
             Buscar Reserva
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
-          <Dropdown.Menu className="Filter-Dropdown-List">
+          <Dropdown.Menu className="Filter-Dropdown-List w-100">
             <Dropdown.Item
               href="#"
               className="Filter-List-Item">
