@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import ServiceListItem from "./ServiceListItem";
 import "../styles/ServiceListPage.css";
 import Header from "./Header";
+import Filters from "./Filters";
 import { getServices } from "../actions/services";
 
 function ServiceListPage(props) {
@@ -22,11 +23,12 @@ function ServiceListPage(props) {
       <ServiceListItem key= {service.id} data={service} />
     )
   };
-
+  
   return (
     <Container fluid className="Service-List">
       <Navbar />
       <Header />
+      <Filters />
       <Container>
         {
           list.map(service => renderService(service))
