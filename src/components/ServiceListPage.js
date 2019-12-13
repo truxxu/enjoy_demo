@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import Container from "react-bootstrap/Container";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -9,7 +11,7 @@ import Header from "./Header";
 import { getServices } from "../actions/services";
 
 function ServiceListPage(props) {
-  const { list } = props;
+  const { getServices, list } = props;
 
   useEffect(() => {
     getServices();
@@ -17,7 +19,7 @@ function ServiceListPage(props) {
 
   const renderService = (service) => {
     return(
-      <ServiceListItem />
+      <ServiceListItem key= {service.id} data={service} />
     )
   };
 
@@ -27,7 +29,7 @@ function ServiceListPage(props) {
       <Header />
       <Container>
         {
-          // list.map(service => renderService(service))
+          list.map(service => renderService(service))
         }
       </Container>
       <Footer />
@@ -35,4 +37,20 @@ function ServiceListPage(props) {
   );
 }
 
-export default ServiceListPage;
+const mapStateToProps = state => {
+  return {
+    list: state.services.list
+  };
+};
+
+const mapDispatchToProps = {
+  getServices,
+};
+
+ServiceListPage.prototype = {
+  list: PropTypes.array.isRequired,
+  getServices: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);
+
