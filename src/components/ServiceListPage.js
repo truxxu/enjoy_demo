@@ -3,12 +3,14 @@ import Container from "react-bootstrap/Container";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
+import "../styles/ServiceListPage.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import ServiceListItem from "./ServiceListItem";
-import "../styles/ServiceListPage.css";
 import Header from "./Header";
+import Filters from "./Filters";
 import { getServices, getCities } from "../actions/services";
+
 
 function ServiceListPage(props) {
   const { getServices, list, getCities, cities } = props;
@@ -31,6 +33,7 @@ function ServiceListPage(props) {
     <Container fluid className="Service-List">
       <Navbar />
       <Header />
+      <Filters />
       <Container>
         {
           list.map(service => renderService(service))
