@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { env } from "../env";
-import { GET_SERVICES } from ".";
+import { GET_SERVICES, GET_CITIES } from ".";
 
 export const getServices = () => dispatch => {
   axios
@@ -13,4 +13,16 @@ export const getServices = () => dispatch => {
       });
     })
     .catch(err => window.alert("No se pudieron cargar los servicios."));
+};
+
+export const getCities = () => dispatch => {
+  axios
+    .get(env.apiUrl + "cities/")
+    .then(res => {
+      dispatch({
+        type: GET_CITIES,
+        payload: res.data
+      });
+    })
+    .catch(err => window.alert("No se pudieron cargar las ciudades."));
 };

@@ -8,13 +8,17 @@ import Navbar from "./Navbar";
 import ServiceListItem from "./ServiceListItem";
 import "../styles/ServiceListPage.css";
 import Header from "./Header";
-import { getServices } from "../actions/services";
+import { getServices, getCities } from "../actions/services";
 
 function ServiceListPage(props) {
-  const { getServices, list } = props;
+  const { getServices, list, getCities, cities } = props;
 
   useEffect(() => {
     getServices();
+  }, []);
+
+  useEffect(() => {
+    getCities();
   }, []);
 
   const renderService = (service) => {
@@ -39,17 +43,21 @@ function ServiceListPage(props) {
 
 const mapStateToProps = state => {
   return {
-    list: state.services.list
+    list: state.services.list,
+    cities: state.services.cities,
   };
 };
 
 const mapDispatchToProps = {
   getServices,
+  getCities,
 };
 
 ServiceListPage.prototype = {
   list: PropTypes.array.isRequired,
+  cities: PropTypes.array.isRequired,
   getServices: PropTypes.func.isRequired,
+  getCities: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);
