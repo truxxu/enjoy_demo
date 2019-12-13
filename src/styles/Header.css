@@ -1,6 +1,7 @@
 .Header-Row {
     text-transform: uppercase;
     position: relative;
+    height: 65vh;
 }
 
 
@@ -35,7 +36,9 @@
         position: absolute;
         top:3rem;
     }
+    .Header-Row {
+        text-transform: uppercase;
+        position: relative;
+        height: 24vh;
+    }
 }
-
-
-
