@@ -9,17 +9,13 @@ import Navbar from "./Navbar";
 import ServiceListItem from "./ServiceListItem";
 import Header from "./Header";
 import Filters from "./Filters";
-import { getServices, getCities } from "../actions/services";
+import { getServices } from "../actions/services";
 
 function ServiceListPage(props) {
-  const { getServices, list, getCities, cities } = props;
+  const { getServices, list, activeItem } = props;
 
   useEffect(() => {
-    getServices();
-  }, []);
-
-  useEffect(() => {
-    getCities();
+    getServices(activeItem.id);
   }, []);
 
   const renderService = (service) => {
@@ -32,7 +28,7 @@ function ServiceListPage(props) {
     <Container fluid className="Service-List">
       <Navbar />
       <Header />
-      <Filters data={cities}/>
+      <Filters/>
       <Container>
         {
           list.map(service => renderService(service))
@@ -46,20 +42,18 @@ function ServiceListPage(props) {
 const mapStateToProps = state => {
   return {
     list: state.services.list,
-    cities: state.services.cities,
+    activeItem: state.categories.activeItem,
   };
 };
 
 const mapDispatchToProps = {
   getServices,
-  getCities,
 };
 
 ServiceListPage.prototype = {
+  activeItem: PropTypes.object.isRequired,
   list: PropTypes.array.isRequired,
-  cities: PropTypes.array.isRequired,
   getServices: PropTypes.func.isRequired,
-  getCities: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);

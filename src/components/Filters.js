@@ -1,19 +1,25 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import "../styles/Filters.css";
+import { getCities } from "../actions/services";
 
 function Filters(props) {
+  const { activeItem, getCities, cities } = props;
+
+  useEffect(() => {
+    getCities();
+  }, []);
 
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  console.log(props.data)
 
   return (
     <div>
@@ -59,7 +65,7 @@ function Filters(props) {
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
             {
-              props.data.map(city => {
+              props.cities.map(city => {
               return(
                 <Dropdown.Item key={city.id} className="Filter-List-Item">
                   {city.name}
@@ -199,4 +205,22 @@ function Filters(props) {
   );
 }
 
-export default Filters;
+const mapStateToProps = state => {
+  return {
+    activeItem: state.categories.activeItem,
+    cities: state.services.cities,
+  };
+};
+
+const mapDispatchToProps = {
+  getCities,
+};
+
+Filters.prototype = {
+  activeItem: PropTypes.object.isRequired,
+  cities: PropTypes.array.isRequired,
+  getCities: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filters);
+

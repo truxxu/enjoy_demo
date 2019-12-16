@@ -3,9 +3,9 @@ import axios from "axios";
 import { env } from "../env";
 import { GET_SERVICES, GET_CITIES } from ".";
 
-export const getServices = () => dispatch => {
+export const getServices = (data) => dispatch => {
   axios
-    .get(env.apiUrl + "services/")
+    .get(env.apiUrl + "services/?category=" + data )
     .then(res => {
       dispatch({
         type: GET_SERVICES,
