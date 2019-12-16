@@ -1,0 +1,88 @@
+.Service-Item-Small {
+  background-color: var(--color-blanco);
+}
+
+.Service-Item-Small-Body h1 {
+  font-family: "MontserratBold";
+}
+
+.Service-Item-Small p,
+label,
+h2 {
+  font-family: "MontserratRegular";
+}
+.Service-Item-Small-Description span {
+  font-size: 2em;
+  color: red;
+  border-width: 2px;
+}
+.Service-Item-Small-Description span:hover {
+  color: var(--color-negro);
+}
+
+.Popular {
+  max-width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--color-negro);
+  background-color: var(--color-dorado);
+  border-width: 1px;
+  border-color: var(--color-dorado);
+  border-radius: 0.5em;
+}
+
+.Service-Item-Small-Price {
+  width: 88%;
+}
+
+@media (max-width: 768px) {
+  .Service-Item-Small-Description h1 {
+    font-size: 1.2em;
+  }
+
+  .Popular {
+    font-size: 0.5em;
+  }
+
+  .Description {
+    height: 50px;
+    overflow: hidden;
+  }
+
+  .Service-Price h2 {
+    font-size: 1.3em;
+  }
+}
+
+@media (min-width: 768px) {
+  .Service-Item-Small-Price {
+    border-left-style: solid;
+    border-color: var(--color-gris-claro);
+    border-left-width: 2px;
+  }
+
+  .Service-Item-Small-Price label {
+    font-size: 1.2em;
+    color: var(--color-gris-oscuro);
+  }
+  .Service-Item-Small-Description h1 {
+    font-size: 1.5em;
+  }
+
+  .Popular {
+    font-size: 0.6em;
+  }
+
+  .Description {
+    height: 65px;
+    overflow: hidden;
+  }
+
+  .Service-Item-Small-Body {
+    width: 70%;
+  }
+
+  .Service-Item-Small-Price {
+    width: 26%;
+  }
+}

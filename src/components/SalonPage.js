@@ -6,6 +6,7 @@ import Swiper from "react-id-swiper";
 import Navbar from "./Navbar";
 import AlliesSlider from "./AlliesSlider";
 import Footer from "./Footer";
+import ServiceItemSmall from "./ServiceItemSmall";
 import banner from "../images/banner_servicios_ninos.jpg";
 import banner1 from "../images/header3.jpg";
 import banner2 from "../images/header1.jpg";
@@ -59,41 +60,7 @@ function SalonPage() {
             <p>Direccion, Ciudad</p>
           </div>
         </Row>
-        <Row>
-          <div>
-            <div>
-              <h1>Nombre del Servicio</h1>
-              <span className="icon-corazones"></span>
-              <p>POPULAR</p>
-            </div>
-            <p>
-              loremDuis autem vel eum iriure dolor in hendrerit in vulputate
-              velit esse molestie consequat, vel illum dolore eu feugiat nulla
-              facilisis at vero eros et accumsan et iusto odio dignissim qui
-              blandit praesent luptatum zzril delenit augue duis dolore te
-              feugait nulla facilisi.
-            </p>
-          </div>
-          <div>
-            <h1>130.000</h1>
-            <p>188.000</p>
-            <div class="form-check form-check-radio form-check-inline">
-              <label class="form-check-label">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="inlineRadioOptions"
-                  id="inlineRadio1"
-                  value="option1"
-                />{" "}
-                Agregar Servicio
-                <span class="circle">
-                  <span class="check"></span>
-                </span>
-              </label>
-            </div>
-          </div>
-        </Row>
+        <ServiceItemSmall />
       </Container>
       <AlliesSlider />
       <Footer />
