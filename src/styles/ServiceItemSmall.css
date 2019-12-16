@@ -11,11 +11,13 @@ label,
 h2 {
   font-family: "MontserratRegular";
 }
+
 .Service-Item-Small-Description span {
   font-size: 2em;
   color: red;
   border-width: 2px;
 }
+
 .Service-Item-Small-Description span:hover {
   color: var(--color-negro);
 }
@@ -65,6 +67,7 @@ h2 {
     font-size: 1.2em;
     color: var(--color-gris-oscuro);
   }
+
   .Service-Item-Small-Description h1 {
     font-size: 1.5em;
   }
