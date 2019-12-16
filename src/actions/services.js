@@ -1,11 +1,27 @@
 import axios from "axios";
 
 import { env } from "../env";
-import { GET_SERVICES, GET_CITIES } from ".";
+import { GET_SERVICES, GET_CITIES, UPDATE_FILTERS } from ".";
+import store from '../store';
 
-export const getServices = (data) => dispatch => {
+export const getServices = (data) => (dispatch, getState) => {
+  const filters = store.getState().services.filters;
+  const activeItem = store.getState().categories.activeItem.id;
+  const url = env.apiUrl + "services/" + `?category=${activeItem}`;
+
+  const filterParams = () => {
+    let string = '';
+    for (const [key, value] of Object.entries(filters)) {
+      if (value !==  null) {
+        string = string + `&${key}=${value}`
+      }
+    };
+    return url + string
+  };
+
+  console.log(filterParams());
   axios
-    .get(env.apiUrl + "services/?category=" + data )
+    .get(filterParams())
     .then(res => {
       dispatch({
         type: GET_SERVICES,
@@ -25,4 +41,12 @@ export const getCities = () => dispatch => {
       });
     })
     .catch(err => window.alert("No se pudieron cargar las ciudades."));
+};
+
+export const updateFilters = (param) => dispatch => {
+  dispatch({
+    type: UPDATE_FILTERS,
+    payload: param,
+  });
+  dispatch(getServices());
 };

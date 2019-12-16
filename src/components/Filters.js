@@ -7,10 +7,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import "../styles/Filters.css";
-import { getCities } from "../actions/services";
+import { getCities, updateFilters } from "../actions/services";
 
 function Filters(props) {
-  const { activeItem, getCities, cities } = props;
+  const { activeItem, getCities, cities, updateFilters } = props;
 
   useEffect(() => {
     getCities();
@@ -33,21 +33,24 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List w-100">
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
+            <Button
+              className="Filter-List-Item"
+              onClick={() => updateFilters({reserve: 'is_at_home'})}
+              variant="none">
               A domicilio
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
+            </Button>
+            <Button
+              className="Filter-List-Item"
+              onClick={() => updateFilters({reserve: 'is_at_salon'})}
+              variant="none">
               En salón
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
+            </Button>
+            <Button
+              className="Filter-List-Item"
+              onClick={() => updateFilters({reserve: 'is_both'})}
+              variant="none">
               Otro
-            </Dropdown.Item>
+            </Button>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -214,12 +217,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getCities,
+  updateFilters,
 };
 
 Filters.prototype = {
   activeItem: PropTypes.object.isRequired,
   cities: PropTypes.array.isRequired,
   getCities: PropTypes.func.isRequired,
+  updateFilters: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
