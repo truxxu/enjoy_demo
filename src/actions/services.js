@@ -19,7 +19,6 @@ export const getServices = (data) => (dispatch, getState) => {
     return url + string
   };
 
-  console.log(filterParams());
   axios
     .get(filterParams())
     .then(res => {

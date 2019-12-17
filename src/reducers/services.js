@@ -7,8 +7,8 @@ const initialState = {
     zone: '',
     is_sale: '',
     reserve_options: ['is_at_home','is_at_salon'],
+    cities: []
   },
-  cities: [],
 };
 
 export default function(state = initialState, action) {
@@ -20,8 +20,8 @@ export default function(state = initialState, action) {
       };
     case GET_CITIES:
       return Object.assign({}, state, {
-        cities: action.payload
-      });
+        filters: Object.assign({}, state.filters, {cities: action.payload})
+      })
     case UPDATE_FILTERS:
       return Object.assign({}, state, {
         filters: Object.assign({}, state.filters, action.payload)

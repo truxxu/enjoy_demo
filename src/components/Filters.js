@@ -10,7 +10,7 @@ import "../styles/Filters.css";
 import { getCities, updateFilters } from "../actions/services";
 
 function Filters(props) {
-  const { activeItem, getCities, cities, updateFilters, filters } = props;
+  const { activeItem, getCities, updateFilters, filters } = props;
 
   useEffect(() => {
     getCities();
@@ -20,14 +20,32 @@ function Filters(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const renderZone = (area) => {
-    return (
+  const renderZone = () => {
+    return filters.cities.map(city => {
+      if (filters.city === city.name) {
+        return city.area.map(area => {
+          return(
+            <Button
+              key={area.id}
+              className="Filter-List-Item"
+              onClick={() => updateFilters({zone: area.name})}
+              variant="none">
+              {area.name}
+            </Button>
+          )
+        })
+      }
+    })
+  };
+
+  const renderReserveOption = (option, index) => {
+    return(
       <Button
-        key={area.id}
+        key={index}
         className="Filter-List-Item"
-        // onClick={() => updateFilters({zone: area.name})}
+        onClick={ () => updateFilters({ reserve: option }) }
         variant="none">
-        {area.name}
+        {option}
       </Button>
     )
   };
@@ -44,24 +62,10 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List w-100">
-            <Button
-              className="Filter-List-Item"
-              onClick={ () => updateFilters({ reserve: 'is_at_home' }) }
-              variant="none">
-              A domicilio
-            </Button>
-            <Button
-              className="Filter-List-Item"
-              onClick={ () => updateFilters({ reserve: 'is_at_salon' }) }
-              variant="none">
-              En salón
-            </Button>
-            <Button
-              className="Filter-List-Item"
-              onClick={ () => updateFilters({ reserve: 'is_both' }) }
-              variant="none">
-              Otro
-            </Button>
+            {
+              filters.reserve_options.map((option, index) =>
+                renderReserveOption(option, index))
+            }
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -79,7 +83,7 @@ function Filters(props) {
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
             {
-              props.cities.map(city => {
+              filters.cities.map(city => {
               return(
                 <Button
                   key={city.id}
@@ -100,15 +104,13 @@ function Filters(props) {
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
             {
-              props.filters.city == '' &&
-              <div className="Filter-List-Item">Selecciona una ciudad</div>
+              filters.city === '' &&
+              <div className="Filter-List-Item">
+                Selecciona una ciudad
+              </div>
             }
             {
-              props.cities.map(city => {
-                if (city.name === props.filters.city) {
-                  city.area.map(area => renderZone(area))
-                }
-              })
+              renderZone()
             }
           </Dropdown.Menu>
         </Dropdown>
@@ -239,8 +241,7 @@ function Filters(props) {
 const mapStateToProps = state => {
   return {
     activeItem: state.categories.activeItem,
-    cities: state.services.cities,
-    filters: state.services.filters
+    filters: state.services.filters,
   };
 };
 
@@ -251,8 +252,7 @@ const mapDispatchToProps = {
 
 Filters.prototype = {
   activeItem: PropTypes.object.isRequired,
-  cities: PropTypes.array.isRequired,
-  filters: PropTypes.array.isRequired,
+  filters: PropTypes.object.isRequired,
   getCities: PropTypes.func.isRequired,
   updateFilters: PropTypes.func.isRequired,
 };
