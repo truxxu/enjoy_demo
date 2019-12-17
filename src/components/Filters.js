@@ -10,7 +10,7 @@ import "../styles/Filters.css";
 import { getCities, updateFilters } from "../actions/services";
 
 function Filters(props) {
-  const { activeItem, getCities, cities, updateFilters } = props;
+  const { activeItem, getCities, cities, updateFilters, filters } = props;
 
   useEffect(() => {
     getCities();
@@ -20,6 +20,17 @@ function Filters(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const renderZone = (area) => {
+    return (
+      <Button
+        key={area.id}
+        className="Filter-List-Item"
+        // onClick={() => updateFilters({zone: area.name})}
+        variant="none">
+        {area.name}
+      </Button>
+    )
+  };
 
   return (
     <div>
@@ -70,9 +81,13 @@ function Filters(props) {
             {
               props.cities.map(city => {
               return(
-                <Dropdown.Item key={city.id} className="Filter-List-Item">
+                <Button
+                  key={city.id}
+                  className="Filter-List-Item"
+                  onClick={() => updateFilters({city: city.name})}
+                  variant="none">
                   {city.name}
-                </Dropdown.Item>
+                </Button>
               )})
             }
           </Dropdown.Menu>
@@ -83,6 +98,19 @@ function Filters(props) {
             Zona
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
+          <Dropdown.Menu className="Filter-Dropdown-List">
+            {
+              props.filters.city == '' &&
+              <div className="Filter-List-Item">Selecciona una ciudad</div>
+            }
+            {
+              props.cities.map(city => {
+                if (city.name === props.filters.city) {
+                  city.area.map(area => renderZone(area))
+                }
+              })
+            }
+          </Dropdown.Menu>
         </Dropdown>
         <div className="Filter-Switch d-flex align-items-center">
           Ver ofertas
@@ -212,6 +240,7 @@ const mapStateToProps = state => {
   return {
     activeItem: state.categories.activeItem,
     cities: state.services.cities,
+    filters: state.services.filters
   };
 };
 
@@ -223,6 +252,7 @@ const mapDispatchToProps = {
 Filters.prototype = {
   activeItem: PropTypes.object.isRequired,
   cities: PropTypes.array.isRequired,
+  filters: PropTypes.array.isRequired,
   getCities: PropTypes.func.isRequired,
   updateFilters: PropTypes.func.isRequired,
 };
