@@ -46,19 +46,19 @@ function Filters(props) {
           <Dropdown.Menu className="Filter-Dropdown-List w-100">
             <Button
               className="Filter-List-Item"
-              onClick={() => updateFilters({reserve: 'is_at_home'})}
+              onClick={ () => updateFilters({ reserve: 'is_at_home' }) }
               variant="none">
               A domicilio
             </Button>
             <Button
               className="Filter-List-Item"
-              onClick={() => updateFilters({reserve: 'is_at_salon'})}
+              onClick={ () => updateFilters({ reserve: 'is_at_salon' }) }
               variant="none">
               En salón
             </Button>
             <Button
               className="Filter-List-Item"
-              onClick={() => updateFilters({reserve: 'is_both'})}
+              onClick={ () => updateFilters({ reserve: 'is_both' }) }
               variant="none">
               Otro
             </Button>
@@ -84,7 +84,7 @@ function Filters(props) {
                 <Button
                   key={city.id}
                   className="Filter-List-Item"
-                  onClick={() => updateFilters({city: city.name})}
+                  onClick={ () => updateFilters({ city: city.name }) }
                   variant="none">
                   {city.name}
                 </Button>

@@ -6,7 +6,7 @@ const initialState = {
     city: '',
     zone: '',
     is_sale: '',
-    // reserve_options: ['is_at_home','is_at_salon'],
+    reserve_options: ['is_at_home','is_at_salon'],
   },
   cities: [],
 };
@@ -19,21 +19,13 @@ export default function(state = initialState, action) {
         list: action.payload
       };
     case GET_CITIES:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         cities: action.payload
-      };
+      });
     case UPDATE_FILTERS:
-      console.log(action.payload)
-      return {
-        ...state,
-        filters: {
-          reserve: action.payload.reserve,
-          city: action.payload.city,
-          zone: action.payload.zone,
-          is_sale: action.payload.is_sale,
-        }
-      }
+      return Object.assign({}, state, {
+        filters: Object.assign({}, state.filters, action.payload)
+      })
     default:
       return state;
   }

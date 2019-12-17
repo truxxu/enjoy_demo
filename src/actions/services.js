@@ -12,7 +12,7 @@ export const getServices = (data) => (dispatch, getState) => {
   const filterParams = () => {
     let string = '';
     for (const [key, value] of Object.entries(filters)) {
-      if (value !==  null) {
+      if (value !==  '' && !Array.isArray(value)) {
         string = string + `&${key}=${value}`
       }
     };
