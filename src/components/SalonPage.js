@@ -6,6 +6,7 @@ import Swiper from "react-id-swiper";
 import Navbar from "./Navbar";
 import AlliesSlider from "./AlliesSlider";
 import Footer from "./Footer";
+import ServiceItemSmall from "./ServiceItemSmall";
 import banner from "../images/banner_servicios_ninos.jpg";
 import banner1 from "../images/header3.jpg";
 import banner2 from "../images/header1.jpg";
@@ -59,6 +60,7 @@ function SalonPage() {
             <p>Direccion, Ciudad</p>
           </div>
         </Row>
+        <ServiceItemSmall />
       </Container>
       <AlliesSlider />
       <Footer />
