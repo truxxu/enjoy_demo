@@ -5,6 +5,7 @@ const initialState = {
     reserve: '',
     city: '',
     zone: '',
+    sub_category: '',
     is_sale: false,
     reserve_options: ['is_at_home','is_at_salon'],
     cities: []

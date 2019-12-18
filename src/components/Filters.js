@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -25,7 +24,7 @@ function Filters(props) {
       if (filters.city === city.id) {
         return city.area.map(area => {
           return(
-            <Button
+            <Dropdown.Item
               key={area.id}
               className="Filter-List-Item"
               onClick={() => {
@@ -34,7 +33,7 @@ function Filters(props) {
               }}
               variant="none">
               {area.name}
-            </Button>
+            </Dropdown.Item>
           )
         })
       }
@@ -43,7 +42,7 @@ function Filters(props) {
 
   const renderReserveOption = (option, index) => {
     return(
-      <Button
+      <Dropdown.Item
         key={index}
         className="Filter-List-Item"
         onClick={ () => {
@@ -52,13 +51,13 @@ function Filters(props) {
         }}
         variant="none">
         {option}
-      </Button>
+      </Dropdown.Item>
     )
   };
 
   const renderCities = (city) => {
     return(
-      <Button
+      <Dropdown.Item
         key={city.id}
         className="Filter-List-Item"
         onClick={ () =>{
@@ -67,22 +66,22 @@ function Filters(props) {
         }}
         variant="none">
         {city.name}
-      </Button>
+      </Dropdown.Item>
     )
   };
 
   const renderCategories = (cat) => {
     return(
-      <Button
+      <Dropdown.Item
         key={cat.id}
         className="Filter-List-Item"
         onClick={ () =>{
-          updateFilters({ sub_category: cat.name });
+          updateFilters({ sub_category: cat.id });
           handleClose();
         }}
         variant="none">
         {cat.name}
-      </Button>
+      </Dropdown.Item>
     )
   };
 
@@ -98,10 +97,24 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List w-100">
-            {
-              filters.reserve_options.map((option, index) =>
-                renderReserveOption(option, index))
-            }
+            <Dropdown.Item
+              className="Filter-List-Item"
+              onClick={ () => {
+                updateFilters({ reserve: 'is_at_home' });
+                handleClose();
+              }}
+              variant="none">
+              A domicilio
+            </Dropdown.Item>
+            <Dropdown.Item
+              className="Filter-List-Item"
+              onClick={ () => {
+                updateFilters({ reserve: 'is_at_salon' });
+                handleClose();
+              }}
+              variant="none">
+              En salón
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -161,12 +174,12 @@ function Filters(props) {
         </div>
       </div>
       <div className="ServiceList-Filter-Mobile">
-        <Button
+        <Dropdown.Item
           onClick={handleShow}
           variant="none"
           className="Mobile-Filter-Button">
             <span className="icon-controles"></span>
-        </Button>
+        </Dropdown.Item>
       </div>
       <Modal className="Filter-Modal" show={show} onHide={handleClose}>
         <div className="Filter-Modal-Title">
