@@ -7,7 +7,7 @@ import store from '../store';
 export const getServices = (data) => (dispatch, getState) => {
   const filters = store.getState().services.filters;
   const activeItem = store.getState().categories.activeItem.id;
-  const url = env.apiUrl + "services/" + `?category=${activeItem}`;
+  const url = `${env.apiUrl}services/?category=${activeItem}`;
 
   const filterParams = () => {
     let string = '';

@@ -22,13 +22,16 @@ function Filters(props) {
 
   const renderZone = () => {
     return filters.cities.map(city => {
-      if (filters.city === city.name) {
+      if (filters.city === city.id) {
         return city.area.map(area => {
           return(
             <Button
               key={area.id}
               className="Filter-List-Item"
-              onClick={() => updateFilters({zone: area.name})}
+              onClick={() => {
+                updateFilters({zone: area.name});
+                handleClose();
+              }}
               variant="none">
               {area.name}
             </Button>
@@ -43,9 +46,42 @@ function Filters(props) {
       <Button
         key={index}
         className="Filter-List-Item"
-        onClick={ () => updateFilters({ reserve: option }) }
+        onClick={ () => {
+          updateFilters({ reserve: option });
+          handleClose();
+        }}
         variant="none">
         {option}
+      </Button>
+    )
+  };
+
+  const renderCities = (city) => {
+    return(
+      <Button
+        key={city.id}
+        className="Filter-List-Item"
+        onClick={ () =>{
+          updateFilters({ city: city.id });
+          handleClose();
+        }}
+        variant="none">
+        {city.name}
+      </Button>
+    )
+  };
+
+  const renderCategories = (cat) => {
+    return(
+      <Button
+        key={cat.id}
+        className="Filter-List-Item"
+        onClick={ () =>{
+          updateFilters({ sub_category: cat.name });
+          handleClose();
+        }}
+        variant="none">
+        {cat.name}
       </Button>
     )
   };
@@ -74,6 +110,11 @@ function Filters(props) {
             Servicio
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
+          <Dropdown.Menu className="Filter-Dropdown-List">
+            {
+              activeItem.sub_categories.map(cat => renderCategories(cat))
+            }
+          </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
@@ -83,16 +124,7 @@ function Filters(props) {
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
             {
-              filters.cities.map(city => {
-              return(
-                <Button
-                  key={city.id}
-                  className="Filter-List-Item"
-                  onClick={ () => updateFilters({ city: city.name }) }
-                  variant="none">
-                  {city.name}
-                </Button>
-              )})
+              filters.cities.map(city => renderCities(city))
             }
           </Dropdown.Menu>
         </Dropdown>
@@ -121,7 +153,10 @@ function Filters(props) {
               type="switch"
               id="custom-switch"
               label=""
-              variant="none"/>
+              variant="none"
+              checked={filters.is_sale}
+              onChange={ () => updateFilters({ is_sale: !filters.is_sale }) }
+            />
           </Form>
         </div>
       </div>
@@ -151,11 +186,14 @@ function Filters(props) {
             Ver ofertas
           </div>
           <Form className="Filter-Switch-Text">
-            <Form.Check
-              type="switch"
-              id="custom-switch"
-              label=""
-            />
+          <Form.Check
+            type="switch"
+            id="custom-switch"
+            label=""
+            variant="none"
+            checked={filters.is_sale}
+            onChange={ () => updateFilters({ is_sale: !filters.is_sale }) }
+          />
           </Form>
         </div>
         <Dropdown>
@@ -167,21 +205,10 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              A domicilio
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              En salón
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Otro
-            </Dropdown.Item>
+            {
+              filters.reserve_options.map((option, index) =>
+                renderReserveOption(option, index))
+            }
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -202,26 +229,9 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Bogotá
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Cali
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Medellín
-            </Dropdown.Item>
-            <Dropdown.Item
-              href="#"
-              className="Filter-List-Item">
-              Barranquilla
-            </Dropdown.Item>
+            {
+              filters.cities.map(city => renderCities(city))
+            }
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -232,6 +242,17 @@ function Filters(props) {
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
+          <Dropdown.Menu className="Filter-Dropdown-List">
+            {
+              filters.city === '' &&
+              <div className="Filter-List-Item">
+                Selecciona una ciudad
+              </div>
+            }
+            {
+              renderZone()
+            }
+          </Dropdown.Menu>
         </Dropdown>
       </Modal>
     </div>
