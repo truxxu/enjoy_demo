@@ -19,9 +19,18 @@ function ServiceListPage(props) {
   }, []);
 
   const renderService = (service) => {
-    return(
-      <ServiceListItem key= {service.id} data={service} />
-    )
+    if (list.length !== 0) {
+      return list.map(service =>
+          <ServiceListItem key= {service.id} data={service} />
+      )
+    }
+    else {
+      return(
+        <div className="Filter-Result-Placeholder">
+          No se encontraron servicios
+        </div>
+      )
+    }
   };
 
   return (
@@ -31,7 +40,7 @@ function ServiceListPage(props) {
       <Filters/>
       <Container>
         {
-          list.map(service => renderService(service))
+          renderService()
         }
       </Container>
       <Footer />

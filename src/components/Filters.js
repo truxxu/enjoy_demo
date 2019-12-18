@@ -29,7 +29,7 @@ function Filters(props) {
               key={area.id}
               className="Filter-List-Item"
               onClick={() => {
-                updateFilters({zone: area.name});
+                updateFilters({zone: area.id});
                 handleClose();
               }}
               variant="none">
