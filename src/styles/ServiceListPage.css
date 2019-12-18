@@ -2,6 +2,13 @@
   background-color: var(--color-gris-claro);
 }
 
+.Filter-Result-Placeholder {
+  text-align: center;
+  padding: 3em 0;
+  color: var(--color-gris-oscuro) !important;
+  font-family: "LatoRegular", sans-serif;
+}
+
 @media (max-width: 425px) {
   .Service-List {
     padding-bottom: 70px;

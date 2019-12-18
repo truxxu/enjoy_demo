@@ -13,7 +13,6 @@ function Header(props) {
   return (
     <React.Fragment>
         <Row className="Header-Row flex flex-column">
-          <img className="Header-Img img-fluid" src={props.activeItem.header_image} alt="logo" />
           <div className="Header-Search align-self-center">
             <h1 className="Header-Title">
               Los mejores servicios
