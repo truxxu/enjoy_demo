@@ -9,6 +9,7 @@ function Header(props) {
   if (props.data) {
     var data = props.data;
   }
+  
   return (
     <Row className="Header-Row flex flex-column">
       {data ? (
