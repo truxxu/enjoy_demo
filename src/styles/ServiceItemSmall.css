@@ -6,6 +6,10 @@
   font-family: "MontserratBold";
 }
 
+.icon-corazones.false {
+  color: black;
+}
+
 .Service-Item-Small p,
 label,
 h2 {

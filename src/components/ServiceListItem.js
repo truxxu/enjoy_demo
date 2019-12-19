@@ -56,7 +56,7 @@ function ServiceListItem(props) {
         </div>
         <div className="Service-Buttons pb-4 d-flex flex-row justify-content-around">
           <Button className="Button mr-2">RESERVAR YA</Button>
-          <Link className="Gray-Button " to="/salon">
+          <Link className="Gray-Button " to={`/salon/${data.salon_id}`}>
             VER SALÓN
           </Link>
         </div>

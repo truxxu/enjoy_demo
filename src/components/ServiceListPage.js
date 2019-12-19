@@ -58,7 +58,6 @@ const mapDispatchToProps = {
 ServiceListPage.prototype = {
   activeItem: PropTypes.object.isRequired,
   list: PropTypes.array.isRequired,
-  activeItem: PropTypes.object.isRequired,
   getServices: PropTypes.func.isRequired
 };
 

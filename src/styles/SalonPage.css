@@ -19,7 +19,8 @@
   z-index: 2;
 }
 
-.Header-Title {
+.SalonPage-Title {
+  font-size: 2.2em;
   text-transform: uppercase;
   font-family: "MontserratBold";
 }
@@ -37,6 +38,10 @@ span.icon-tienda {
     height: 280px;
   }
 
+  .SalonPage-Title {
+    font-size: 1.7em;
+  }
+
   .SalonPage-Header {
     height: 280px;
   }
@@ -51,10 +56,9 @@ span.icon-tienda {
 
   .SalonPage-Img {
     width: 375px;
-    /* max-width: 100%; */
   }
 
-  .Open-Close {
+  .Close {
     max-width: 100%;
     text-transform: uppercase;
     font-family: "MontserratMedium", sans-serif;
@@ -65,14 +69,35 @@ span.icon-tienda {
     border-color: var(--color-dorado);
     border-radius: 0.5em;
   }
-}
-@media (min-width: 768px) {
-  .Open-Close {
+  .Open {
+    max-width: 100%;
     text-transform: uppercase;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
     color: var(--color-negro);
     background-color: var(--color-dorado);
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 0.5em;
+  }
+}
+@media (min-width: 768px) {
+  .Open {
+    text-transform: uppercase;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-dorado);
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 0.5em;
+  }
+  .Close {
+    text-transform: uppercase;
+    font-family: "MontserratMedium", sans-serif;
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: #b73639;
     border-width: 1px;
     border-color: var(--color-dorado);
     border-radius: 0.5em;
