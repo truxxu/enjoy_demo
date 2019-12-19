@@ -12,7 +12,7 @@ function Header(props) {
   return (
     <Row className="Header-Row flex flex-column">
       {data ? (
-        <img className="Header-Img " src={data.image} alt="logo" />
+        <img className="Header-Img " src={data.header_image} alt="logo" />
       ) : (
         <div className="col-auto d-none d-md-flex align-self-center mt-5">
           <img className="App-Header-Image" src={logo} alt="logo" />,
@@ -23,7 +23,7 @@ function Header(props) {
           {data ? data.title : "Por que la belleza"}
           <br />
           <span className="Header-Subtitle">
-            {data ? data.subTitle : "es para todos"}
+            {data ? data.sub_title : "es para todos"}
           </span>
         </h1>
         <div className="d-none d-md-flex">

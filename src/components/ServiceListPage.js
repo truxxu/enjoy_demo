@@ -20,41 +20,11 @@ function ServiceListPage(props) {
   const renderService = service => {
     return <ServiceListItem key={service.id} data={service} />;
   };
-  if (activeItem) {
-    if (activeItem.name === "Mujer") {
-      var dataHeader = {
-        image: activeItem.header_image,
-        title: "los mejores cervicios",
-        subTitle: "para las Mujeres"
-      };
-    }
-    if (activeItem.name === "Hombre") {
-      var dataHeader = {
-        image: activeItem.header_image,
-        title: "los mejores cervicios",
-        subTitle: "para las hombres"
-      };
-    }
-    if (activeItem.name === "Niños") {
-      var dataHeader = {
-        image: activeItem.header_image,
-        title: "los mejores cervicios",
-        subTitle: "para las niños"
-      };
-    }
-    if (activeItem.name === "mascotas") {
-      var dataHeader = {
-        image: activeItem.header_image,
-        title: "los mejores cervicios",
-        subTitle: "para las mascotas"
-      };
-    }
-  }
 
   return (
     <Container fluid className="Service-List">
       <Navbar />
-      <Header data={dataHeader} />
+      <Header data={activeItem} />
       <Filters />
       <Container>{list.map(service => renderService(service))}</Container>
       <Footer />
