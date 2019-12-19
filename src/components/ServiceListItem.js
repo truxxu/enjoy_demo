@@ -6,12 +6,14 @@ import salon from "../images/salon.jpeg";
 import "../styles/ServiceListItem.css";
 
 function ServiceListItem(props) {
-
   const data = props.data;
 
-  const priceStr = (string) => {
-    return string.split('.')[0].split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-  }
+  const priceStr = string => {
+    return string
+      .split(".")[0]
+      .split(".")[0]
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
 
   return (
     <div className="Service-Item d-flex flex-column flex-md-row  my-5 px-md-5 ">
@@ -21,7 +23,7 @@ function ServiceListItem(props) {
       </div>
       <div className="Salon-Service col-md-5 pl-4 d-flex flex-column ">
         <h4 className="Salon-Name pt-4">{data.salon_name}</h4>
-        <p className="Salon-Address mb-0">{data.salon_address.split(',')[0]}</p>
+        <p className="Salon-Address mb-0">{data.salon_address.split(",")[0]}</p>
         <div className="Icon-Strella mb-md-4 mb-2 pt-1 pl-md-2">
           <span className="icon-estrella_full"></span>
           <span className="icon-estrella_med"></span>
@@ -41,9 +43,13 @@ function ServiceListItem(props) {
           </p>
         </div>
         <div className="Service-Price d-flex flex-md-column">
-          <h3 className=" mb-md-0 pt-2 pt-md-0">
-            ${priceStr(data.discount_price)}
-          </h3>
+          {data.discount_price ? (
+            <h3 className=" mb-md-0 pt-2 pt-md-0">
+              ${priceStr(data.discount_price)}
+            </h3>
+          ) : (
+            ""
+          )}
           <p className="Service-Discount-Price pl-3 pt-2 pt-md-0 pl-md-0">
             ${priceStr(data.price)}
           </p>

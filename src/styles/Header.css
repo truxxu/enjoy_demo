@@ -1,44 +1,45 @@
 .Header-Row {
-    text-transform: uppercase;
-    position: relative;
-    height: 65vh;
+  text-transform: uppercase;
+  position: relative;
+  height: 60vh;
+  background-color: var(--color-dorado);
 }
-
-
-.Header-Title {
-    font-size: 2.2em;
-    font-family: "MontserratMedium", sans-serif;
-    text-align: center;
-  }
-
-.Header-Subtitle {
-    font-family: "MontserratBlack", sans-serif;
-    font-size: 1.3em;
-    position: relative;
-    bottom: 0.35rem;
-  }
-
-.Header-Search{
-    position: absolute;
-    top: 15.5rem;
-}
-
 .Header-Img {
-  object-fit: cover;
+  height: 60vh;
   width: 100%;
 }
 
+.Header-Title {
+  font-size: 2.2em;
+  font-family: "MontserratMedium", sans-serif;
+  text-align: center;
+}
+
+.Header-Subtitle {
+  font-family: "MontserratBlack", sans-serif;
+  font-size: 1.3em;
+  position: relative;
+  bottom: 0.35rem;
+}
+
+.Header-Search {
+  position: absolute;
+  top: 15.5rem;
+}
+
 @media (max-width: 768px) {
-    .Header-Title {
-        font-size: 1.3em;
-    }
-    .Header-Search{
-        position: absolute;
-        top:3rem;
-    }
-    .Header-Row {
-        text-transform: uppercase;
-        position: relative;
-        height: 24vh;
-    }
+  .Header-Title {
+    font-size: 1.3em;
+  }
+
+  .Header-Search {
+    position: absolute;
+    top: 3rem;
+  }
+
+  .Header-Row {
+    text-transform: uppercase;
+    position: relative;
+    height: 24vh;
+  }
 }

@@ -36,13 +36,9 @@ function ServiceListPage(props) {
   return (
     <Container fluid className="Service-List">
       <Navbar />
-      <Header />
-      <Filters/>
-      <Container>
-        {
-          renderService()
-        }
-      </Container>
+      <Header data={activeItem} />
+      <Filters />
+      <Container>{list.map(service => renderService(service))}</Container>
       <Footer />
     </Container>
   );
@@ -56,14 +52,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getServices,
+  getServices
 };
 
 ServiceListPage.prototype = {
   activeItem: PropTypes.object.isRequired,
   list: PropTypes.array.isRequired,
-  getServices: PropTypes.func.isRequired,
+  activeItem: PropTypes.object.isRequired,
+  getServices: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);
-

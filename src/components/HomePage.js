@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import "../styles/HomePage.css";
-import logo from "../images/logo.png";
 import descripcion from "../images/descripcion.png";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Header from "./Header";
 import AlliesSlider from "./AlliesSlider";
 import SearchInput from "./SearchInput";
 import { getCategories, setCategory } from "../actions/categories";
@@ -47,17 +47,7 @@ function HomePage(props) {
     <div className="App">
       <Container fluid>
         <Navbar />
-        <Row className="App-Header d-flex flex-column py-2">
-          <div className="col-auto d-none d-md-flex align-self-center mt-5">
-            <img className="App-Header-Image" src={logo} alt="logo" />
-          </div>
-          <h1 className="App-Header-Title p-4">
-            Por que la belleza
-            <br />
-            <span className="App-Header-Subtitle">es para todos</span>
-          </h1>
-          <SearchInput />
-        </Row>
+        <Header />
         <Row className="App-Category-List-Text justify-content-center py-4 px-5 mt-md-3">
           <div className="col-auto">
             <p>
