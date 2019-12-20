@@ -14,20 +14,20 @@ import { getCategory } from "../actions/categories";
 
 function ServiceListPage(props) {
 
-  const { getServices, getCategory, list, match } = props;
-  const activeCategory = match.params.id;
+  const { getServices, getCategory, servicesList, activeCategory, match } = props;
+  const activeCategoryId = match.params.id;
 
   useEffect(() => {
-    getServices(activeCategory);
+    getServices(activeCategoryId);
   }, []);
 
   useEffect(() => {
-    getCategory(activeCategory);
+    getCategory(activeCategoryId);
   }, []);
 
   const renderService = (service) => {
-    if (list.length !== 0) {
-      return list.map(service =>
+    if (servicesList.length !== 0) {
+      return servicesList.map(service =>
           <ServiceListItem key= {service.id} data={service} />
       )
     }
@@ -43,9 +43,9 @@ function ServiceListPage(props) {
   return (
     <Container fluid className="Service-List">
       <Navbar />
-      <Header data={activeItem} />
+      <Header data={activeCategory} />
       <Filters />
-      <Container>{list.map(service => renderService(service))}</Container>
+      <Container>{servicesList.map(service => renderService(service))}</Container>
       <Footer />
     </Container>
   );
@@ -53,7 +53,8 @@ function ServiceListPage(props) {
 
 const mapStateToProps = state => {
   return {
-    list: state.services.list,
+    servicesList: state.services.list,
+    activeCategory: state.categories.activeItem,
   };
 };
 
@@ -63,9 +64,10 @@ const mapDispatchToProps = {
 };
 
 ServiceListPage.prototype = {
-  list: PropTypes.array.isRequired,
+  activeCategory: PropTypes.object.isRequired,
   getServices: PropTypes.func.isRequired,
   getCategory: PropTypes.func.isRequired,
+  servicesList: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);
