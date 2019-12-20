@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import Navbar from "./Navbar";
 import AlliesSlider from "./AlliesSlider";
 import Footer from "./Footer";
-import ServiceItemSmall from "./ServiceItemSmall";
+import ServiceList from "./ServiceList";
 import "../styles/SalonPage.css";
 import { getSalon } from "../actions/salon";
 
@@ -29,18 +29,13 @@ function SalonPage(props) {
       disableOnInteraction: false
     },
     slidesPerView: 1,
-    width: 375,
     breakpoints: {
       768: {
-        slidesPerView: 1,
-        width: 910
+        slidesPerView: 1
       }
     }
   };
 
-  const renderSalonService = salonService => {
-    return <ServiceItemSmall key={salonService.id} data={salonService} />;
-  };
   const renderImages = activeItem => {
     let images = [];
     if (activeItem.image) {
@@ -96,12 +91,13 @@ function SalonPage(props) {
     return images;
   };
   return (
-    <Container fluid className="Salon-Page">
+    <Container fluid className="Salon-Page d-flex flex-column">
       <Navbar />
-      <Container className="SalonPage-Container px-0">
-        <Row className="SalonPage-Header-Row ">
-          <Swiper {...swiperParams}>{renderImages(activeItem)}</Swiper>
-          <div className="SalonPage-Header pl-4 pl-md-5 d-flex flex-column justify-content-center">
+      <Row>
+        <Container>
+          <Row className="SalonPage-Header-Row align-self-md-center">
+             <Swiper {...swiperParams}>{renderImages(activeItem)}</Swiper>
+            <div className="SalonPage-Header pl-4 pl-md-5 d-flex flex-column justify-content-center">
             {activeItem.is_open ? (
               <p className="Open px-1 align-self-baseline">¡ABIERTO AHORA!</p>
             ) : (
@@ -115,7 +111,6 @@ function SalonPage(props) {
                   servicio a domicilio
                 </p>
               </div>
-            ) : null}
             {activeItem.is_at_salon ? (
               <div className="Salon-Icon d-flex ">
                 <span className="icon-tienda mr-3"></span>
@@ -123,19 +118,20 @@ function SalonPage(props) {
                   servicio en el salon
                 </p>
               </div>
-            ) : null}
-            <h5 className="Zona mb-0">{activeItem.area_name}</h5>
+              ) : null}
+           <h5 className="Zona mb-0">{activeItem.area_name}</h5>
             <p>
               {activeItem.address}, {activeItem.city_name}
             </p>
           </div>
         </Row>
-        {activeItem &&
-          activeItem.services &&
-          activeItem.services.map(salonService =>
-            renderSalonService(salonService)
-          )}
-      </Container>
+        </Container>
+      </Row>
+      <Row className="SalonPage-Body">
+        <Container>
+          <ServiceList data={activeItem} />
+        </Container>
+      </Row>
       <AlliesSlider />
       <Footer />
     </Container>

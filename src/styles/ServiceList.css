@@ -1,0 +1,74 @@
+.ServiceList-Row {
+  background-color: var(--color-blanco);
+}
+
+.Filter-Button-Big,
+.Filter-Button-Big:hover,
+.Filter-Button-Big:active,
+.Filter-Button-Big:focus {
+  color: var(--color-gris-oscuro) !important;
+  background-color: var(--color-blanco) !important;
+  font-size: 1.4em;
+  border-color: #bde5d6;
+  max-width: 100%;
+  border-radius: 1px;
+  box-shadow: none !important;
+  font-family: "LatoRegular", sans-serif;
+}
+
+.Filter-Button-Big:after {
+  content: none;
+}
+
+.icon-controles.Filter-Icon {
+  margin-right: 5px;
+  color: var(--color-gris-oscuro);
+}
+
+.icon-despleg.Filter-Icon-Arrow {
+  margin-left: 10px;
+}
+.Item-Dropdown:hover {
+  color: #7abebb;
+  background-color: white;
+}
+
+.Search input {
+  border-radius: 0.3em;
+  font-family: "MontserratRegular";
+  box-shadow: none !important;
+  border: none;
+  font-size: 1.2em;
+  padding: 25px;
+  background-color: var(--color-gris-claro);
+}
+
+.Search input:focus {
+  background-color: var(--color-gris-claro);
+}
+
+.Search .input-group-text {
+  background-color: var(--color-gris-claro);
+  border: none;
+  font-size: 1.5em;
+  border-radius: 0.3em;
+}
+
+@media (min-width: 768px) {
+  .Search {
+    width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ServiceList-Dropdown .dropdown {
+    display: grid;
+    height: 55px;
+  }
+  .Search {
+    widows: 100%;
+  }
+  .Filter-Button-Big {
+    border-radius: 0.4em;
+  }
+}

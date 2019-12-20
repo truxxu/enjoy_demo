@@ -93,10 +93,11 @@ function Filters(props) {
   };
 
   return (
-    <div>
+    <div className="ServiceList-Container">
       <div
         className="ServiceList-Filter d-md-flex
-        justify-content-center d-none d-md-block">
+        justify-content-center d-none d-md-block"
+      >
         <Dropdown className="d-inline-block">
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-campana Filter-Icon"></span>
@@ -190,21 +191,14 @@ function Filters(props) {
       </div>
       <Modal className="Filter-Modal" show={show} onHide={handleClose}>
         <div className="Filter-Modal-Title">
-          <a style={{visibility: "hidden"}}>X</a>
-          <div>
-            Filtra
-          </div>
-          <a
-            href=""
-            onClick={handleClose}
-            className="Modal-Close">
+          <a style={{ visibility: "hidden" }}>X</a>
+          <div>Filtra</div>
+          <a href="" onClick={handleClose} className="Modal-Close">
             X
           </a>
         </div>
         <div className="Filter-Switch">
-          <div>
-            Ver ofertas
-          </div>
+          <div>Ver ofertas</div>
           <Form className="Filter-Switch-Text">
           <Form.Check
             type="switch"
@@ -224,7 +218,7 @@ function Filters(props) {
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
-          <Dropdown.Menu className="Filter-Dropdown-List">
+          <Dropdown.Menu className="Filter-Dropdown-List">tem>
             {
               filters.reserve_options.map((option, index) =>
                 renderReserveOption(option, index))
@@ -248,8 +242,8 @@ function Filters(props) {
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
             <div>
-            <span className="icon-ubicacion Filter-Icon"></span>
-            Ciudad
+              <span className="icon-ubicacion Filter-Icon"></span>
+              Ciudad
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>

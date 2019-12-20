@@ -7,6 +7,10 @@
   color: white;
 }
 
+.SalonPage-Body {
+  background-color: white;
+}
+
 .SalonPage-Img {
   width: 100%;
   object-fit: cover;
@@ -109,9 +113,5 @@ span.icon-tienda {
 
   .SalonPage-Header {
     height: 385px;
-  }
-
-  .SalonPage-Container {
-    max-width: 880px;
   }
 }
