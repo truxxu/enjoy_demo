@@ -12,32 +12,28 @@ import Navbar from "./Navbar";
 import Header from "./Header";
 import AlliesSlider from "./AlliesSlider";
 import SearchInput from "./SearchInput";
-import { getCategories, setCategory } from "../actions/categories";
+import { getCategories } from "../actions/categories";
 
 function HomePage(props) {
-  const { getCategories, list, setCategory } = props;
+  const { getCategories, list } = props;
 
   useEffect(() => {
     getCategories();
   }, []);
 
-  const setActiveItem = item => {
-    setCategory(item);
-  };
-
   const renderCategory = category => {
     return (
       <div className="col-auto App-Category-List-Item" key={category.id}>
-        <Link to="/services" onClick={() => setActiveItem(category)}>
+        <Link to={`/categories/${category.id}`}>
           <div className="App-Category-List-Item-Container d-flex flex-column justify-content-center">
             <img
               src={category.image}
               className="App-Category-List-Item-Image"
-              alt="{category.name}"
+              alt={category.name}
             />
           </div>
         </Link>
-        <Link to="/services" onClick={() => setActiveItem(category)}>
+        <Link to={`/categories/${category.id}`}>
           <p className="mt-3">{category.name}</p>
         </Link>
       </div>
@@ -103,13 +99,11 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getCategories,
-  setCategory
 };
 
 HomePage.prototype = {
   list: PropTypes.array.isRequired,
   getCategories: PropTypes.func.isRequired,
-  setCategory: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

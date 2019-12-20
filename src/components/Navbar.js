@@ -7,22 +7,16 @@ import PropTypes from "prop-types";
 
 import logo from "../images/logo.png";
 import "../styles/Navbar.css";
-import { setCategory } from "../actions/categories";
 
 function Navbar(props) {
-  const { list, setCategory } = props;
-
-  const setActiveItem = item => {
-    setCategory(item);
-  };
+  const { list } = props;
 
   const renderCategory = category => {
     return (
       <Link
-        to="/services"
+        to={`/categories/${category.id}`}
         className="App-Navbar-Link"
         key={category.id}
-        onClick={() => setActiveItem(category)}
       >
         {category.name}
       </Link>
@@ -64,12 +58,10 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = {
-  setCategory
 };
 
 Navbar.prototype = {
   list: PropTypes.array.isRequired,
-  setCategory: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

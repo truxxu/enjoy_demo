@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { env } from "../env";
-import { GET_CATEGORIES, SET_CATEGORY } from ".";
+import { GET_CATEGORIES, GET_CATEGORY } from ".";
 
 export const getCategories = () => dispatch => {
   axios
@@ -15,9 +15,14 @@ export const getCategories = () => dispatch => {
     .catch(err => window.alert("No se pudieron cargar las categorias."));
 };
 
-export const setCategory = category => dispatch => {
-  dispatch({
-    type: SET_CATEGORY,
-    payload: category
-  });
+export const getCategory = (data) => dispatch => {
+  axios
+    .get(`${env.apiUrl}categories/${data}`)
+    .then(res => {
+      dispatch({
+        type: GET_CATEGORY,
+        payload: res.data
+      });
+    })
+    .catch(err => window.alert("No se pudieron cargar las categorias."));
 };

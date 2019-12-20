@@ -71,18 +71,25 @@ function Filters(props) {
   };
 
   const renderCategories = (cat) => {
-    return(
-      <Dropdown.Item
-        key={cat.id}
-        className="Filter-List-Item"
-        onClick={ () =>{
-          updateFilters({ sub_category: cat.id });
-          handleClose();
-        }}
-        variant="none">
-        {cat.name}
-      </Dropdown.Item>
-    )
+    if (activeItem !== null) {
+      return activeItem.sub_categories.map(cat => {
+        return(
+          <Dropdown.Item
+            key={cat.id}
+            className="Filter-List-Item"
+            onClick={ () =>{
+              updateFilters({ sub_category: cat.id });
+              handleClose();
+            }}
+            variant="none">
+            {cat.name}
+          </Dropdown.Item>
+        )
+      })
+    }
+    else {
+      return null
+    }
   };
 
   return (
@@ -125,7 +132,7 @@ function Filters(props) {
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
             {
-              activeItem.sub_categories.map(cat => renderCategories(cat))
+              renderCategories()
             }
           </Dropdown.Menu>
         </Dropdown>
@@ -232,6 +239,11 @@ function Filters(props) {
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
+          <Dropdown.Menu className="Filter-Dropdown-List">
+            {
+              renderCategories()
+            }
+          </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">

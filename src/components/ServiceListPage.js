@@ -10,12 +10,19 @@ import ServiceListItem from "./ServiceListItem";
 import Header from "./Header";
 import Filters from "./Filters";
 import { getServices } from "../actions/services";
+import { getCategory } from "../actions/categories";
 
 function ServiceListPage(props) {
-  const { getServices, list, activeItem } = props;
+
+  const { getServices, getCategory, list, match } = props;
+  const activeCategory = match.params.id;
 
   useEffect(() => {
-    getServices(activeItem.id);
+    getServices(activeCategory);
+  }, []);
+
+  useEffect(() => {
+    getCategory(activeCategory);
   }, []);
 
   const renderService = (service) => {
@@ -47,18 +54,18 @@ function ServiceListPage(props) {
 const mapStateToProps = state => {
   return {
     list: state.services.list,
-    activeItem: state.categories.activeItem,
   };
 };
 
 const mapDispatchToProps = {
-  getServices
+  getServices,
+  getCategory,
 };
 
 ServiceListPage.prototype = {
-  activeItem: PropTypes.object.isRequired,
   list: PropTypes.array.isRequired,
-  getServices: PropTypes.func.isRequired
+  getServices: PropTypes.func.isRequired,
+  getCategory: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);

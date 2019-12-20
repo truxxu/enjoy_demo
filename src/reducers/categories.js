@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, SET_CATEGORY } from "../actions/index";
+import { GET_CATEGORIES, GET_CATEGORY } from "../actions/index";
 const initialState = {
   list: [],
   activeItem: null
@@ -11,7 +11,7 @@ export default function(state = initialState, action) {
         ...state,
         list: action.payload
       };
-    case SET_CATEGORY:
+    case GET_CATEGORY:
       return {
         ...state,
         activeItem: action.payload
