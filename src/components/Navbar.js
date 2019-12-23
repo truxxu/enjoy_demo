@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
@@ -7,9 +7,14 @@ import PropTypes from "prop-types";
 
 import logo from "../images/logo.png";
 import "../styles/Navbar.css";
+import { validateUser, logOut } from "../actions/authentication";
 
 function Navbar(props) {
-  const { list } = props;
+  const { list, validateUser, logOut, token } = props;
+
+  useEffect(() => {
+    validateUser();
+  }, []);
 
   const renderCategory = category => {
     return (
@@ -45,23 +50,36 @@ function Navbar(props) {
           </a>
         </div>
       </div>
-      <div className="col-auto d-flex align-items-center">
-        <Button className="App-Button">Acceder</Button>
-      </div>
+      {        
+        token===null || token === 'undefined' || token === '' ? 
+        <div className="col-auto d-flex align-items-center">
+          <Button className="App-Button">Acceder</Button>
+        </div>
+        :
+        <div className="col-auto d-flex align-items-center">
+          <Button className="App-Button" onClick={logOut}>Salir</Button>
+        </div> 
+      }
     </Row>
   );
 }
 
 const mapStateToProps = state => {
   return {
-    list: state.categories.list
+    list: state.categories.list,
+    token: state.authentication.token
   };
 };
 const mapDispatchToProps = {
+  validateUser,
+  logOut
 };
 
 Navbar.prototype = {
   list: PropTypes.array.isRequired,
+  validateUser: PropTypes.func.isRequired,
+  logOut: PropTypes.func.isRequired,
+  token: PropTypes.string.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -1,6 +1,8 @@
 import axios from "axios";
 import { env } from "../env";
 import { LOGIN } from ".";
+import { USER } from ".";
+import { USER_LOGOUT } from ".";
 
 export const authUser = (username, password) => dispatch => {
   axios
@@ -19,3 +21,52 @@ export const authUser = (username, password) => dispatch => {
       window.alert("No se pudo realizar la autenticación.");
     });
 };
+
+export const validateUser = () => dispatch => {
+  let token = localStorage.getItem('token');      
+  if(token!=null){
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
+    };
+    axios
+    .get(env.apiUrl + "auth/user/", {
+      headers: headers
+    })
+    .then(res => {
+      dispatch({
+        type: USER,
+        payload: res.data
+      });
+    })
+    .catch(err =>{
+      window.alert("No se pudo realizar la validacion del usuario.");
+
+    });
+  }
+};
+
+export const logOut = () => dispatch => {
+  let token = localStorage.getItem('token');      
+  if(token!=null){
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
+    };
+    axios
+    .post(env.apiUrl + "auth/logout/", null, {
+      headers: headers
+    })
+    .then(res => {      
+      localStorage.removeItem('token');  
+      dispatch({
+        type: USER_LOGOUT,
+        payload: res.data
+      });
+    })
+    .catch(err =>{
+      window.alert("No se pudo realizar el cierre de sesión.");
+    });
+  }
+};
+

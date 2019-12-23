@@ -5,3 +5,5 @@ export const GET_SALON = "GET_SALON";
 export const LOGIN = "LOGIN";
 export const GET_CITIES = "GET_CITIES";
 export const UPDATE_FILTERS = "UPDATE_FILTERS";
+export const USER = "USER";
+export const USER_LOGOUT = "USER_LOGOUT";
