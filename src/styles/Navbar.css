@@ -26,8 +26,109 @@
 }
 
 .App-Navbar-Link:hover {
-  color: var(--color-verde-claro);
+  color: var(--color-gris-oscuro);
   text-decoration: none;
+}
+
+/*Modal Styles*/
+
+.Register-Modal .modal-content {
+  border-radius: 20px;
+  border: none;
+}
+
+.Register-Modal .nav.nav-tabs {
+  border: none;
+}
+
+.Modal-Tab {
+  padding: 40px 40px 0 40px;
+}
+
+#uncontrolled-tab-example-tab-register,
+#uncontrolled-tab-example-tab-login {
+  width: 50%;
+  text-align: center;
+  color: black;
+  border: none;
+  padding: 15px;
+}
+
+#uncontrolled-tab-example-tab-register {
+  border-top-left-radius: 20px;
+}
+
+#uncontrolled-tab-example-tab-login {
+  border-top-right-radius: 20px;
+}
+.Register-Modal-Button {
+  margin: 40px 0;
+}
+
+.Modal-Row {
+  margin: 0;
+}
+
+.Modal-Row .input-group-text {
+  background-color: transparent;
+  border: none;
+}
+
+.modal-content .nav-item.nav-link.active {
+  background-color: white;
+}
+
+.modal-content .nav-item.nav-link {
+  background-color: var(--color-gris-claro);
+}
+
+.Modal-Col {
+  padding: 20px 6px;
+}
+
+.Terms-Text {
+  margin-left: 5px;
+  font-family: "MontserratMedium", sans-serif;
+  font-size: 16px;
+}
+
+.Terms-Start {
+  color: var(--color-gris-oscuro);
+}
+
+.Terms {
+  margin-bottom: 5px;
+}
+
+.Modal-Password, .Modal-Password:active,
+.Modal-Password:focus, .Modal-Password:hover {
+  background-color: transparent;
+  border: none;
+  color: black;
+}
+
+.Modal-Input-Box {
+  background-color: var(--color-gris-claro);
+  border-radius: 10px;
+  font-family: "MontserratMedium", sans-serif;
+  color: var(--color-gris-oscuro);
+}
+
+.Modal-Input, .Modal-Input:focus {
+  background-color: var(--color-gris-claro);
+  border-color: var(--color-gris-claro);
+  font-family: "MontserratMedium", sans-serif;
+  color: var(--color-gris-oscuro);
+  font-size: 16px;
+  padding: 0;
+  padding-left: 5px;
+  box-shadow: none;
+}
+
+.Modal-Input-Label {
+  margin: 0;
+  padding-left: 5px;
+  font-size: 0.8em;
 }
 
 .App-Navbar.fixed-top {

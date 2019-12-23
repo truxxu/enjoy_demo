@@ -1,7 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Col from 'react-bootstrap/Col';
+import Modal from "react-bootstrap/Modal";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from 'react-bootstrap/Tab';
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -13,7 +19,10 @@ import SearchInput from "./SearchInput";
 import { validateUser, logOut } from "../actions/authentication";
 
 function Navbar(props) {
-  const { list, setCategory, validateUser, logOut, token } = props;
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const { list, setCategory, loggedIn, validateUser, logOut, token } = props;
 
   useEffect(() => {
     validateUser();
@@ -139,21 +148,164 @@ function Navbar(props) {
               </a>
             </div>
           </div>
-          {        
-              token===null || token === 'undefined' || token === '' ? 
-                 <div className="col-auto d-flex align-items-center">
-                     <Button className="App-Button">Acceder</Button>
-                 </div>
-              :
-                 <div className="col-auto d-flex align-items-center">
-                     <Button className="App-Button" onClick={logOut}>Salir</Button>
-                 </div> 
+          {
+            token===null || token === 'undefined' || token === '' ?
+             <div className="col-auto d-flex align-items-center">
+                <Button
+                  onClick={ loggedIn ? null : handleShow }
+                  className="App-Button">
+                  Acceder
+                </Button>
+             </div>
+            :
+             <div className="col-auto d-flex align-items-center">
+                <Button
+                  className="App-Button"
+                  onClick={logOut}>
+                  Salir
+                </Button>
+             </div>
           }
         </Row>
         <Row id="Search-Input-Id-Mov" className="d-none align-items-center">
           <SearchInput />
         </Row>
       </Container>
+      <Modal className="Register-Modal" show={show} onHide={handleClose} centered>
+        <Tabs defaultActiveKey="register" id="uncontrolled-tab-example">
+          <Tab.Container className="Modal-Tab" eventKey="register" title="REGISTRATE">
+            <Row className="Modal-Row">
+              <Col className="Modal-Col">
+                <div className="Modal-Input-Box">
+                  <label className="Modal-Input-Label" htmlFor="">Nombres*</label>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="Modal-Input"
+                      placeholder="Nombres*"
+                      aria-label="name"
+                      aria-describedby="basic-addon1"
+                    />
+                  </InputGroup>
+                </div>
+                <div className="Modal-Input-Box">
+                  <label className="Modal-Input-Label" htmlFor="">Celular*</label>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="Modal-Input"
+                      placeholder="Celular*"
+                      aria-label="cellphone"
+                      aria-describedby="basic-addon1"
+                    />
+                  </InputGroup>
+                </div>
+                <div className="Modal-Input-Box">
+                  <label className="Modal-Input-Label" htmlFor="">Fecha de nacimiento*</label>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="Modal-Input"
+                      placeholder="DD/MM/AA"
+                      aria-label="birthdate"
+                      aria-describedby="basic-addon1"
+                    />
+                  </InputGroup>
+                </div>
+              </Col>
+              <Col className="Modal-Col">
+                <div className="Modal-Input-Box">
+                  <label className="Modal-Input-Label" htmlFor="">Apellidos*</label>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="Modal-Input"
+                      placeholder="Apellidos*"
+                      aria-label="lastName"
+                      aria-describedby="basic-addon1"
+                    />
+                  </InputGroup>
+                </div>
+                <div className="Modal-Input-Box">
+                  <label className="Modal-Input-Label" htmlFor="">Correo*</label>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="Modal-Input"
+                      placeholder="ejemplo@mail.com"
+                      aria-label="email"
+                      aria-describedby="basic-addon1"
+                    />
+                  </InputGroup>
+                </div>
+                <div className="Modal-Input-Box">
+                  <label className="Modal-Input-Label" htmlFor="">Contraseña*</label>
+                  <InputGroup className="mb-3">
+                    <FormControl
+                      className="Modal-Input"
+                      placeholder="Contraseña*"
+                      aria-label="password"
+                      aria-describedby="basic-addon1"
+                    />
+                    <InputGroup.Append>
+                      <Button className="Modal-Password">
+                        <span className="icon-lupa"></span>
+                      </Button>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </div>
+              </Col>
+            </Row>
+            <Row className="Modal-Row Terms">
+              <InputGroup.Checkbox aria-label="terms" />
+              <div className="Terms-Text Terms-Start">
+                Acepto
+                <a href="#" className="Terms-Text">terminos y condiciones</a>
+              </div>
+            </Row>
+            <Row className="Modal-Row Terms">
+              <InputGroup.Checkbox aria-label="privacy" />
+              <div className="Terms-Text Terms-Start">
+                Acepto
+                <a href="#" className="Terms-Text">politicas de privacidad</a>
+              </div>
+            </Row>
+            <Row className="justify-content-center">
+              <Button
+                className="App-Button justify-content-center Register-Modal-Button">
+                Registrarme
+              </Button>
+            </Row>
+          </Tab.Container>
+          <Tab.Container className="Modal-Tab" eventKey="login" title="INICIAR SESIÓN">
+            <div className="Modal-Input-Box">
+              <label className="Modal-Input-Label" htmlFor="">Correo*</label>
+              <InputGroup className="mb-3">
+                <FormControl
+                  className="Modal-Input"
+                  placeholder="Correo*"
+                  aria-label="email"
+                  aria-describedby="basic-addon1"
+                />
+              </InputGroup>
+            </div>
+            <div className="Modal-Input-Box">
+              <label className="Modal-Input-Label" htmlFor="">Contraseña*</label>
+              <InputGroup className="mb-3">
+                <FormControl
+                  className="Modal-Input"
+                  placeholder="Contraseña*"
+                  aria-label="password"
+                  aria-describedby="basic-addon1"
+                />
+                <InputGroup.Append>
+                  <Button className="Modal-Password">
+                    <span className="icon-lupa"></span>
+                  </Button>
+                </InputGroup.Append>
+              </InputGroup>
+            </div>
+            <Row className="justify-content-center">
+              <Button className="App-Button Register-Modal-Button">Acceder</Button>
+            </Row>
+          </Tab.Container>
+        </Tabs>
+      </Modal>
     </Row>
   );
 }
@@ -161,9 +313,11 @@ function Navbar(props) {
 const mapStateToProps = state => {
   return {
     list: state.categories.list,
-    token: state.authentication.token
+    loggedIn: state.authentication.loggedIn,
+    token: state.authentication.token,
   };
 };
+
 const mapDispatchToProps = {
   validateUser,
   logOut
@@ -171,9 +325,11 @@ const mapDispatchToProps = {
 
 Navbar.prototype = {
   list: PropTypes.array.isRequired,
+  loggedIn: PropTypes.object.isRequired,
+  setCategory: PropTypes.func.isRequired,
   validateUser: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
-  token: PropTypes.string.isRequired
+  token: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
