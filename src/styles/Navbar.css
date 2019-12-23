@@ -29,3 +29,8 @@
   color: var(--color-verde-claro);
   text-decoration: none;
 }
+
+.App-Navbar.fixed-top {
+  padding-right: 15px;
+  padding-left: 15px;
+}
