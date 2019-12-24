@@ -114,6 +114,7 @@
     font-size: 0.7em;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
+    text-decoration: none;
     color: var(--color-negro);
     background-color: var(--color-gris-claro);
     border-width: 1px;
@@ -151,6 +152,7 @@
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
     color: var(--color-negro);
+    text-decoration: none;
     background-color: var(--color-gris-claro);
     border-width: 1px;
     border-color: var(--color-gris-claro);
