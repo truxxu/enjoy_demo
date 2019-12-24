@@ -16,6 +16,7 @@ import logoMobile from "../images/logo_black_yellow.png";
 import logoDesktop from "../images/logo_black_white.png";
 import "../styles/Navbar.css";
 import { setCategory } from "../actions/categories";
+import { getCategories } from "../actions/categories";
 import SearchInput from "./SearchInput";
 import { validateUser, logOut } from "../actions/authentication";
 
@@ -23,11 +24,16 @@ function Navbar(props) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { list, setCategory, loggedIn, validateUser, logOut, token } = props;
+  const { list, getCategories, setCategory, loggedIn, validateUser, logOut, token } = props;
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   useEffect(() => {
     validateUser();
   }, []);
+
   let AppNavBar = '';
   let LinkList = '';
   let NavbarContainer = '';
@@ -327,6 +333,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
+  getCategories,
   validateUser,
   logOut
 };
