@@ -3,7 +3,8 @@
 }
 
 .Service-Item-Small-Body h1 {
-  font-family: "MontserratBold";
+  font-family: "MontserratSemiBold";
+  text-transform: initial;
 }
 
 .icon-corazones.false {
@@ -12,8 +13,12 @@
 
 .Service-Item-Small p,
 label,
-h2 {
+.Service-Item-Small-Price h2 {
   font-family: "MontserratRegular";
+}
+
+.Service-Duration {
+  color: #808080;
 }
 
 .Service-Item-Small-Description span {
@@ -39,6 +44,26 @@ h2 {
 
 .Service-Item-Small-Price {
   width: 88%;
+}
+
+.checkbox {
+  height: 15px;
+  width: 15px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  border: 1px solid #545454;
+  border-radius: 15em;
+  outline: none;
+  transition-duration: 0.3s;
+  background-color: #f1f8f5;
+  cursor: pointer;
+}
+
+.checkbox:checked {
+  border: 1px solid #95a29d;
+  background-color: #bbe4d5;
 }
 
 @media (max-width: 768px) {

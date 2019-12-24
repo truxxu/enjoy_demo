@@ -23,29 +23,30 @@ function Filters(props) {
     return filters.cities.map(city => {
       if (filters.city === city.id) {
         return city.area.map(area => {
-          return(
+          return (
             <Dropdown.Item
               key={area.id}
               className="Filter-List-Item"
               onClick={() => {
-                updateFilters({zone: area.id});
+                updateFilters({ zone: area.id });
                 handleClose();
               }}
-              variant="none">
+              variant="none"
+            >
               {area.name}
             </Dropdown.Item>
-          )
-        })
+          );
+        });
       }
-    })
+    });
   };
 
   const renderReserveOption = (option, index) => {
-    return(
+    return (
       <Dropdown.Item
         key={index}
         className="Filter-List-Item"
-        onClick={ () => {
+        onClick={() => {
           updateFilters({ reserve: option });
           handleClose();
         }}
@@ -53,43 +54,44 @@ function Filters(props) {
         {option == 'is_at_home' ? 'A domicilio': null}
         {option == 'is_at_salon' ? 'En salón' : null}
       </Dropdown.Item>
-    )
+    );
   };
 
-  const renderCities = (city) => {
-    return(
+  const renderCities = city => {
+    return (
       <Dropdown.Item
         key={city.id}
         className="Filter-List-Item"
-        onClick={ () =>{
+        onClick={() => {
           updateFilters({ city: city.id });
           handleClose();
         }}
-        variant="none">
+        variant="none"
+      >
         {city.name}
       </Dropdown.Item>
-    )
+    );
   };
 
-  const renderCategories = (cat) => {
+  const renderCategories = cat => {
     if (activeItem !== null) {
       return activeItem.sub_categories.map(cat => {
-        return(
+        return (
           <Dropdown.Item
             key={cat.id}
             className="Filter-List-Item"
-            onClick={ () =>{
+            onClick={() => {
               updateFilters({ sub_category: cat.id });
               handleClose();
             }}
-            variant="none">
+            variant="none"
+          >
             {cat.name}
           </Dropdown.Item>
-        )
-      })
-    }
-    else {
-      return null
+        );
+      });
+    } else {
+      return null;
     }
   };
 
@@ -108,20 +110,22 @@ function Filters(props) {
           <Dropdown.Menu className="Filter-Dropdown-List w-100">
             <Dropdown.Item
               className="Filter-List-Item"
-              onClick={ () => {
-                updateFilters({ reserve: 'is_at_home' });
+              onClick={() => {
+                updateFilters({ reserve: "is_at_home" });
                 handleClose();
               }}
-              variant="none">
+              variant="none"
+            >
               A domicilio
             </Dropdown.Item>
             <Dropdown.Item
               className="Filter-List-Item"
-              onClick={ () => {
-                updateFilters({ reserve: 'is_at_salon' });
+              onClick={() => {
+                updateFilters({ reserve: "is_at_salon" });
                 handleClose();
               }}
-              variant="none">
+              variant="none"
+            >
               En salón
             </Dropdown.Item>
           </Dropdown.Menu>
@@ -133,9 +137,7 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              renderCategories()
-            }
+            {renderCategories()}
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown className="flex-grow-1 d-md-flex">
@@ -145,9 +147,7 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              filters.cities.map(city => renderCities(city))
-            }
+            {filters.cities.map(city => renderCities(city))}
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown className="flex-grow-1 d-md-flex">
@@ -157,15 +157,10 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              filters.city === '' &&
-              <div className="Filter-List-Item">
-                Selecciona una ciudad
-              </div>
-            }
-            {
-              renderZone()
-            }
+            {filters.city === "" && (
+              <div className="Filter-List-Item">Selecciona una ciudad</div>
+            )}
+            {renderZone()}
           </Dropdown.Menu>
         </Dropdown>
         <div className="Filter-Switch d-flex align-items-center">
@@ -177,7 +172,7 @@ function Filters(props) {
               label=""
               variant="none"
               checked={filters.is_sale}
-              onChange={ () => updateFilters({ is_sale: !filters.is_sale }) }
+              onChange={() => updateFilters({ is_sale: !filters.is_sale })}
             />
           </Form>
         </div>
@@ -186,36 +181,30 @@ function Filters(props) {
         <Dropdown.Item
           onClick={handleShow}
           variant="none"
-          className="Mobile-Filter-Button">
-            <span className="icon-controles"></span>
+          className="Mobile-Filter-Button"
+        >
+          <span className="icon-controles"></span>
         </Dropdown.Item>
       </div>
       <Modal className="Filter-Modal" show={show} onHide={handleClose}>
         <div className="Filter-Modal-Title">
-          <a style={{visibility: "hidden"}}>X</a>
-          <div>
-            Filtra
-          </div>
-          <a
-            href=""
-            onClick={handleClose}
-            className="Modal-Close">
+          <a style={{ visibility: "hidden" }}>X</a>
+          <div>Filtra</div>
+          <a href="" onClick={handleClose} className="Modal-Close">
             X
           </a>
         </div>
         <div className="Filter-Switch">
-          <div>
-            Ver ofertas
-          </div>
+          <div>Ver ofertas</div>
           <Form className="Filter-Switch-Text">
-          <Form.Check
-            type="switch"
-            id="custom-switch"
-            label=""
-            variant="none"
-            checked={filters.is_sale}
-            onChange={ () => updateFilters({ is_sale: !filters.is_sale }) }
-          />
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label=""
+              variant="none"
+              checked={filters.is_sale}
+              onChange={() => updateFilters({ is_sale: !filters.is_sale })}
+            />
           </Form>
         </div>
         <Dropdown>
@@ -227,10 +216,9 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              filters.reserve_options.map((option, index) =>
-                renderReserveOption(option, index))
-            }
+            {filters.reserve_options.map((option, index) =>
+              renderReserveOption(option, index)
+            )}
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -242,23 +230,19 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              renderCategories()
-            }
+            {renderCategories()}
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
             <div>
-            <span className="icon-ubicacion Filter-Icon"></span>
-            Ciudad
+              <span className="icon-ubicacion Filter-Icon"></span>
+              Ciudad
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              filters.cities.map(city => renderCities(city))
-            }
+            {filters.cities.map(city => renderCities(city))}
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
@@ -270,15 +254,10 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {
-              filters.city === '' &&
-              <div className="Filter-List-Item">
-                Selecciona una ciudad
-              </div>
-            }
-            {
-              renderZone()
-            }
+            {filters.city === "" && (
+              <div className="Filter-List-Item">Selecciona una ciudad</div>
+            )}
+            {renderZone()}
           </Dropdown.Menu>
         </Dropdown>
       </Modal>
@@ -290,21 +269,20 @@ function Filters(props) {
 const mapStateToProps = state => {
   return {
     activeItem: state.categories.activeItem,
-    filters: state.services.filters,
+    filters: state.services.filters
   };
 };
 
 const mapDispatchToProps = {
   getCities,
-  updateFilters,
+  updateFilters
 };
 
 Filters.prototype = {
   activeItem: PropTypes.object.isRequired,
   filters: PropTypes.object.isRequired,
   getCities: PropTypes.func.isRequired,
-  updateFilters: PropTypes.func.isRequired,
+  updateFilters: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters);
-

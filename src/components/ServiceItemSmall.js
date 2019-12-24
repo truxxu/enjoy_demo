@@ -18,7 +18,7 @@ function ServiceItemSmall(props) {
       <div className="Service-Item-Small-Body ml-4">
         <div className="Service-Item-Small-Description d-md-flex ">
           <div className="d-flex flex-md-grow-1">
-            <h1 className="Service-Name mr-4 pt-2 mr-md-5">{data.name}</h1>
+            <h1 className="Service-Name mr-4 pt-2 mr-md-5 mb-0">{data.name}</h1>
             {data.is_favorite ? (
               <span className="icon-corazones mr-5 mr-md-1 mt-md-2 flex-md-grow-1"></span>
             ) : (
@@ -33,7 +33,7 @@ function ServiceItemSmall(props) {
             )}
           </div>
         </div>
-        <p>{data.duration} min</p>
+        <p className="Service-Duration">{data.duration} min</p>
         <p className="Description mr-4">{data.description}</p>
       </div>
       <div
@@ -52,8 +52,8 @@ function ServiceItemSmall(props) {
         )}
         <div>
           <input
-            className="form-check-input"
-            type="radio"
+            className="checkbox"
+            type="checkbox"
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="option1"
