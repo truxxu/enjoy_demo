@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { Link } from "react-router-dom";
 
-import footerLogo from "../images/footer_logo.png";
+import logo from "../images/logo_yellow_black.png";
 import "../styles/Footer.css";
 
 function Footer() {
@@ -12,7 +12,7 @@ function Footer() {
       <Container className="pt-3 pb-1">
         <Row className="flex-column flex-md-row justify-content-center justify-content-md-between align-items-center mt-3">
           <Link to="/">
-            <img src={footerLogo} className="App-Footer-Logo" alt="logo" />
+            <img src={logo} className="App-Footer-Logo" alt="logo" />
           </Link>
           <div className="App-Footer-Link-List d-flex flex-column flex-md-row mt-4 mt-md-0">
             <a href="#" className="App-Footer-Link mt-2 mt-md-0">

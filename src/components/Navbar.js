@@ -12,7 +12,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import logo from "../images/logo.png";
+import logoMobile from "../images/logo_black_yellow.png";
+import logoDesktop from "../images/logo_black_white.png";
 import "../styles/Navbar.css";
 import { setCategory } from "../actions/categories";
 import SearchInput from "./SearchInput";
@@ -133,7 +134,8 @@ function Navbar(props) {
         <Row className="App-Navbar justify-content-between py-4">
           <div className="col-auto">
             <Link to="/">
-              <img src={logo} className="App-logo" alt="logo" />
+              <img src={logoMobile} className="App-logo d-md-none d-block" alt="logo" />
+              <img src={logoDesktop} className="App-logo d-none d-md-block" alt="logo" />
             </Link>
           </div>
           <div id="Link-List-Id" className="col-auto d-none d-md-flex align-items-center">

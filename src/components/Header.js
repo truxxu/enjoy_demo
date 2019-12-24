@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 
 import SearchInput from "./SearchInput";
 import "../styles/Header.css";
-import logo from "../images/logo.png";
+import logo from "../images/logo_black_yellow.png";
 
 function Header(props) {
   if (props.data) {
