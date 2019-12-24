@@ -52,8 +52,12 @@ function HomePage(props) {
             </p>
           </div>
         </Row>
-        <Row className="App-Category-List justify-content-around mb-4 mx-4">
-          {list.map(category => renderCategory(category))}
+        <Row className="App-Category-List">
+          <Container>
+            <Row className="justify-content-around mb-4 mx-4">
+              {list.map(category => renderCategory(category))}
+            </Row>
+          </Container>
         </Row>
         <Row className="App-Description align-items-center justify-content-center py-5">
           <div className="col-auto d-none d-md-flex align-items-end">
