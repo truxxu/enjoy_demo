@@ -1,3 +1,4 @@
+.Filters-Row,
 .ServiceList-Filter {
   background-color: var(--color-blanco);
   color: var(--color-gris-oscuro);
@@ -15,6 +16,10 @@
   border-width: 0 0 0 1px;
   box-shadow: none !important;
   font-family: "LatoRegular", sans-serif;
+}
+
+.Filter-Button {
+  flex-grow: 1;
 }
 
 .Filter-Button:after {
@@ -56,9 +61,6 @@
   font-family: "LatoRegular", sans-serif;
   color: var(--color-gris-oscuro);
   padding: 0.5em 1em;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .btn.focus, .btn:focus {

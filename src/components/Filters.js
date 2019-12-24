@@ -50,7 +50,8 @@ function Filters(props) {
           handleClose();
         }}
         variant="none">
-        {option}
+        {option == 'is_at_home' ? 'A domicilio': null}
+        {option == 'is_at_salon' ? 'En salón' : null}
       </Dropdown.Item>
     )
   };
@@ -93,11 +94,12 @@ function Filters(props) {
   };
 
   return (
-    <div>
+    <div class="row Filters-Row">
+      <div class="container">
       <div
         className="ServiceList-Filter d-md-flex
-        justify-content-center d-none d-md-block">
-        <Dropdown className="d-inline-block">
+        justify-content-around d-none">
+        <Dropdown className="flex-grow-1 d-md-flex">
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-campana Filter-Icon"></span>
             Buscar Reserva
@@ -124,7 +126,7 @@ function Filters(props) {
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown>
+        <Dropdown className="flex-grow-1 d-md-flex">
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-controles Filter-Icon"></span>
             Servicio
@@ -136,7 +138,7 @@ function Filters(props) {
             }
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown>
+        <Dropdown className="flex-grow-1 d-md-flex">
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-ubicacion Filter-Icon"></span>
             Ciudad
@@ -148,7 +150,7 @@ function Filters(props) {
             }
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown>
+        <Dropdown className="flex-grow-1 d-md-flex">
           <Dropdown.Toggle className="Filter-Button">
             <span className="icon-objetivo Filter-Icon"></span>
             Zona
@@ -280,6 +282,7 @@ function Filters(props) {
           </Dropdown.Menu>
         </Dropdown>
       </Modal>
+      </div>
     </div>
   );
 }
