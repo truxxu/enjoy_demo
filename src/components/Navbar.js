@@ -29,6 +29,7 @@ function Navbar(props) {
   }, []);
   let AppNavBar = '';
   let LinkList = '';
+  let NavbarContainer = '';
   let SearchInputDiv = '';
   let AppHeaderSearch = '';
   let BtnAcceder = '';
@@ -38,6 +39,7 @@ function Navbar(props) {
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, true);
+    NavbarContainer = document.getElementById('Navbar-Container');
     AppNavBar = document.getElementsByClassName('App-Navbar')[0];
     LinkList = document.getElementById('Link-List-Id');
     SocialLinks = document.getElementById('Social-Links');
@@ -82,6 +84,8 @@ function Navbar(props) {
 
   function setBar(){
     AppNavBar.classList.add('fixed-top');
+    NavbarContainer.classList.remove('container');
+    NavbarContainer.classList.add('container-fluid');
     LinkList.classList.remove('d-md-flex');
     SocialLinks.classList.remove('d-md-flex');
     SocialLinks.classList.add('d-none');
@@ -91,6 +95,8 @@ function Navbar(props) {
   }
 
   function setBarInit() {
+    NavbarContainer.classList.add('container');
+    NavbarContainer.classList.remove('container-fluid');
     AppNavBar.classList.remove('fixed-top');
     LinkList.classList.add('d-md-flex');
     SocialLinks.classList.remove('d-none');
@@ -123,7 +129,7 @@ function Navbar(props) {
 
   return (
     <Row className="App-Navbar">
-      <Container>
+      <Container id="Navbar-Container">
         <Row className="App-Navbar justify-content-between py-4">
           <div className="col-auto">
             <Link to="/">
