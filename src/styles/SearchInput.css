@@ -1,19 +1,17 @@
 .App-Header-Search input {
-  border-radius: 1.5em;
   font-family: "MontserratMedium", sans-serif;
+  font-size: 0.8em;
   border: none;
 }
 
 .App-Header-Search .input-group-text {
   background-color: var(--color-blanco);
   border: none;
-  border-radius: 1.5em;
 }
 
 #Search-Input-Id .App-Header-Search input,
 #Search-Input-Id .App-Header-Search .input-group-text {
   border: solid 2px var(--color-gris-claro);
-  border-radius: 0;
 }
 
 #Search-Input-Id .App-Header-Search .input-group-text {
@@ -24,8 +22,17 @@
   border-right: none;
 }
 
+@media (max-width: 768px) {
+  .App-Header-Search input {
+    border-radius: 1.5em;
+  }
+
+  .App-Header-Search .input-group-text {
+    border-radius: 1.5em;
+  }
+}
 @media (min-width: 768px) {
   .App-Header-Search {
-    width: 500px;
+    width: 560px;
   }
 }
