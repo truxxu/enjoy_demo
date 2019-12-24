@@ -1,12 +1,16 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import salon from "../images/salon.jpeg";
 import "../styles/ServiceListItem.css";
+import { addFavoriteService } from "../actions/favoriteService";
 
 function ServiceListItem(props) {
   const data = props.data;
+  const { addFavoriteService } = props;
 
   const priceStr = string => {
     return string
@@ -19,7 +23,7 @@ function ServiceListItem(props) {
     <div className="Service-Item d-flex flex-column flex-md-row  my-5 px-md-5 ">
       <div className="Service-Img col px-0 d-md-flex ">
         <img className="Salon-Img " src={data.salon_image} alt="Salon"></img>
-        <span className="icon-corazones"></span>
+        <span className="icon-corazones" onClick={() => addFavoriteService(data.id) }></span>
       </div>
       <div className="Salon-Service col-md-5 pl-4 d-flex flex-column ">
         <h4 className="Salon-Name pt-4">{data.salon_name}</h4>
@@ -65,4 +69,12 @@ function ServiceListItem(props) {
   );
 }
 
-export default ServiceListItem;
+const mapDispatchToProps = {
+  addFavoriteService
+};
+
+ServiceListItem.prototype = {
+  addFavoriteService: PropTypes.func.isRequired
+};
+
+export default connect(null, mapDispatchToProps)(ServiceListItem);
