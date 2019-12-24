@@ -28,12 +28,12 @@ function ServiceListItem(props) {
       <div className="Salon-Service col-md-5 pl-4 d-flex flex-column ">
         <h4 className="Salon-Name pt-4">{data.salon_name}</h4>
         <p className="Salon-Address mb-0">{data.salon_address.split(",")[0]}</p>
-        <div className="Icon-Strella mb-md-4 mb-2 pt-1 pl-md-2">
+        <div className="Star-Icons mb-md-4 mb-2 pt-1 pl-md-2">
+          <span className="icon-estrella_full"></span>
+          <span className="icon-estrella_full"></span>
           <span className="icon-estrella_full"></span>
           <span className="icon-estrella_med"></span>
           <span className="icon-estrella_none"></span>
-          <span className="icon-estrella_full"></span>
-          <span className="icon-estrella_full"></span>
         </div>
         <div className="Salon-Description">
           <p>{data.salon_description}</p>

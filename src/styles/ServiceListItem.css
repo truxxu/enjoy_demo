@@ -214,3 +214,11 @@ h3 {
 h4 {
   font-family: "MontserratSemiBold";
 }
+
+.Star-Icons {
+  color: var(--color-amarillo);
+}
+
+.icon-corazones {
+  color: var(--color-rojo);
+}
