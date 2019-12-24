@@ -40,7 +40,7 @@ function Footer() {
             </a>
           </div>
         </Row>
-        <Row className="App-Footer-Bottom justify-content-center justify-content-md-between mt-4 pt-2">
+        <Row className="App-Footer-Bottom flex-column flex-md-row justify-content-center justify-content-md-between mt-4 pt-2">
           <p>
             Todos los derechos reservados EN JOY!-s &copy;{" "}
             {new Date().getFullYear()}
