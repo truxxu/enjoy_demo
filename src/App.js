@@ -6,6 +6,7 @@ import "./App.css";
 import HomePage from "./components/HomePage";
 import ServiceListPage from "./components/ServiceListPage";
 import SalonPage from "./components/SalonPage";
+import UserProfilePage from "./components/UserProfilePage";
 import store from "./store";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" exact component={HomePage} />
           <Route path="/categories/:id" exact component={ServiceListPage} />
           <Route path="/salon/:id" exact component={SalonPage} />
+          <Route path="/auth/user" exact component={UserProfilePage} />
         </Switch>
       </BrowserRouter>
     </Provider>
