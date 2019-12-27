@@ -18,13 +18,29 @@ import "../styles/Navbar.css";
 import { setCategory } from "../actions/categories";
 import { getCategories } from "../actions/categories";
 import SearchInput from "./SearchInput";
-import { validateUser, logOut } from "../actions/authentication";
+import { validateUser, logOut, registerUser, authUser } from "../actions/authentication";
 
 function Navbar(props) {
+
   const [show, setShow] = useState(false);
+  const [form, writeForm] = useState({
+    first_name: '',
+    last_name: '',
+    phone: '',
+    username: '',
+    birth_date: '',
+    password: ''
+  });
+  const [terms, setTerms] = useState({
+    conditions: false,
+    privacy: false,
+  });
+  const [keyMask, setMask] = useState(true);
+
+  const { list, getCategories, setCategory, loggedIn, validateUser, logOut, token } = props;
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const { list, getCategories, setCategory, loggedIn, validateUser, logOut, token } = props;
 
   useEffect(() => {
     getCategories();
@@ -134,6 +150,48 @@ function Navbar(props) {
     );
   };
 
+  const renderRegisterButton = () => {
+    if (terms.conditions &&
+        terms.privacy &&
+        form.first_name !== '' &&
+        form.last_name !== '' &&
+        form.username !== '' &&
+        form.password !== '' &&
+        form.phone !== '' &&
+        form.birth_date !== '') {
+      return "justify-content-center Modal-Button-Active Register-Modal-Button"
+    } else {
+      return "justify-content-center Register-Modal-Button"
+    }
+  };
+
+    const clickRegisterButton = () => {
+    if (terms.conditions &&
+        terms.privacy &&
+        form.first_name !== '' &&
+        form.last_name !== '' &&
+        form.username !== '' &&
+        form.password !== '' &&
+        form.phone !== '' &&
+        form.birth_date !== '') {
+      return registerUser(form)
+    }
+  };
+
+  const renderLoginButton = () => {
+    if (form.username !== '' && form.password !== '') {
+      return "justify-content-center Modal-Button-Active Register-Modal-Button"
+    } else {
+      return "justify-content-center Register-Modal-Button"
+    }
+  };
+
+    const clickLoginButton = () => {
+    if (form.username !== '' && form.password !== '') {
+      return authUser(form.username, form.password)
+    }
+  };
+
   return (
     <Row className="App-Navbar">
       <Container id="Navbar-Container">
@@ -144,7 +202,10 @@ function Navbar(props) {
               <img src={logoDesktop} className="App-logo d-none d-md-block" alt="logo" />
             </Link>
           </div>
-          <div id="Link-List-Id" className="col-auto d-none d-md-flex align-items-center">
+          <div
+            id="Link-List-Id"
+            className="col-auto d-none d-md-flex align-items-center"
+          >
             <div className="App-Navbar-Link-List">
               {list.map(category => renderCategory(category))}
             </div>
@@ -152,7 +213,10 @@ function Navbar(props) {
           <div id="Search-Input-Id" className="col-auto justify-content-center">
             <SearchInput />
           </div>
-          <div id="Social-Links" className="col-auto d-none d-md-flex align-items-center">
+          <div
+            id="Social-Links"
+            className="col-auto d-none d-md-flex align-items-center"
+          >
             <div className="App-Social-Links">
               <a href="https://instagram.com">
                 <span className="icon-instagram"></span>
@@ -187,77 +251,159 @@ function Navbar(props) {
       </Container>
       <Modal className="Register-Modal" show={show} onHide={handleClose} centered>
         <Tabs defaultActiveKey="register" id="uncontrolled-tab-example">
-          <Tab.Container className="Modal-Tab" eventKey="register" title="REGISTRATE">
+          <Tab.Container
+            className="Modal-Tab"
+            eventKey="register"
+            title="REGISTRATE"
+          >
             <Row className="Modal-Row">
-              <Col className="Modal-Col">
+              <Col className="Modal-Col" md={6}>
                 <div className="Modal-Input-Box">
-                  <label className="Modal-Input-Label" htmlFor="">Nombres*</label>
+                  <label
+                    className={
+                      form.first_name === '' ?
+                        'text-hide' :
+                        'Modal-Input-Label'}
+                  >
+                    Nombres*
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="Modal-Input"
                       placeholder="Nombres*"
-                      aria-label="name"
+                      aria-label="first_name"
                       aria-describedby="basic-addon1"
+                      onChange={event => writeForm(
+                        {
+                          ...form,
+                          first_name: event.target.value
+                        }
+                      )}
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
-                  <label className="Modal-Input-Label" htmlFor="">Celular*</label>
+                  <label
+                    className={
+                      form.phone === '' ?
+                        'text-hide' :
+                        'Modal-Input-Label'}
+                  >
+                    Celular*
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="Modal-Input"
                       placeholder="Celular*"
-                      aria-label="cellphone"
+                      aria-label="phone"
                       aria-describedby="basic-addon1"
+                      onChange={event => writeForm(
+                        {
+                          ...form,
+                          phone: event.target.value
+                        }
+                      )}
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
-                  <label className="Modal-Input-Label" htmlFor="">Fecha de nacimiento*</label>
+                  <label
+                    className="Modal-Input-Label">
+                    Fecha de nacimiento*
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="Modal-Input"
                       placeholder="DD/MM/AA"
-                      aria-label="birthdate"
+                      aria-label="birth_date"
                       aria-describedby="basic-addon1"
+                      onChange={event => writeForm(
+                        {
+                          ...form,
+                          birth_date: event.target.value
+                        }
+                      )}
                     />
                   </InputGroup>
                 </div>
               </Col>
-              <Col className="Modal-Col">
+              <Col className="Modal-Col" md={6}>
                 <div className="Modal-Input-Box">
-                  <label className="Modal-Input-Label" htmlFor="">Apellidos*</label>
+                  <label
+                    className={
+                      form.last_name === '' ?
+                        'text-hide' :
+                        'Modal-Input-Label'}
+                  >
+                    Apellidos*
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="Modal-Input"
                       placeholder="Apellidos*"
-                      aria-label="lastName"
+                      aria-label="last_name"
                       aria-describedby="basic-addon1"
+                      onChange={event => writeForm(
+                        {
+                          ...form,
+                          last_name: event.target.value
+                        }
+                      )}
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
-                  <label className="Modal-Input-Label" htmlFor="">Correo*</label>
+                   <label
+                    className={
+                      form.username === '' ?
+                        'text-hide' :
+                        'Modal-Input-Label'}
+                  >
+                    Correo*
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
                       className="Modal-Input"
-                      placeholder="ejemplo@mail.com"
-                      aria-label="email"
+                      placeholder="Correo*"
+                      aria-label="username"
                       aria-describedby="basic-addon1"
+                      onChange={event => writeForm(
+                        {
+                          ...form,
+                          username: event.target.value
+                        }
+                      )}
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
-                  <label className="Modal-Input-Label" htmlFor="">Contraseña*</label>
+                  <label
+                    className={
+                      form.password === '' ?
+                        'text-hide' :
+                        'Modal-Input-Label'}
+                  >
+                    Contraseña*
+                  </label>
                   <InputGroup className="mb-3">
                     <FormControl
+                      type={keyMask ? 'password' : 'text'}
                       className="Modal-Input"
                       placeholder="Contraseña*"
                       aria-label="password"
                       aria-describedby="basic-addon1"
+                      onChange={event => writeForm(
+                        {
+                          ...form,
+                          password: event.target.value
+                        }
+                      )}
                     />
                     <InputGroup.Append>
-                      <Button className="Modal-Password">
+                      <Button
+                        onClick={() => setMask(!keyMask)}
+                        className="Modal-Password"
+                      >
                         <span className="icon-lupa"></span>
                       </Button>
                     </InputGroup.Append>
@@ -266,14 +412,28 @@ function Navbar(props) {
               </Col>
             </Row>
             <Row className="Modal-Row Terms">
-              <InputGroup.Checkbox aria-label="terms" />
+              <InputGroup.Checkbox
+                aria-label="terms"
+                checked={terms.conditions}
+                onChange={ () => setTerms({
+                  ...terms,
+                  conditions: !terms.conditions
+                })}
+              />
               <div className="Terms-Text Terms-Start">
                 Acepto
                 <a href="#" className="Terms-Text">terminos y condiciones</a>
               </div>
             </Row>
             <Row className="Modal-Row Terms">
-              <InputGroup.Checkbox aria-label="privacy" />
+              <InputGroup.Checkbox
+                aria-label="privacy"
+                checked={terms.privacy}
+                onChange={ () => setTerms({
+                  ...terms,
+                  privacy: !terms.privacy
+                })}
+              />
               <div className="Terms-Text Terms-Start">
                 Acepto
                 <a href="#" className="Terms-Text">politicas de privacidad</a>
@@ -281,41 +441,81 @@ function Navbar(props) {
             </Row>
             <Row className="justify-content-center">
               <Button
-                className="App-Button justify-content-center Register-Modal-Button">
+                onClick={clickRegisterButton()}
+                className={renderRegisterButton()}>
                 Registrarme
               </Button>
             </Row>
           </Tab.Container>
-          <Tab.Container className="Modal-Tab" eventKey="login" title="INICIAR SESIÓN">
+          <Tab.Container
+            className="Modal-Tab"
+            eventKey="login"
+            title="INICIAR SESIÓN"
+          >
             <div className="Modal-Input-Box">
-              <label className="Modal-Input-Label" htmlFor="">Correo*</label>
+               <label
+                className={
+                  form.username === '' ?
+                    'text-hide' :
+                    'Modal-Input-Label'}
+              >
+                Correo*
+              </label>
               <InputGroup className="mb-3">
                 <FormControl
                   className="Modal-Input"
                   placeholder="Correo*"
-                  aria-label="email"
+                  aria-label="username"
                   aria-describedby="basic-addon1"
+                  onChange={event => writeForm(
+                    {
+                      ...form,
+                      username: event.target.value
+                    }
+                  )}
                 />
               </InputGroup>
             </div>
             <div className="Modal-Input-Box">
-              <label className="Modal-Input-Label" htmlFor="">Contraseña*</label>
+              <label
+                className={
+                  form.password === '' ?
+                    'text-hide' :
+                    'Modal-Input-Label'}
+              >
+                Contraseña*
+              </label>
               <InputGroup className="mb-3">
                 <FormControl
+                  type={keyMask ? 'password' : 'text'}
                   className="Modal-Input"
                   placeholder="Contraseña*"
                   aria-label="password"
                   aria-describedby="basic-addon1"
+                  onChange={event => writeForm(
+                    {
+                      ...form,
+                      password: event.target.value
+                    }
+                  )}
                 />
                 <InputGroup.Append>
-                  <Button className="Modal-Password">
+                  <Button
+                    onClick={() => setMask(!keyMask)}
+                    className="Modal-Password"
+                  >
                     <span className="icon-lupa"></span>
                   </Button>
                 </InputGroup.Append>
               </InputGroup>
             </div>
             <Row className="justify-content-center">
-              <Button className="App-Button Register-Modal-Button">Acceder</Button>
+              <Button
+                onClick={clickLoginButton()}
+                className={renderLoginButton()}
+              >
+                Acceder
+              </Button>
             </Row>
           </Tab.Container>
         </Tabs>
@@ -335,16 +535,21 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   getCategories,
   validateUser,
-  logOut
+  logOut,
+  registerUser,
+  authUser,
 };
 
 Navbar.prototype = {
   list: PropTypes.array.isRequired,
+  token: PropTypes.string.isRequired,
   loggedIn: PropTypes.object.isRequired,
   setCategory: PropTypes.func.isRequired,
   validateUser: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
-  token: PropTypes.string.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  authUser: PropTypes.func.isRequired,
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

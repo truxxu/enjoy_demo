@@ -13,5 +13,6 @@ export const GET_CITIES = "GET_CITIES";
 export const UPDATE_FILTERS = "UPDATE_FILTERS";
 export const USER = "USER";
 export const USER_LOGOUT = "USER_LOGOUT";
+export const REGISTER_USER = "REGISTER_USER";
 export const ADD_FAVORITE_SERVICE = "ADD_FAVORITE_SERVICE";
 export const GET_FAVORITES = "GET_FAVORITES";

@@ -1,11 +1,12 @@
 import { LOGIN } from "../actions/index";
 import { USER } from "../actions/index";
 import { USER_LOGOUT } from "../actions/index";
+import { REGISTER_USER } from "../actions/index";
 
-const initialState =  { 
-  loggedIn: false, 
+const initialState =  {
+  loggedIn: false,
   currentUser: [],
-  token : ''
+  token : '',
 };
 
 export default function(state = initialState, action) {
@@ -35,4 +36,3 @@ export default function(state = initialState, action) {
         return state;
     }
   }
-  

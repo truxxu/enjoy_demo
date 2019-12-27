@@ -15,7 +15,7 @@ export const authUser = (username, password) => dispatch => {
         type: LOGIN,
         payload: res.data
       });
-      localStorage.setItem('token',res.data.token);      
+      localStorage.setItem('token',res.data.token);
     })
     .catch(err =>{
       window.alert("No se pudo realizar la autenticación.");
@@ -23,7 +23,7 @@ export const authUser = (username, password) => dispatch => {
 };
 
 export const validateUser = () => dispatch => {
-  let token = localStorage.getItem('token');      
+  let token = localStorage.getItem('token');
   if(token!=null){
     const headers = {
       'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export const validateUser = () => dispatch => {
 };
 
 export const logOut = () => dispatch => {
-  let token = localStorage.getItem('token');      
+  let token = localStorage.getItem('token');
   if(token!=null){
     const headers = {
       'Content-Type': 'application/json',
@@ -57,8 +57,8 @@ export const logOut = () => dispatch => {
     .post(env.apiUrl + "auth/logout/", null, {
       headers: headers
     })
-    .then(res => {      
-      localStorage.removeItem('token');  
+    .then(res => {
+      localStorage.removeItem('token');
       dispatch({
         type: USER_LOGOUT,
         payload: res.data
@@ -68,5 +68,27 @@ export const logOut = () => dispatch => {
       window.alert("No se pudo realizar el cierre de sesión.");
     });
   }
+};
+
+export const registerUser = (data) => dispatch => {
+  axios
+    .post(env.apiUrl + "auth/register/", {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        phone: data.phone,
+        username: data.username,
+        birth_date: data.birth_date,
+        password: data.password,
+    })
+    .then(res => {
+      dispatch({
+        type: LOGIN,
+        payload: res.data
+      });
+      localStorage.setItem('token',res.data.token);
+    })
+    .catch(err =>{
+      window.alert("No se pudo completar el registro");
+    });
 };
 
