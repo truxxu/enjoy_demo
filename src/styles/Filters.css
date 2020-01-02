@@ -42,6 +42,8 @@
   border-color: var(--color-gris-claro);
   font-family: "LatoRegular", sans-serif;
   color: var(--color-gris-oscuro);
+  z-index: 2;
+  background-color: white;
 }
 
 .Filter-Switch-Text {

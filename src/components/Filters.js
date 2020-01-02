@@ -181,13 +181,18 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {filters.city === "" && (
-              <div className="Filter-List-Item">Selecciona una ciudad</div>
-            )}
+            {filters.city === "" &&
+              (
+                <div className="Filter-List-Item">
+                  Selecciona una ciudad
+                </div>
+              )}
             {renderZone()}
           </Dropdown.Menu>
         </Dropdown>
-        <div className="Filter-Switch d-flex align-items-center">
+        <div
+          className="Filter-Switch flex-grow-1 d-md-flex justify-content-center
+            align-items-center">
           Ver ofertas
           <Form className="Filter-Switch-Text">
             <Form.Check
