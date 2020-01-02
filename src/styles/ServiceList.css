@@ -68,9 +68,84 @@
   border-radius: 0.3em;
 }
 
+.Schedule {
+  color: #475361;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.Score-Salon span {
+  color: #bbe4d5;
+}
+
+.Score-Point,
+.Score-Point- {
+  color: #3c4858;
+}
+
+.Score-Point {
+  font-size: 8em;
+}
+
+.Score-Point- {
+  font-size: 3em;
+}
+
+.Score-Salon-Title {
+  font-family: "MontserratMedium";
+  font-size: 2em;
+  color: #3c4858;
+}
+
+.Score-Salon-Row p {
+  color: #3c4858;
+}
+
+.Score-Salon-ENJOY {
+  color: black;
+}
+
+.Schedule-Hour,
+.Schedule-Day {
+  color: #8f9296;
+}
+
+.Reserve.fixed-top.flex-column {
+  width: 380px;
+  position: fixed;
+  top: 30px;
+  right: 122px;
+  left: 870px;
+  z-index: 1030;
+  background-color: white;
+}
+
 @media (min-width: 768px) {
   .Search {
     width: 500px;
+  }
+  .Reserve {
+    -webkit-box-shadow: 20px 20px 18px -8px rgba(179, 179, 179, 1);
+    -moz-box-shadow: 20px 20px 18px -8px rgba(179, 179, 179, 1);
+    box-shadow: 20px 20px 18px -8px rgba(179, 179, 179, 1);
+    border-bottom-right-radius: 0.5em;
+  }
+
+  .Price-Reserve {
+    font-family: "MontserratSemiBold";
+  }
+
+  .Reserve .Reserve-Button {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    font-family: "MontserratSemiBold";
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-dorado);
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 1.5em;
+    padding: 5px 24px;
   }
 }
 
@@ -79,10 +154,56 @@
     display: grid;
     height: 55px;
   }
+
   .Search {
     widows: 100%;
   }
+
   .Filter-Button-Big {
     border-radius: 0.4em;
+  }
+
+  .Reserve {
+    display: none;
+  }
+
+  .Schedule-Title {
+    font-size: 1.6em;
+  }
+
+  .Schedule-Day,
+  .Schedule-Hour {
+    font-size: 1.3em;
+  }
+
+  .Score-Salon-Row p {
+    font-size: 0.9em;
+  }
+
+  .Reserve-Mobile {
+    position: fixed;
+    border-top: solid #e8e8e8;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-blanco);
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .Reserve-Mobile .Reserve-Button {
+    text-transform: uppercase;
+    font-size: 0.8em;
+    font-family: "MontserratSemiBold";
+    font-weight: 500;
+    color: var(--color-negro);
+    background-color: var(--color-dorado);
+    border-width: 1px;
+    border-color: var(--color-dorado);
+    border-radius: 1.5em;
+    padding: 5px 24px;
   }
 }
