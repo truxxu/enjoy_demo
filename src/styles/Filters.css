@@ -51,7 +51,7 @@
 .Filter-Dropdown-List {
   margin: 0;
   border-radius: 0 0 20px 20px;
-  height: 100px;
+  max-height: 100px;
   overflow-y: auto;
   width: 100%;
   min-width: 0;
@@ -75,6 +75,10 @@
 .Filter-List-Item:hover {
   color: var(--color-verde-claro);
   background-color: transparent !important;
+}
+
+.Filter-List-Item-Active {
+  color: var(--color-verde-claro) !important;
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
@@ -158,6 +162,11 @@
     flex-direction: row;
     justify-content: space-between;
     padding: 1.5em;
+    width: 100%;
+  }
+
+  .modal-content .dropdown {
+    width: 100%;
   }
 
   .Filter-Modal-Title {
