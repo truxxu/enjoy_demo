@@ -11,6 +11,8 @@ import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import FacebookLogin from 'react-facebook-login'
+import GoogleLogin from 'react-google-login';
 
 import logoMobile from "../images/logo_black_yellow.png";
 import logoDesktop from "../images/logo_black_white.png";
@@ -191,6 +193,18 @@ function Navbar(props) {
       return authUser(form.username, form.password)
     }
   };
+
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
+  const responseGoogle = (response) => {
+    console.log(response);
+    console.log(response.accessToken);
+    
+    
+    localStorage.setItem('token',response.accessToken);
+    validateUser();
+  }
 
   return (
     <Row className="App-Navbar">
@@ -509,6 +523,26 @@ function Navbar(props) {
                 </InputGroup.Append>
               </InputGroup>
             </div>
+            <Row>
+            <div>
+              <FacebookLogin
+                            appId="277106176566024"
+                            fields="name,email,picture"
+                            responseType='code'
+                            callback={responseFacebook}
+                            className="btnFacebook"
+                        />
+                        </div>
+                        <div>
+                        <GoogleLogin
+                            clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
+                            buttonText="LOGIN WITH GOOGLE"
+                            onSuccess={responseGoogle}
+                            onFailure={responseGoogle}
+                            className="btnGoogle"
+                        />
+          </div>
+          </Row>
             <Row className="justify-content-center">
               <Button
                 onClick={clickLoginButton()}
