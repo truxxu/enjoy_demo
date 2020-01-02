@@ -13,4 +13,4 @@ visualmente
 
 ## Lista de chequeo
 
-  - [] Los cambios se probaron localmente 
+- [ ] Los cambios se probaron localmente 
