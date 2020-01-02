@@ -524,23 +524,23 @@ function Navbar(props) {
               </InputGroup>
             </div>
             <Row>
-            <div>
-              <FacebookLogin
-                            appId="277106176566024"
-                            fields="name,email,picture"
-                            responseType='code'
-                            callback={responseFacebook}
-                            className="btnFacebook"
-                        />
-                        </div>
-                        <div>
-                        <GoogleLogin
-                            clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
-                            buttonText="LOGIN WITH GOOGLE"
-                            onSuccess={responseGoogle}
-                            onFailure={responseGoogle}
-                            className="btnGoogle"
-                        />
+              <div>
+                <FacebookLogin
+                  appId="277106176566024"
+                  fields="name,email,picture"
+                  responseType='code'
+                  callback={responseFacebook}
+                  className="btnFacebook"
+                />
+              </div>
+              <div>
+                <GoogleLogin
+                  clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
+                  buttonText="LOGIN WITH GOOGLE"
+                  onSuccess={responseGoogle}
+                  onFailure={responseGoogle}
+                  className="btnGoogle"
+                />
           </div>
           </Row>
             <Row className="justify-content-center">
