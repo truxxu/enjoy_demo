@@ -18,7 +18,11 @@ export const authUser = (username, password) => dispatch => {
       localStorage.setItem('token',res.data.token);
     })
     .catch(err =>{
-      window.alert("No se pudo realizar la autenticación.");
+      let errorMessage = '';
+      if(err.response) {
+        errorMessage = `\nDatos incorrectos.`;
+      }
+      window.alert("No se pudo completar el registro. " + errorMessage);
     });
 };
 
@@ -40,8 +44,11 @@ export const validateUser = () => dispatch => {
       });
     })
     .catch(err =>{
+      localStorage.removeItem('token');
+      dispatch({
+        type: USER_LOGOUT
+      });
       window.alert("No se pudo realizar la validacion del usuario.");
-
     });
   }
 };
@@ -85,10 +92,25 @@ export const registerUser = (data) => dispatch => {
         type: LOGIN,
         payload: res.data
       });
-      localStorage.setItem('token',res.data.token);
+      localStorage.setItem('token', res.data.token);
     })
     .catch(err =>{
-      window.alert("No se pudo completar el registro");
+      let errorMessage = '';
+      if(err.response) {
+        let errors = err.response.data
+        const ATTRIBUTES = {
+          first_name: 'Nombres',
+          last_name: 'Apellidos',
+          phone: 'Celular',
+          username: 'Correo',
+          birth_date: 'Fecha de nacimiento',
+          password: 'Constraseña',
+        }
+        for (let key in errors) {
+          errorMessage += `\n${ATTRIBUTES[key]}: ${errors[key]}`;
+        }
+      }
+      window.alert("No se pudo completar el registro. " + errorMessage);
     });
 };
 
