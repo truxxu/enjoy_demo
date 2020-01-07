@@ -22,6 +22,10 @@ function Filters(props) {
   const renderZone = () => {
     return filters.cities.map(city => {
       if (filters.city === city.id) {
+        const filter = city.area.find(area => area.name === 'Ver todas')
+        if (filter === undefined) {
+          const allArea = city.area.unshift({id: 99, name: 'Ver todas'})
+        }
         return city.area.map(area => {
           return (
             <Dropdown.Item
@@ -33,7 +37,11 @@ function Filters(props) {
                   :
                   '' }` }
               onClick={() => {
-                updateFilters({ zone: area.id });
+                if (area.name !== 'Ver todas') {
+                  updateFilters({ zone: area.id });
+                } else {
+                  updateFilters({ zone: '' });
+                }
                 handleClose();
               }}
               variant="none"
@@ -69,6 +77,10 @@ function Filters(props) {
 
   const renderCategories = cat => {
     if (activeItem !== null) {
+      const filter = activeItem.sub_categories.find(cat => cat.name === 'Ver todos')
+      if (filter === undefined) {
+        const allCat = activeItem.sub_categories.unshift({id: 99, name: 'Ver todos'})
+      }
       return activeItem.sub_categories.map(cat => {
         return (
           <Dropdown.Item
@@ -80,7 +92,11 @@ function Filters(props) {
                 :
                 '' }` }
             onClick={() => {
-              updateFilters({ sub_category: cat.id });
+              if (cat.name !== 'Ver todos') {
+                updateFilters({ sub_category: cat.id })
+              } else {
+                updateFilters({ sub_category: '' })
+              }
               handleClose();
             }}
             variant="none"
