@@ -218,13 +218,13 @@ function Filters(props) {
       <Modal className="Filter-Modal" show={show} onHide={handleClose}>
         <div className="Filter-Modal-Title">
           <a style={{ visibility: "hidden" }}>X</a>
-          <div>Filtra</div>
-          <a href="" onClick={handleClose} className="Modal-Close">
+          <div className="Mobile-Filter-Text" >Filtra</div>
+          <a href="" onClick={handleClose} className="Modal-Close Mobile-Filter-Text">
             X
           </a>
         </div>
         <div className="Filter-Switch">
-          <div>Ver ofertas</div>
+          <div className="Mobile-Filter-Text">Ver ofertas</div>
           <Form className="Filter-Switch-Text">
             <Form.Check
               type="switch"
@@ -238,7 +238,7 @@ function Filters(props) {
         </div>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div className="">
+            <div className="Mobile-Filter-Text">
               <span className="icon-campana Filter-Icon"></span>
               Buscar Reserva
             </div>
@@ -294,7 +294,7 @@ function Filters(props) {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div>
+            <div className="Mobile-Filter-Text">
               <span className="icon-controles Filter-Icon"></span>
               Servicio
             </div>
@@ -306,7 +306,7 @@ function Filters(props) {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div>
+            <div className="Mobile-Filter-Text">
               <span className="icon-ubicacion Filter-Icon"></span>
               Ciudad
             </div>
@@ -318,7 +318,7 @@ function Filters(props) {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div className="">
+            <div className="Mobile-Filter-Text">
               <span className="icon-objetivo Filter-Icon"></span>
               Zona
             </div>
