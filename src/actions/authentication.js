@@ -3,6 +3,8 @@ import { env } from "../env";
 import { LOGIN } from ".";
 import { USER } from ".";
 import { USER_LOGOUT } from ".";
+import { UPDATE_USER } from ".";
+import { UPDATE_USER_FIELD } from ".";
 
 export const authUser = (username, password) => dispatch => {
   axios
@@ -40,7 +42,7 @@ export const validateUser = () => dispatch => {
     .then(res => {
       dispatch({
         type: USER,
-        payload: res.data
+        payload: { user: res.data, token: token}
       });
     })
     .catch(err =>{
@@ -73,6 +75,38 @@ export const logOut = () => dispatch => {
     })
     .catch(err =>{
       window.alert("No se pudo realizar el cierre de sesión.");
+    });
+  }
+};
+
+export const updateUserField = (data) => dispatch => {
+    dispatch({
+      type: UPDATE_USER_FIELD,
+      payload: data
+    });
+
+};
+
+export const updateUser = (data) => dispatch => {
+  let token = localStorage.getItem('token');
+  if(token!=null){
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
+    };
+    axios
+    .put(env.apiUrl + "auth/user/", data, {
+      headers: headers
+    })
+    .then(res => {
+      dispatch({
+        type: USER,
+        payload: { user: res.data, token: token}
+      });
+      validateUser();
+    })
+    .catch(err =>{
+      window.alert("No se pudo actualizar el usuario.");
     });
   }
 };
