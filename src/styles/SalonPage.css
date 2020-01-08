@@ -115,3 +115,27 @@ span.icon-tienda {
     height: 385px;
   }
 }
+
+.SalonPage-Nav {
+  background-color: var(--color-blanco);
+}
+
+.SalonPage-Nav-Button {
+  padding: 1em 1em 1em 0.5em;
+  cursor: pointer;
+}
+
+.SalonPage-Nav-Container{
+  margin-bottom: -8px;
+}
+
+.SalonPage-About{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.SalonPage-Iframe{
+  width: 65%;
+  height: 300px;
+  border: 0;
+}

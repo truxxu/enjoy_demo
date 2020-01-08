@@ -15,6 +15,10 @@ import { getSalon, getSalonServices } from "../actions/salon";
 function SalonPage(props) {
   const { getSalon, activeItem, match } = props;
   let id = match.params.id;
+  
+  const state = {
+    random: 0
+  }
 
   useEffect(() => {
     getSalon(id);
@@ -90,6 +94,21 @@ function SalonPage(props) {
     }
     return images;
   };
+
+  const renderMapUrl = function() {
+    let mapUrlSalon = "https://maps.google.com/maps?q="+activeItem.latitude+","+activeItem.longitude+"&hl=es&amp&output=embed";
+    return mapUrlSalon;
+  }
+
+  const scrollToAbout = url => {
+    var elmnt = document.getElementById("idSalonPageAbout");
+    let options = {
+      behavior: "auto",
+      block:    "end",
+    };
+    elmnt.scrollIntoView(options);
+  };
+ 
   return (
     <Container fluid className="Salon-Page d-flex flex-column">
       <Navbar />
@@ -130,9 +149,27 @@ function SalonPage(props) {
           </Row>
         </Container>
       </Row>
-      <Row className="SalonPage-Body">
+      <Row className="SalonPage-Nav border-bottom">
+        <Container className="SalonPage-Nav-Container">
+          <Row>
+            <h3 className="SalonPage-Nav-Button border-right">SERVICIOS</h3>
+            <h3 className="SalonPage-Nav-Button" onClick={() => scrollToAbout()}  >SOBRE EL SALÓN</h3>
+          </Row>
+        </Container>
+      </Row>
+      <Row className="SalonPage-Body" >
         <Container>
           <ServiceList salonId={id} schedule={activeItem.schedule} />
+        </Container>
+      </Row>
+      <Row className="SalonPage-About" id="idSalonPageAbout">
+        <Container>
+          <h3>Sobre el salón</h3>
+          <p className="col-md-8">{ activeItem.description }</p>
+          {
+            activeItem.latitude!==undefined && activeItem.longitude!==undefined &&
+              <iframe  className="SalonPage-Iframe" src = {renderMapUrl()}></iframe> 
+          }
         </Container>
       </Row>
       <AlliesSlider />
