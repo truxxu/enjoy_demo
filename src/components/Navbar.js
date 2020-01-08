@@ -20,7 +20,7 @@ import "../styles/Navbar.css";
 import { setCategory } from "../actions/categories";
 import { getCategories } from "../actions/categories";
 import SearchInput from "./SearchInput";
-import { validateUser, logOut, registerUser, authUser } from "../actions/authentication";
+import { validateUser, logOut, registerUser, authUser, socialAuth } from "../actions/authentication";
 
 function Navbar(props) {
 
@@ -39,7 +39,7 @@ function Navbar(props) {
   });
   const [keyMask, setMask] = useState(true);
 
-  const { authUser, list, getCategories, setCategory, loggedIn, validateUser, logOut, token, registerUser } = props;
+  const { authUser, list, getCategories, setCategory, loggedIn, validateUser, logOut, token, registerUser, socialAuth } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -197,14 +197,13 @@ function Navbar(props) {
   };
 
   const responseFacebook = (response) => {
-    console.log(response);
+    socialAuth(response.email, response.accessToken, 'facebook');
+    setShow(false);
+    validateUser();
   }
   const responseGoogle = (response) => {
-    console.log(response);
-    console.log(response.accessToken);
-    
-    
-    localStorage.setItem('token',response.accessToken);
+    socialAuth(response.profileObj.email, response.tokenId, 'google');
+    setShow(false);
     validateUser();
   }
 
@@ -243,7 +242,7 @@ function Navbar(props) {
             </div>
           </div>
           {
-            token===null || token === 'undefined' || token === '' ?
+            token===null || token === 'undefined' || token === '' || token === undefined  ?
              <div className="col-auto d-flex align-items-center">
                 <Button
                   onClick={ loggedIn ? null : handleShow }
@@ -576,6 +575,7 @@ const mapDispatchToProps = {
   logOut,
   registerUser,
   authUser,
+  socialAuth
 };
 
 Navbar.prototype = {
@@ -587,6 +587,7 @@ Navbar.prototype = {
   logOut: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
   authUser: PropTypes.func.isRequired,
+  socialAuth: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
