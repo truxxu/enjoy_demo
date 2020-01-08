@@ -469,6 +469,31 @@ function Navbar(props) {
             eventKey="login"
             title="INICIAR SESIÓN"
           >
+            <Row className="justify-content-center">
+              <FacebookLogin
+                appId="754706191708393"
+                fields="name,email,picture"
+                textButton="INGRESAR CON FACEBOOK"
+                responseType='code'
+                icon="fa-facebook"
+                cssClass="btnFacebook"
+                callback={responseFacebook}
+              />
+            </Row>
+            <Row className="justify-content-center">
+              <GoogleLogin
+                clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
+                className="btnGoogle"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+              >
+                <i className="fa fa-google"/> <span>INGRESAR CON GOOGLE</span> 
+              </GoogleLogin>
+            </Row>
+            <Row className="justify-content-center mb-3">
+              <li type="circle">Utiliza tu mail</li>
+            </Row>
+
             <div className="Modal-Input-Box">
                <label
                 className={
@@ -526,26 +551,6 @@ function Navbar(props) {
                 </InputGroup.Append>
               </InputGroup>
             </div>
-            <Row>
-              <div>
-                <FacebookLogin
-                  appId="277106176566024"
-                  fields="name,email,picture"
-                  responseType='code'
-                  callback={responseFacebook}
-                  className="btnFacebook"
-                />
-              </div>
-              <div>
-                <GoogleLogin
-                  clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
-                  buttonText="LOGIN WITH GOOGLE"
-                  onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
-                  className="btnGoogle"
-                />
-          </div>
-          </Row>
             <Row className="justify-content-center">
               <Button
                 onClick={clickLoginButton}
