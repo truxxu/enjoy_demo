@@ -39,7 +39,7 @@ function Navbar(props) {
   });
   const [keyMask, setMask] = useState(true);
 
-  const { list, getCategories, setCategory, loggedIn, validateUser, logOut, token } = props;
+  const { authUser, list, getCategories, setCategory, loggedIn, validateUser, logOut, token, registerUser } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -167,7 +167,7 @@ function Navbar(props) {
     }
   };
 
-    const clickRegisterButton = () => {
+  const clickRegisterButton = () => {
     if (terms.conditions &&
         terms.privacy &&
         form.first_name !== '' &&
@@ -176,7 +176,8 @@ function Navbar(props) {
         form.password !== '' &&
         form.phone !== '' &&
         form.birth_date !== '') {
-      return registerUser(form)
+      registerUser(form);
+      handleClose();
     }
   };
 
@@ -190,7 +191,8 @@ function Navbar(props) {
 
     const clickLoginButton = () => {
     if (form.username !== '' && form.password !== '') {
-      return authUser(form.username, form.password)
+      authUser(form.username, form.password)
+      handleClose();
     }
   };
 
@@ -328,7 +330,7 @@ function Navbar(props) {
                   <InputGroup className="mb-3">
                     <FormControl
                       className="Modal-Input"
-                      placeholder="DD/MM/AA"
+                      placeholder="DD/MM/AAAA"
                       aria-label="birth_date"
                       aria-describedby="basic-addon1"
                       onChange={event => writeForm(
@@ -428,6 +430,7 @@ function Navbar(props) {
             <Row className="Modal-Row Terms">
               <InputGroup.Checkbox
                 aria-label="terms"
+                className="checkbox"
                 checked={terms.conditions}
                 onChange={ () => setTerms({
                   ...terms,
@@ -442,6 +445,7 @@ function Navbar(props) {
             <Row className="Modal-Row Terms">
               <InputGroup.Checkbox
                 aria-label="privacy"
+                className="checkbox"
                 checked={terms.privacy}
                 onChange={ () => setTerms({
                   ...terms,
@@ -455,7 +459,7 @@ function Navbar(props) {
             </Row>
             <Row className="justify-content-center">
               <Button
-                onClick={clickRegisterButton()}
+                onClick={clickRegisterButton}
                 className={renderRegisterButton()}>
                 Registrarme
               </Button>
@@ -545,7 +549,7 @@ function Navbar(props) {
           </Row>
             <Row className="justify-content-center">
               <Button
-                onClick={clickLoginButton()}
+                onClick={clickLoginButton}
                 className={renderLoginButton()}
               >
                 Acceder
@@ -583,7 +587,6 @@ Navbar.prototype = {
   logOut: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
   authUser: PropTypes.func.isRequired,
-
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

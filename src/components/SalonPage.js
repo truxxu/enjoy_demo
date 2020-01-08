@@ -132,7 +132,7 @@ function SalonPage(props) {
       </Row>
       <Row className="SalonPage-Body">
         <Container>
-          <ServiceList salonId={id} />
+          <ServiceList salonId={id} schedule={activeItem.schedule} />
         </Container>
       </Row>
       <AlliesSlider />

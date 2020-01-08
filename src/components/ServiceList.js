@@ -15,6 +15,7 @@ import { getSalonServices } from "../actions/salon";
 function ServiceList(props) {
   const { getCategories, list, getSalonServices, servicesList } = props;
   const salonId = props.salonId;
+  const scheduleSalon = props.schedule;
 
   useEffect(() => {
     getCategories();
@@ -27,6 +28,49 @@ function ServiceList(props) {
   useEffect(() => {
     setFilteredServices(servicesList);
   }, [servicesList]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, true);
+  }, []);
+
+  const handleScroll = () => {
+    let Reserve = document.querySelector(".Reserve");
+    var widthBrowser = window.outerWidth;
+
+    if (widthBrowser > 768) {
+      if (window.pageYOffset >= 486) {
+        Reserve.classList.add("fixed-top");
+        Reserve.classList.add("mt-md-5");
+        Reserve.classList.add("pt-md-4");
+      } else {
+        Reserve.classList.remove("fixed-top");
+        Reserve.classList.remove("mt-md-5");
+        Reserve.classList.remove("pt-md-4");
+      }
+    }
+  };
+
+  const renderschedule = schedule => {
+    let days = {
+      monday: "lunes",
+      tuesday: "martes",
+      wednesday: "miercoles",
+      thursday: "jueves",
+      friday: "viernes",
+      saturday: "sabado",
+      sunday: "domingo"
+    };
+    return (
+      <div className="d-flex justify-content-between" key={schedule.day}>
+        <p className="Schedule-Day">{days[schedule.day]}</p>
+        <div className="Schedule-Hour d-flex">
+          <p>{schedule.opening_hour.split(":", 2).join(".")}</p>
+          <p className="mx-1">-</p>
+          <p>{schedule.closing_hour.split(":", 2).join(".")}</p>
+        </div>
+      </div>
+    );
+  };
 
   const [filteredServices, setFilteredServices] = useState([]);
   const [activeCategory, setActiveCategory] = useState("");
@@ -117,7 +161,42 @@ function ServiceList(props) {
           <h6 className="Off-Service pt-4">No hay servicios</h6>
         )}
       </Col>
-      <Col></Col>
+      <Col>
+        <Row className="Reserve-Mobile d-md-none">
+          <button className="Reserve-Button my-3">Reserva Ya!</button>
+        </Row>
+        <Row className="Reserve flex-column my-4 pb-4 align-items-center ">
+          <h1 className="Price-Reserve">$130.000</h1>
+          <button className="Reserve-Button my-3">Reserva Ya!</button>
+          <p className="Reserve-Description px-4">
+            Lorem ipsum dolor sit amet, consect etuer adipiscing elit.{" "}
+          </p>
+        </Row>
+        <Row className="Schedule my-mb-5 py-5 mx-2 flex-column">
+          <h3 className="Schedule-Title">Horarios</h3>
+          {scheduleSalon
+            ? scheduleSalon.map(scheduleSalon => renderschedule(scheduleSalon))
+            : null}
+        </Row>
+        <Row className="Score-Salon-Row mx-2 flex-column">
+          <h1 className="Score-Salon-Title">Calificación</h1>
+          <p>
+            Badasa en usuarios que han reservado por{" "}
+            <strong className="Score-Salon-ENJOY">EN JOY!</strong>
+          </p>
+          <div className="Score-Salon align-self-center">
+            <span className="icon-estrella_full"></span>
+            <span className="icon-estrella_full"></span>
+            <span className="icon-estrella_full"></span>
+            <span className="icon-estrella_med"></span>
+            <span className="icon-estrella_none"></span>
+          </div>
+          <div className="d-flex justify-content-center">
+            <h1 className="Score-Point">5,0</h1>
+            <h3 className="Score-Point-  align-self-center">/5</h3>
+          </div>
+        </Row>
+      </Col>
     </Row>
   );
 }

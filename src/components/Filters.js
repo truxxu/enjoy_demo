@@ -22,13 +22,26 @@ function Filters(props) {
   const renderZone = () => {
     return filters.cities.map(city => {
       if (filters.city === city.id) {
+        const filter = city.area.find(area => area.name === 'Ver todas')
+        if (filter === undefined) {
+          const allArea = city.area.unshift({id: 99, name: 'Ver todas'})
+        }
         return city.area.map(area => {
           return (
             <Dropdown.Item
               key={area.id}
-              className="Filter-List-Item"
+              className={
+                `Filter-List-Item
+                ${ filters.zone === area.id ?
+                  ' Filter-List-Item-Active'
+                  :
+                  '' }` }
               onClick={() => {
-                updateFilters({ zone: area.id });
+                if (area.name !== 'Ver todas') {
+                  updateFilters({ zone: area.id });
+                } else {
+                  updateFilters({ zone: '' });
+                }
                 handleClose();
               }}
               variant="none"
@@ -41,27 +54,16 @@ function Filters(props) {
     });
   };
 
-  const renderReserveOption = (option, index) => {
-    return (
-      <Dropdown.Item
-        key={index}
-        className="Filter-List-Item"
-        onClick={() => {
-          updateFilters({ reserve: option });
-          handleClose();
-        }}
-        variant="none">
-        {option == 'is_at_home' ? 'A domicilio': null}
-        {option == 'is_at_salon' ? 'En salón' : null}
-      </Dropdown.Item>
-    );
-  };
-
   const renderCities = city => {
     return (
       <Dropdown.Item
         key={city.id}
-        className="Filter-List-Item"
+        className={
+          `Filter-List-Item
+          ${ filters.city === city.id ?
+            ' Filter-List-Item-Active'
+            :
+            '' }` }
         onClick={() => {
           updateFilters({ city: city.id });
           handleClose();
@@ -75,13 +77,26 @@ function Filters(props) {
 
   const renderCategories = cat => {
     if (activeItem !== null) {
+      const filter = activeItem.sub_categories.find(cat => cat.name === 'Ver todos')
+      if (filter === undefined) {
+        const allCat = activeItem.sub_categories.unshift({id: 99, name: 'Ver todos'})
+      }
       return activeItem.sub_categories.map(cat => {
         return (
           <Dropdown.Item
             key={cat.id}
-            className="Filter-List-Item"
+            className={
+              `Filter-List-Item
+              ${ filters.sub_category === cat.id ?
+                ' Filter-List-Item-Active'
+                :
+                '' }` }
             onClick={() => {
-              updateFilters({ sub_category: cat.id });
+              if (cat.name !== 'Ver todos') {
+                updateFilters({ sub_category: cat.id })
+              } else {
+                updateFilters({ sub_category: '' })
+              }
               handleClose();
             }}
             variant="none"
@@ -96,8 +111,8 @@ function Filters(props) {
   };
 
   return (
-    <div class="row Filters-Row">
-      <div class="container">
+    <div className="row Filters-Row">
+      <div className="container">
       <div
         className="ServiceList-Filter d-md-flex
         justify-content-around d-none">
@@ -109,7 +124,12 @@ function Filters(props) {
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List w-100">
             <Dropdown.Item
-              className="Filter-List-Item"
+            className={
+              `Filter-List-Item
+              ${ filters.reserve === "is_at_home" ?
+                ' Filter-List-Item-Active'
+                :
+                '' }` }
               onClick={() => {
                 updateFilters({ reserve: "is_at_home" });
                 handleClose();
@@ -119,7 +139,12 @@ function Filters(props) {
               A domicilio
             </Dropdown.Item>
             <Dropdown.Item
-              className="Filter-List-Item"
+              className={
+                `Filter-List-Item
+                ${ filters.reserve === "is_at_salon" ?
+                  ' Filter-List-Item-Active'
+                  :
+                  '' }` }
               onClick={() => {
                 updateFilters({ reserve: "is_at_salon" });
                 handleClose();
@@ -127,6 +152,21 @@ function Filters(props) {
               variant="none"
             >
               En salón
+            </Dropdown.Item>
+            <Dropdown.Item
+              className={
+                `Filter-List-Item
+                ${ filters.reserve === "is_both" ?
+                  ' Filter-List-Item-Active'
+                  :
+                  '' }` }
+              onClick={() => {
+                updateFilters({ reserve: "is_both" });
+                handleClose();
+              }}
+              variant="none"
+            >
+              Ver todos
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
@@ -157,13 +197,18 @@ function Filters(props) {
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {filters.city === "" && (
-              <div className="Filter-List-Item">Selecciona una ciudad</div>
-            )}
+            {filters.city === "" &&
+              (
+                <div className="Filter-List-Item">
+                  Selecciona una ciudad
+                </div>
+              )}
             {renderZone()}
           </Dropdown.Menu>
         </Dropdown>
-        <div className="Filter-Switch d-flex align-items-center">
+        <div
+          className="Filter-Switch flex-grow-1 d-md-flex justify-content-center
+            align-items-center">
           Ver ofertas
           <Form className="Filter-Switch-Text">
             <Form.Check
@@ -189,13 +234,13 @@ function Filters(props) {
       <Modal className="Filter-Modal" show={show} onHide={handleClose}>
         <div className="Filter-Modal-Title">
           <a style={{ visibility: "hidden" }}>X</a>
-          <div>Filtra</div>
-          <a href="" onClick={handleClose} className="Modal-Close">
+          <div className="Mobile-Filter-Text" >Filtra</div>
+          <a href="" onClick={handleClose} className="Modal-Close Mobile-Filter-Text">
             X
           </a>
         </div>
         <div className="Filter-Switch">
-          <div>Ver ofertas</div>
+          <div className="Mobile-Filter-Text">Ver ofertas</div>
           <Form className="Filter-Switch-Text">
             <Form.Check
               type="switch"
@@ -209,21 +254,63 @@ function Filters(props) {
         </div>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div className="">
+            <div className="Mobile-Filter-Text">
               <span className="icon-campana Filter-Icon"></span>
               Buscar Reserva
             </div>
             <span className="icon-despleg Filter-Icon-Arrow"></span>
           </Dropdown.Toggle>
           <Dropdown.Menu className="Filter-Dropdown-List">
-            {filters.reserve_options.map((option, index) =>
-              renderReserveOption(option, index)
-            )}
+            <Dropdown.Item
+            className={
+              `Filter-List-Item
+              ${ filters.reserve === "is_at_home" ?
+                ' Filter-List-Item-Active'
+                :
+                '' }` }
+              onClick={() => {
+                updateFilters({ reserve: "is_at_home" });
+                handleClose();
+              }}
+              variant="none"
+            >
+              A domicilio
+            </Dropdown.Item>
+            <Dropdown.Item
+              className={
+                `Filter-List-Item
+                ${ filters.reserve === "is_at_salon" ?
+                  ' Filter-List-Item-Active'
+                  :
+                  '' }` }
+              onClick={() => {
+                updateFilters({ reserve: "is_at_salon" });
+                handleClose();
+              }}
+              variant="none"
+            >
+              En salón
+            </Dropdown.Item>
+            <Dropdown.Item
+              className={
+                `Filter-List-Item
+                ${ filters.reserve === "is_both" ?
+                  ' Filter-List-Item-Active'
+                  :
+                  '' }` }
+              onClick={() => {
+                updateFilters({ reserve: "is_both" });
+                handleClose();
+              }}
+              variant="none"
+            >
+              Ver todos
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div>
+            <div className="Mobile-Filter-Text">
               <span className="icon-controles Filter-Icon"></span>
               Servicio
             </div>
@@ -235,7 +322,7 @@ function Filters(props) {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div>
+            <div className="Mobile-Filter-Text">
               <span className="icon-ubicacion Filter-Icon"></span>
               Ciudad
             </div>
@@ -247,7 +334,7 @@ function Filters(props) {
         </Dropdown>
         <Dropdown>
           <Dropdown.Toggle className="Filter-Button">
-            <div className="">
+            <div className="Mobile-Filter-Text">
               <span className="icon-objetivo Filter-Icon"></span>
               Zona
             </div>

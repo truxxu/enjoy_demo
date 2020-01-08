@@ -3,6 +3,8 @@ import { env } from "../env";
 import { LOGIN } from ".";
 import { USER } from ".";
 import { USER_LOGOUT } from ".";
+import { UPDATE_USER } from ".";
+import { UPDATE_USER_FIELD } from ".";
 
 export const authUser = (username, password) => dispatch => {
   axios
@@ -18,7 +20,11 @@ export const authUser = (username, password) => dispatch => {
       localStorage.setItem('token',res.data.token);
     })
     .catch(err =>{
-      window.alert("No se pudo realizar la autenticación.");
+      let errorMessage = '';
+      if(err.response) {
+        errorMessage = `\nDatos incorrectos.`;
+      }
+      window.alert("No se pudo completar el registro. " + errorMessage);
     });
 };
 
@@ -36,12 +42,15 @@ export const validateUser = () => dispatch => {
     .then(res => {
       dispatch({
         type: USER,
-        payload: res.data
+        payload: { user: res.data, token: token}
       });
     })
     .catch(err =>{
+      localStorage.removeItem('token');
+      dispatch({
+        type: USER_LOGOUT
+      });
       window.alert("No se pudo realizar la validacion del usuario.");
-
     });
   }
 };
@@ -70,6 +79,38 @@ export const logOut = () => dispatch => {
   }
 };
 
+export const updateUserField = (data) => dispatch => {
+    dispatch({
+      type: UPDATE_USER_FIELD,
+      payload: data
+    });
+
+};
+
+export const updateUser = (data) => dispatch => {
+  let token = localStorage.getItem('token');
+  if(token!=null){
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
+    };
+    axios
+    .put(env.apiUrl + "auth/user/", data, {
+      headers: headers
+    })
+    .then(res => {
+      dispatch({
+        type: USER,
+        payload: { user: res.data, token: token}
+      });
+      validateUser();
+    })
+    .catch(err =>{
+      window.alert("No se pudo actualizar el usuario.");
+    });
+  }
+};
+
 export const registerUser = (data) => dispatch => {
   axios
     .post(env.apiUrl + "auth/register/", {
@@ -85,10 +126,25 @@ export const registerUser = (data) => dispatch => {
         type: LOGIN,
         payload: res.data
       });
-      localStorage.setItem('token',res.data.token);
+      localStorage.setItem('token', res.data.token);
     })
     .catch(err =>{
-      window.alert("No se pudo completar el registro");
+      let errorMessage = '';
+      if(err.response) {
+        let errors = err.response.data
+        const ATTRIBUTES = {
+          first_name: 'Nombres',
+          last_name: 'Apellidos',
+          phone: 'Celular',
+          username: 'Correo',
+          birth_date: 'Fecha de nacimiento',
+          password: 'Constraseña',
+        }
+        for (let key in errors) {
+          errorMessage += `\n${ATTRIBUTES[key]}: ${errors[key]}`;
+        }
+      }
+      window.alert("No se pudo completar el registro. " + errorMessage);
     });
 };
 

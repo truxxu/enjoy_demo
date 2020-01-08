@@ -13,30 +13,35 @@ import { getServices } from "../actions/services";
 import { getCategory } from "../actions/categories";
 
 function ServiceListPage(props) {
+  const {
+    getServices,
+    getCategory,
+    servicesList,
+    activeCategory,
+    match
+  } = props;
 
-  const { getServices, getCategory, servicesList, activeCategory, match } = props;
   const activeCategoryId = match.params.id;
 
   useEffect(() => {
     getServices(activeCategoryId);
-  }, []);
+  }, [activeCategoryId]);
 
   useEffect(() => {
     getCategory(activeCategoryId);
-  }, []);
+  }, [activeCategoryId]);
 
-  const renderService = (service) => {
+  const renderService = service => {
     if (servicesList.length !== 0) {
-      return servicesList.map(service =>
-          <ServiceListItem key= {service.id} data={service} />
-      )
-    }
-    else {
-      return(
+      return servicesList.map(service => (
+        <ServiceListItem key={service.id} data={service} />
+      ));
+    } else {
+      return (
         <div className="Filter-Result-Placeholder">
           No se encontraron servicios
         </div>
-      )
+      );
     }
   };
 
@@ -45,7 +50,9 @@ function ServiceListPage(props) {
       <Navbar />
       <Header data={activeCategory} />
       <Filters />
-      <Container>{servicesList.map(service => renderService(service))}</Container>
+      <Container>
+        {servicesList.map(service => renderService(service))}
+      </Container>
       <Footer />
     </Container>
   );
@@ -54,20 +61,20 @@ function ServiceListPage(props) {
 const mapStateToProps = state => {
   return {
     servicesList: state.services.list,
-    activeCategory: state.categories.activeItem,
+    activeCategory: state.categories.activeItem
   };
 };
 
 const mapDispatchToProps = {
   getServices,
-  getCategory,
+  getCategory
 };
 
 ServiceListPage.prototype = {
   activeCategory: PropTypes.object.isRequired,
   getServices: PropTypes.func.isRequired,
   getCategory: PropTypes.func.isRequired,
-  servicesList: PropTypes.array.isRequired,
+  servicesList: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceListPage);

@@ -27,8 +27,9 @@
 }
 
 .Filter-Icon {
-  margin-right: 5px;
+  margin-right: 20px !important;
   color: var(--color-gris-oscuro);
+  font-size: 1.25em !important;
 }
 
 .Filter-Icon-Arrow {
@@ -42,6 +43,8 @@
   border-color: var(--color-gris-claro);
   font-family: "LatoRegular", sans-serif;
   color: var(--color-gris-oscuro);
+  z-index: 2;
+  background-color: white;
 }
 
 .Filter-Switch-Text {
@@ -51,7 +54,7 @@
 .Filter-Dropdown-List {
   margin: 0;
   border-radius: 0 0 20px 20px;
-  height: 100px;
+  max-height: 100px;
   overflow-y: auto;
   width: 100%;
   min-width: 0;
@@ -75,6 +78,10 @@
 .Filter-List-Item:hover {
   color: var(--color-verde-claro);
   background-color: transparent !important;
+}
+
+.Filter-List-Item-Active {
+  color: var(--color-verde-claro) !important;
 }
 
 .custom-control-input:checked ~ .custom-control-label::before {
@@ -141,7 +148,7 @@
   }
 
   .Filter-Switch {
-    padding: 1.5em;
+    padding: 1em 1.5em;
     border-style: solid;
     width: 100vw;
     border-width: 0 0 1px 0;
@@ -181,6 +188,12 @@
     color: var(--color-gris-oscuro);
     font-size: 20;
   }
+}
+
+.Mobile-Filter-Text {
+  font-family: "LatoRegular", sans-serif;
+  color: var(--color-negro);
+  font-size: 1.1em;
 }
 
 @media (min-width: 768px) {
