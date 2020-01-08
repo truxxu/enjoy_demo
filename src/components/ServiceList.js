@@ -31,6 +31,7 @@ function ServiceList(props) {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, true);
+    return () => window.removeEventListener("scroll", handleScroll, true);
   }, []);
 
   const handleScroll = () => {
@@ -47,6 +48,8 @@ function ServiceList(props) {
         Reserve.classList.remove("mt-md-5");
         Reserve.classList.remove("pt-md-4");
       }
+    } else {
+      Reserve.classList.remove("fixed-top");
     }
   };
 

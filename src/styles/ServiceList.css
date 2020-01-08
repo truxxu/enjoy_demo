@@ -114,9 +114,7 @@
   width: 380px;
   position: fixed;
   top: 30px;
-  right: 122px;
-  left: 870px;
-  z-index: 1030;
+  left: calc(100% - 35%);
   background-color: white;
 }
 
