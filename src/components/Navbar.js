@@ -11,6 +11,8 @@ import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import FacebookLogin from 'react-facebook-login'
+import GoogleLogin from 'react-google-login';
 
 import logoMobile from "../images/logo_black_yellow.png";
 import logoDesktop from "../images/logo_black_white.png";
@@ -18,7 +20,7 @@ import "../styles/Navbar.css";
 import { setCategory } from "../actions/categories";
 import { getCategories } from "../actions/categories";
 import SearchInput from "./SearchInput";
-import { validateUser, logOut, registerUser, authUser } from "../actions/authentication";
+import { validateUser, logOut, registerUser, authUser, socialAuth } from "../actions/authentication";
 
 function Navbar(props) {
 
@@ -37,7 +39,7 @@ function Navbar(props) {
   });
   const [keyMask, setMask] = useState(true);
 
-  const { authUser, list, getCategories, setCategory, loggedIn, validateUser, logOut, token, registerUser } = props;
+  const { authUser, list, getCategories, setCategory, loggedIn, validateUser, logOut, token, registerUser, socialAuth } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -194,6 +196,17 @@ function Navbar(props) {
     }
   };
 
+  const responseFacebook = (response) => {
+    socialAuth(response.email, response.accessToken, 'facebook');
+    setShow(false);
+    validateUser();
+  }
+  const responseGoogle = (response) => {
+    socialAuth(response.profileObj.email, response.tokenId, 'google');
+    setShow(false);
+    validateUser();
+  }
+
   return (
     <Row className="App-Navbar">
       <Container id="Navbar-Container">
@@ -229,7 +242,7 @@ function Navbar(props) {
             </div>
           </div>
           {
-            token===null || token === 'undefined' || token === '' ?
+            token===null || token === 'undefined' || token === '' || token === undefined  ?
              <div className="col-auto d-flex align-items-center">
                 <Button
                   onClick={ loggedIn ? null : handleShow }
@@ -456,6 +469,31 @@ function Navbar(props) {
             eventKey="login"
             title="INICIAR SESIÓN"
           >
+            <Row className="justify-content-center">
+              <FacebookLogin
+                appId="754706191708393"
+                fields="name,email,picture"
+                textButton="INGRESAR CON FACEBOOK"
+                responseType='code'
+                icon="fa-facebook"
+                cssClass="btnFacebook"
+                callback={responseFacebook}
+              />
+            </Row>
+            <Row className="justify-content-center">
+              <GoogleLogin
+                clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
+                className="btnGoogle"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+              >
+                <i className="fa fa-google"/> <span>INGRESAR CON GOOGLE</span> 
+              </GoogleLogin>
+            </Row>
+            <Row className="justify-content-center mb-3">
+              <li type="circle">Utiliza tu mail</li>
+            </Row>
+
             <div className="Modal-Input-Box">
                <label
                 className={
@@ -542,6 +580,7 @@ const mapDispatchToProps = {
   logOut,
   registerUser,
   authUser,
+  socialAuth
 };
 
 Navbar.prototype = {
@@ -553,6 +592,7 @@ Navbar.prototype = {
   logOut: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
   authUser: PropTypes.func.isRequired,
+  socialAuth: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

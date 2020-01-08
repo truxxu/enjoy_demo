@@ -148,3 +148,23 @@ export const registerUser = (data) => dispatch => {
     });
 };
 
+export const socialAuth = (username, tokenId, socialRed) => dispatch => {
+  axios
+    .post(env.apiUrl + 'auth/social/'+socialRed+'/', {
+        access_token: tokenId,
+        username: username
+    })
+    .then(res => {
+      dispatch({
+        type: LOGIN,
+        payload: res.data
+      });
+      if(res.data.token){
+        localStorage.setItem('token',res.data.token);
+      }
+    })
+    .catch(err =>{
+      window.alert("No se pudo iniciar sesión con " + socialRed);
+    });
+};
+
