@@ -127,7 +127,6 @@ export const registerUser = (data) => dispatch => {
         payload: res.data
       });
       localStorage.setItem('token', res.data.token);
-      window.alert("Registro exitoso!");
     })
     .catch(err =>{
       let errorMessage = '';
