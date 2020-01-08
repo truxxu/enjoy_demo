@@ -30,9 +30,16 @@
   .App-Header-Search .input-group-text {
     border-radius: 1.5em;
   }
+
 }
 @media (min-width: 768px) {
   .App-Header-Search {
     width: 560px;
+  }
+}
+
+@media (max-width: 767px) {
+  #Search-Input-Id-Mov {
+    display: flex !important
   }
 }
