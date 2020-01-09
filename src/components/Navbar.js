@@ -24,6 +24,11 @@ import { validateUser, logOut, registerUser, authUser, socialAuth } from "../act
 
 function Navbar(props) {
 
+  const [showAlert, setShowAlert] = useState(false);
+
+  const handleCloseAlert = () => setShowAlert(false);
+  const handleShowAlert = () => setShowAlert(true);
+
   const [show, setShow] = useState(false);
   const [form, writeForm] = useState({
     first_name: '',
@@ -39,7 +44,8 @@ function Navbar(props) {
   });
   const [keyMask, setMask] = useState(true);
 
-  const { authUser, list, getCategories, setCategory, loggedIn, validateUser, logOut, token, registerUser, socialAuth } = props;
+  const { authUser, list, getCategories, setCategory, loggedIn, validateUser,
+          logOut, token, registerUser, response, socialAuth } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -175,9 +181,11 @@ function Navbar(props) {
         form.username !== '' &&
         form.password !== '' &&
         form.phone !== '' &&
-        form.birth_date !== '') {
+        form.birth_date !== '' &&
+        response) {
       registerUser(form);
       handleClose();
+      handleShowAlert();
     }
   };
 
@@ -562,6 +570,26 @@ function Navbar(props) {
           </Tab.Container>
         </Tabs>
       </Modal>
+      <Modal
+        className="Register-Modal"
+        show={showAlert}
+        onHide={handleCloseAlert}
+        centered
+      >
+        <Row className="justify-content-center">
+          <div className="Alert-Modal-Text">
+            ¡Registro exitoso!
+          </div>
+        </Row>
+        <Row className="justify-content-center">
+          <Button
+            onClick={handleCloseAlert}
+            className="justify-content-center Modal-Button-Active Register-Modal-Button"
+          >
+            Aceptar
+          </Button>
+        </Row>
+      </Modal>
     </Row>
   );
 }
@@ -571,6 +599,7 @@ const mapStateToProps = state => {
     list: state.categories.list,
     loggedIn: state.authentication.loggedIn,
     token: state.authentication.token,
+    response: state.authentication.response,
   };
 };
 

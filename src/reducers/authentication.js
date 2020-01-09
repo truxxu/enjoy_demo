@@ -9,6 +9,7 @@ const initialState =  {
   currentUser: {},
   token : '',
   isLoading: true,
+  response: true
 };
 
 export default function(state = initialState, action) {
@@ -18,7 +19,8 @@ export default function(state = initialState, action) {
           ...state,
           currentUser: action.payload.user,
           token: action.payload.token,
-          loggedIn: true
+          loggedIn: true,
+          response: true
         };
       case USER:
         return {

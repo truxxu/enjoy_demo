@@ -166,9 +166,19 @@
   }
 }
 
+.Alert-Modal-Text {
+  margin-top: 40px;
+  font-family: "MontserratMedium", sans-serif;
+  color: var(--color-gris-oscuro);
+}
+
+.App-Navbar .modal-dialog .modal-dialog-centered {
+  max-width: 400px;
+}
+
 .btnFacebook{
   width: 300px;
-  height:35px;  
+  height:35px;
   background: #3b5998;
   color:white;
   font-family: Roboto, sans-serif;
