@@ -180,8 +180,8 @@
   color: var(--color-gris-oscuro);
 }
 
-.App-Navbar .modal-dialog .modal-dialog-centered {
-  max-width: 400px;
+.Register-Modal .modal-dialog {
+  max-width: 580px !important;
 }
 
 .btnFacebook{
