@@ -41,9 +41,8 @@ function Filters(props) {
                 if (area.name !== 'Ver todas') {
                   updateFilters({ zone: area.id });
                 } else {
-                  updateFilters({ zone: '' });
+                  updateFilters({ zone: '' })
                 }
-                handleClose();
               }}
               variant="none"
             >
@@ -66,8 +65,7 @@ function Filters(props) {
             :
             '' }` }
         onClick={() => {
-          updateFilters({ city: city.id });
-          handleClose();
+          updateFilters({ city: city.id })
         }}
         variant="none"
       >
@@ -98,7 +96,6 @@ function Filters(props) {
               } else {
                 updateFilters({ sub_category: '' })
               }
-              handleClose();
             }}
             variant="none"
           >
@@ -132,8 +129,7 @@ function Filters(props) {
                 :
                 '' }` }
               onClick={() => {
-                updateFilters({ reserve: "is_at_home" });
-                handleClose();
+                updateFilters({ reserve: "is_at_home" })
               }}
               variant="none"
             >
@@ -147,8 +143,7 @@ function Filters(props) {
                   :
                   '' }` }
               onClick={() => {
-                updateFilters({ reserve: "is_at_salon" });
-                handleClose();
+                updateFilters({ reserve: "is_at_salon" })
               }}
               variant="none"
             >
@@ -162,8 +157,7 @@ function Filters(props) {
                   :
                   '' }` }
               onClick={() => {
-                updateFilters({ reserve: "is_both" });
-                handleClose();
+                updateFilters({ reserve: "is_both" })
               }}
               variant="none"
             >
@@ -271,8 +265,7 @@ function Filters(props) {
                   :
                   '' }` }
                 onClick={() => {
-                  updateFilters({ reserve: "is_at_home" });
-                  handleClose();
+                  updateFilters({ reserve: "is_at_home" })
                 }}
                 variant="none"
               >
@@ -286,8 +279,7 @@ function Filters(props) {
                     :
                     '' }` }
                 onClick={() => {
-                  updateFilters({ reserve: "is_at_salon" });
-                  handleClose();
+                  updateFilters({ reserve: "is_at_salon" })
                 }}
                 variant="none"
               >
@@ -301,8 +293,7 @@ function Filters(props) {
                     :
                     '' }` }
                 onClick={() => {
-                  updateFilters({ reserve: "is_both" });
-                  handleClose();
+                  updateFilters({ reserve: "is_both" })
                 }}
                 variant="none"
               >
@@ -351,6 +342,7 @@ function Filters(props) {
           </Dropdown>
         </div>
         <Button
+          onClick={handleClose}
           className="App-Button">
           APLICAR FILTRO
         </Button>
