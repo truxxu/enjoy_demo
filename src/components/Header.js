@@ -11,22 +11,29 @@ function Header(props) {
   }
 
   return (
-    <Row className="Header-Row flex flex-column">
+    <Row className="Header-Row align-items-center flex-column">
       {data ? (
-        <img className="Header-Img " src={data.header_image} alt="logo" />
+        <img
+          className="Header-Img-Category "
+          src={data.header_image}
+          alt="logo"
+        />
       ) : (
         <div className="col-auto d-none d-md-flex align-self-center mt-5">
           <img className="App-Header-Image" src={logo} alt="logo" />,
         </div>
       )}
-      <div className="Header-Search align-self-center">
-        <h1 className="Header-Title ">
-          {data ? data.title : "Por que la belleza"}
-          <br />
-          <span className="Header-Subtitle">
-            {data ? data.sub_title : "es para todos"}
-          </span>
-        </h1>
+      <div className="Header-Search ">
+        {data ? (
+          <h1 className="Header-Title-Category ">{data.title} </h1>
+        ) : (
+          <h1 className="Header-Title ">Por que la belleza </h1>
+        )}
+        {data ? (
+          <h1 className="Header-Subtitle-Category ">{data.sub_title} </h1>
+        ) : (
+          <h1 className="Header-Subtitle ">es para todos </h1>
+        )}
         <div className="d-none d-md-flex">
           <SearchInput />
         </div>

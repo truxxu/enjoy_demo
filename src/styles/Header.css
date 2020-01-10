@@ -17,14 +17,38 @@
 
 .Header-Subtitle {
   font-family: "MontserratBlack", sans-serif;
-  font-size: 1.1em;
+  font-size: 2.8em;
   position: relative;
   bottom: 0.35rem;
+  text-align: center;
+}
+
+.Header-Img-Category {
+  height: 60vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  filter: brightness(0.7);
+}
+
+.Header-Title-Category {
+  font-size: 2.6em;
+  font-family: "MontserratRegular", sans-serif;
+  text-align: center;
+  color: white;
+}
+
+.Header-Subtitle-Category {
+  font-family: "MontserratBlack", sans-serif;
+  font-size: 2.8em;
+  position: relative;
+  bottom: 0.35rem;
+  text-align: center;
+  color: white;
 }
 
 .Header-Search {
   position: absolute;
-  top: 15.5rem;
+  top: 13.5rem;
 }
 
 @media (max-width: 768px) {
@@ -32,14 +56,22 @@
     font-size: 1.3em;
   }
 
+  .Header-Title-Category {
+    font-size: 1.3em;
+  }
+
+  .Header-Subtitle-Category {
+    font-size: 1.1em;
+  }
+
   .Header-Search {
     position: absolute;
-    top: 3rem;
+    top: 7rem;
   }
 
   .Header-Row {
     text-transform: uppercase;
     position: relative;
-    height: 24vh;
+    height: 30vh;
   }
 }
