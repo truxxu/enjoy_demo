@@ -139,6 +139,9 @@
   .modal-content {
     align-items: center;
     border: none;
+    height: 100%;
+    justify-content: space-between;
+    position: fixed;
   }
 
   .ServiceList-Container .dropdown {
@@ -200,4 +203,9 @@
   .Mobile-Filter-Button {
     display: none;
   }
+}
+
+.Filter-Modal .App-Button {
+  margin: 40px;
+  border-color: transparent;
 }
