@@ -427,7 +427,7 @@ function Navbar(props) {
                         onClick={() => setMask(!keyMask)}
                         className="Modal-Password"
                       >
-                        <span className="icon-lupa"></span>
+                        <span className="icon-ojo_cont"></span>
                       </Button>
                     </InputGroup.Append>
                   </InputGroup>
@@ -554,7 +554,7 @@ function Navbar(props) {
                     onClick={() => setMask(!keyMask)}
                     className="Modal-Password"
                   >
-                    <span className="icon-lupa"></span>
+                    <span className="icon-ojo_cont"></span>
                   </Button>
                 </InputGroup.Append>
               </InputGroup>
