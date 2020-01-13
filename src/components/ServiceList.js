@@ -181,7 +181,7 @@ function ServiceList(props) {
             ? scheduleSalon.map(scheduleSalon => renderschedule(scheduleSalon))
             : null}
         </Row>
-        <Row className="Score-Salon-Row mx-2 flex-column">
+        <Row className="Score-Salon-Row mx-2 flex-column mt-4">
           <h1 className="Score-Salon-Title">Calificación</h1>
           <p>
             Badasa en usuarios que han reservado por{" "}
