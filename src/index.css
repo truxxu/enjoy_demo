@@ -54,11 +54,11 @@ body {
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?ar3k7f');
-  src:  url('fonts/icomoon.eot?ar3k7f#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?ar3k7f') format('truetype'),
-    url('fonts/icomoon.woff?ar3k7f') format('woff'),
-    url('fonts/icomoon.svg?ar3k7f#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?abs65p');
+  src:  url('fonts/icomoon.eot?abs65p#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?abs65p') format('truetype'),
+    url('fonts/icomoon.woff?abs65p') format('woff'),
+    url('fonts/icomoon.svg?abs65p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -80,59 +80,92 @@ body {
 }
 
 .icon-campana:before {
-  content: "\e912";
+  content: "\e901";
+}
+.icon-campana_cancelar:before {
+  content: "\e902";
 }
 .icon-calendario:before {
   content: "\e900";
 }
 .icon-controles:before {
-  content: "\e901";
-}
-.icon-corazones:before {
-  content: "\e902";
-}
-.icon-despleg:before {
   content: "\e903";
 }
-.icon-estrella_full:before {
+.icon-corazones:before {
   content: "\e904";
 }
-.icon-estrella_med:before {
+.icon-corazones_border:before {
   content: "\e905";
 }
-.icon-estrella_none:before {
+.icon-dashboar:before {
   content: "\e906";
 }
-.icon-facebook:before {
+.icon-despleg:before {
   content: "\e907";
 }
-.icon-furgoneta:before {
+.icon-estrella_full:before {
   content: "\e908";
 }
-.icon-instagram:before {
+.icon-estrella_med:before {
   content: "\e909";
 }
-.icon-lupa:before {
+.icon-estrella_none:before {
   content: "\e90a";
 }
-.icon-mapa-de-ubicacion:before {
+.icon-facebook:before {
   content: "\e90b";
 }
-.icon-menu:before {
+.icon-furgoneta:before {
   content: "\e90c";
 }
-.icon-objetivo:before {
+.icon-gestionar_reservas:before {
   content: "\e90d";
 }
-.icon-pin:before {
+.icon-google:before {
   content: "\e90e";
 }
-.icon-tienda:before {
+.icon-grafico-de-barras:before {
   content: "\e90f";
 }
-.icon-ubicacion:before {
+.icon-instagram:before {
   content: "\e910";
 }
-.icon-usuario:before {
+.icon-logout:before {
   content: "\e911";
+}
+.icon-lupa:before {
+  content: "\e912";
+}
+.icon-mapa-de-ubicacion:before {
+  content: "\e913";
+}
+.icon-menu:before {
+  content: "\e914";
+}
+.icon-objetivo:before {
+  content: "\e915";
+}
+.icon-ojo_cont:before {
+  content: "\e916";
+}
+.icon-pagar_online:before {
+  content: "\e917";
+}
+.icon-pin:before {
+  content: "\e918";
+}
+.icon-poos-favor:before {
+  content: "\e919";
+}
+.icon-tienda:before {
+  content: "\e91a";
+}
+.icon-tijera_peine:before {
+  content: "\e91b";
+}
+.icon-ubicacion:before {
+  content: "\e91c";
+}
+.icon-usuario:before {
+  content: "\e91d";
 }
