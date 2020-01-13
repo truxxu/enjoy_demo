@@ -152,8 +152,8 @@ function SalonPage(props) {
       <Row className="SalonPage-Nav border-bottom">
         <Container className="SalonPage-Nav-Container">
           <Row>
-            <h3 className="SalonPage-Nav-Button border-right">SERVICIOS</h3>
-            <h3 className="SalonPage-Nav-Button" onClick={() => scrollToAbout()}  >SOBRE EL SALÓN</h3>
+            <h3 className="SalonPage-Nav-Button border-right font-weight-bold">SERVICIOS</h3>
+            <h3 className="SalonPage-Nav-Button font-weight-bold" onClick={() => scrollToAbout()}  >SOBRE EL SALÓN</h3>
           </Row>
         </Container>
       </Row>

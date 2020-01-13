@@ -145,7 +145,7 @@ function ServiceList(props) {
               <Dropdown.Toggle className="Filter-Button-Big d-flex align-items-center justify-content-between">
                 <div>
                   <span className="icon-controles Filter-Icon mx-3 "></span>
-                  Categorias
+                  Categoria
                 </div>
                 <span className="icon-despleg Filter-Icon-Arrow mr-3 p"></span>
               </Dropdown.Toggle>
