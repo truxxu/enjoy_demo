@@ -1,16 +1,33 @@
 import React from "react";
 import Row from "react-bootstrap/Row";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import "../styles/ServiceItemSmall.css";
+import { addOrRemoveFromBookings } from "../actions/bookings";
 
 function ServiceItemSmall(props) {
   const data = props.data;
+
+  const { addOrRemoveFromBookings } = props;
 
   const priceStr = string => {
     return string
       .split(".")[0]
       .split(".")[0]
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
+  function toggleChange(id_service, price){
+    addOrRemoveFromBookings(id_service, price);
+  }
+
+  const finalPrice = function(price, discount_price) {
+    if(discount_price===null){
+      return price;
+    }else{
+      return discount_price;
+    }
   };
 
   return (
@@ -57,6 +74,7 @@ function ServiceItemSmall(props) {
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="option1"
+            onChange={() => toggleChange(data.id, finalPrice(data.price, data.discount_price))}
           />
           <label className="ml-2">Agregar</label>
         </div>
@@ -65,4 +83,12 @@ function ServiceItemSmall(props) {
   );
 }
 
-export default ServiceItemSmall;
+const mapDispatchToProps = {
+  addOrRemoveFromBookings
+};
+
+ServiceItemSmall.prototype = {
+  addOrRemoveFromBookings: PropTypes.func.isRequired
+};
+
+export default connect(null, mapDispatchToProps)(ServiceItemSmall);

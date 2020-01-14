@@ -13,7 +13,7 @@ import { getCategories } from "../actions/categories";
 import { getSalonServices } from "../actions/salon";
 
 function ServiceList(props) {
-  const { getCategories, list, getSalonServices, servicesList } = props;
+  const { getCategories, list, getSalonServices, servicesList, total } = props;
   const salonId = props.salonId;
   const scheduleSalon = props.schedule;
 
@@ -169,7 +169,7 @@ function ServiceList(props) {
           <button className="Reserve-Button my-3">Reserva Ya!</button>
         </Row>
         <Row className="Reserve flex-column my-4 pb-4 align-items-center ">
-          <h1 className="Price-Reserve">$130.000</h1>
+          <h1 className="Price-Reserve">${total}</h1>
           <button className="Reserve-Button my-3">Reserva Ya!</button>
           <p className="Reserve-Description px-4">
             Lorem ipsum dolor sit amet, consect etuer adipiscing elit.{" "}
@@ -207,7 +207,8 @@ function ServiceList(props) {
 const mapStateToProps = state => {
   return {
     list: state.categories.list,
-    servicesList: state.services.list
+    servicesList: state.services.list,
+    total: state.bookings.total
   };
 };
 
@@ -220,7 +221,8 @@ ServiceList.prototype = {
   list: PropTypes.array.isRequired,
   getCategories: PropTypes.func.isRequired,
   getSalonServices: PropTypes.func.isRequired,
-  servicesList: PropTypes.array.isRequired
+  servicesList: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceList);
