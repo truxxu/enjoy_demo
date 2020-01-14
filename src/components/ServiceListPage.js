@@ -13,6 +13,11 @@ import { getServices } from "../actions/services";
 import { getCategory } from "../actions/categories";
 
 function ServiceListPage(props) {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const {
     getServices,
     getCategory,

@@ -15,13 +15,17 @@ import { getSalon, getSalonServices } from "../actions/salon";
 function SalonPage(props) {
   const { getSalon, activeItem, match } = props;
   let id = match.params.id;
-  
+
   const state = {
     random: 0
   }
 
   useEffect(() => {
     getSalon(id);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   const swiperParams = {
@@ -108,7 +112,7 @@ function SalonPage(props) {
     };
     elmnt.scrollIntoView(options);
   };
- 
+
   return (
     <Container fluid className="Salon-Page d-flex flex-column">
       <Navbar />
@@ -168,7 +172,7 @@ function SalonPage(props) {
           <p className="col-md-8">{ activeItem.description }</p>
           {
             activeItem.latitude!==undefined && activeItem.longitude!==undefined &&
-              <iframe  className="SalonPage-Iframe" src = {renderMapUrl()}></iframe> 
+              <iframe  className="SalonPage-Iframe" src = {renderMapUrl()}></iframe>
           }
         </Container>
       </Row>
