@@ -117,9 +117,10 @@
 
 .Reserve.fixed-top.flex-column {
   width: 380px;
-  position: fixed;
-  top: 30px;
-  left: calc(100% - 35%);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 94px;
+  z-index: 1;
   background-color: white;
 }
 
