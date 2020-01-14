@@ -2,6 +2,7 @@
   font-family: "MontserratMedium", sans-serif;
   font-size: 0.8em;
   border: none;
+  height: 3.5em;
 }
 
 .App-Header-Search .input-group-text {

@@ -24,7 +24,7 @@
 }
 
 .SalonPage-Title {
-  font-size: 2.2em;
+  font-size: 2em;
   text-transform: uppercase;
   font-family: "MontserratBold";
 }
@@ -43,15 +43,16 @@ span.icon-tienda {
   }
 
   .SalonPage-Title {
-    font-size: 1.7em;
+    font-size: 1.3em;
   }
 
   .SalonPage-Header {
     height: 280px;
   }
 
-  .SalonPage-Header p {
-    font-size: 0.6em;
+  .Salon-Icon p,
+  .Address {
+    font-size: 0.8em;
   }
 
   .SalonPage-Header h5 {
@@ -68,6 +69,7 @@ span.icon-tienda {
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
     color: var(--color-negro);
+    font-size: 0.4em;
     background-color: #b73639;
     border-width: 1px;
     border-color: var(--color-dorado);
@@ -90,6 +92,7 @@ span.icon-tienda {
     text-transform: uppercase;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
+    font-size: 0.7em;
     color: var(--color-negro);
     background-color: var(--color-dorado);
     border-width: 1px;
@@ -100,6 +103,7 @@ span.icon-tienda {
     text-transform: uppercase;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
+    font-size: 0.7em;
     color: var(--color-negro);
     background-color: #b73639;
     border-width: 1px;
@@ -114,6 +118,10 @@ span.icon-tienda {
   .SalonPage-Header {
     height: 385px;
   }
+
+  .SalonPage-Nav-Container h3 {
+    font-size: 1.4em;
+  }
 }
 
 .SalonPage-Nav {
@@ -125,16 +133,16 @@ span.icon-tienda {
   cursor: pointer;
 }
 
-.SalonPage-Nav-Container{
+.SalonPage-Nav-Container {
   margin-bottom: -8px;
 }
 
-.SalonPage-About{
+.SalonPage-About {
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-.SalonPage-Iframe{
+.SalonPage-Iframe {
   width: 65%;
   height: 300px;
   border: 0;

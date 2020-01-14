@@ -68,7 +68,7 @@ label,
 
 @media (max-width: 768px) {
   .Service-Item-Small-Description h1 {
-    font-size: 1.2em;
+    font-size: 1.1em;
   }
 
   .Popular {
@@ -81,7 +81,7 @@ label,
   }
 
   .Service-Price h2 {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 }
 
@@ -93,12 +93,12 @@ label,
   }
 
   .Service-Item-Small-Price label {
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--color-gris-oscuro);
   }
 
   .Service-Item-Small-Description h1 {
-    font-size: 1.5em;
+    font-size: 1.1em;
   }
 
   .Popular {
@@ -116,5 +116,9 @@ label,
 
   .Service-Item-Small-Price {
     width: 26%;
+  }
+
+  .Service-Price h2 {
+    font-size: 1.7em;
   }
 }

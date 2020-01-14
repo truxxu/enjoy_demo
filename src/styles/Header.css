@@ -4,10 +4,6 @@
   height: 60vh;
   background-color: var(--color-dorado);
 }
-.Header-Img {
-  height: 60vh;
-  width: 100%;
-}
 
 .Header-Title {
   font-size: 2.6em;
@@ -24,9 +20,8 @@
 }
 
 .Header-Img-Category {
-  height: 60vh;
+  height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
   filter: brightness(0.7);
 }
 
@@ -48,25 +43,23 @@
 
 .Header-Search {
   position: absolute;
-  top: 13.5rem;
+  top: calc(100% - 45%);
 }
 
 @media (max-width: 768px) {
-  .Header-Title {
-    font-size: 1.3em;
-  }
-
+  .Header-Title,
   .Header-Title-Category {
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
 
+  .Header-Subtitle,
   .Header-Subtitle-Category {
-    font-size: 1.1em;
+    font-size: 1.6em;
   }
 
   .Header-Search {
     position: absolute;
-    top: 7rem;
+    top: calc(100% - 40%);
   }
 
   .Header-Row {

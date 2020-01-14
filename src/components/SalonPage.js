@@ -18,7 +18,7 @@ function SalonPage(props) {
 
   const state = {
     random: 0
-  }
+  };
 
   useEffect(() => {
     getSalon(id);
@@ -100,15 +100,20 @@ function SalonPage(props) {
   };
 
   const renderMapUrl = function() {
-    let mapUrlSalon = "https://maps.google.com/maps?q="+activeItem.latitude+","+activeItem.longitude+"&hl=es&amp&output=embed";
+    let mapUrlSalon =
+      "https://maps.google.com/maps?q=" +
+      activeItem.latitude +
+      "," +
+      activeItem.longitude +
+      "&hl=es&amp&output=embed";
     return mapUrlSalon;
-  }
+  };
 
   const scrollToAbout = url => {
     var elmnt = document.getElementById("idSalonPageAbout");
     let options = {
       behavior: "auto",
-      block:    "end",
+      block: "end"
     };
     elmnt.scrollIntoView(options);
   };
@@ -122,11 +127,9 @@ function SalonPage(props) {
             <Swiper {...swiperParams}>{renderImages(activeItem)}</Swiper>
             <div className="SalonPage-Header pl-4 pl-md-5 d-flex flex-column justify-content-center">
               {activeItem.is_open ? (
-                <p className="Open px-1 align-self-baseline">¡ABIERTO AHORA!</p>
+                <p className="Open p-1 align-self-baseline">¡ABIERTO AHORA!</p>
               ) : (
-                <p className="Close px-1 align-self-baseline">
-                  ¡CERRADO AHORA!
-                </p>
+                <p className="Close p-1 align-self-baseline">¡CERRADO AHORA!</p>
               )}
               <h1 className="SalonPage-Title">{activeItem.name}</h1>
               {activeItem.is_at_home ? (
@@ -146,7 +149,7 @@ function SalonPage(props) {
                 </div>
               ) : null}
               <h5 className="Zona mb-0">{activeItem.area_name}</h5>
-              <p>
+              <p className="Address">
                 {activeItem.address}, {activeItem.city_name}
               </p>
             </div>
@@ -161,7 +164,7 @@ function SalonPage(props) {
           </Row>
         </Container>
       </Row>
-      <Row className="SalonPage-Body" >
+      <Row className="SalonPage-Body">
         <Container>
           <ServiceList salonId={id} schedule={activeItem.schedule} />
         </Container>

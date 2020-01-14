@@ -36,8 +36,8 @@
 @media (max-width: 768px) {
   .Service-Img .icon-corazones {
     position: absolute;
-    left: 260px;
-    top: 25px;
+    left: calc(100% - 14%);
+    top: 10px;
     font-size: 2em;
   }
   .Salon-Img {
@@ -198,20 +198,20 @@
 
 /* Gerenal Css */
 @media (max-width: 768px) {
-  p {
+  .Service-Item p {
     font-size: 0.7em;
   }
-  h3,
+  .Service-Item h3,
   h4 {
     font-size: 0.9em;
   }
 }
-p,
+.Service-Item p,
 h3 {
   font-family: "MontserratRegular";
 }
 
-h4 {
+.Service-Item h4 {
   font-family: "MontserratSemiBold";
 }
 

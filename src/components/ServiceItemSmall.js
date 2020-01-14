@@ -37,9 +37,9 @@ function ServiceItemSmall(props) {
           <div className="d-flex flex-md-grow-1">
             <h1 className="Service-Name mr-4 pt-2 mr-md-5 mb-0">{data.name}</h1>
             {data.is_favorite ? (
-              <span className="icon-corazones mr-5 mr-md-1 mt-md-2 flex-md-grow-1"></span>
+              <span className="icon-corazones mr-5 mr-md-1 mt-md-1 flex-md-grow-1"></span>
             ) : (
-              <span className="icon-corazones false mr-5 mr-md-1 mt-md-2 "></span>
+              <span className="icon-corazones false mr-5 mr-md-1 mt-md-1 "></span>
             )}
           </div>
           <div className="d-flex ">
