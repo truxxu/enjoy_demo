@@ -140,9 +140,8 @@
     font-weight: 500;
     color: var(--color-negro);
     background-color: var(--color-dorado);
-    border-width: 1px;
-    border-color: var(--color-dorado);
     border-radius: 1.5em;
+    border:0;
     padding: 5px 24px;
   }
 }
