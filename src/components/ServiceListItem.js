@@ -5,11 +5,13 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import "../styles/ServiceListItem.css";
+import BookingForm from "./BookingForm";
 import { addFavoriteService } from "../actions/favoriteService";
+import { showForm } from "../actions/bookings";
 
 function ServiceListItem(props) {
   const data = props.data;
-  const { addFavoriteService } = props;
+  const { addFavoriteService, showForm } = props;
 
   const priceStr = string => {
     return string
@@ -20,6 +22,7 @@ function ServiceListItem(props) {
 
   return (
     <div className="Service-Item d-flex flex-column flex-md-row  my-5 px-md-5 ">
+      <BookingForm />
       <div className="Service-Img col px-0 d-md-flex ">
         <img className="Salon-Img " src={data.salon_image} alt="Salon"></img>
         <span
@@ -61,7 +64,11 @@ function ServiceListItem(props) {
           </p>
         </div>
         <div className="Service-Buttons pb-4 d-flex flex-row justify-content-around">
-          <Button className="Button mr-2">RESERVAR YA</Button>
+          <Button
+            onClick={() => showForm(true)}
+            className="Button mr-2">
+            RESERVAR YA
+          </Button>
           <Link className="Gray-Button " to={`/salon/${data.salon_id}`}>
             VER SALÓN
           </Link>
@@ -72,11 +79,13 @@ function ServiceListItem(props) {
 }
 
 const mapDispatchToProps = {
-  addFavoriteService
+  addFavoriteService,
+  showForm
 };
 
 ServiceListItem.prototype = {
-  addFavoriteService: PropTypes.func.isRequired
+  addFavoriteService: PropTypes.func.isRequired,
+  showForm: PropTypes.func.isRequired
 };
 
 export default connect(null, mapDispatchToProps)(ServiceListItem);

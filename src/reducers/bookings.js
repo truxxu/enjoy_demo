@@ -1,8 +1,13 @@
-import { ADD_TO_BOOKINGS, REMOVE_FROM_BOOKINGS } from "../actions/index";
+import {
+  ADD_TO_BOOKINGS,
+  REMOVE_FROM_BOOKINGS,
+  SHOW_FORM
+} from "../actions/index";
 
 const initialState =  {
     list: [],
-    total: 0
+    total: 0,
+    show: false,
 };
 
 export default function(state = initialState, action) {
@@ -18,6 +23,11 @@ export default function(state = initialState, action) {
           ...state,
           list: state.list.filter(item => item !== action.payload.id_service),
           total: state.total - parseInt(action.payload.price)
+        };
+      case SHOW_FORM:
+        return {
+          ...state,
+          show: action.payload,
         };
       default:
         return state;

@@ -9,11 +9,21 @@ import PropTypes from "prop-types";
 
 import "../styles/ServiceList.css";
 import ServiceItemSmall from "./ServiceItemSmall";
+import BookingForm from "./BookingForm";
 import { getCategories } from "../actions/categories";
 import { getSalonServices } from "../actions/salon";
+import { showForm } from "../actions/bookings";
 
 function ServiceList(props) {
-  const { getCategories, list, getSalonServices, servicesList, total } = props;
+  const {
+    getCategories,
+    list,
+    getSalonServices,
+    servicesList,
+    total,
+    showForm
+  } = props;
+
   const salonId = props.salonId;
   const scheduleSalon = props.schedule;
 
@@ -120,6 +130,7 @@ function ServiceList(props) {
 
   return (
     <Row className="ServiceList-Row ">
+      <BookingForm />
       <Col sm={8} className="ServiceList-Body ">
         <div className="Title-Body my-4">
           <h2>Servicios</h2>
@@ -166,11 +177,19 @@ function ServiceList(props) {
       </Col>
       <Col>
         <Row className="Reserve-Mobile d-md-none">
-          <button className="Reserve-Button my-3">Reserva Ya!</button>
+          <button
+            onClick={() => showForm(true)}
+            className="Reserve-Button my-3">
+            Reserva Ya!
+          </button>
         </Row>
         <Row className="Reserve flex-column my-4 pb-4 align-items-center ">
           <h1 className="Price-Reserve">${total}</h1>
-          <button className="Reserve-Button my-3">Reserva Ya!</button>
+          <button
+            onClick={() => showForm(true)}
+            className="Reserve-Button my-3">
+            Reserva Ya!
+          </button>
           <p className="Reserve-Description px-4">
             Lorem ipsum dolor sit amet, consect etuer adipiscing elit.{" "}
           </p>
@@ -214,13 +233,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getCategories,
-  getSalonServices
+  getSalonServices,
+  showForm
 };
 
 ServiceList.prototype = {
   list: PropTypes.array.isRequired,
   getCategories: PropTypes.func.isRequired,
   getSalonServices: PropTypes.func.isRequired,
+  showForm: PropTypes.func.isRequired,
   servicesList: PropTypes.array.isRequired,
   total: PropTypes.number.isRequired,
 };
