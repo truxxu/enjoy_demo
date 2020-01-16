@@ -42,11 +42,9 @@ function ServiceList(props) {
       if (window.pageYOffset >= 486) {
         Reserve.classList.add("fixed-top");
         Reserve.classList.add("mt-md-5");
-        Reserve.classList.add("pt-md-4");
       } else {
         Reserve.classList.remove("fixed-top");
         Reserve.classList.remove("mt-md-5");
-        Reserve.classList.remove("pt-md-4");
       }
     } else {
       Reserve.classList.remove("fixed-top");
@@ -222,7 +220,7 @@ ServiceList.prototype = {
   getCategories: PropTypes.func.isRequired,
   getSalonServices: PropTypes.func.isRequired,
   servicesList: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceList);
