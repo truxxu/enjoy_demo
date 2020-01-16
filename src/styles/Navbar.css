@@ -12,7 +12,7 @@
   -webkit-transition: top 2s;
   -o-transition: top 2s;
   top: 0px;
-  transition: all 2s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 @media (min-width: 768px) {
