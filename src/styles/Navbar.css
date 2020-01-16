@@ -112,7 +112,7 @@
 }
 
 .Modal-Col {
-  padding: 20px 6px;
+  padding: 0px 6px;
 }
 
 .Terms-Text {
@@ -188,9 +188,9 @@
   max-width: 580px !important;
 }
 
-.btnFacebook {
-  width: 300px;
-  height: 35px;
+.btnFacebook{
+  width: 150px;
+  height:35px;
   background: #3b5998;
   color: white;
   font-family: Roboto, sans-serif;
@@ -204,12 +204,11 @@
 
 .fa-facebook {
   margin-left: -20px;
-  margin-right: 30px;
+  margin-right: 10px;
 }
 
 .btnGoogle {
-  margin: 5px 5px 20px 5px;
-  width: 300px;
+  width: 150px;
   height: 35px;
   background-color: #db3236 !important;
   color: white !important;
@@ -222,10 +221,32 @@
   display: none;
 }
 
+.btnGoogle span{
+  padding: 0px !important;
+}
+
 .btnGoogle i {
   margin-left: 25px;
 }
 
 .fa-google {
-  margin-right: 25px;
+  margin-right: 8px;
+}
+
+.Section-Social-Networks{
+  height: 80px;
+  background-color: var(--color-gris-claro);
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+}
+
+.Section-Social-Networks-Text{
+  height: 30px;
+  background-color: var(--color-gris-claro);
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+  padding-top: 5px;
+  padding-left: 30px !important;
 }
