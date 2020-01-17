@@ -1,0 +1,56 @@
+.modal-content {
+}
+
+.modal-content p{
+  margin: 0;
+  font-family: "MontserratMedium", sans-serif;
+  font-size: 13px;
+}
+
+.Booking-Form-Header {
+  padding: 20px;
+  background-color: var(--color-dorado);
+}
+
+.Booking-Form-Body {
+  padding: 20px;
+}
+
+.Date-Box p {
+  text-align: center;
+}
+
+.Input-Box .Modal-Input {
+  margin-top: 10px;
+}
+
+.Payment-Box .Cash,
+.Coupon-Box {
+  margin-top: 10px;
+}
+
+.Coupon-Box .input-group{
+  align-content: flex-end;
+  width: 50%;
+}
+
+.Coupon-Box .input-group .Modal-Input{
+  font-size: 13px;
+}
+
+.Coupon-Box p {
+  text-align: right;
+  font-size: 13px;
+}
+
+.Coupon-Box .Total {
+  font-size: 25px;
+}
+
+.Register-Modal-Button {
+  margin: 20px 0;
+}
+
+.Booking-Form-Footer p {
+  text-align: center;
+}
