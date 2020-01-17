@@ -11,9 +11,11 @@
   background-color: white;
 }
 
+.swiper-wrapper {
+  height: 385px;
+}
+
 .SalonPage-Img {
-  width: 100%;
-  object-fit: cover;
   background-color: rgba(0, 0, 0, 0.8);
   filter: brightness(0.6);
 }
@@ -39,6 +41,10 @@ span.icon-tienda {
 
 @media (max-width: 768px) {
   .SalonPage-Header-Row {
+    height: 280px;
+  }
+
+  .swiper-wrapper {
     height: 280px;
   }
 
