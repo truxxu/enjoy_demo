@@ -3,12 +3,12 @@
 
 .modal-content p{
   margin: 0;
-  font-family: "MontserratMedium", sans-serif;
+  font-family: "MontserraBold", sans-serif;
   font-size: 13px;
 }
 
 .Booking-Form-Header {
-  padding: 20px;
+  padding: 10px 20px;
   background-color: var(--color-dorado);
 }
 
@@ -47,10 +47,45 @@
   font-size: 25px;
 }
 
-.Register-Modal-Button {
+.Register-Modal-Button,
+.Register-Modal-Button:hover {
   margin: 20px 0;
 }
 
 .Booking-Form-Footer p {
   text-align: center;
 }
+
+.Booking-Form-Body .input-group-text {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.Payment-Box .Cash p,
+.Payment-Box .Online p {
+  margin-left: 10px;
+  color: var(--color-gris-oscuro);
+}
+
+.Booking-Form-Header .Title-Box p {
+  font-size: 25px;
+}
+
+.Services-Box {
+  margin-top: 10px;
+}
+
+.Services-Box .Service {
+  background-color: #bbe4d5;
+  border-radius: 15px;
+  height: 30px;
+  width: 45%;
+  margin: 0 5px 10px 5px;
+}
+
+.Services-Box .Service p{
+  color: white;
+}
+
+

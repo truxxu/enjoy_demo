@@ -30,9 +30,27 @@ const BookingForm = (props) => {
         </div>
         <div className="Booking-Form-Body">
           <p>Servicios</p>
-          <div className="Services-Box">
-            <div className="Service d-flex flex-row justify-content-around">
+          <div className="Services-Box d-flex flex-row flex-wrap">
+            <div
+              className="Service d-flex flex-row justify-content-around
+              align-items-center">
               <p>Servicio seleccionado 1</p>
+              <Button variant={'none'}>
+                <p>X</p>
+              </Button>
+            </div>
+            <div
+              className="Service d-flex flex-row justify-content-around
+              align-items-center">
+              <p>Servicio seleccionado 2</p>
+              <Button variant={'none'}>
+                <p>X</p>
+              </Button>
+            </div>
+            <div
+              className="Service d-flex flex-row justify-content-around
+              align-items-center">
+              <p>Servicio seleccionado 3</p>
               <Button variant={'none'}>
                 <p>X</p>
               </Button>
