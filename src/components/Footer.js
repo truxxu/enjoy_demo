@@ -9,7 +9,7 @@ import "../styles/Footer.css";
 function Footer() {
   return (
     <Row className="App-Footer">
-      <Container className="pt-3 pb-1">
+      <Container className="App-Footer-Content pt-3 pb-1">
         <Row className="flex-column flex-md-row justify-content-center justify-content-md-between align-items-center mt-3">
           <Link to="/">
             <img src={logo} className="App-Footer-Logo" alt="logo" />
