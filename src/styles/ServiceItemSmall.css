@@ -7,8 +7,21 @@
   text-transform: initial;
 }
 
-.icon-corazones.false {
-  color: black;
+.Service-Item-Small-Description .icon-corazones_border {
+  font-size: 2em;
+  color: var(--color-negro);
+}
+
+.Service-Item-Small-Description .icon-corazones {
+  font-size: 2em;
+}
+
+.Service-Item-Small-Description .blackened {
+  color: var(--color-negro);
+}
+
+.Service-Name {
+  width: 150px;
 }
 
 .Service-Item-Small p,
@@ -68,7 +81,7 @@ label,
 
 @media (max-width: 768px) {
   .Service-Item-Small-Description h1 {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .Popular {
@@ -98,7 +111,7 @@ label,
   }
 
   .Service-Item-Small-Description h1 {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .Popular {

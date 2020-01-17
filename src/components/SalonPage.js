@@ -11,9 +11,10 @@ import Footer from "./Footer";
 import ServiceList from "./ServiceList";
 import "../styles/SalonPage.css";
 import { getSalon, getSalonServices } from "../actions/salon";
+import { getFavorites } from "../actions/favoriteService";
 
 function SalonPage(props) {
-  const { getSalon, activeItem, match } = props;
+  const { getFavorites, getSalon, activeItem, match } = props;
   let id = match.params.id;
 
   const state = {
@@ -22,6 +23,10 @@ function SalonPage(props) {
 
   useEffect(() => {
     getSalon(id);
+  }, []);
+
+  useEffect(() => {
+    getFavorites();
   }, []);
 
   useEffect(() => {
@@ -192,12 +197,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getSalon
+  getSalon,
+  getFavorites
 };
 
 SalonPage.prototype = {
   activeItem: PropTypes.array.isRequired,
-  getSalon: PropTypes.func.isRequired
+  getSalon: PropTypes.func.isRequired,
+  getFavorites: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalonPage);

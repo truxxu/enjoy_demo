@@ -1,6 +1,6 @@
 import { ADD_FAVORITE_SERVICE, GET_FAVORITES } from "../actions/index";
 
-const initialState =  { 
+const initialState =  {
   favoritesList: []
 };
 
@@ -8,7 +8,8 @@ export default function(state = initialState, action) {
     switch (action.type) {
       case ADD_FAVORITE_SERVICE:
         return {
-          ...state
+          ...state,
+          favoritesList: [...state.favoritesList, action.payload]
         };
       case GET_FAVORITES:
         return {
@@ -19,4 +20,3 @@ export default function(state = initialState, action) {
         return state;
     }
   }
-  

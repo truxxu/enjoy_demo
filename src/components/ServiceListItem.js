@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -9,7 +9,9 @@ import { addFavoriteService } from "../actions/favoriteService";
 
 function ServiceListItem(props) {
   const data = props.data;
-  const { addFavoriteService } = props;
+  const { addFavoriteService, favoritesList } = props;
+
+  const [isShown, setIsShown] = useState(false);
 
   const priceStr = string => {
     return string
@@ -18,14 +20,27 @@ function ServiceListItem(props) {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
+  const favoriteHeart = (id) => {
+    const filter = favoritesList.filter(item => item.service === id)
+    if (filter.length !== 0) {
+      return "icon-corazones"
+    } else if (filter.length === 0 && !isShown) {
+        return "icon-corazones_border"
+    } else if (filter.length === 0 && isShown) {
+        return "icon-corazones blackened"
+    }
+  }
+
   return (
     <div className="Service-Item d-flex flex-column flex-md-row  my-5 px-md-5 ">
       <div className="Service-Img col px-0 d-md-flex ">
         <img className="Salon-Img " src={data.salon_image} alt="Salon"></img>
-        <span
-          className="icon-corazones"
-          onClick={() => addFavoriteService(data.id)}
-        ></span>
+        <Button
+          onMouseEnter={() => setIsShown(true)}
+          onMouseLeave={() => setIsShown(false)}
+          onClick={() => addFavoriteService(data.id)}>
+          <span className={favoriteHeart(data.id)} />
+        </Button>
       </div>
       <div className="Salon-Service col-md-5 pl-4 d-flex flex-column ">
         <h4 className="Salon-Name pt-4">{data.salon_name}</h4>
@@ -71,12 +86,19 @@ function ServiceListItem(props) {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    favoritesList: state.favoriteService.favoritesList,
+  };
+};
+
 const mapDispatchToProps = {
   addFavoriteService
 };
 
 ServiceListItem.prototype = {
-  addFavoriteService: PropTypes.func.isRequired
+  addFavoriteService: PropTypes.func.isRequired,
+  favoritesList: PropTypes.array.isRequired
 };
 
-export default connect(null, mapDispatchToProps)(ServiceListItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ServiceListItem);
