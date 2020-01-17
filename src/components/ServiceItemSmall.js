@@ -22,14 +22,14 @@ function ServiceItemSmall(props) {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-  function toggleChange(id_service, price){
+  function toggleChange(id_service, price) {
     addOrRemoveFromBookings(id_service, price);
   }
 
   const finalPrice = function(price, discount_price) {
-    if(discount_price===null){
+    if (discount_price === null) {
       return price;
-    }else{
+    } else {
       return discount_price;
     }
   };
@@ -84,7 +84,7 @@ function ServiceItemSmall(props) {
           </div>
         ) : (
           <div className="Service-Price">
-            <h2 className="mb-0">${priceStr(data.price)}</h2>
+            <h2 className="mb-2">${priceStr(data.price)}</h2>
           </div>
         )}
         <div>
@@ -94,7 +94,9 @@ function ServiceItemSmall(props) {
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="option1"
-            onChange={() => toggleChange(data.id, finalPrice(data.price, data.discount_price))}
+            onChange={() =>
+              toggleChange(data.id, finalPrice(data.price, data.discount_price))
+            }
           />
           <label className="ml-2">Agregar</label>
         </div>

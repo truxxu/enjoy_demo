@@ -65,9 +65,9 @@ function ServiceListItem(props) {
         </div>
         <div className="Service-Price d-flex flex-md-column">
           {data.discount_price ? (
-            <h3 className=" mb-md-0 pt-2 pt-md-0">
+            <h4 className=" mb-md-0 pt-2 pt-md-0">
               ${priceStr(data.discount_price)}
-            </h3>
+            </h4>
           ) : (
             ""
           )}

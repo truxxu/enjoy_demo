@@ -69,7 +69,7 @@
     position: relative;
   }
   .Salon-Description p {
-    height: 100px;
+    height: 90px;
   }
 
   .Salon-Description p::before {
@@ -217,10 +217,12 @@
 .Service-Item p,
 h3 {
   font-family: "MontserratRegular";
+  font-size: 13px;
 }
 
 .Service-Item h4 {
   font-family: "MontserratSemiBold";
+  font-size: 1.125rem;
 }
 
 .Star-Icons {
