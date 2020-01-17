@@ -88,4 +88,19 @@
   color: white;
 }
 
+.Non-User-Modal-Header {
+  padding: 40px;
+  text-align: center;
+  background-color: #bbe4d5;
+  border: 1px black solid;
+}
+
+.Non-User-Modal {
+  font-family: "MontserraBold", sans-serif;
+}
+
+.modal-dialog {
+  max-width: 400px;
+  border-radius: 20px;
+}
 
