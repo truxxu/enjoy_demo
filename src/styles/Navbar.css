@@ -250,3 +250,55 @@
   padding-top: 5px;
   padding-left: 30px !important;
 }
+
+.Nav-Bar-Btn-L {
+  font-size: 1.5em;
+  color: var(--color-negro);
+  background-color: var(--color-dorado);
+  border-width: 1px;
+  border-color: var(--color-negro);
+  border-top-left-radius: 1.5em !important;
+  border-bottom-left-radius: 1.5em !important;
+  border-right: 0;
+  width: 70px;
+}
+
+.Nav-Bar-Btn-R {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-family: "MontserratMedium", sans-serif;
+  font-weight: 500;
+  color: var(--color-negro);
+  background-color: var(--color-blanco);
+  border-width: 1px;
+  border-color: var(--color-negro);
+  border-top-right-radius: 1.5em !important;
+  border-bottom-right-radius: 1.5em !important;
+  padding-right: 12px;
+  width: 70px;
+}
+
+@media (max-width: 768px) {
+  .Nav-Bar-Btn-L {
+    background-color: var(--color-negro);
+    color: var(--color-dorado);
+  }
+  .Nav-Bar-Btn-R {
+    background-color: var(--color-dorado);
+    color: var(--color-negro);
+  }
+}
+
+.Nav-Bar-Btn-L:active,
+.Nav-Bar-Btn-L:focus,
+.Nav-Bar-Btn-L:hover ~ .Nav-Bar-Btn-R{
+  background-color: #f14336 !important; 
+  color: var(--color-blanco);
+}
+
+.Nav-Bar-Btn-R:active,
+.Nav-Bar-Btn-R:focus,
+.Nav-Bar-Btn-R:hover { 
+  background-color: #f14336 !important;
+  color: var(--color-blanco);
+}

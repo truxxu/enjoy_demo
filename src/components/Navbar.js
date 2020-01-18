@@ -260,11 +260,10 @@ function Navbar(props) {
              </div>
             :
              <div className="col-auto d-flex align-items-center">
-                <Button
-                  className="App-Button"
-                  onClick={logOut}>
-                  Salir
-                </Button>
+                <div class="btn-group" role="group" onClick={logOut}>
+                  <button type="button" class="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
+                  <button type="button" class="Nav-Bar-Btn-R">Salir</button>
+                </div>
              </div>
           }
         </Row>
