@@ -14,10 +14,16 @@
 
 .Booking-Form-Body {
   padding: 20px;
+  background-color: var(--color-gris-claro);
+}
+
+.Date-Box {
+  background-color: var(--color-blanco);
 }
 
 .Date-Box p {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .Input-Box .Modal-Input {

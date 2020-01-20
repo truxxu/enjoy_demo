@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
+import DatePicker from "react-datepicker";
 
 import "../styles/BookingForm.css";
+import "react-datepicker/dist/react-datepicker.css";
 import { showForm } from "../actions/bookings";
 
 const BookingForm = (props) => {
 
   const { show, showForm } = props;
   let token = localStorage.getItem('token');
+
+  const [startDate, setStartDate] = useState(new Date());
 
   if (token !== null) {
     return (
@@ -60,7 +64,14 @@ const BookingForm = (props) => {
             </div>
             <div className="Date-Box">
               <p>Selecciona Fecha y Hora</p>
-              <p>**Calendario**</p>
+              <div className="d-flex justify-content-center">
+                <DatePicker
+                  selected={startDate}
+                  onChange={date => setStartDate(date)}
+                  minDate={subDays(new Date(), 1)}
+                  inline
+                />
+              </div>
             </div>
             <div className="Time-Box">
             </div>
