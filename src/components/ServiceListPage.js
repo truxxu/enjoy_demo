@@ -14,7 +14,6 @@ import { getCategory } from "../actions/categories";
 import { getFavorites } from "../actions/favoriteService";
 
 function ServiceListPage(props) {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -35,7 +34,7 @@ function ServiceListPage(props) {
   }, [activeCategoryId]);
 
   useEffect(() => {
-    getServices(activeCategoryId);
+    getCategory(activeCategoryId);
   }, [activeCategoryId]);
 
   useEffect(() => {
