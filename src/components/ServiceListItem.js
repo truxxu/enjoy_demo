@@ -36,6 +36,7 @@ function ServiceListItem(props) {
       <div className="Service-Img col px-0 d-md-flex ">
         <img className="Salon-Img " src={data.salon_image} alt="Salon"></img>
         <Button
+          variant={'none'}
           onMouseEnter={() => setIsShown(true)}
           onMouseLeave={() => setIsShown(false)}
           onClick={() => addFavoriteService(data.id)}>

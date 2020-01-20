@@ -42,7 +42,8 @@
 }
 
 @media (max-width: 768px) {
-  .Service-Img .icon-corazones {
+  .Service-Img .icon-corazones,
+  .Service-Img .icon-corazones_border{
     position: absolute;
     left: calc(100% - 14%);
     top: 10px;
