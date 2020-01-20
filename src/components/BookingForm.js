@@ -14,8 +14,6 @@ const BookingForm = (props) => {
   const { show, showForm } = props;
   let token = localStorage.getItem('token');
 
-  console.log(token);
-
   if (token !== null) {
     return (
       <Modal show={show} onHide={() => showForm(false)}>

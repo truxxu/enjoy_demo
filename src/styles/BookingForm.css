@@ -93,6 +93,8 @@
   text-align: center;
   background-color: #bbe4d5;
   border: 1px black solid;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
 }
 
 .Non-User-Modal {
@@ -101,6 +103,12 @@
 
 .modal-dialog {
   max-width: 400px;
-  border-radius: 20px;
 }
 
+.Non-User-Modal-Footer {
+  padding: 30px 20px;
+}
+
+.modal-content {
+  border-radius: 40px;
+}
