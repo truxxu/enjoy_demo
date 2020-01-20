@@ -1,4 +1,5 @@
-.modal-content {
+.Booking-Form {
+  background-color: var(--color-gris-claro);
 }
 
 .modal-content p{
@@ -12,22 +13,19 @@
   background-color: var(--color-dorado);
 }
 
-.Booking-Form-Body {
-  padding: 20px;
-  background-color: var(--color-gris-claro);
-}
-
 .Date-Box {
   background-color: var(--color-blanco);
 }
 
 .Date-Box p {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 10px 0 20px 0;
 }
 
 .Input-Box .Modal-Input {
   margin-top: 10px;
+  background-color: white;
+  border: 1px solid black
 }
 
 .Payment-Box .Cash,
@@ -42,6 +40,8 @@
 
 .Coupon-Box .input-group .Modal-Input{
   font-size: 13px;
+  background-color: white;
+  border: 1px solid black;
 }
 
 .Coupon-Box p {
@@ -78,8 +78,13 @@
   font-size: 25px;
 }
 
-.Services-Box {
+.Services-Box,
+.Input-Box,
+.Payment-Box,
+.Coupon-Box {
   margin-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .Services-Box .Service {
@@ -117,4 +122,38 @@
 
 .modal-content {
   border-radius: 40px;
+}
+
+/*Date Picker*/
+
+.react-datepicker {
+  border: none !important;
+  font-family: "MontserraBold", sans-serif !important;
+}
+
+.react-datepicker__header {
+  background-color: transparent !important;
+  padding-top: 0 !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range {
+    border-radius: 1.3rem !important;
+    background-color: #bbe4d5 !important;
+    color: white !important;
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover {
+    border-radius: 1.3rem !important;
+    background-color: var(--color-dorado) !important;
+    color: black !important;
 }

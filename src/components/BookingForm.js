@@ -39,31 +39,33 @@ const BookingForm = (props) => {
             <p>Tiempo estimado de tu reserva: X:XX horas</p>
           </div>
           <div className="Booking-Form-Body">
-            <p>Servicios</p>
-            <div className="Services-Box d-flex flex-row flex-wrap">
-              <div
-                className="Service d-flex flex-row justify-content-around
-                align-items-center">
-                <p>Servicio seleccionado 1</p>
-                <Button variant={'none'}>
-                  <p>X</p>
-                </Button>
-              </div>
-              <div
-                className="Service d-flex flex-row justify-content-around
-                align-items-center">
-                <p>Servicio seleccionado 2</p>
-                <Button variant={'none'}>
-                  <p>X</p>
-                </Button>
-              </div>
-              <div
-                className="Service d-flex flex-row justify-content-around
-                align-items-center">
-                <p>Servicio seleccionado 3</p>
-                <Button variant={'none'}>
-                  <p>X</p>
-                </Button>
+            <div className="Services-Box">
+              <p style ={{marginBottom: '15px'}}>Servicios</p>
+              <div className="d-flex flex-row flex-wrap">
+                <div
+                  className="Service d-flex flex-row justify-content-around
+                  align-items-center">
+                  <p>Servicio 1</p>
+                  <Button variant={'none'}>
+                    <p>X</p>
+                  </Button>
+                </div>
+                <div
+                  className="Service d-flex flex-row justify-content-around
+                  align-items-center">
+                  <p>Servicio 2</p>
+                  <Button variant={'none'}>
+                    <p>X</p>
+                  </Button>
+                </div>
+                <div
+                  className="Service d-flex flex-row justify-content-around
+                  align-items-center">
+                  <p>Servicio 3</p>
+                  <Button variant={'none'}>
+                    <p>X</p>
+                  </Button>
+                </div>
               </div>
             </div>
             <div className="Date-Box">
@@ -72,6 +74,7 @@ const BookingForm = (props) => {
                 <DatePicker
                   selected={startDate}
                   onChange={date => setStartDate(date)}
+                  minDate={new Date()}
                   locale="es"
                   inline
                 />
