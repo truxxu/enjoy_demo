@@ -6,12 +6,16 @@ import PropTypes from "prop-types";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import DatePicker from "react-datepicker";
+import { registerLocale, setDefaultLocale } from "react-datepicker";
+import es from 'date-fns/locale/es';
 
 import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { showForm } from "../actions/bookings";
 
 const BookingForm = (props) => {
+
+  registerLocale('es', es)
 
   const { show, showForm } = props;
   let token = localStorage.getItem('token');
@@ -68,7 +72,7 @@ const BookingForm = (props) => {
                 <DatePicker
                   selected={startDate}
                   onChange={date => setStartDate(date)}
-                  minDate={subDays(new Date(), 1)}
+                  locale="es"
                   inline
                 />
               </div>
