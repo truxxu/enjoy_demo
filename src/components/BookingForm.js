@@ -8,12 +8,54 @@ import FormControl from "react-bootstrap/FormControl";
 import DatePicker from "react-datepicker";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
+import Slider from 'rc-slider';
+import Tooltip from 'rc-tooltip';
 
 import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
+import 'rc-slider/assets/index.css';
+import 'rc-tooltip/assets/bootstrap.css';
 import { showForm } from "../actions/bookings";
 
 const BookingForm = (props) => {
+
+  const createSliderWithTooltip = Slider.createSliderWithTooltip;
+  const Handle = Slider.Handle;
+
+  const [hourValue, setHourValue] = useState(0);
+  const [minuteValue, setMinuteValue] = useState(0);
+console.log(hourValue)
+  const handle = (props) => {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+      <Tooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={value}
+        visible={dragging}
+        placement="top"
+        key={index}
+        onChange={setHourValue(value)}
+      >
+        <Handle value={value} {...restProps}/>
+      </Tooltip>
+    );
+  };
+
+  const handle2 = (props) => {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+      <Tooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={value}
+        visible={dragging}
+        placement="top"
+        key={index}
+        onChange={setMinuteValue(value)}
+      >
+        <Handle value={value} {...restProps}/>
+      </Tooltip>
+    );
+  };
 
   registerLocale('es', es)
 
@@ -78,6 +120,17 @@ const BookingForm = (props) => {
                   locale="es"
                   inline
                 />
+              </div>
+              <div className="Time-Box d-flex flex-row justify-content-center">
+                <div
+                className="Time-Display d-flex justify-content-center
+                align-items-center">
+                  {hourValue} : {minuteValue}
+                </div>
+                <div className="Time-Sliders">
+                  <Slider min={0} max={23} step={1} handle={handle} />
+                  <Slider min={0} max={50} step={10} handle={handle2} />
+                </div>
               </div>
             </div>
             <div className="Time-Box">

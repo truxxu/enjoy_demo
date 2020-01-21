@@ -157,3 +157,36 @@
     background-color: var(--color-dorado) !important;
     color: black !important;
 }
+
+/*Time Picker*/
+
+.Time-Box {
+  padding: 0 20px 20px 20px ;
+}
+
+.Time-Sliders,
+.Time-Display {
+  width: 50%;
+}
+
+.rc-slider {
+  margin-top: 5px;
+}
+
+.Time-Display {
+  font-size: 25px;
+  font-family: "MontserraBold", sans-serif;
+}
+
+.rc-slider-handle {
+  border: solid 2px #bbe4d5 !important;
+  background-color: #bbe4d5 !important;
+}
+
+.rc-slider-rail {
+  height: 1px !important;
+}
+
+.rc-slider-track {
+  background-color: transparent !important;
+}
