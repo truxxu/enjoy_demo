@@ -19,12 +19,13 @@ import { showForm } from "../actions/bookings";
 
 const BookingForm = (props) => {
 
+  console.log(props.data)
+
   const createSliderWithTooltip = Slider.createSliderWithTooltip;
   const Handle = Slider.Handle;
 
   const [hourValue, setHourValue] = useState(0);
   const [minuteValue, setMinuteValue] = useState(0);
-console.log(hourValue)
   const handle = (props) => {
     const { value, dragging, index, ...restProps } = props;
     return (
@@ -64,13 +65,17 @@ console.log(hourValue)
 
   const [startDate, setStartDate] = useState(new Date());
 
+  const priceStr = string => {
+    return string.split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
   if (token !== null) {
     return (
       <Modal show={show} onHide={() => showForm(false)}>
         <div className="Booking-Form">
           <div className="Booking-Form-Header">
             <div className="Title-Box d-flex flex-row justify-content-between">
-              <p>Nombre del Salón</p>
+              <p>{props.data.salon_name}</p>
               <Button
                 style={{padding: 0}}
                 variant={'none'}
@@ -78,7 +83,7 @@ console.log(hourValue)
                 <p>X</p>
               </Button>
             </div>
-            <p>Tiempo estimado de tu reserva: X:XX horas</p>
+            <p>Tiempo estimado de tu reserva: {props.data.duration} minutos</p>
           </div>
           <div className="Booking-Form-Body">
             <div className="Services-Box">
@@ -87,23 +92,7 @@ console.log(hourValue)
                 <div
                   className="Service d-flex flex-row justify-content-around
                   align-items-center">
-                  <p>Servicio 1</p>
-                  <Button variant={'none'}>
-                    <p>X</p>
-                  </Button>
-                </div>
-                <div
-                  className="Service d-flex flex-row justify-content-around
-                  align-items-center">
-                  <p>Servicio 2</p>
-                  <Button variant={'none'}>
-                    <p>X</p>
-                  </Button>
-                </div>
-                <div
-                  className="Service d-flex flex-row justify-content-around
-                  align-items-center">
-                  <p>Servicio 3</p>
+                  <p>{props.data.name}</p>
                   <Button variant={'none'}>
                     <p>X</p>
                   </Button>
@@ -125,10 +114,10 @@ console.log(hourValue)
                 <div
                 className="Time-Display d-flex justify-content-center
                 align-items-center">
-                  {hourValue} : {minuteValue}
+                  {hourValue} : { minuteValue === 0 ? '00' : minuteValue }
                 </div>
                 <div className="Time-Sliders">
-                  <Slider min={0} max={23} step={1} handle={handle} />
+                  <Slider min={6} max={18} step={1} handle={handle} />
                   <Slider min={0} max={50} step={10} handle={handle2} />
                 </div>
               </div>
@@ -183,7 +172,7 @@ console.log(hourValue)
                 </InputGroup>
               <div className="Total-Price">
                 <p>Precio total</p>
-                <p className="Total">$9.999.999</p>
+                <p className="Total">${priceStr(props.data.discount_price)}</p>
               </div>
             </div>
             <div className="Booking-Form-Footer">

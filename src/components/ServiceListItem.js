@@ -16,13 +16,12 @@ function ServiceListItem(props) {
   const priceStr = string => {
     return string
       .split(".")[0]
-      .split(".")[0]
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
   return (
     <div className="Service-Item d-flex flex-column flex-md-row  my-5 px-md-5 ">
-      <BookingForm />
+      <BookingForm data={data} />
       <div className="Service-Img col px-0 d-md-flex ">
         <img className="Salon-Img " src={data.salon_image} alt="Salon"></img>
         <span
@@ -69,8 +68,11 @@ function ServiceListItem(props) {
             className="Button mr-2">
             RESERVAR YA
           </Button>
-          <Link className="Gray-Button " to={`/salon/${data.salon_id}`}>
-            VER SALÓN
+          <Link
+            to={{pathname: `/salon/${data.salon_id}`, data: data}}>
+            <div className="Gray-Button">
+              VER SALÓN
+            </div>
           </Link>
         </div>
       </div>

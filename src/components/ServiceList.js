@@ -130,7 +130,7 @@ function ServiceList(props) {
 
   return (
     <Row className="ServiceList-Row ">
-      <BookingForm />
+      <BookingForm data={props.data}/>
       <Col sm={8} className="ServiceList-Body ">
         <div className="Title-Body my-4">
           <h2>Servicios</h2>
