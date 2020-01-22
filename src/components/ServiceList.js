@@ -20,7 +20,7 @@ function ServiceList(props) {
     list,
     getSalonServices,
     servicesList,
-    total,
+    //
     showForm
   } = props;
 
@@ -184,7 +184,7 @@ function ServiceList(props) {
           </button>
         </Row>
         <Row className="Reserve flex-column my-4 pb-4 align-items-center ">
-          <h1 className="Price-Reserve">${total}</h1>
+          <h1 className="Price-Reserve">$</h1>
           <button
             onClick={() => showForm(true)}
             className="Reserve-Button my-3">
@@ -227,7 +227,7 @@ const mapStateToProps = state => {
   return {
     list: state.categories.list,
     servicesList: state.services.list,
-    total: state.bookings.total
+    // total: state.bookings.total
   };
 };
 
@@ -243,7 +243,7 @@ ServiceList.prototype = {
   getSalonServices: PropTypes.func.isRequired,
   showForm: PropTypes.func.isRequired,
   servicesList: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired,
+  // total: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceList);

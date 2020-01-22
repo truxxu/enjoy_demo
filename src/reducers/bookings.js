@@ -15,14 +15,12 @@ export default function(state = initialState, action) {
       case ADD_TO_BOOKINGS:
         return {
           ...state,
-          list: state.list.concat(action.payload.id_service),
-          total: state.total + parseInt(action.payload.price)
+          list: [...state.list, action.payload]
         };
       case REMOVE_FROM_BOOKINGS:
         return {
           ...state,
-          list: state.list.filter(item => item !== action.payload.id_service),
-          total: state.total - parseInt(action.payload.price)
+          list: state.list.filter(item => item.id !== action.payload.id),
         };
       case SHOW_FORM:
         return {

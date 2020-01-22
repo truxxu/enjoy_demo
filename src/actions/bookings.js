@@ -2,27 +2,27 @@ import { env } from "../env";
 import {
   ADD_TO_BOOKINGS,
   REMOVE_FROM_BOOKINGS,
-  SHOW_FORM
+  SHOW_FORM,
 } from ".";
 import store from "../store";
 
-export const addOrRemoveFromBookings = (id_service, price) => dispatch => {
-  let action_to_bookings = '';
-  let servicePosition = store.getState().bookings.list.indexOf(id_service);
+export const addOrRemoveFromBookings = (param) => dispatch => {
+  let list = store.getState().bookings.list;
+  let salonFilter = list.filter(item => item.salon_id !== param.salon_id)
+  let serviceFilter = list.filter(item => item.id === param.id)
 
-  if(servicePosition<0){
-    action_to_bookings = ADD_TO_BOOKINGS;
-  }else{
-    action_to_bookings = REMOVE_FROM_BOOKINGS;
+  if (salonFilter.length === 0 && serviceFilter.length === 0) {
+    dispatch({
+      type: ADD_TO_BOOKINGS,
+      payload: param
+    })
+  } else if (serviceFilter.length > 0) {
+    dispatch({
+      type: REMOVE_FROM_BOOKINGS,
+      payload: param
+    })
   }
 
-  dispatch({
-    type: action_to_bookings,
-    payload: {
-      id_service: id_service,
-      price: price
-    }
-  });
 };
 
 export const showForm = param => dispatch => {

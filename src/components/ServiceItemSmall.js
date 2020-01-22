@@ -54,7 +54,7 @@ function ServiceItemSmall(props) {
         <p className="Description mr-4">{data.description}</p>
       </div>
       <div
-        className="Service-Item-Small-Price ml-4 ml-md-0 d-flex justify-content-between 
+        className="Service-Item-Small-Price ml-4 ml-md-0 d-flex justify-content-between
       flex-md-column justify-content-md-around align-items-md-center"
       >
         {data.discount_price ? (
@@ -74,7 +74,7 @@ function ServiceItemSmall(props) {
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="option1"
-            onChange={() => toggleChange(data.id, finalPrice(data.price, data.discount_price))}
+            onChange={() => addOrRemoveFromBookings(data)}
           />
           <label className="ml-2">Agregar</label>
         </div>
