@@ -14,13 +14,8 @@ function ServiceItemSmall(props) {
   const priceStr = string => {
     return string
       .split(".")[0]
-      .split(".")[0]
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
-
-  function toggleChange(id_service, price){
-    addOrRemoveFromBookings(id_service, price);
-  }
 
   const finalPrice = function(price, discount_price) {
     if(discount_price===null){

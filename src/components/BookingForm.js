@@ -19,8 +19,6 @@ import { showForm } from "../actions/bookings";
 
 const BookingForm = (props) => {
 
-  console.log(props.data)
-
   const createSliderWithTooltip = Slider.createSliderWithTooltip;
   const Handle = Slider.Handle;
 
@@ -60,22 +58,56 @@ const BookingForm = (props) => {
 
   registerLocale('es', es)
 
-  const { show, showForm } = props;
+  const { show, showForm, list } = props;
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
 
   const priceStr = string => {
-    return string.split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    return string.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-  if (token !== null) {
+  const renderService = (item) => {
+    return (
+      <div
+        key={item.id}
+        className="Service d-flex flex-row justify-content-around
+        align-items-center">
+        <p>{item.name}</p>
+        <Button variant={'none'}>
+          <p>X</p>
+        </Button>
+      </div>
+    )
+  }
+
+  const totalTime = () => {
+    let count = 0;
+    list.map(item => {
+      count += item.duration
+    })
+    return count
+  }
+
+  const totalPrice = () => {
+    let count = 0;
+    list.map(item => {
+      if (item.discount_price !== null) {
+        count += parseInt(item.discount_price)
+      } else {
+        count += parseInt(item.price)
+      }
+    })
+    return count.toString()
+  }
+
+  if (token !== null && list.length !== 0) {
     return (
       <Modal show={show} onHide={() => showForm(false)}>
         <div className="Booking-Form">
           <div className="Booking-Form-Header">
             <div className="Title-Box d-flex flex-row justify-content-between">
-              <p>{props.data.salon_name}</p>
+              <p>{list[0].salon_name}</p>
               <Button
                 style={{padding: 0}}
                 variant={'none'}
@@ -83,20 +115,13 @@ const BookingForm = (props) => {
                 <p>X</p>
               </Button>
             </div>
-            <p>Tiempo estimado de tu reserva: {props.data.duration} minutos</p>
+            <p>Tiempo estimado de tu reserva: {totalTime('duration')} minutos</p>
           </div>
           <div className="Booking-Form-Body">
             <div className="Services-Box">
               <p style ={{marginBottom: '15px'}}>Servicios</p>
               <div className="d-flex flex-row flex-wrap">
-                <div
-                  className="Service d-flex flex-row justify-content-around
-                  align-items-center">
-                  <p>{props.data.name}</p>
-                  <Button variant={'none'}>
-                    <p>X</p>
-                  </Button>
-                </div>
+                {list.map(item => renderService(item))}
               </div>
             </div>
             <div className="Date-Box">
@@ -172,7 +197,7 @@ const BookingForm = (props) => {
                 </InputGroup>
               <div className="Total-Price">
                 <p>Precio total</p>
-                <p className="Total">${priceStr(props.data.discount_price)}</p>
+                <p className="Total">${priceStr(totalPrice())}</p>
               </div>
             </div>
             <div className="Booking-Form-Footer">
@@ -226,6 +251,7 @@ const BookingForm = (props) => {
 const mapStateToProps = state => {
   return {
     show: state.bookings.show,
+    list: state.bookings.list,
   };
 };
 
@@ -235,6 +261,7 @@ const mapDispatchToProps = {
 
 BookingForm.prototype = {
   showForm: PropTypes.func.isRequired,
+  list: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookingForm);
