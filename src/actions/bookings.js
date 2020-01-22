@@ -6,7 +6,7 @@ import {
 } from ".";
 import store from "../store";
 
-export const addOrRemoveFromBookings = (param) => dispatch => {
+export const addBooking = (param) => dispatch => {
   let list = store.getState().bookings.list;
   let salonFilter = list.filter(item => item.salon_id !== param.salon_id)
   let serviceFilter = list.filter(item => item.id === param.id)
@@ -16,13 +16,20 @@ export const addOrRemoveFromBookings = (param) => dispatch => {
       type: ADD_TO_BOOKINGS,
       payload: param
     })
-  } else if (serviceFilter.length > 0) {
+  }
+};
+
+export const removeBooking = (param) => dispatch => {
+  let list = store.getState().bookings.list;
+  let salonFilter = list.filter(item => item.salon_id !== param.salon_id)
+  let serviceFilter = list.filter(item => item.id === param.id)
+
+  if (salonFilter.length === 0 && serviceFilter.length > 0) {
     dispatch({
       type: REMOVE_FROM_BOOKINGS,
       payload: param
     })
   }
-
 };
 
 export const showForm = param => dispatch => {

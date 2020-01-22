@@ -15,7 +15,7 @@ import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
-import { showForm } from "../actions/bookings";
+import { showForm, removeBooking } from "../actions/bookings";
 
 const BookingForm = (props) => {
 
@@ -58,7 +58,7 @@ const BookingForm = (props) => {
 
   registerLocale('es', es)
 
-  const { show, showForm, list } = props;
+  const { show, showForm, list, removeBooking } = props;
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
@@ -74,7 +74,9 @@ const BookingForm = (props) => {
         className="Service d-flex flex-row justify-content-around
         align-items-center">
         <p>{item.name}</p>
-        <Button variant={'none'}>
+        <Button
+          onClick={() => removeBooking(item)}
+          variant={'none'}>
           <p>X</p>
         </Button>
       </div>
@@ -101,7 +103,7 @@ const BookingForm = (props) => {
     return count.toString()
   }
 
-  if (token !== null && list.length !== 0) {
+  if (token !== null && list.length > 0) {
     return (
       <Modal show={show} onHide={() => showForm(false)}>
         <div className="Booking-Form">
@@ -217,6 +219,9 @@ const BookingForm = (props) => {
         </div>
       </Modal>
     )
+  } else if (list.length === 0) {
+    showForm(false);
+    return null;
   } else {
     return (
       <Modal centered show={show} onHide={() => showForm(false)}>
@@ -257,10 +262,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   showForm,
+  removeBooking
 };
 
 BookingForm.prototype = {
   showForm: PropTypes.func.isRequired,
+  removeBooking: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired,
 };
 

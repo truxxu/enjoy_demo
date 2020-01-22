@@ -7,11 +7,11 @@ import PropTypes from "prop-types";
 import "../styles/ServiceListItem.css";
 import BookingForm from "./BookingForm";
 import { addFavoriteService } from "../actions/favoriteService";
-import { showForm, addOrRemoveFromBookings } from "../actions/bookings";
+import { showForm, addBooking } from "../actions/bookings";
 
 function ServiceListItem(props) {
   const data = props.data;
-  const { addFavoriteService, showForm , addOrRemoveFromBookings} = props;
+  const { addFavoriteService, showForm , addBooking} = props;
 
   const priceStr = string => {
     return string
@@ -66,7 +66,7 @@ function ServiceListItem(props) {
           <Button
             onClick={() => {
               showForm(true);
-              addOrRemoveFromBookings(data);
+              addBooking(data);
             }}
             className="Button mr-2">
             RESERVAR YA
@@ -86,13 +86,13 @@ function ServiceListItem(props) {
 const mapDispatchToProps = {
   addFavoriteService,
   showForm,
-  addOrRemoveFromBookings
+  addBooking
 };
 
 ServiceListItem.prototype = {
   addFavoriteService: PropTypes.func.isRequired,
   showForm: PropTypes.func.isRequired,
-  addOrRemoveFromBookings: PropTypes.func.isRequired,
+  addBooking: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(ServiceListItem);

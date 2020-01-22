@@ -20,8 +20,8 @@ function ServiceList(props) {
     list,
     getSalonServices,
     servicesList,
-    //
-    showForm
+    showForm,
+    bookingList,
   } = props;
 
   const salonId = props.salonId;
@@ -128,6 +128,22 @@ function ServiceList(props) {
     }
   };
 
+  const priceStr = string => {
+    return string.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
+  const totalPrice = () => {
+    let count = 0;
+    bookingList.map(item => {
+      if (item.discount_price !== null) {
+        count += parseInt(item.discount_price)
+      } else {
+        count += parseInt(item.price)
+      }
+    })
+    return count.toString()
+  }
+
   return (
     <Row className="ServiceList-Row ">
       <BookingForm data={props.data}/>
@@ -184,7 +200,7 @@ function ServiceList(props) {
           </button>
         </Row>
         <Row className="Reserve flex-column my-4 pb-4 align-items-center ">
-          <h1 className="Price-Reserve">$</h1>
+          <h1 className="Price-Reserve">${priceStr(totalPrice())}</h1>
           <button
             onClick={() => showForm(true)}
             className="Reserve-Button my-3">
@@ -227,7 +243,7 @@ const mapStateToProps = state => {
   return {
     list: state.categories.list,
     servicesList: state.services.list,
-    // total: state.bookings.total
+    bookingList: state.bookings.list,
   };
 };
 
@@ -243,7 +259,7 @@ ServiceList.prototype = {
   getSalonServices: PropTypes.func.isRequired,
   showForm: PropTypes.func.isRequired,
   servicesList: PropTypes.array.isRequired,
-  // total: PropTypes.number.isRequired,
+  bookingList: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceList);
