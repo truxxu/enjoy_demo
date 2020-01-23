@@ -1,0 +1,126 @@
+.red{
+   background-color: red;
+}
+
+.yel{
+    background-color: yellow;
+ }
+
+ .gre{
+    background-color: green;
+ }
+
+.App-Dashboard{
+  font-family: "MontserratBold", sans-serif;
+}
+
+.App-Dashboard-Logo{
+    height: 45px;  
+    align-content: center;
+ }
+
+.App-Dashboard-Link{
+  color: var(--color-negro);
+}
+
+.App-Dashboard-Link:hover {
+  color: var(--color-gris-oscuro);
+  text-decoration: none;
+}
+
+.App-Board{
+  background-color: var(--color-dorado);
+  height: 350px;
+}
+
+.App-Board-Card{
+  background-color: var(--color-blanco);
+  border-radius: 5px;
+  border: none;
+  
+  height: 102px;
+  margin-bottom: 17px;
+}
+
+.App-Board-Title{
+  font-size: 0.7em;
+}
+
+.App-Board-Percent{
+  font-size: 0.7em;
+}
+
+.App-Board-Ico{
+  font-size: 40px;
+}
+
+.App-Board-Pointer{
+  cursor: pointer;
+}
+
+.ico-red{
+  color: red;
+}
+
+.nav-item{
+  height: 38px;
+}
+
+.Col-Percent-Gre{
+  color: #00A650;
+}
+
+.Col-Percent-Red, .Total-Red{
+  color: #B73639;
+}
+
+.App-Board-Gris{
+  background-color: #F4F5FB;
+}
+
+.App-Board-Col-Dorado{
+  background-color: var(--color-dorado);
+}
+
+@media (max-width: 568px) {
+  .App-Board-Card {
+    width: 100% !important;
+  }
+}
+
+
+.App-Board-Reserves-Chart{
+  
+}
+
+.highcharts-axis > .highcharts-axis-title{
+  color: red !important;
+}
+
+.ddddrrr{
+  position: relative;
+  top:-45px;
+}
+
+.App-Footer-Bottom {
+  font-size: 0.8em;
+  font-weight: 0px;
+  
+}
+
+.App-Footer-Bottom span {
+  color: var(--color-verde-claro);
+}
+
+.App-Footer-Bottom p {
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .App-Footer-Bottom {
+    border: none;
+  }
+  .App-Footer-Bottom p {
+    margin-bottom: 0;
+  }
+}
