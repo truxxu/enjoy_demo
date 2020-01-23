@@ -8,10 +8,11 @@ import "../styles/ServiceListItem.css";
 import BookingForm from "./BookingForm";
 import { addFavoriteService } from "../actions/favoriteService";
 import { showForm, addBooking } from "../actions/bookings";
+import { getSalon } from "../actions/salon";
 
 function ServiceListItem(props) {
   const data = props.data;
-  const { addFavoriteService, showForm , addBooking} = props;
+  const { addFavoriteService, showForm , addBooking, getSalon} = props;
 
   const priceStr = string => {
     return string
@@ -66,6 +67,7 @@ function ServiceListItem(props) {
           <Button
             onClick={() => {
               showForm(true);
+              getSalon(data.salon_id);
               addBooking(data);
             }}
             className="Button mr-2">
@@ -86,13 +88,15 @@ function ServiceListItem(props) {
 const mapDispatchToProps = {
   addFavoriteService,
   showForm,
-  addBooking
+  addBooking,
+  getSalon
 };
 
 ServiceListItem.prototype = {
   addFavoriteService: PropTypes.func.isRequired,
   showForm: PropTypes.func.isRequired,
   addBooking: PropTypes.func.isRequired,
+  getSalon: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(ServiceListItem);

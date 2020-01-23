@@ -19,6 +19,7 @@ import { showForm, removeBooking } from "../actions/bookings";
 
 const BookingForm = (props) => {
 
+  // Time Sliders
   const createSliderWithTooltip = Slider.createSliderWithTooltip;
   const Handle = Slider.Handle;
 
@@ -56,9 +57,10 @@ const BookingForm = (props) => {
     );
   };
 
+  // Calendar localization
   registerLocale('es', es)
 
-  const { show, showForm, list, removeBooking } = props;
+  const { show, showForm, list, removeBooking, salon } = props;
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
@@ -103,13 +105,39 @@ const BookingForm = (props) => {
     return count.toString()
   }
 
+  const isWeekday = (date) => {
+    const days = {
+      monday: 1,
+      tuesday: 2,
+      wednesday: 3,
+      thursday: 4,
+      friday: 5,
+      saturday: 6,
+      sunday: 0
+    }
+    const serviceDays = [];
+    for (const [key, value] of Object.entries(days)) {
+      if (salon.schedule !== undefined) {
+        salon.schedule.map(day => {
+          if (day.day === key) {
+            serviceDays.push(value)
+          }
+        })
+
+      }
+    }
+    const day = date.getDay();
+    return serviceDays.includes(day)
+  }
+
+
   if (token !== null && list.length > 0) {
     return (
       <Modal show={show} onHide={() => showForm(false)}>
         <div className="Booking-Form">
           <div className="Booking-Form-Header">
             <div className="Title-Box d-flex flex-row justify-content-between">
-              <p>{list[0].salon_name}</p>
+              <p>{salon.name}</p>
               <Button
                 style={{padding: 0}}
                 variant={'none'}
@@ -133,6 +161,7 @@ const BookingForm = (props) => {
                   selected={startDate}
                   onChange={date => setStartDate(date)}
                   minDate={new Date()}
+                  filterDate={isWeekday}
                   locale="es"
                   inline
                 />
@@ -257,6 +286,7 @@ const mapStateToProps = state => {
   return {
     show: state.bookings.show,
     list: state.bookings.list,
+    salon: state.salons.activeItem
   };
 };
 
@@ -269,6 +299,7 @@ BookingForm.prototype = {
   showForm: PropTypes.func.isRequired,
   removeBooking: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired,
+  salon: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BookingForm);
