@@ -105,31 +105,49 @@ const BookingForm = (props) => {
     return count.toString()
   }
 
-  const isWeekday = (date) => {
-    const days = {
-      monday: 1,
-      tuesday: 2,
-      wednesday: 3,
-      thursday: 4,
-      friday: 5,
-      saturday: 6,
-      sunday: 0
-    }
-    const serviceDays = [];
-    for (const [key, value] of Object.entries(days)) {
-      if (salon.schedule !== undefined) {
-        salon.schedule.map(day => {
-          if (day.day === key) {
-            serviceDays.push(value)
-          }
-        })
-
-      }
-    }
-    const day = date.getDay();
-    return serviceDays.includes(day)
+  const days = {
+    monday: 1,
+    tuesday: 2,
+    wednesday: 3,
+    thursday: 4,
+    friday: 5,
+    saturday: 6,
+    sunday: 0
   }
 
+  const serviceDaysArray = [];
+  for (const [key, value] of Object.entries(days)) {
+    if (salon.schedule !== undefined) {
+      salon.schedule.map(day => {
+        if (day.day === key) {
+          serviceDaysArray.push(value)
+        }
+      })
+    }
+  }
+
+  const serviceDays = (date) => {
+    const day = date.getDay();
+    return serviceDaysArray.includes(day)
+  }
+
+
+  const workingHours = (param) => {
+    if (salon.schedule !== undefined) {
+      const date = startDate.getDay();
+      let str = '';
+      for (const [key, value] of Object.entries(days)) {
+        if (date === value) {
+          salon.schedule.map(day => {
+            if (day.day === key) {
+              str = str + day[param]
+            }
+          })
+        }
+      }
+      return str.split(':')[0]
+    }
+  };
 
   if (token !== null && list.length > 0) {
     return (
@@ -161,7 +179,7 @@ const BookingForm = (props) => {
                   selected={startDate}
                   onChange={date => setStartDate(date)}
                   minDate={new Date()}
-                  filterDate={isWeekday}
+                  filterDate={serviceDays}
                   locale="es"
                   inline
                 />
@@ -173,7 +191,11 @@ const BookingForm = (props) => {
                   {hourValue} : { minuteValue === 0 ? '00' : minuteValue }
                 </div>
                 <div className="Time-Sliders">
-                  <Slider min={6} max={18} step={1} handle={handle} />
+                  <Slider
+                    min={parseInt(workingHours('opening_hour'))}
+                    max={parseInt(workingHours('closing_hour')) - 1}
+                    step={1}
+                    handle={handle} />
                   <Slider min={0} max={50} step={10} handle={handle2} />
                 </div>
               </div>
