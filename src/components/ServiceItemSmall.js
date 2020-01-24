@@ -12,8 +12,9 @@ function ServiceItemSmall(props) {
   const data = props.data;
 
   const priceStr = string => {
-    return string.split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    
+    return string.split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+  }
+
   const { addBooking, favoritesList, addFavoriteService } = props;
 
   const [isShown, setIsShown] = useState(false);

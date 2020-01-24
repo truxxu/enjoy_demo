@@ -64,6 +64,7 @@ const BookingForm = (props) => {
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
+  const [checkedRadio, setCheckedRadio] = useState(0);
 
   const priceStr = string => {
     return string.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -220,20 +221,20 @@ const BookingForm = (props) => {
             <div className="Payment-Box">
               <p>Selecciona una forma de pago</p>
               <div className="Cash d-flex flex-row">
-                <InputGroup.Checkbox
+                <InputGroup.Radio
                   aria-label="cash"
                   className="checkbox"
-                  // checked={false}
-                  // onChange={}
+                  checked={checkedRadio === 1}
+                  onChange={() => setCheckedRadio(1)}
                 />
                 <p>Pagar en el centro de belleza</p>
               </div>
               <div className="Online d-flex flex-row">
-                <InputGroup.Checkbox
+                <InputGroup.Radio
                   aria-label="online"
                   className="checkbox"
-                  // checked={false}
-                  // onChange={}
+                  checked={checkedRadio === 2}
+                  onChange={() => setCheckedRadio(2)}
                 />
                 <p>¡Paga online!</p>
               </div>
