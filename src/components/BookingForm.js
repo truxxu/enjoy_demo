@@ -151,7 +151,10 @@ const BookingForm = (props) => {
 
   if (token !== null && list.length > 0) {
     return (
-      <Modal show={show} onHide={() => showForm(false)}>
+      <Modal
+        centered
+        show={show}
+        onHide={() => showForm(false)}>
         <div className="Booking-Form">
           <div className="Booking-Form-Header">
             <div className="Title-Box d-flex flex-row justify-content-between">

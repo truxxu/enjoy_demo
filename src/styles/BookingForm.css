@@ -1,11 +1,16 @@
 .Booking-Form {
   background-color: var(--color-gris-claro);
+  width: 100%;
 }
 
 .modal-content p{
   margin: 0;
   font-family: "MontserraBold", sans-serif;
   font-size: 13px;
+}
+
+.modal-dialog-centered {
+  justify-content: center;
 }
 
 .Booking-Form-Header {
