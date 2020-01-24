@@ -22,6 +22,22 @@ const options = {
   }]
 }
 
+let chartWidth = 0;
+let chartHeight = 0;
+let chartMargin = 0;
+let chartFontSize = '';
+if(window.innerWidth>768){
+  chartWidth = 800;
+  chartHeight = 392;
+  chartMargin = 90;
+  chartFontSize = '11px';
+}else{
+  chartWidth = 350;
+  chartHeight = 370;
+  chartMargin = 50;
+  chartFontSize = '5px'
+}
+
 const chartOptionsBoard = {
   title: {
     text: '',
@@ -33,50 +49,24 @@ const chartOptionsBoard = {
     shadow: true,
     borderRadius: 6,
     type: 'line',
-    margin: [80, 20, 30, 90],
-    width:800
+    margin: [80, 20, 50, chartMargin],
+    width:chartWidth,
+    height:chartHeight
   },
-  responsive: {
-    rules: [{
-        condition: {
-            maxWidth: 500
-        },
-        chartOptions: {
-            legend: {
-                align: 'center',
-                verticalAlign: 'bottom',
-                layout: 'horizontal'
-            },
-            yAxis: {
-                labels: {
-                    align: 'left',
-                    x: 0,
-                    y: -5
-                },
-                title: {
-                    text: null
-                }
-            },
-            subtitle: {
-                text: null
-            },
-            credits: {
-                enabled: false
-            }
-        }
-    }]
-},
   yAxis: {
     title: {
       text: '<b>VENTAS</b>',
       enabled:true,//default is true
       align:'high',
-      offset: 10,
+      offset: -10,
       y : -50, 
       rotation: 0,
     },
     labels: {
       enabled:true,
+      style: {
+        fontSize: chartFontSize
+      },
       formatter: function () {
         let value = this.value+'';
         let valueLength = value.length;
@@ -88,6 +78,11 @@ const chartOptionsBoard = {
     }
   },
   xAxis: {
+    labels: {
+      style: {
+          fontSize: chartFontSize
+      }
+    },
     categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
   },
   plotOptions: {
@@ -120,50 +115,24 @@ const chartOptionsReserves = {
     shadow: true,
     borderRadius: 6,
     type: 'line',
-    margin: [80, 20, 30, 90],
-    width:800
+    margin: [80, 20, 50, chartMargin],
+    width:chartWidth,
+    height:chartHeight
   },
-  responsive: {
-    rules: [{
-        condition: {
-            maxWidth: 500
-        },
-        chartOptions: {
-            legend: {
-                align: 'center',
-                verticalAlign: 'bottom',
-                layout: 'horizontal'
-            },
-            yAxis: {
-                labels: {
-                    align: 'left',
-                    x: 0,
-                    y: -5
-                },
-                title: {
-                    text: null
-                }
-            },
-            subtitle: {
-                text: null
-            },
-            credits: {
-                enabled: false
-            }
-        }
-    }]
-},
   yAxis: {
     title: {
       text: '<b>RESERVAS</b>',
       enabled:true,
       align:'high',
-      offset: -20,
+      offset: -30,
       y : -50, 
       rotation: 0,
     },
     labels: {
       enabled:true,
+      style: {
+        fontSize: chartFontSize
+      },
       formatter: function () {
         let value = this.value+'';
         let valueLength = value.length;
@@ -175,6 +144,11 @@ const chartOptionsReserves = {
     }
   },
   xAxis: {
+    labels: {
+      style: {
+        fontSize: chartFontSize
+      }
+    },
     categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
   },
   plotOptions: {
@@ -201,46 +175,53 @@ function DashboardPage(props) {
 
   return (
     <Container fluid className="App-Dashboard">
-      
 
       <Tab.Container id="left-tabs-example" defaultActiveKey="user">
         <Row>
-          <Col>
+          <Col className="App-Board-Header">
             <Row className="align-items-center mt-4 mb-5">
-              <div className="col-md-2 align-items-center justify-content-center">
-                <Link to="/">
-                  <img src={logo} className="App-Dashboard-Logo m-3" />
-                </Link>
-              </div>        
+              <Col className="d-flex">
+                <div className="col-md-2">
+                  <Link to="/">
+                    <img src={logo} className="App-Dashboard-Logo m-3" />
+                  </Link>
+                </div>        
+                <div className="d-md-none d-sm-block  align-self-center mr-4 ">
+                  <label className="App-Board-Icon-Menu icon-menu Tab-Icon App-Board-Pointer"></label> 
+                  <label className="App-Board-Pointer" >X</label> 
+                </div>        
+              </Col>
             </Row>
    
-            <Nav className="flex-column Profile-Nav">
+            <Nav className=" Profile-Nav d-none d-sm-none d-md-block ">
               <Nav.Item>
                 <Nav.Link eventKey="user" className="App-Dashboard-Link" >
-                    <label className="icon-usuario Tab-Icon App-Board-Pointer"></label> 
+                    <label className="icon-dashboar Tab-Icon App-Board-Pointer"></label> 
                     <label className="ml-2 App-Board-Pointer">Tablero</label>
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="favorites" className="App-Dashboard-Link">
-                    <span className="icon-corazones Tab-Icon App-Board-Pointer"></span>
+                    <span className="icon-calendario Tab-Icon App-Board-Pointer"></span>
                     <label className="ml-2 App-Board-Pointer">Reservas</label>
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
-                    <span className="icon-calendario Tab-Icon App-Board-Pointer"></span>
+                    <span className="icon-usuario Tab-Icon App-Board-Pointer"></span>
                     <label className="ml-2 App-Board-Pointer">Perfil</label>
                 </Nav.Link>
               </Nav.Item>
+              <hr />
+              <Nav.Item>
+                <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
+                  <a href="" className="App-Dashboard-Link" >
+                    <span className="icon-logout Tab-Icon ico-red"></span>
+                    <label className="ml-2">Cerrar sesión</label>
+                  </a>
+                </Nav.Link>
+              </Nav.Item>
             </Nav>
-
-            <hr />
-
-            <a href="" className="App-Dashboard-Link" >
-              <span className="icon-logout Tab-Icon ico-red"></span>
-              <label className="ml-2">Cerrar sesión</label>
-            </a>
           </Col>
           <Col sm={10} className="">
             <Tab.Content>
@@ -252,7 +233,7 @@ function DashboardPage(props) {
                   <Col md={6} className="mb-5">
                     <Row className="justify-content-end pr-5 d-none d-md-flex">
                       <div className="align-self-center">
-                        <img src="https://enjoy-files.s3.amazonaws.com/images/salon1.jpg?AWSAccessKeyId=AKIAR6F4S2NVN3L3RGOL&Signature=m6zIPiPezZhlco0ZSCPvUh3B4bE%3D&Expires=1579718242" className="App-Dashboard-Logo" />
+                        <img src="https://enjoy-files.s3.amazonaws.com/images/salon1.jpg?AWSAccessKeyId=AKIAR6F4S2NVN3L3RGOL&Signature=iKYeu%2FNhZiinhEhm%2FsVEV2CnC%2Bs%3D&Expires=1579806476" className="App-Dashboard-Logo" />
                       </div>
                       <div className="align-self-center ml-2">
                         <label className="">Nombre del salón</label>
@@ -261,85 +242,57 @@ function DashboardPage(props) {
                   </Col>
                 </Row>
 
-                <Row className="d-md-flex App-Board-Col-Dorado pb-5">
-
-                  <Col className="App-Board-Card ml-3">
-                    <Row className="mx-1 mt-2 mb-1">
-                      <Col className="">
-                        <Row className="mb-1">
-                          <label className="App-Board-Title">VENTAS TOTALES</label>
-                        </Row>
-                        <Row className="">
-                          <label className="font-weight-bold"> $0.000.000</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                    <Row className="App-Board-Percent mx-1">
-                        <label><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
-                    </Row>
+                <Row className="App-Board-Col-Dorado justify-content-around pb-5">
+                
+                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                      <label className="App-Board-Title">VENTAS TOTALES</label>
+                      <label className="font-weight-bold"> $0.000.000</label>
+                      <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="App-Board-Ico mt-1 d-none d-md-block mr-1">
+                      <span className="icon-grafico-de-barras Tab-Icon"></span>
+                    </div>
                   </Col>
 
-                  <Col className="App-Board-Card ml-3">
-                    <Row className="mx-1 mt-2 mb-1">
-                      <Col className="">
-                        <Row className="mb-1">
-                          <label className="App-Board-Title">PAGOS ONLINE</label>
-                        </Row>
-                        <Row className="">
-                          <label className="font-weight-bold"> $0.000.000</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                    <Row className="App-Board-Percent mx-1">
-                        <label><span className="Col-Percent-Red font-weight-bold">↓0.0%</span> desde el mes pasado</label>
-                    </Row>
+                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                      <label className="App-Board-Title">VENTAS TOTALES</label>
+                      <label className="font-weight-bold"> $0.000.000</label>
+                      <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="App-Board-Ico mt-1 d-none d-md-block mr-1">
+                      <span className="icon-pagar_online Tab-Icon"></span>
+                    </div>
                   </Col>
 
-                  <Col className="App-Board-Card ml-3">
-                    <Row className="mx-1 mt-2 mb-1">
-                      <Col className="">
-                        <Row className="mb-1">
-                          <label className="App-Board-Title">PAGOS EN EL SALÓN</label>
-                        </Row>
-                        <Row className="">
-                          <label className="font-weight-bold"> $0.000.000</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                    <Row className="App-Board-Percent mx-1">
-                        <label className=""><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
-                    </Row>
+                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                      <label className="App-Board-Title">VENTAS TOTALES</label>
+                      <label className="font-weight-bold"> $0.000.000</label>
+                      <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="mt-2 d-none d-md-block mr-1">
+                      <span className="icon-tienda Tab-Icon"></span>
+                    </div>
                   </Col>
 
-                  <Col className="App-Board-Card mx-3">
-                    <Row className="mx-1 mt-2 mb-1">
-                      <Col className="">
-                        <Row className="mb-1">
-                          <label className="App-Board-Title">SALDO A FAVOR</label>
-                        </Row>
-                        <Row className="mt-3">
-                          <label className="font-weight-bold Total-Red"> $0.000.000</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                  </Col>                
+                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                      <label className="App-Board-Title">VENTAS TOTALES</label>
+                      <label className="App-Board-Value font-weight-bold">$0.000.000</label>
+                      <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="App-Board-Ico mt-1 d-none d-md-block mr-1">
+                      <span className="icon-poos-favor Tab-Icon"></span>
+                    </div>
+                  </Col>
 
                 </Row>
-                
+
+
                 <Row className="App-Board-Reserves-Chart App-Board-Gris justify-content-center  d-md-flex">
-                  <Row className="ddddrrr">
+                  <Row className="App-Board-Content-Chart">
                     <HighchartsReact
                       highcharts={Highcharts}
                       options={chartOptionsBoard}
@@ -354,82 +307,54 @@ function DashboardPage(props) {
                   </Col>
                 </Row>
 
-
-
-                <Row className="d-md-flex App-Board-Col-Dorado pb-5">
-
-                  <Col className="App-Board-Card ml-3">
-                    <Row className="mx-1 mt-2 mb-1">
-                      <Col className="">
-                        <Row className="mb-1">
-                          <label className="App-Board-Title">RESERVAS TOTALES</label>
-                        </Row>
-                        <Row className="">
-                          <label className="font-weight-bold"> 128</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                    <Row className="App-Board-Percent mx-1">
-                        <label><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
-                    </Row>
+                <Row className="App-Board-Col-Dorado justify-content-around pb-5">
+                
+                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                      <label className="App-Board-Title">RESERVAS TOTALES</label>
+                      <label className="font-weight-bold"> 128</label>
+                      <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="App-Board-Ico mt-1 d-none d-md-block mr-2">
+                      <span className="icon-campana Tab-Icon"></span>
+                    </div>
                   </Col>
 
-                  <Col className="App-Board-Card ml-3">
-                    <Row className="mx-1 mt-2 mb-1">
-                      <Col className="">
-                        <Row className="mb-1">
-                          <label className="App-Board-Title">RESERVAS CANCELADAS POR EL CLIENTE</label>
-                        </Row>
-                        <Row className="">
-                          <label className="font-weight-bold">8</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                    <Row className="App-Board-Percent mx-1">
-                        <label><span className="Col-Percent-Red font-weight-bold">↓0.0%</span> desde el mes pasado</label>
-                    </Row>
+                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                      <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL CLIENTE</label>
+                      <label className="font-weight-bold">8</label>
+                      <label className="App-Board-Percent"><span className="Col-Percent-Red font-weight-bold">↓0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="App-Board-Ico mt-1 d-none d-md-block mr-2">
+                      <span className="icon-campana_cancelar Tab-Icon"></span>
+                    </div>
                   </Col>
 
-                  <Col className="App-Board-Card mx-3 ">
-                    <Row className="mx-1 mt-2">
-                      <Col className="">
-                        <Row className="">
-                          <label className="App-Board-Title">RESERVAS CANCELADAS POR EL SALÓN</label>
-                        </Row>
-                        <Row className="">
-                          <label className="font-weight-bold"> $0.000.000</label>
-                        </Row>
-                      </Col>
-                      <Col md={3} className="App-Board-Ico">
-                        <span className="icon-usuario Tab-Icon"></span>
-                      </Col>
-                    </Row>
-                    <Row className="App-Board-Percent mx-1">
-                        <label className=""><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
-                    </Row>
+                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
+                    <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL SALÓN</label>
+                    <label className="font-weight-bold"> $0.000.000</label>
+                    <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    </div>
+                    <div className="App-Board-Ico mt-1 d-none d-md-block mr-2">
+                      <span className="icon-campana_cancelar Tab-Icon"></span>
+                    </div>
                   </Col>
-
                 </Row>
 
 
                 <Row className="App-Board-Reserves-Chart App-Board-Gris justify-content-center  d-md-flex">
-                  <Row className="ddddrrr">
+                  <Row className="App-Board-Content-Chart">
                     <HighchartsReact
                       highcharts={Highcharts}
                       options={chartOptionsReserves}
                     />
                   </Row>
                 </Row>
-
                 
                 
-                <Row className="App-Footer-Bottom App-Board-Gris justify-content-center justify-content-md-between pt-2 px-5">
+                <Row className="App-Board-Bottom App-Board-Gris justify-content-center justify-content-md-between pt-2 px-5">
                    <label>
                     Todos los derechos reservados EN JOY!-s &copy;{" "}
                     {new Date().getFullYear()}

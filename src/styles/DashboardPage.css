@@ -10,8 +10,17 @@
     background-color: green;
  }
 
+ .dor{
+  background-color: var(--color-dorado);
+}
+
+.bla{
+  background-color: white;
+}
+
 .App-Dashboard{
   font-family: "MontserratBold", sans-serif;
+  text-decoration: none;
 }
 
 .App-Dashboard-Logo{
@@ -37,21 +46,27 @@
   background-color: var(--color-blanco);
   border-radius: 5px;
   border: none;
-  
-  height: 102px;
-  margin-bottom: 17px;
+  width: 300px !important;
 }
 
 .App-Board-Title{
-  font-size: 0.7em;
+  font-size: 0.6em;  
+}
+
+.App-Board-Value{
+  font-size: 0.6em;  
 }
 
 .App-Board-Percent{
-  font-size: 0.7em;
+  font-size: 0.5em;
 }
 
-.App-Board-Ico{
-  font-size: 40px;
+.App-Board-Ico, span.icon-tienda{
+  font-size: 30px;
+}
+
+.App-Board-Ico-Tienda{
+  font-size: 80px;
 }
 
 .App-Board-Pointer{
@@ -84,7 +99,7 @@
 
 @media (max-width: 568px) {
   .App-Board-Card {
-    width: 100% !important;
+    
   }
 }
 
@@ -97,30 +112,48 @@
   color: red !important;
 }
 
-.ddddrrr{
+.App-Board-Content-Chart{
   position: relative;
-  top:-45px;
+  top:-30px;
 }
 
-.App-Footer-Bottom {
+.App-Board-Bottom {
   font-size: 0.8em;
   font-weight: 0px;
   
 }
 
-.App-Footer-Bottom span {
+.App-Board-Bottom span {
   color: var(--color-verde-claro);
 }
 
-.App-Footer-Bottom p {
+.App-Board-Bottom p {
   margin-bottom: 0.5rem;
 }
 
 @media (min-width: 768px) {
-  .App-Footer-Bottom {
+  .App-Board-Bottom {
+    font-size: 0.8em;
     border: none;
   }
-  .App-Footer-Bottom p {
-    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .App-Board-Header {
+    background-color: var(--color-dorado);
+  }
+
+  .Profile-Nav-Board{
+    flex-direction: column !important;
+  }
+
+  .App-Board-Bottom label {
+    font-size: 0.8em;
   }
 }
+
+.App-Board-Icon-Menu{
+  font-size: 30px;
+}
+
+
