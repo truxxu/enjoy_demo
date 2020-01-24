@@ -10,6 +10,7 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
+import axios from "axios";
 
 import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -64,7 +65,6 @@ const BookingForm = (props) => {
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
-  const [checkedRadio, setCheckedRadio] = useState(0);
 
   const priceStr = string => {
     return string.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -150,6 +150,38 @@ const BookingForm = (props) => {
     }
   };
 
+  const [checkedRadio, setCheckedRadio] = useState(1);
+  const [proName, setProName] = useState('');
+
+  const handleClick = () => {
+    const getPaymentMethod = () => {
+      if (checkedRadio === 1) {
+        return 'Cash'
+      } else if (checkedRadio === 2) {
+        return 'Online'
+      }
+    };
+    const includeServices = () => {
+      let array = [];
+      list.map(item => {
+        const container = new Object;
+        container.service_id = item.id;
+        container.price = parseInt(item.discount_price || item.price);
+        container.duration = item.duration;
+        array.push(container);
+      });
+      return array;
+    }
+    const payload = {
+      reservation_datetime: '',
+      payment_method: getPaymentMethod(),
+      professional_name: proName,
+      salon_id: salon.id,
+      services: includeServices(),
+    }
+    console.log(payload)
+  }
+
   if (token !== null && list.length > 0) {
     return (
       <Modal
@@ -214,7 +246,7 @@ const BookingForm = (props) => {
                   className="Modal-Input"
                   aria-label="pro_name"
                   aria-describedby="basic-addon1"
-                  // onChange={}
+                  onChange={event => setProName(event.target.value)}
                 />
               </InputGroup>
             </div>
@@ -260,7 +292,10 @@ const BookingForm = (props) => {
             <div className="Booking-Form-Footer">
               <div className="d-flex justify-content-center">
                 <Button
-                  // onClick={handleCloseAlert}
+                  onClick={ () => {
+                    showForm(false);
+                    handleClick();
+                  }}
                   className="justify-content-center Modal-Button-Active
                   Register-Modal-Button"
                 >
@@ -287,14 +322,18 @@ const BookingForm = (props) => {
           <div className="Non-User-Modal-Footer">
             <div className="d-flex justify-content-around">
               <Button
-                onClick={ () => showForm(false)}
+                onClick={ () => {
+                  showForm(false);
+                }}
                 className="justify-content-center Modal-Button-Active
                 Register-Modal-Button"
               >
                 REGISTRARME
               </Button>
               <Button
-                onClick={ () => showForm(false)}
+                onClick={ () => {
+                  showForm(false);
+                }}
                 className="justify-content-center Modal-Button-Active
                 Register-Modal-Button"
               >

@@ -260,9 +260,9 @@ function Navbar(props) {
              </div>
             :
              <div className="col-auto d-flex align-items-center">
-                <div class="btn-group" role="group" onClick={logOut}>
-                  <button type="button" class="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
-                  <button type="button" class="Nav-Bar-Btn-R">Salir</button>
+                <div className="btn-group" role="group" onClick={logOut}>
+                  <button type="button" className="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
+                  <button type="button" className="Nav-Bar-Btn-R">Salir</button>
                 </div>
              </div>
           }
@@ -547,7 +547,7 @@ function Navbar(props) {
         <Row className="Section-Social-Networks-Text ">
           <li type="circle">Utiliza tus redes</li>
         </Row>
-        
+
         <Row className="justify-content-center align-items-center Section-Social-Networks">
           <FacebookLogin
             appId="754706191708393"
@@ -558,15 +558,15 @@ function Navbar(props) {
             cssClass="btnFacebook"
             callback={responseFacebook}
           />
-            
+
           <GoogleLogin
             clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
             className="btnGoogle"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           >
-            <i className="fa fa-google"/> <span>GOOGLE</span> 
-          </GoogleLogin>  
+            <i className="fa fa-google"/> <span>GOOGLE</span>
+          </GoogleLogin>
         </Row>
       </Modal>
       <Modal
