@@ -11,12 +11,14 @@ import es from 'date-fns/locale/es';
 import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
 import axios from "axios";
+import moment from "moment";
 
 import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
 import { showForm, removeBooking } from "../actions/bookings";
+import { env } from "../env";
 
 const BookingForm = (props) => {
 
@@ -132,7 +134,6 @@ const BookingForm = (props) => {
     return serviceDaysArray.includes(day)
   }
 
-
   const workingHours = (param) => {
     if (salon.schedule !== undefined) {
       const date = startDate.getDay();
@@ -156,9 +157,9 @@ const BookingForm = (props) => {
   const handleClick = () => {
     const getPaymentMethod = () => {
       if (checkedRadio === 1) {
-        return 'Cash'
+        return 'cash'
       } else if (checkedRadio === 2) {
-        return 'Online'
+        return 'online'
       }
     };
     const includeServices = () => {
@@ -171,15 +172,26 @@ const BookingForm = (props) => {
         array.push(container);
       });
       return array;
-    }
+    };
     const payload = {
-      reservation_datetime: '',
+      reservation_datetime: moment(startDate).format('YYYY-MM-DDT') +
+                            parseInt(hourValue) + ':' + parseInt(minuteValue)
+                            + ':00.511Z',
       payment_method: getPaymentMethod(),
       professional_name: proName,
       salon_id: salon.id,
       services: includeServices(),
-    }
-    console.log(payload)
+    };
+    console.log(payload);
+
+    // axios
+    //   .post(env.apiUrl + "**bookings**", payload)
+    //   .then(res => {
+    //     showForm(false);
+    //   })
+    //   .catch(err =>{
+    //     window.alert("No se pudo realizar la reserva" + errorMessage);
+    //   });
   }
 
   if (token !== null && list.length > 0) {
