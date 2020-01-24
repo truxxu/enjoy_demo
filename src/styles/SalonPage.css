@@ -11,9 +11,11 @@
   background-color: white;
 }
 
+.swiper-wrapper {
+  height: 385px;
+}
+
 .SalonPage-Img {
-  width: 100%;
-  object-fit: cover;
   background-color: rgba(0, 0, 0, 0.8);
   filter: brightness(0.6);
 }
@@ -30,15 +32,23 @@
 }
 
 span.icon-furgoneta {
-  font-size: 1.4em;
+  font-size: 15px;
 }
 
 span.icon-tienda {
-  font-size: 1.4em;
+  font-size: 15px;
+}
+
+.Salon-Icon p {
+  font-size: 15px;
 }
 
 @media (max-width: 768px) {
   .SalonPage-Header-Row {
+    height: 280px;
+  }
+
+  .swiper-wrapper {
     height: 280px;
   }
 
@@ -92,7 +102,7 @@ span.icon-tienda {
     text-transform: uppercase;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
-    font-size: 0.7em;
+    font-size: 12px;
     color: var(--color-negro);
     background-color: var(--color-dorado);
     border-width: 1px;
@@ -103,7 +113,7 @@ span.icon-tienda {
     text-transform: uppercase;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
-    font-size: 0.7em;
+    font-size: 12px;
     color: var(--color-negro);
     background-color: #b73639;
     border-width: 1px;
@@ -120,7 +130,7 @@ span.icon-tienda {
   }
 
   .SalonPage-Nav-Container h3 {
-    font-size: 1.4em;
+    font-size: 15px;
   }
 }
 

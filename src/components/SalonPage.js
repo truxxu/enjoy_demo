@@ -11,11 +11,12 @@ import Footer from "./Footer";
 import ServiceList from "./ServiceList";
 import "../styles/SalonPage.css";
 import { getSalon, getSalonServices } from "../actions/salon";
+import { getFavorites } from "../actions/favoriteService";
 
 function SalonPage(props) {
-
+  
   const data = props.location.data;
-  const { getSalon, activeItem, match } = props;
+  const { getFavorites, getSalon, activeItem, match } = props;
   let id = match.params.id;
 
   const state = {
@@ -24,6 +25,10 @@ function SalonPage(props) {
 
   useEffect(() => {
     getSalon(id);
+  }, []);
+
+  useEffect(() => {
+    getFavorites();
   }, []);
 
   useEffect(() => {
@@ -161,8 +166,15 @@ function SalonPage(props) {
       <Row className="SalonPage-Nav border-bottom">
         <Container className="SalonPage-Nav-Container">
           <Row>
-            <h3 className="SalonPage-Nav-Button border-right font-weight-bold">SERVICIOS</h3>
-            <h3 className="SalonPage-Nav-Button font-weight-bold" onClick={() => scrollToAbout()}  >SOBRE EL SALÓN</h3>
+            <h3 className="SalonPage-Nav-Button ml-3 border-right font-weight-bold">
+              SERVICIOS
+            </h3>
+            <h3
+              className="SalonPage-Nav-Button font-weight-bold"
+              onClick={() => scrollToAbout()}
+            >
+              SOBRE EL SALÓN
+            </h3>
           </Row>
         </Container>
       </Row>
@@ -174,11 +186,14 @@ function SalonPage(props) {
       <Row className="SalonPage-About" id="idSalonPageAbout">
         <Container>
           <h3>Sobre el salón</h3>
-          <p className="col-md-8">{ activeItem.description }</p>
-          {
-            activeItem.latitude!==undefined && activeItem.longitude!==undefined &&
-              <iframe  className="SalonPage-Iframe" src = {renderMapUrl()}></iframe>
-          }
+          <p className="col-md-8">{activeItem.description}</p>
+          {activeItem.latitude !== undefined &&
+            activeItem.longitude !== undefined && (
+              <iframe
+                className="SalonPage-Iframe"
+                src={renderMapUrl()}
+              ></iframe>
+            )}
         </Container>
       </Row>
       <AlliesSlider />
@@ -194,12 +209,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  getSalon
+  getSalon,
+  getFavorites
 };
 
 SalonPage.prototype = {
   activeItem: PropTypes.array.isRequired,
-  getSalon: PropTypes.func.isRequired
+  getSalon: PropTypes.func.isRequired,
+  getFavorites: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalonPage);

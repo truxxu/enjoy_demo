@@ -52,11 +52,9 @@ function ServiceList(props) {
       if (window.pageYOffset >= 486) {
         Reserve.classList.add("fixed-top");
         Reserve.classList.add("mt-md-5");
-        Reserve.classList.add("pt-md-4");
       } else {
         Reserve.classList.remove("fixed-top");
         Reserve.classList.remove("mt-md-5");
-        Reserve.classList.remove("pt-md-4");
       }
     } else {
       Reserve.classList.remove("fixed-top");

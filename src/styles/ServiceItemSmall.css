@@ -7,8 +7,21 @@
   text-transform: initial;
 }
 
-.icon-corazones.false {
-  color: black;
+.Service-Item-Small-Description .icon-corazones_border {
+  font-size: 2em;
+  color: var(--color-negro);
+}
+
+.Service-Item-Small-Description .icon-corazones {
+  font-size: 2em;
+}
+
+.Service-Item-Small-Description .blackened {
+  color: var(--color-negro);
+}
+
+.Service-Name {
+  width: 150px;
 }
 
 .Service-Item-Small p,
@@ -22,7 +35,7 @@ label,
 }
 
 .Service-Item-Small-Description span {
-  font-size: 2em;
+  font-size: 1.9em;
   color: red;
   border-width: 2px;
 }
@@ -68,7 +81,7 @@ label,
 
 @media (max-width: 768px) {
   .Service-Item-Small-Description h1 {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .Popular {
@@ -93,12 +106,12 @@ label,
   }
 
   .Service-Item-Small-Price label {
-    font-size: 1em;
+    font-size: 0.875rem;
     color: var(--color-gris-oscuro);
   }
 
   .Service-Item-Small-Description h1 {
-    font-size: 1.1em;
+    font-size: 1.125rem;
   }
 
   .Popular {
@@ -106,8 +119,9 @@ label,
   }
 
   .Description {
-    height: 65px;
+    height: 55px;
     overflow: hidden;
+    font-size: 12px;
   }
 
   .Service-Item-Small-Body {
@@ -119,6 +133,10 @@ label,
   }
 
   .Service-Price h2 {
-    font-size: 1.7em;
+    font-size: 1.125rem;
+  }
+
+  .Service-Price p {
+    font-size: 12px;
   }
 }

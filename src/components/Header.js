@@ -20,7 +20,7 @@ function Header(props) {
         />
       ) : (
         <div className="col-auto d-none d-md-flex align-self-center mt-5">
-          <img className="App-Header-Image" src={logo} alt="logo" />,
+          <img className="App-Header-Image" src={logo} alt="logo" />
         </div>
       )}
       <div className="Header-Search ">

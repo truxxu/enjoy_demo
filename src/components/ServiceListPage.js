@@ -11,15 +11,16 @@ import Header from "./Header";
 import Filters from "./Filters";
 import { getServices } from "../actions/services";
 import { getCategory } from "../actions/categories";
+import { getFavorites } from "../actions/favoriteService";
 
 function ServiceListPage(props) {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const {
     getServices,
+    getFavorites,
     getCategory,
     servicesList,
     activeCategory,
@@ -35,6 +36,10 @@ function ServiceListPage(props) {
   useEffect(() => {
     getCategory(activeCategoryId);
   }, [activeCategoryId]);
+
+  useEffect(() => {
+    getFavorites();
+  }, []);
 
   const renderService = service => {
     if (servicesList.length !== 0) {
@@ -72,13 +77,15 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getServices,
-  getCategory
+  getCategory,
+  getFavorites
 };
 
 ServiceListPage.prototype = {
   activeCategory: PropTypes.object.isRequired,
   getServices: PropTypes.func.isRequired,
   getCategory: PropTypes.func.isRequired,
+  getFavorites: PropTypes.func.isRequired,
   servicesList: PropTypes.array.isRequired
 };
 

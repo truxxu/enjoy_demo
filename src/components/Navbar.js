@@ -260,11 +260,10 @@ function Navbar(props) {
              </div>
             :
              <div className="col-auto d-flex align-items-center">
-                <Button
-                  className="App-Button"
-                  onClick={logOut}>
-                  Salir
-                </Button>
+                <div class="btn-group" role="group" onClick={logOut}>
+                  <button type="button" class="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
+                  <button type="button" class="Nav-Bar-Btn-R">Salir</button>
+                </div>
              </div>
           }
         </Row>
@@ -477,31 +476,6 @@ function Navbar(props) {
             eventKey="login"
             title="INICIAR SESIÓN"
           >
-            <Row className="justify-content-center">
-              <FacebookLogin
-                appId="754706191708393"
-                fields="name,email,picture"
-                textButton="INGRESAR CON FACEBOOK"
-                responseType='code'
-                icon="fa-facebook"
-                cssClass="btnFacebook"
-                callback={responseFacebook}
-              />
-            </Row>
-            <Row className="justify-content-center">
-              <GoogleLogin
-                clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
-                className="btnGoogle"
-                onSuccess={responseGoogle}
-                onFailure={responseGoogle}
-              >
-                <i className="fa fa-google"/> <span>INGRESAR CON GOOGLE</span> 
-              </GoogleLogin>
-            </Row>
-            <Row className="justify-content-center mb-3">
-              <li type="circle">Utiliza tu mail</li>
-            </Row>
-
             <div className="Modal-Input-Box">
                <label
                 className={
@@ -569,6 +543,31 @@ function Navbar(props) {
             </Row>
           </Tab.Container>
         </Tabs>
+
+        <Row className="Section-Social-Networks-Text ">
+          <li type="circle">Utiliza tus redes</li>
+        </Row>
+        
+        <Row className="justify-content-center align-items-center Section-Social-Networks">
+          <FacebookLogin
+            appId="754706191708393"
+            fields="name,email,picture"
+            textButton="FACEBOOK"
+            responseType='code'
+            icon="fa-facebook"
+            cssClass="btnFacebook"
+            callback={responseFacebook}
+          />
+            
+          <GoogleLogin
+            clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
+            className="btnGoogle"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+          >
+            <i className="fa fa-google"/> <span>GOOGLE</span> 
+          </GoogleLogin>  
+        </Row>
       </Modal>
       <Modal
         className="Register-Modal"

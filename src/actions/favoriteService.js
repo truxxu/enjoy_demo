@@ -1,10 +1,14 @@
 import axios from "axios";
+
 import { env } from "../env";
 import { ADD_FAVORITE_SERVICE, GET_FAVORITES } from ".";
+import store from "../store";
 
-export const addFavoriteService = (id_service) => dispatch => {
-  let token = localStorage.getItem('token');      
-  if(token!=null){
+export const addFavoriteService = (id_service) => (dispatch, getState) => {
+  let token = localStorage.getItem('token');
+  const favoritesList = store.getState().favoriteService.favoritesList
+  const filter = favoritesList.filter(item => item.service === id_service)
+  if(token!=null && filter.length === 0){
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': 'Token ' + token
@@ -16,7 +20,7 @@ export const addFavoriteService = (id_service) => dispatch => {
     .post(env.apiUrl + "favorite-services/", params, {
       headers: headers
     })
-    .then(res => {      
+    .then(res => {
       dispatch({
         type: ADD_FAVORITE_SERVICE,
         payload: res.data
@@ -29,7 +33,7 @@ export const addFavoriteService = (id_service) => dispatch => {
 };
 
 export const getFavorites = () => dispatch => {
-  let token = localStorage.getItem('token');      
+  let token = localStorage.getItem('token');
   if(token!=null){
     const headers = {
       'Content-Type': 'application/json',

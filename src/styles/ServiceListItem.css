@@ -14,15 +14,23 @@
     transform: scale(1.5);
   }
 
+  .Service-Img .icon-corazones_border {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    font-size: 2em;
+    color: var(--color-negro);
+  }
+
   .Service-Img .icon-corazones {
     position: absolute;
     left: 30px;
     top: 30px;
     font-size: 2em;
   }
-  .Service-Img .icon-corazones:hover {
-    color: var(--color-blanco);
-    height: 50px;
+
+  .Service-Img .blackened {
+    color: var(--color-negro);
   }
 
   .Service-Img {
@@ -34,7 +42,8 @@
 }
 
 @media (max-width: 768px) {
-  .Service-Img .icon-corazones {
+  .Service-Img .icon-corazones,
+  .Service-Img .icon-corazones_border{
     position: absolute;
     left: calc(100% - 14%);
     top: 10px;
@@ -61,7 +70,7 @@
     position: relative;
   }
   .Salon-Description p {
-    height: 100px;
+    height: 90px;
   }
 
   .Salon-Description p::before {
@@ -209,10 +218,12 @@
 .Service-Item p,
 h3 {
   font-family: "MontserratRegular";
+  font-size: 13px;
 }
 
 .Service-Item h4 {
   font-family: "MontserratSemiBold";
+  font-size: 1.125rem;
 }
 
 .Star-Icons {

@@ -4,7 +4,7 @@
 
 .Title-Body h2 {
   font-family: "MontserratMedium";
-  font-size: 1.7em;
+  font-size: 22px;
 }
 
 .Filter-Button-Big,
@@ -122,6 +122,22 @@
   top: 94px;
   z-index: 1;
   background-color: white;
+  -webkit-animation-name: slideInDown;
+  animation-name: slideInDown;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+}
+
+@keyframes slideInDown {
+  0% {
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
 }
 
 @media (min-width: 768px) {
@@ -148,7 +164,7 @@
     color: var(--color-negro);
     background-color: var(--color-dorado);
     border-radius: 1.5em;
-    border:0;
+    border: 0;
     padding: 5px 24px;
   }
 }

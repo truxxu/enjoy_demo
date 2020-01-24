@@ -21,8 +21,9 @@
 
 .Header-Img-Category {
   height: 100%;
-  width: 100%;
+  min-width: 100%;
   filter: brightness(0.7);
+  object-fit: cover;
 }
 
 .Header-Title-Category {
@@ -66,5 +67,9 @@
     text-transform: uppercase;
     position: relative;
     height: 30vh;
+  }
+
+  .Header-Img-Category {
+    max-width: 100%;
   }
 }
