@@ -286,14 +286,14 @@ const BookingForm = (props) => {
           <div className="Non-User-Modal-Footer">
             <div className="d-flex justify-content-around">
               <Button
-                // onClick={handleCloseAlert}
+                onClick={ () => showForm(false)}
                 className="justify-content-center Modal-Button-Active
                 Register-Modal-Button"
               >
                 REGISTRARME
               </Button>
               <Button
-                // onClick={handleCloseAlert}
+                onClick={ () => showForm(false)}
                 className="justify-content-center Modal-Button-Active
                 Register-Modal-Button"
               >

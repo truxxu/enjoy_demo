@@ -196,3 +196,9 @@
 .rc-slider-track {
   background-color: transparent !important;
 }
+
+@media (max-width: 767px) {
+  .modal-content {
+    align-items: normal !important;
+  }
+}
