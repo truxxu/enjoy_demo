@@ -37,6 +37,10 @@
   text-decoration: none;
 }
 
+.ico-session-close{
+  font-size: 1.3em;
+}
+
 .App-Board{
   background-color: var(--color-dorado);
   height: 350px;
@@ -93,13 +97,13 @@
   background-color: #F4F5FB;
 }
 
-.App-Board-Col-Dorado{
+.App-Board-Col-Dorado, .App-Board-Card-Col{
   background-color: var(--color-dorado);
 }
 
-@media (max-width: 568px) {
-  .App-Board-Card {
-    
+@media (max-width: 768px) {
+  .App-Board-Card-Col {
+    background-color: #F4F5FB;
   }
 }
 
@@ -150,10 +154,46 @@
   .App-Board-Bottom label {
     font-size: 0.8em;
   }
+
+  .Modal-Close {
+    color: var(--color-gris-oscuro);
+    font-size: 20;
+  }
+
+  .Menu-Board-Modal {
+    margin: 0;
+    height: 100%;
+    background-color: white;
+  }
+
+  .modal-content {
+    align-items: center;
+    border: none;
+    height: 50%;
+    justify-content: space-between;
+    position: fixed;
+  }
+
+  .Menu-Board-Modal-Links{
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
 .App-Board-Icon-Menu{
   font-size: 30px;
 }
 
+.Mobile-Filter-Text {
+  font-family: "LatoRegular", sans-serif;
+  color: var(--color-negro);
+  font-size: 1.1em;
+}
 
+.hh{
+  width: 100%;
+}
+
+.Profile-Nav-Mov{
+  margin-left: -60px !important;
+}

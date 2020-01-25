@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from 'react-dom'
+
+import Dropdown from "react-bootstrap/Dropdown";
+import Modal from "react-bootstrap/Modal";
+
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Container from "react-bootstrap/Container";
@@ -173,6 +177,10 @@ const chartOptionsReserves = {
 function DashboardPage(props) {
   const data = props.data;
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <Container fluid className="App-Dashboard">
 
@@ -187,13 +195,12 @@ function DashboardPage(props) {
                   </Link>
                 </div>        
                 <div className="d-md-none d-sm-block  align-self-center mr-4 ">
-                  <label className="App-Board-Icon-Menu icon-menu Tab-Icon App-Board-Pointer"></label> 
-                  <label className="App-Board-Pointer" >X</label> 
+                  <label onClick={handleShow} className="App-Board-Icon-Menu icon-menu Tab-Icon App-Board-Pointer"></label> 
                 </div>        
               </Col>
             </Row>
    
-            <Nav className=" Profile-Nav d-none d-sm-none d-md-block ">
+            <Nav className="Profile-Nav d-none d-sm-none d-md-block ">
               <Nav.Item>
                 <Nav.Link eventKey="user" className="App-Dashboard-Link" >
                     <label className="icon-dashboar Tab-Icon App-Board-Pointer"></label> 
@@ -222,12 +229,59 @@ function DashboardPage(props) {
                 </Nav.Link>
               </Nav.Item>
             </Nav>
+
+            <Modal className="Menu-Board-Modal align-items-left" show={show} onHide={handleClose}>
+              <Row className="Menu-Board-Modal-Links align-items-center justify-content-around mb-5">
+                <div>
+                  <Link to="/">
+                    <img src={logo} className="App-Dashboard-Logo mt-4" />
+                  </Link>
+                </div>              
+                <div className="mt-4">
+                  <span href="" onClick={handleClose} className="Modal-Close Mobile-Filter-Text">
+                    X
+                  </span>
+                </div>
+              </Row>
+
+              <Nav className="Profile-Nav-Mov d-flex flex-column d-sm-block">
+                <Nav.Item onClick={handleClose}>
+                  <Nav.Link eventKey="user" className="App-Dashboard-Link" >
+                      <label className="icon-dashboar Tab-Icon App-Board-Pointer"></label> 
+                      <label className="ml-2 App-Board-Pointer">Tablero</label>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item onClick={handleClose}>
+                  <Nav.Link eventKey="favorites" className="App-Dashboard-Link">
+                      <span className="icon-calendario Tab-Icon App-Board-Pointer"></span>
+                      <label className="ml-2 App-Board-Pointer">Reservas</label>
+                  </Nav.Link>
+                </Nav.Item>
+                <Nav.Item onClick={handleClose}>
+                  <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
+                      <span className="icon-usuario Tab-Icon App-Board-Pointer"></span>
+                      <label className="ml-2 App-Board-Pointer">Perfil</label>
+                  </Nav.Link>
+                </Nav.Item>
+                <hr />
+                <Nav.Item onClick={handleClose}>
+                  <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
+                    <a href="" className="App-Dashboard-Link" >
+                      <span className="icon-logout Tab-Icon ico-red ico-session-close"></span>
+                      <label className="ml-2">Cerrar sesión</label>
+                    </a>
+                  </Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Modal>
+
+
           </Col>
           <Col sm={10} className="">
             <Tab.Content>
               <Tab.Pane eventKey="user">
                 <Row className="pt-4 App-Board-Col-Dorado">
-                  <Col md={6} className="pl-4">
+                  <Col md={6} className="mb-sm-5 pl-4 ">
                     <label className="font-weight-bold">Tablero</label>
                   </Col>
                   <Col md={6} className="mb-5">
@@ -242,9 +296,9 @@ function DashboardPage(props) {
                   </Col>
                 </Row>
 
-                <Row className="App-Board-Col-Dorado justify-content-around pb-5">
+                <Row className="App-Board-Card-Col justify-content-around pb-5 yel">
                 
-                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">VENTAS TOTALES</label>
                       <label className="font-weight-bold"> $0.000.000</label>
@@ -302,14 +356,14 @@ function DashboardPage(props) {
 
 
                 <Row className="pt-4 App-Board-Col-Dorado">
-                  <Col md={6} className="pl-4 mb-5">
+                  <Col md={6} className="pl-4 mb-5 mt-3">
                     <label className="font-weight-bold">Reservas</label>
                   </Col>
                 </Row>
 
-                <Row className="App-Board-Col-Dorado justify-content-around pb-5">
+                <Row className="App-Board-Card-Col justify-content-around pb-5">
                 
-                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
+                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">RESERVAS TOTALES</label>
                       <label className="font-weight-bold"> 128</label>
@@ -320,7 +374,7 @@ function DashboardPage(props) {
                     </div>
                   </Col>
 
-                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
+                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL CLIENTE</label>
                       <label className="font-weight-bold">8</label>
@@ -384,6 +438,8 @@ function DashboardPage(props) {
       </Tab.Container>
     
 
+        
+    
 
 
     </Container>
