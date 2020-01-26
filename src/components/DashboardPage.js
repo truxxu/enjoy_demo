@@ -183,7 +183,6 @@ function DashboardPage(props) {
 
   return (
     <Container fluid className="App-Dashboard">
-
       <Tab.Container id="left-tabs-example" defaultActiveKey="user">
         <Row>
           <Col className="App-Board-Header">
@@ -222,9 +221,9 @@ function DashboardPage(props) {
               <hr />
               <Nav.Item>
                 <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
-                  <a href="" className="App-Dashboard-Link" >
+                  <a href="" className="App-Dashboard-Link App-Board-Pointer" >
                     <span className="icon-logout Tab-Icon ico-red"></span>
-                    <label className="ml-2">Cerrar sesión</label>
+                    <label className="App-Board-Pointer ml-2">Cerrar sesión</label>
                   </a>
                 </Nav.Link>
               </Nav.Item>
@@ -237,8 +236,8 @@ function DashboardPage(props) {
                     <img src={logo} className="App-Dashboard-Logo mt-4" />
                   </Link>
                 </div>              
-                <div className="mt-4">
-                  <span href="" onClick={handleClose} className="Modal-Close Mobile-Filter-Text">
+                <div className="App-Board-Pointer mt-4">
+                  <span onClick={handleClose} className="Modal-Close Mobile-Filter-Text">
                     X
                   </span>
                 </div>
@@ -265,17 +264,15 @@ function DashboardPage(props) {
                 </Nav.Item>
                 <hr />
                 <Nav.Item onClick={handleClose}>
-                  <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
-                    <a href="" className="App-Dashboard-Link" >
+                  <Nav.Link eventKey="reservations" className="App-Dashboard-Link App-Board-Pointer">
+                    <a href="" className="App-Dashboard-Link " >
                       <span className="icon-logout Tab-Icon ico-red ico-session-close"></span>
-                      <label className="ml-2">Cerrar sesión</label>
+                      <label className="App-Board-Pointer ml-2">Cerrar sesión</label>
                     </a>
                   </Nav.Link>
                 </Nav.Item>
               </Nav>
             </Modal>
-
-
           </Col>
           <Col sm={10} className="">
             <Tab.Content>
@@ -296,12 +293,12 @@ function DashboardPage(props) {
                   </Col>
                 </Row>
 
-                <Row className="App-Board-Card-Col justify-content-around pb-5 yel">
+                <Row className="App-Board-Card-Col justify-content-around pb-5">
                 
                   <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">VENTAS TOTALES</label>
-                      <label className="font-weight-bold"> $0.000.000</label>
+                      <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
                       <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
                     </div>
                     <div className="App-Board-Ico mt-1 d-none d-md-block mr-1">
@@ -311,8 +308,8 @@ function DashboardPage(props) {
 
                   <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
-                      <label className="App-Board-Title">VENTAS TOTALES</label>
-                      <label className="font-weight-bold"> $0.000.000</label>
+                      <label className="App-Board-Title">PAGOS ONLINE</label>
+                      <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
                       <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
                     </div>
                     <div className="App-Board-Ico mt-1 d-none d-md-block mr-1">
@@ -322,20 +319,19 @@ function DashboardPage(props) {
 
                   <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
-                      <label className="App-Board-Title">VENTAS TOTALES</label>
-                      <label className="font-weight-bold"> $0.000.000</label>
+                      <label className="App-Board-Title">PAGOS EN EL</label>
+                      <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
                       <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
                     </div>
-                    <div className="mt-2 d-none d-md-block mr-1">
+                    <div className="mt-2 d-none d-md-block">
                       <span className="icon-tienda Tab-Icon"></span>
                     </div>
                   </Col>
 
                   <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
-                    <div className="d-flex flex-column justify-content-around ml-2 pt-2">
-                      <label className="App-Board-Title">VENTAS TOTALES</label>
-                      <label className="App-Board-Value font-weight-bold">$0.000.000</label>
-                      <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
+                    <div className="d-flex flex-column justify-content-around ml-2 pt-1">
+                      <label className="App-Board-Title">SALDO A FAVOR</label>
+                      <label className="App-Board-Value Total-Red font-weight-bold">$0.000.000</label>
                     </div>
                     <div className="App-Board-Ico mt-1 d-none d-md-block mr-1">
                       <span className="icon-poos-favor Tab-Icon"></span>
@@ -343,7 +339,6 @@ function DashboardPage(props) {
                   </Col>
 
                 </Row>
-
 
                 <Row className="App-Board-Reserves-Chart App-Board-Gris justify-content-center  d-md-flex">
                   <Row className="App-Board-Content-Chart">
@@ -353,7 +348,6 @@ function DashboardPage(props) {
                     />
                   </Row>
                 </Row>
-
 
                 <Row className="pt-4 App-Board-Col-Dorado">
                   <Col md={6} className="pl-4 mb-5 mt-3">
@@ -366,7 +360,7 @@ function DashboardPage(props) {
                   <Col sm={2.7} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">RESERVAS TOTALES</label>
-                      <label className="font-weight-bold"> 128</label>
+                      <label className="App-Board-Value font-weight-bold"> 128</label>
                       <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
                     </div>
                     <div className="App-Board-Ico mt-1 d-none d-md-block mr-2">
@@ -377,7 +371,7 @@ function DashboardPage(props) {
                   <Col sm={2.7} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL CLIENTE</label>
-                      <label className="font-weight-bold">8</label>
+                      <label className="App-Board-Value font-weight-bold">8</label>
                       <label className="App-Board-Percent"><span className="Col-Percent-Red font-weight-bold">↓0.0%</span> desde el mes pasado</label>
                     </div>
                     <div className="App-Board-Ico mt-1 d-none d-md-block mr-2">
@@ -388,7 +382,7 @@ function DashboardPage(props) {
                   <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                     <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL SALÓN</label>
-                    <label className="font-weight-bold"> $0.000.000</label>
+                    <label className="App-Board-Value font-weight-bold">2</label>
                     <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
                     </div>
                     <div className="App-Board-Ico mt-1 d-none d-md-block mr-2">
@@ -396,7 +390,6 @@ function DashboardPage(props) {
                     </div>
                   </Col>
                 </Row>
-
 
                 <Row className="App-Board-Reserves-Chart App-Board-Gris justify-content-center  d-md-flex">
                   <Row className="App-Board-Content-Chart">
@@ -407,7 +400,6 @@ function DashboardPage(props) {
                   </Row>
                 </Row>
                 
-                
                 <Row className="App-Board-Bottom App-Board-Gris justify-content-center justify-content-md-between pt-2 px-5">
                    <label>
                     Todos los derechos reservados EN JOY!-s &copy;{" "}
@@ -417,8 +409,6 @@ function DashboardPage(props) {
                     Hecho con <span className="icon-corazones"></span> por #wopudev
                   </label>
                 </Row>
-
-
 
               </Tab.Pane>
               
@@ -431,17 +421,9 @@ function DashboardPage(props) {
               </Tab.Pane>
             </Tab.Content>
 
-            
-
           </Col>
         </Row>
       </Tab.Container>
-    
-
-        
-    
-
-
     </Container>
   );
 }
