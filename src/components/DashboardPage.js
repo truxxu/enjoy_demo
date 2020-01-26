@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { render } from 'react-dom'
-
 import Dropdown from "react-bootstrap/Dropdown";
 import Modal from "react-bootstrap/Modal";
-
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 import Container from "react-bootstrap/Container";
@@ -11,11 +9,13 @@ import Row from "react-bootstrap/Row";
 import Tab from "react-bootstrap/Tab";
 import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
-
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import "../styles/DashboardPage.css";
 import logo from "../images/logo_black_white.png";
+import { logOut } from "../actions/authentication";
 
 const options = {
   title: {
@@ -177,12 +177,18 @@ const chartOptionsReserves = {
 function DashboardPage(props) {
   const data = props.data;
 
+  const { logOut, currentUser, token } = props;
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   return (
     <Container fluid className="App-Dashboard">
+      {
+        (token===null || token === 'undefined' || token === '' || token === undefined || currentUser===null || currentUser===undefined || currentUser.role!='MAIN_ADMIN') &&
+        <Redirect to='/'  />
+      }
       <Tab.Container id="left-tabs-example" defaultActiveKey="user">
         <Row>
           <Col className="App-Board-Header">
@@ -220,8 +226,8 @@ function DashboardPage(props) {
               </Nav.Item>
               <hr />
               <Nav.Item>
-                <Nav.Link eventKey="reservations" className="App-Dashboard-Link">
-                  <a href="" className="App-Dashboard-Link App-Board-Pointer" >
+                <Nav.Link className="App-Dashboard-Link">
+                  <a onClick={logOut} className="App-Dashboard-Link App-Board-Pointer" >
                     <span className="icon-logout Tab-Icon ico-red"></span>
                     <label className="App-Board-Pointer ml-2">Cerrar sesión</label>
                   </a>
@@ -264,8 +270,8 @@ function DashboardPage(props) {
                 </Nav.Item>
                 <hr />
                 <Nav.Item onClick={handleClose}>
-                  <Nav.Link eventKey="reservations" className="App-Dashboard-Link App-Board-Pointer">
-                    <a href="" className="App-Dashboard-Link " >
+                  <Nav.Link className="App-Dashboard-Link App-Board-Pointer">
+                    <a onClick={logOut} className="App-Dashboard-Link " >
                       <span className="icon-logout Tab-Icon ico-red ico-session-close"></span>
                       <label className="App-Board-Pointer ml-2">Cerrar sesión</label>
                     </a>
@@ -319,7 +325,7 @@ function DashboardPage(props) {
 
                   <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
-                      <label className="App-Board-Title">PAGOS EN EL</label>
+                      <label className="App-Board-Title">PAGOS EN EL SALÓN</label>
                       <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
                       <label className="App-Board-Percent"><span className="Col-Percent-Gre font-weight-bold">↑0.0%</span> desde el mes pasado</label>
                     </div>
@@ -428,4 +434,21 @@ function DashboardPage(props) {
   );
 }
 
-export default DashboardPage;
+const mapStateToProps = state => {
+  return {
+    token: state.authentication.token,
+    currentUser: state.authentication.currentUser
+  };
+};
+
+const mapDispatchToProps = {
+  logOut
+};
+
+DashboardPage.prototype = {
+  currentUser: PropTypes.object.isRequired,
+  token: PropTypes.string.isRequired,
+  logOut: PropTypes.func.isRequired
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

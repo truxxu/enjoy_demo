@@ -8,7 +8,7 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from 'react-bootstrap/Tab';
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import FacebookLogin from 'react-facebook-login'
@@ -45,7 +45,7 @@ function Navbar(props) {
   const [keyMask, setMask] = useState(true);
 
   const { authUser, list, getCategories, setCategory, loggedIn, validateUser,
-          logOut, token, registerUser, response, socialAuth } = props;
+          logOut, token, registerUser, response, socialAuth, currentUser } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -217,6 +217,10 @@ function Navbar(props) {
 
   return (
     <Row className="App-Navbar">
+      {
+        currentUser && currentUser.role=='MAIN_ADMIN' && token!=null &&
+        <Redirect to='/auth/dashboard'  />
+      }
       <Container id="Navbar-Container">
         <Row className="App-Navbar justify-content-between py-4">
           <div className="col-auto">
@@ -599,6 +603,7 @@ const mapStateToProps = state => {
     loggedIn: state.authentication.loggedIn,
     token: state.authentication.token,
     response: state.authentication.response,
+    currentUser: state.authentication.currentUser
   };
 };
 
