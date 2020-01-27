@@ -52,7 +52,7 @@
   color: red;
 }
 
-.nav-item{
+.App-Board-Nav .nav-item{
   height: 38px;
 }
 
@@ -136,12 +136,20 @@
   font-size: 30px;
 }
 
-.Mobile-Filter-Text {
+.App-Board-Text {
   font-family: "LatoRegular", sans-serif;
   color: var(--color-negro);
   font-size: 1.1em;
 }
 
-.Profile-Nav-Mov{
+.App-Board-Nav-Mov{
   margin-left: -60px !important;
+}
+
+.App-Board-Min-Height-Card{
+  min-height: 74px;
+}
+
+.App-Board-Min-Height-Reserves-Card{
+  min-height: 88px;
 }

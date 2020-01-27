@@ -205,7 +205,7 @@ function DashboardPage(props) {
               </Col>
             </Row>
    
-            <Nav className="Profile-Nav d-none d-sm-none d-md-block ">
+            <Nav className="App-Board-Nav d-none d-sm-none d-md-block ">
               <Nav.Item>
                 <Nav.Link eventKey="user" className="App-Dashboard-Link" >
                     <label className="icon-dashboar Tab-Icon App-Board-Pointer"></label> 
@@ -243,13 +243,13 @@ function DashboardPage(props) {
                   </Link>
                 </div>              
                 <div className="App-Board-Pointer mt-4">
-                  <span onClick={handleClose} className="Modal-Close Mobile-Filter-Text">
+                  <span onClick={handleClose} className="Modal-Close App-Board-Text">
                     X
                   </span>
                 </div>
               </Row>
 
-              <Nav className="Profile-Nav-Mov d-flex flex-column d-sm-block">
+              <Nav className="App-Board-Nav-Mov d-flex flex-column d-sm-block">
                 <Nav.Item onClick={handleClose}>
                   <Nav.Link eventKey="user" className="App-Dashboard-Link" >
                       <label className="icon-dashboar Tab-Icon App-Board-Pointer"></label> 
@@ -299,9 +299,9 @@ function DashboardPage(props) {
                   </Col>
                 </Row>
 
-                <Row className="App-Board-Card-Col justify-content-around pb-5">
+                <Row className="App-Board-Card-Col flex-md-row flex-column pb-5 align-items-center">
                 
-                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0 mt-2 mt-md-0">
+                  <Col className="App-Board-Card App-Board-Min-Height-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">VENTAS TOTALES</label>
                       <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
@@ -312,7 +312,7 @@ function DashboardPage(props) {
                     </div>
                   </Col>
 
-                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                  <Col className="App-Board-Card App-Board-Min-Height-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">PAGOS ONLINE</label>
                       <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
@@ -323,7 +323,7 @@ function DashboardPage(props) {
                     </div>
                   </Col>
 
-                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                  <Col className="App-Board-Card App-Board-Min-Height-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">PAGOS EN EL SALÓN</label>
                       <label className="App-Board-Value font-weight-bold"> $0.000.000</label>
@@ -334,7 +334,7 @@ function DashboardPage(props) {
                     </div>
                   </Col>
 
-                  <Col sm={2} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                  <Col className="App-Board-Card App-Board-Min-Height-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-1">
                       <label className="App-Board-Title">SALDO A FAVOR</label>
                       <label className="App-Board-Value Total-Red font-weight-bold">$0.000.000</label>
@@ -361,9 +361,9 @@ function DashboardPage(props) {
                   </Col>
                 </Row>
 
-                <Row className="App-Board-Card-Col justify-content-around pb-5">
+                <Row className="App-Board-Card-Col flex-md-row flex-column pb-5 align-items-center">
                 
-                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0 mt-2 mt-md-0">
+                  <Col className="App-Board-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">RESERVAS TOTALES</label>
                       <label className="App-Board-Value font-weight-bold"> 128</label>
@@ -374,7 +374,7 @@ function DashboardPage(props) {
                     </div>
                   </Col>
 
-                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between mb-2 mb-md-0">
+                  <Col className="App-Board-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                       <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL CLIENTE</label>
                       <label className="App-Board-Value font-weight-bold">8</label>
@@ -385,7 +385,7 @@ function DashboardPage(props) {
                     </div>
                   </Col>
 
-                  <Col sm={2.7} className="App-Board-Card d-flex justify-content-between">
+                  <Col className="App-Board-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
                     <div className="d-flex flex-column justify-content-around ml-2 pt-2">
                     <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL SALÓN</label>
                     <label className="App-Board-Value font-weight-bold">2</label>
