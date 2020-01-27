@@ -11,10 +11,23 @@ export const addBooking = (param) => dispatch => {
   let salonFilter = list.filter(item => item.salon_id !== param.salon_id)
   let serviceFilter = list.filter(item => item.id === param.id)
 
+
   if (salonFilter.length === 0 && serviceFilter.length === 0) {
+    let countPrice = parseInt(param.discount_price || param.price);
+    let countTime = param.duration;
+    list.map(item => {
+      if (item.discount_price !== null) {
+        countPrice += parseInt(item.discount_price)
+      } else {
+        countPrice += parseInt(item.price)
+      }
+    });
+    list.map(item => {
+      countTime += item.duration
+    })
     dispatch({
       type: ADD_TO_BOOKINGS,
-      payload: param
+      payload: { data: param, total: countPrice, duration: countTime }
     })
   }
 };

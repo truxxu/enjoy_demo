@@ -1,12 +1,13 @@
 import {
   ADD_TO_BOOKINGS,
   REMOVE_FROM_BOOKINGS,
-  SHOW_FORM
+  SHOW_FORM,
 } from "../actions/index";
 
 const initialState =  {
     list: [],
     total: 0,
+    duration: 0,
     show: false,
 };
 
@@ -15,7 +16,9 @@ export default function(state = initialState, action) {
       case ADD_TO_BOOKINGS:
         return {
           ...state,
-          list: [...state.list, action.payload]
+          list: [...state.list, action.payload.data],
+          total: action.payload.total,
+          duration: action.payload.duration,
         };
       case REMOVE_FROM_BOOKINGS:
         return {

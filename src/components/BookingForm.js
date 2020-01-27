@@ -63,13 +63,13 @@ const BookingForm = (props) => {
   // Calendar localization
   registerLocale('es', es)
 
-  const { show, showForm, list, removeBooking, salon } = props;
+  const { show, showForm, list, removeBooking, salon, totalPrice, duration } = props;
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
 
-  const priceStr = string => {
-    return string.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const priceStr = num => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
   const renderService = (item) => {
@@ -86,26 +86,6 @@ const BookingForm = (props) => {
         </Button>
       </div>
     )
-  }
-
-  const totalTime = () => {
-    let count = 0;
-    list.map(item => {
-      count += item.duration
-    })
-    return count
-  }
-
-  const totalPrice = () => {
-    let count = 0;
-    list.map(item => {
-      if (item.discount_price !== null) {
-        count += parseInt(item.discount_price)
-      } else {
-        count += parseInt(item.price)
-      }
-    })
-    return count.toString()
   }
 
   const days = {
@@ -157,9 +137,9 @@ const BookingForm = (props) => {
   const handleClick = () => {
     const getPaymentMethod = () => {
       if (checkedRadio === 1) {
-        return 'cash'
+        return 'en salón'
       } else if (checkedRadio === 2) {
-        return 'online'
+        return 'en línea'
       }
     };
     const includeServices = () => {
@@ -211,7 +191,7 @@ const BookingForm = (props) => {
                 <p>X</p>
               </Button>
             </div>
-            <p>Tiempo estimado de tu reserva: {totalTime('duration')} minutos</p>
+            <p>Tiempo estimado de tu reserva: {duration} minutos</p>
           </div>
           <div className="Booking-Form-Body">
             <div className="Services-Box">
@@ -298,7 +278,7 @@ const BookingForm = (props) => {
                 </InputGroup>
               <div className="Total-Price">
                 <p>Precio total</p>
-                <p className="Total">${priceStr(totalPrice())}</p>
+                <p className="Total">${priceStr(totalPrice)}</p>
               </div>
             </div>
             <div className="Booking-Form-Footer">
@@ -363,6 +343,8 @@ const mapStateToProps = state => {
   return {
     show: state.bookings.show,
     list: state.bookings.list,
+    totalPrice: state.bookings.total,
+    duration: state.bookings.duration,
     salon: state.salons.activeItem
   };
 };
