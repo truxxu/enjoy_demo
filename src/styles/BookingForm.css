@@ -5,8 +5,8 @@
 
 .modal-content p{
   margin: 0;
-  font-family: "MontserraBold", sans-serif;
-  font-size: 13px;
+  font-family: "LatoRegular", sans-serif;
+  font-size: 14px;
 }
 
 .modal-dialog-centered {
@@ -28,9 +28,9 @@
 }
 
 .Input-Box .Modal-Input {
-  margin-top: 10px;
+  margin-top: 6px;
   background-color: white;
-  border: 1px solid black
+  border: 1px solid var(--color-gris-oscuro)
 }
 
 .Payment-Box .Cash,
@@ -40,13 +40,13 @@
 
 .Coupon-Box .input-group{
   align-content: flex-end;
-  width: 50%;
+  width: 60%;
 }
 
 .Coupon-Box .input-group .Modal-Input{
   font-size: 13px;
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid var(--color-gris-oscuro)
 }
 
 .Coupon-Box p {
@@ -81,7 +81,8 @@
 }
 
 .Booking-Form-Header .Title-Box p {
-  font-size: 25px;
+  font-size: 30px;
+  font-family: "LatoRegular", sans-serif;
 }
 
 .Services-Box,
@@ -115,7 +116,7 @@
 }
 
 .Non-User-Modal {
-  font-family: "MontserraBold", sans-serif;
+  font-family: "LatoRegular", sans-serif;
 }
 
 .modal-dialog {
@@ -134,7 +135,7 @@
 
 .react-datepicker {
   border: none !important;
-  font-family: "MontserraBold", sans-serif !important;
+  font-family: "LatoRegular", sans-serif !important;
 }
 
 .react-datepicker__header {
@@ -181,7 +182,7 @@
 
 .Time-Display {
   font-size: 25px;
-  font-family: "MontserraBold", sans-serif;
+  font-family: "LatoRegular", sans-serif;
 }
 
 .rc-slider-handle {

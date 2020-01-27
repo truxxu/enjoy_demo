@@ -227,13 +227,12 @@ const BookingForm = (props) => {
                 </div>
               </div>
             </div>
-            <div className="Time-Box">
-            </div>
             <div className="Input-Box">
               <p>¿Prefieres algún profesional?</p>
               <InputGroup className="mb-3">
                 <FormControl
                   maxLength={40}
+                  placeholder={'Escribe el nombre'}
                   className="Modal-Input"
                   aria-label="pro_name"
                   aria-describedby="basic-addon1"
