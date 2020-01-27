@@ -162,16 +162,15 @@ const BookingForm = (props) => {
       salon_id: salon.id,
       services: includeServices(),
     };
-    console.log(payload);
 
-    // axios
-    //   .post(env.apiUrl + "**bookings**", payload)
-    //   .then(res => {
-    //     showForm(false);
-    //   })
-    //   .catch(err =>{
-    //     window.alert("No se pudo realizar la reserva" + errorMessage);
-    //   });
+    axios
+      .post(env.apiUrl + "reservations/", payload)
+      .then(res => {
+        showForm(false);
+      })
+      .catch(err =>{
+        window.alert("No se pudo realizar la reserva");
+      });
   }
 
   if (token !== null && list.length > 0) {

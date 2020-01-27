@@ -23,7 +23,9 @@ export default function(state = initialState, action) {
       case REMOVE_FROM_BOOKINGS:
         return {
           ...state,
-          list: state.list.filter(item => item.id !== action.payload.id),
+          list: state.list.filter(item => item.id !== action.payload.data.id),
+          total: action.payload.total,
+          duration: action.payload.duration,
         };
       case SHOW_FORM:
         return {
