@@ -1,0 +1,54 @@
+.App-Board-Card{
+    background-color: var(--color-blanco);
+    border-radius: 5px;
+    border: none;
+    width: 300px !important;
+}
+
+.App-Board-Title{
+    font-size: 0.6em;  
+}
+  
+.App-Board-Value{
+    font-size: 0.7em;  
+}
+  
+.App-Board-Percent{
+    font-size: 0.5em;
+}
+  
+.App-Board-Ico, span.icon-tienda{
+    font-size: 30px;
+}
+
+.Col-Percent-Gre{
+    color: #00A650;
+}
+  
+.Col-Percent-Red, .Total-Red{
+    color: #B73639;
+}
+
+.App-Board-Col-Dorado, .App-Board-Card-Col{
+    background-color: var(--color-dorado);
+}
+
+.App-Board-Content-Chart{
+    position: relative;
+    top:-30px;
+}
+
+.App-Board-Min-Height-Card{
+    min-height: 74px;
+}
+  
+.App-Board-Min-Height-Reserves-Card{
+    min-height: 88px;
+}
+
+@media (max-width: 768px) {
+    .App-Board-Card-Col {
+        background-color: #F4F5FB;
+    }
+}
+
