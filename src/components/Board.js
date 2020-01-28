@@ -235,9 +235,9 @@ function DashboardFooter() {
         </Col>
       </Row>
 
-      <Row className="App-Board-Card-Col flex-md-row flex-column pb-5 align-items-center">
+      <Row className="App-Board-Card-Col flex-md-row flex-column pb-5 justify-content-between align-items-center">
               
-        <Col className="App-Board-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
+        <Col className="App-Board-Card App-Board-Max-Width-Reserves-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
           <div className="d-flex flex-column justify-content-around ml-2 pt-2">
             <label className="App-Board-Title">RESERVAS TOTALES</label>
             <label className="App-Board-Value font-weight-bold"> 128</label>
@@ -248,7 +248,7 @@ function DashboardFooter() {
           </div>
         </Col>
 
-        <Col className="App-Board-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
+        <Col className="App-Board-Card App-Board-Max-Width-Reserves-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
           <div className="d-flex flex-column justify-content-around ml-2 pt-2">
             <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL CLIENTE</label>
             <label className="App-Board-Value font-weight-bold">8</label>
@@ -259,7 +259,7 @@ function DashboardFooter() {
           </div>
         </Col>
 
-        <Col className="App-Board-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
+        <Col className="App-Board-Card App-Board-Max-Width-Reserves-Card App-Board-Min-Height-Reserves-Card d-flex justify-content-between mx-2 mb-2 mb-md-0 mt-2 mt-md-0">
           <div className="d-flex flex-column justify-content-around ml-2 pt-2">
             <label className="App-Board-Title">RESERVAS CANCELADAS <br />POR EL SALÓN</label>
             <label className="App-Board-Value font-weight-bold">2</label>

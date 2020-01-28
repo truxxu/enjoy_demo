@@ -27,10 +27,7 @@ function DashboardPage(props) {
 
   return (
     <Container fluid className="App-Dashboard">
-      {
-        (token===null || token === 'undefined' || token === '' || token === undefined || currentUser===null || currentUser===undefined || currentUser.role!='MAIN_ADMIN') &&
-        <Redirect to='/'  />
-      }
+      
       <Tab.Container id="left-tabs-example" defaultActiveKey="user">
         <Row>
           <Col className="App-Board-Header">

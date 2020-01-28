@@ -46,6 +46,10 @@
     min-height: 88px;
 }
 
+.App-Board-Max-Width-Reserves-Card{
+    max-width: 265px;
+}
+
 @media (max-width: 768px) {
     .App-Board-Card-Col {
         background-color: #F4F5FB;
