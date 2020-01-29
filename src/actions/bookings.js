@@ -42,7 +42,7 @@ export const addBooking = (param) => dispatch => {
     });
     list.map(item => {
       countTime -= item.duration
-    })
+    });
     dispatch({
       type: REMOVE_FROM_BOOKINGS,
       payload: {
@@ -50,7 +50,7 @@ export const addBooking = (param) => dispatch => {
         total: Math.abs(countPrice),
         duration: Math.abs(countTime)
       }
-    })
+    });
   }
 };
 
@@ -58,12 +58,28 @@ export const removeBooking = (param) => dispatch => {
   let list = store.getState().bookings.list;
   let salonFilter = list.filter(item => item.salon_id !== param.salon_id)
   let serviceFilter = list.filter(item => item.id === param.id)
+  let countPrice = parseInt(param.discount_price || param.price);
+  let countTime = param.duration;
 
   if (salonFilter.length === 0 && serviceFilter.length > 0) {
+    list.map(item => {
+      if (item.discount_price !== null) {
+        countPrice -= parseInt(item.discount_price)
+      } else {
+        countPrice -= parseInt(item.price)
+      }
+    });
+    list.map(item => {
+      countTime -= item.duration
+    });
     dispatch({
       type: REMOVE_FROM_BOOKINGS,
-      payload: param
-    })
+      payload: {
+        data: param,
+        total: Math.abs(countPrice),
+        duration: Math.abs(countTime)
+      }
+    });
   }
 };
 
