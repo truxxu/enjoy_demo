@@ -27,8 +27,7 @@ const BookingForm = (props) => {
   const Handle = Slider.Handle;
 
   const [hourValue, setHourValue] = useState(0);
-  const [minuteValue, setMinuteValue] = useState(0);
-  const handle = (props) => {
+  const handleHourSlider = (props) => {
     const { value, dragging, index, ...restProps } = props;
     return (
       <Tooltip
@@ -44,7 +43,8 @@ const BookingForm = (props) => {
     );
   };
 
-  const handle2 = (props) => {
+  const [minuteValue, setMinuteValue] = useState(0);
+  const handleMinSlider = (props) => {
     const { value, dragging, index, ...restProps } = props;
     return (
       <Tooltip
@@ -144,7 +144,7 @@ const BookingForm = (props) => {
   const [checkedRadio, setCheckedRadio] = useState(1);
   const [proName, setProName] = useState('');
 
-  const handleClick = () => {
+  const createReservation = () => {
     const getPaymentMethod = () => {
       if (checkedRadio === 1) {
         return 'en salón'
@@ -237,8 +237,8 @@ const BookingForm = (props) => {
                     min={parseInt(workingHours('opening_hour'))}
                     max={parseInt(workingHours('closing_hour')) - 1}
                     step={1}
-                    handle={handle} />
-                  <Slider min={0} max={50} step={10} handle={handle2} />
+                    handle={handleHourSlider} />
+                  <Slider min={0} max={50} step={10} handle={handleMinSlider} />
                 </div>
               </div>
             </div>
@@ -299,7 +299,7 @@ const BookingForm = (props) => {
                 <Button
                   onClick={ () => {
                     showForm(false);
-                    handleClick();
+                    createReservation();
                   }}
                   className="justify-content-center Modal-Button-Active
                   Register-Modal-Button"
