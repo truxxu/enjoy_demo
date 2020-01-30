@@ -12,6 +12,11 @@
   color: var(--color-negro);
 }
 
+.Service-Item .icon-corazones_border {
+  font-size: 2em;
+  color: var(--color-blanco);
+}
+
 .Service-Item-Small-Description .icon-corazones {
   font-size: 2em;
 }
