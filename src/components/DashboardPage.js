@@ -27,10 +27,7 @@ function DashboardPage(props) {
 
   return (
     <Container fluid className="App-Dashboard">
-      {
-        (token===null || token === 'undefined' || token === '' || token === undefined || currentUser===null || currentUser===undefined || currentUser.role!='MAIN_ADMIN') &&
-        <Redirect to='/'  />
-      }
+      
       <Tab.Container id="left-tabs-example" defaultActiveKey="user">
         <Row>
           <Col className="App-Board-Header">
@@ -78,13 +75,13 @@ function DashboardPage(props) {
             </Nav>
 
             <Modal className="Menu-Board-Modal align-items-left" show={show} onHide={handleClose}>
-              <Row className="Menu-Board-Modal-Links align-items-center justify-content-around mb-5">
+              <Row className="Menu-Board-Modal-Links align-items-center justify-content-between mb-5">
                 <div>
                   <Link to="/">
-                    <img src={logo} className="App-Dashboard-Logo mt-4" />
+                    <img src={logo} className="App-Dashboard-Logo App-Dashboard-Logo-Mov" />
                   </Link>
                 </div>              
-                <div className="App-Board-Pointer mt-4">
+                <div className="App-Board-Pointer mr-5">
                   <span onClick={handleClose} className="Modal-Close App-Board-Text">
                     X
                   </span>

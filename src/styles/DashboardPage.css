@@ -60,6 +60,7 @@
   .Menu-Board-Modal-Links{
     width: 100%;
     margin-right: 0;
+    margin-top:33px;
   }
 }
 
@@ -75,4 +76,12 @@
 
 .App-Board-Nav-Mov{
   margin-left: -60px !important;
+}
+
+.App-Board-Nav-Mov hr{
+  width: 140%;
+}
+
+.App-Dashboard-Logo-Mov{
+  margin-left: 45px;
 }
