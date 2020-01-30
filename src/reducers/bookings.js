@@ -2,6 +2,7 @@ import {
   ADD_TO_BOOKINGS,
   REMOVE_FROM_BOOKINGS,
   SHOW_FORM,
+  CLEAN_BOOKINGS
 } from "../actions/index";
 
 const initialState =  {
@@ -31,6 +32,13 @@ export default function(state = initialState, action) {
         return {
           ...state,
           show: action.payload,
+        };
+      case CLEAN_BOOKINGS:
+        return {
+          ...state,
+          list: action.payload,
+          total: 0,
+          duration: 0
         };
       default:
         return state;

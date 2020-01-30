@@ -3,6 +3,7 @@ import {
   ADD_TO_BOOKINGS,
   REMOVE_FROM_BOOKINGS,
   SHOW_FORM,
+  CLEAN_BOOKINGS
 } from ".";
 import store from "../store";
 
@@ -87,5 +88,12 @@ export const showForm = param => dispatch => {
   dispatch({
     type: SHOW_FORM,
     payload: param
-  });
+  })
+};
+
+export const cleanBookings = () => dispatch => {
+  dispatch({
+    type: CLEAN_BOOKINGS,
+    payload: []
+  })
 };

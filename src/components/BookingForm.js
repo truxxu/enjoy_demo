@@ -17,7 +17,7 @@ import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
 import 'rc-slider/assets/index.css';
 import 'rc-tooltip/assets/bootstrap.css';
-import { showForm, removeBooking } from "../actions/bookings";
+import { showForm, removeBooking, cleanBookings } from "../actions/bookings";
 import { env } from "../env";
 
 const BookingForm = (props) => {
@@ -63,7 +63,17 @@ const BookingForm = (props) => {
   // Calendar localization
   registerLocale('es', es)
 
-  const { show, showForm, list, removeBooking, salon, totalPrice, duration } = props;
+  const {
+    show,
+    showForm,
+    list,
+    removeBooking,
+    salon,
+    totalPrice,
+    duration,
+    cleanBookings
+  } = props;
+
   let token = localStorage.getItem('token');
 
   const [startDate, setStartDate] = useState(new Date());
@@ -177,7 +187,10 @@ const BookingForm = (props) => {
     return (
       <Modal
         show={show}
-        onHide={() => showForm(false)}>
+        onHide={() => {
+          cleanBookings();
+          showForm(false);
+        }}>
         <div className="Booking-Form">
           <div className="Booking-Form-Header">
             <div className="Title-Box d-flex flex-row justify-content-between">
@@ -185,7 +198,10 @@ const BookingForm = (props) => {
               <Button
                 style={{padding: 0}}
                 variant={'none'}
-                onClick={ () => showForm(false)}>
+                onClick={ () => {
+                  cleanBookings();
+                  showForm(false);
+                }}>
                 <p>X</p>
               </Button>
             </div>
@@ -348,11 +364,13 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   showForm,
-  removeBooking
+  removeBooking,
+  cleanBookings
 };
 
 BookingForm.prototype = {
   showForm: PropTypes.func.isRequired,
+  cleanBookings: PropTypes.func.isRequired,
   removeBooking: PropTypes.func.isRequired,
   list: PropTypes.array.isRequired,
   salon: PropTypes.object.isRequired,
