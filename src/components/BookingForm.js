@@ -176,7 +176,6 @@ const BookingForm = (props) => {
   if (token !== null && list.length > 0) {
     return (
       <Modal
-        centered
         show={show}
         onHide={() => showForm(false)}>
         <div className="Booking-Form">

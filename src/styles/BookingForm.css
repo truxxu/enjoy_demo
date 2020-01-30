@@ -1,6 +1,8 @@
 .Booking-Form {
   background-color: var(--color-gris-claro);
   width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 .modal-content p{
