@@ -544,11 +544,13 @@ function Navbar(props) {
           </Tab.Container>
         </Tabs>
 
-        <Row className="Section-Social-Networks-Text ">
-          <li type="circle">Utiliza tus redes</li>
+        <Row className="Section-Social-Networks-Text">
+          <p>O utiliza tus redes</p>
         </Row>
-        
-        <Row className="justify-content-center align-items-center Section-Social-Networks">
+
+        <Row
+          className="justify-content-center align-items-center
+          Section-Social-Networks">
           <FacebookLogin
             appId="754706191708393"
             fields="name,email,picture"
@@ -558,15 +560,15 @@ function Navbar(props) {
             cssClass="btnFacebook"
             callback={responseFacebook}
           />
-            
+
           <GoogleLogin
             clientId="1027412479110-40mhofv4tesejit21d4n1ch5bukcfp54.apps.googleusercontent.com"
             className="btnGoogle"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           >
-            <i className="fa fa-google"/> <span>GOOGLE</span> 
-          </GoogleLogin>  
+            <i className="fa fa-google"/> <span>GOOGLE</span>
+          </GoogleLogin>
         </Row>
       </Modal>
       <Modal

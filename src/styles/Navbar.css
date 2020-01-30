@@ -151,7 +151,7 @@
   border-color: var(--color-gris-claro);
   font-family: "MontserratMedium", sans-serif;
   color: var(--color-gris-oscuro);
-  font-size: 16px;
+  font-size: 0.9em;
   padding: 0;
   padding-left: 5px;
   box-shadow: none;
@@ -161,7 +161,7 @@
 .Modal-Input-Label {
   margin: 0;
   padding-left: 5px;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .App-Navbar.fixed-top {
@@ -234,7 +234,7 @@
 }
 
 .Section-Social-Networks{
-  height: 80px;
+  height: 130px;
   background-color: var(--color-gris-claro);
   margin-right: 0px !important;
   margin-left: 0px !important;
@@ -242,13 +242,11 @@
   border-bottom-right-radius: 18px;
 }
 
-.Section-Social-Networks-Text{
-  height: 30px;
+.Section-Social-Networks-Text {
   background-color: var(--color-gris-claro);
-  margin-right: 0px !important;
-  margin-left: 0px !important;
-  padding-top: 5px;
-  padding-left: 30px !important;
+  padding: 30px 25px;
+  padding-bottom: 0;
+  margin: 0;
 }
 
 .Nav-Bar-Btn-L {
@@ -292,13 +290,13 @@
 .Nav-Bar-Btn-L:active,
 .Nav-Bar-Btn-L:focus,
 .Nav-Bar-Btn-L:hover ~ .Nav-Bar-Btn-R{
-  background-color: #f14336 !important; 
+  background-color: #f14336 !important;
   color: var(--color-blanco);
 }
 
 .Nav-Bar-Btn-R:active,
 .Nav-Bar-Btn-R:focus,
-.Nav-Bar-Btn-R:hover { 
+.Nav-Bar-Btn-R:hover {
   background-color: #f14336 !important;
   color: var(--color-blanco);
 }
