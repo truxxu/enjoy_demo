@@ -25,10 +25,6 @@
   color: var(--color-negro);
 }
 
-.Service-Name {
-  width: 150px;
-}
-
 .Service-Item-Small p,
 label,
 .Service-Item-Small-Price h2 {

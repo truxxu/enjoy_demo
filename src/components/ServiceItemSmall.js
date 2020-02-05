@@ -51,9 +51,11 @@ function ServiceItemSmall(props) {
         <div className="Service-Item-Small-Description d-md-flex ">
           <div className="d-flex flex-md-grow-1">
             <h1
-              className="Service-Name mr-4 pt-2 mr-md-5 mb-0 align-self-center">
+              className="mr-4 pt-2 mr-md-5 mb-0 align-self-center">
               {data.name}
             </h1>
+          </div>
+          <div className="d-flex align-items-center">
             <Button
               variant={'none'}
               onMouseEnter={() => setIsShown(true)}
@@ -64,7 +66,7 @@ function ServiceItemSmall(props) {
           </div>
           <div className="d-flex align-items-center">
             {data.is_popular ? (
-              <p className="Popular px-2 py-1 mb-1 mt-md-4 mr-md-5 ">POPULAR</p>
+              <p className="Popular px-2 py-1 mb-3 mt-md-4 mr-md-5 ">POPULAR</p>
             ) : (
               ""
             )}
