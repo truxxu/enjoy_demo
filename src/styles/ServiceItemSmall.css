@@ -57,7 +57,7 @@ label,
   background-color: var(--color-dorado);
   border-width: 1px;
   border-color: var(--color-dorado);
-  border-radius: 0.5em;
+  border-radius: 1.2em;
 }
 
 .Service-Item-Small-Price {

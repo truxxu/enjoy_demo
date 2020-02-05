@@ -62,9 +62,9 @@ function ServiceItemSmall(props) {
               <span className={favoriteHeart(data.id)} />
             </Button>
           </div>
-          <div className="d-flex ">
+          <div className="d-flex align-items-center">
             {data.is_popular ? (
-              <p className="Popular px-2 mb-1 mt-md-4 mr-md-5 ">POPULAR</p>
+              <p className="Popular px-2 py-1 mb-1 mt-md-4 mr-md-5 ">POPULAR</p>
             ) : (
               ""
             )}
