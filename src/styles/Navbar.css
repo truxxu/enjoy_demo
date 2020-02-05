@@ -82,9 +82,8 @@
   font-family: "MontserratMedium", sans-serif;
   font-weight: 500;
   color: var(--color-negro) !important;
-  background-color: var(--color-blanco) !important;
-  border-width: 1px;
-  border-color: var(--color-negro) !important;
+  background-color: var(--color-dorado) !important;
+  border: none;
   border-radius: 1.5em;
   padding: 5px 24px;
 }
