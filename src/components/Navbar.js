@@ -292,11 +292,15 @@ function Navbar(props) {
             </div>
           ) : (
             <div className="col-auto d-flex align-items-center">
-              <div class="btn-group" role="group" onClick={logOut}>
-                <button type="button" class="Nav-Bar-Btn-L">
+              <div className="btn-group" role="group">
+                <Link to="/auth/user" className="Nav-Bar-Btn-L">
                   <span className="icon-usuario"></span>
-                </button>
-                <button type="button" class="Nav-Bar-Btn-R">
+                </Link>
+                <button
+                  type="button"
+                  onClick={logOut}
+                  className="Nav-Bar-Btn-R"
+                >
                   Salir
                 </button>
               </div>
@@ -592,7 +596,10 @@ function Navbar(props) {
           <p>O utiliza tus redes</p>
         </Row>
 
-        <Row className="justify-content-center align-items-center Section-Social-Networks">
+        <Row
+          className="justify-content-center align-items-center
+          Section-Social-Networks"
+        >
           <FacebookLogin
             appId="754706191708393"
             fields="name,email,picture"

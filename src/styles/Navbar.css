@@ -182,9 +182,9 @@
   max-width: 580px !important;
 }
 
-.btnFacebook{
+.btnFacebook {
   width: 150px;
-  height:35px;
+  height: 35px;
   background: #3b5998;
   color: white;
   font-family: Roboto, sans-serif;
@@ -215,7 +215,7 @@
   display: none;
 }
 
-.btnGoogle span{
+.btnGoogle span {
   padding: 0px !important;
 }
 
@@ -227,7 +227,7 @@
   margin-right: 8px;
 }
 
-.Section-Social-Networks{
+.Section-Social-Networks {
   height: 130px;
   background-color: var(--color-gris-claro);
   margin-right: 0px !important;
@@ -247,12 +247,12 @@
   font-size: 1.5em;
   color: var(--color-negro);
   background-color: var(--color-dorado);
-  border-width: 1px;
-  border-color: var(--color-negro);
+  border: var(--color-negro) 1px solid;
   border-top-left-radius: 1.5em !important;
   border-bottom-left-radius: 1.5em !important;
   border-right: 0;
   width: 70px;
+  text-align: center;
 }
 
 .Nav-Bar-Btn-R {
@@ -283,7 +283,7 @@
 
 .Nav-Bar-Btn-L:active,
 .Nav-Bar-Btn-L:focus,
-.Nav-Bar-Btn-L:hover ~ .Nav-Bar-Btn-R{
+.Nav-Bar-Btn-L:hover {
   background-color: #f14336 !important;
   color: var(--color-blanco);
 }
