@@ -240,7 +240,7 @@ function Navbar(props) {
     <Row className="App-Navbar">
       <Container id="Navbar-Container">
         <Row className="App-Navbar justify-content-between py-4">
-          <div className="col-auto">
+          <div>
             <Link to="/">
               <img
                 src={logoMobile}
