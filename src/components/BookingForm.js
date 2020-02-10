@@ -170,11 +170,16 @@ const BookingForm = (props) => {
       payment_method: getPaymentMethod(),
       professional_name: proName,
       salon_id: salon.id,
-      services: includeServices(),
+      reserved_services: includeServices(),
+    };
+
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Token ' + token
     };
 
     axios
-      .post(env.apiUrl + "reservations/", payload)
+      .post(env.apiUrl + "reservations/", payload, { headers: headers })
       .then(res => {
         showForm(false);
       })
