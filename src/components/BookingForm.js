@@ -147,16 +147,16 @@ const BookingForm = (props) => {
   const createReservation = () => {
     const getPaymentMethod = () => {
       if (checkedRadio === 1) {
-        return 'en salón'
+        return 'at_salon'
       } else if (checkedRadio === 2) {
-        return 'en línea'
+        return 'online'
       }
     };
     const includeServices = () => {
       let array = [];
       list.map(item => {
         const container = new Object;
-        container.service_id = item.id;
+        container.service = item.id;
         container.price = parseInt(item.discount_price || item.price);
         container.duration = item.duration;
         array.push(container);
@@ -169,7 +169,7 @@ const BookingForm = (props) => {
                             + ':00.511Z',
       payment_method: getPaymentMethod(),
       professional_name: proName,
-      salon_id: salon.id,
+      salon: salon.id,
       reserved_services: includeServices(),
     };
 
