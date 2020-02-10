@@ -601,7 +601,7 @@ function Navbar(props) {
           Section-Social-Networks"
         >
           <FacebookLogin
-            appId="754706191708393"
+            appId="277106176566024"
             fields="name,email,picture"
             textButton="FACEBOOK"
             responseType="code"
