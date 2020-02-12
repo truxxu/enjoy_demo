@@ -49,6 +49,9 @@
     top: 10px;
     font-size: 2em;
   }
+  .Service-Img .btn {
+    display: contents;
+  }
   .Salon-Img {
     object-fit: cover;
     width: 100%;
@@ -159,7 +162,7 @@
   }
   .Service-Buttons .Gray-Button {
     text-transform: uppercase;
-    font-size: 0.5em;
+    font-size: 0.6em;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
     color: var(--color-negro);
@@ -168,11 +171,11 @@
     border-width: 1px;
     border-color: var(--color-gris-claro);
     border-radius: 1.5em;
-    padding: 5px 24px;
+    padding: 5px 20px;
   }
   .Service-Buttons .Button {
     text-transform: uppercase;
-    font-size: 0.5em;
+    font-size: 0.6em;
     font-family: "MontserratMedium", sans-serif;
     font-weight: 500;
     color: var(--color-negro);
@@ -180,7 +183,7 @@
     border-width: 1px;
     border-color: var(--color-dorado);
     border-radius: 1.5em;
-    padding: 5px 24px;
+    padding: 5px 20px;
   }
   .Service-Time {
     font-size: 10px;

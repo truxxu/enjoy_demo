@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { env } from "../env";
 import {
   ADD_TO_BOOKINGS,
@@ -96,4 +98,21 @@ export const cleanBookings = () => dispatch => {
     type: CLEAN_BOOKINGS,
     payload: []
   })
+};
+
+export const getBookings = () => dispatch => {
+  let token = localStorage.getItem('token');
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Token ' + token
+  };
+  axios
+    .get(env.apiUrl + "reservations/", { headers: headers })
+    .then(res => {
+      dispatch({
+        type: GET_BOOKINGS,
+        payload: res.data
+      });
+    })
+    .catch(err => window.alert("No se pudieron cargar las reservas"));
 };

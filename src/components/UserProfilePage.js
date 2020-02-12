@@ -14,6 +14,7 @@ import * as _ from 'lodash';
 import "../styles/UserProfilePage.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import BookingCard from "./BookingCard";
 import { updateUser, validateUser, updateUserField } from "../actions/authentication";
 
 function UserProfilePage(props) {
@@ -41,7 +42,7 @@ function UserProfilePage(props) {
       <Tab.Container id="left-tabs-example" defaultActiveKey="user">
         <Row className="Profile-Box">
           <Col sm={2}></Col>
-          <Col >
+          <Col>
             <Nav className="flex-column Profile-Nav">
               <Nav.Item>
                 <Nav.Link eventKey="user">
@@ -188,7 +189,7 @@ function UserProfilePage(props) {
                               onClick={() => setMask(!keyMask)}
                               className="Modal-Password"
                             >
-                              <span className="icon-lupa"></span>
+                              <span className="icon-ojo_cont"></span>
                             </Button>
                           </InputGroup.Append>
                         </InputGroup>
@@ -210,6 +211,9 @@ function UserProfilePage(props) {
               </Tab.Pane>
               <Tab.Pane eventKey="reservations">
                 <label className="Profile-Label">Reservas Programadas</label>
+                <div className="p-4">
+                  <BookingCard />
+                </div>
               </Tab.Pane>
             </Tab.Content>
           </Col>

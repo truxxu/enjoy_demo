@@ -22,4 +22,4 @@ export const ADD_TO_BOOKINGS = "ADD_TO_BOOKINGS";
 export const REMOVE_FROM_BOOKINGS = "REMOVE_FROM_BOOKINGS";
 export const SHOW_FORM = "SHOW_FORM";
 export const CLEAN_BOOKINGS = "CLEAN_BOOKINGS";
-
+export const GET_BOOKINGS = "GET_BOOKINGS";

@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import Col from 'react-bootstrap/Col';
+import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Tabs from "react-bootstrap/Tabs";
-import Tab from 'react-bootstrap/Tab';
+import Tab from "react-bootstrap/Tab";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import FacebookLogin from 'react-facebook-login'
-import GoogleLogin from 'react-google-login';
+import FacebookLogin from "react-facebook-login";
+import GoogleLogin from "react-google-login";
 
 import logoMobile from "../images/logo_black_yellow.png";
 import logoDesktop from "../images/logo_black_white.png";
@@ -20,10 +20,15 @@ import "../styles/Navbar.css";
 import { setCategory } from "../actions/categories";
 import { getCategories } from "../actions/categories";
 import SearchInput from "./SearchInput";
-import { validateUser, logOut, registerUser, authUser, socialAuth } from "../actions/authentication";
+import {
+  validateUser,
+  logOut,
+  registerUser,
+  authUser,
+  socialAuth
+} from "../actions/authentication";
 
 function Navbar(props) {
-
   const [showAlert, setShowAlert] = useState(false);
 
   const handleCloseAlert = () => setShowAlert(false);
@@ -31,21 +36,32 @@ function Navbar(props) {
 
   const [show, setShow] = useState(false);
   const [form, writeForm] = useState({
-    first_name: '',
-    last_name: '',
-    phone: '',
-    username: '',
-    birth_date: '',
-    password: ''
+    first_name: "",
+    last_name: "",
+    phone: "",
+    username: "",
+    birth_date: "",
+    password: ""
   });
   const [terms, setTerms] = useState({
     conditions: false,
-    privacy: false,
+    privacy: false
   });
   const [keyMask, setMask] = useState(true);
 
-  const { authUser, list, getCategories, setCategory, loggedIn, validateUser,
-          logOut, token, registerUser, response, socialAuth } = props;
+  const {
+    authUser,
+    list,
+    getCategories,
+    setCategory,
+    loggedIn,
+    validateUser,
+    logOut,
+    token,
+    registerUser,
+    response,
+    socialAuth
+  } = props;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -58,35 +74,34 @@ function Navbar(props) {
     validateUser();
   }, []);
 
-  let AppNavBar = '';
-  let LinkList = '';
-  let NavbarContainer = '';
-  let SearchInputDiv = '';
-  let AppHeaderSearch = '';
-  let BtnAcceder = '';
-  let BtnAccederMov = '';
-  let SocialLinks = '';
-  let SearchInputDivMov = '';
+  let AppNavBar = "";
+  let LinkList = "";
+  let NavbarContainer = "";
+  let SearchInputDiv = "";
+  let AppHeaderSearch = "";
+  let BtnAcceder = "";
+  let BtnAccederMov = "";
+  let SocialLinks = "";
+  let SearchInputDivMov = "";
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, true);
-    NavbarContainer = document.getElementById('Navbar-Container');
-    AppNavBar = document.getElementsByClassName('App-Navbar')[0];
-    LinkList = document.getElementById('Link-List-Id');
-    SocialLinks = document.getElementById('Social-Links');
-    SearchInputDiv = document.getElementById('Search-Input-Id');
-    AppHeaderSearch = document.getElementsByClassName('App-Header-Search')[0];
-    BtnAcceder = document.getElementById('Btn-Acceder');
-    SearchInputDivMov = document.getElementById('Search-Input-Id-Mov');
+    window.addEventListener("scroll", handleScroll, true);
+    NavbarContainer = document.getElementById("Navbar-Container");
+    AppNavBar = document.getElementsByClassName("App-Navbar")[0];
+    LinkList = document.getElementById("Link-List-Id");
+    SocialLinks = document.getElementById("Social-Links");
+    SearchInputDiv = document.getElementById("Search-Input-Id");
+    AppHeaderSearch = document.getElementsByClassName("App-Header-Search")[0];
+    BtnAcceder = document.getElementById("Btn-Acceder");
+    SearchInputDivMov = document.getElementById("Search-Input-Id-Mov");
 
     var widthBrowser = window.outerWidth;
-    if(widthBrowser < 768){
-      SearchInputDiv.classList.add('d-none');
-      SocialLinks.classList.add('d-none');
-    }else{
-      SearchInputDiv.classList.add('d-none');
+    if (widthBrowser < 768) {
+      SearchInputDiv.classList.add("d-none");
+      SocialLinks.classList.add("d-none");
+    } else {
+      SearchInputDiv.classList.add("d-none");
     }
-
   }, []);
 
   const handleScroll = () => {
@@ -96,50 +111,50 @@ function Navbar(props) {
   function positionBar() {
     var widthBrowser = window.outerWidth;
 
-    if(widthBrowser > 768){
-      if (window.pageYOffset >= 450){
+    if (widthBrowser > 768) {
+      if (window.pageYOffset >= 450) {
         setBar();
       } else {
         setBarInit();
       }
     } else {
-      if (window.pageYOffset >= 230){
+      if (window.pageYOffset >= 230) {
         setBar();
-        SearchInputDiv.classList.add('d-none');
-        SearchInputDivMov.classList.remove('d-none');
+        SearchInputDiv.classList.add("d-none");
+        SearchInputDivMov.classList.remove("d-none");
       } else {
         setBarMovilInit();
       }
     }
   }
 
-  function setBar(){
-    AppNavBar.classList.add('fixed-top');
-    NavbarContainer.classList.remove('container');
-    NavbarContainer.classList.add('container-fluid');
-    LinkList.classList.remove('d-md-flex');
-    SocialLinks.classList.remove('d-md-flex');
-    SocialLinks.classList.add('d-none');
-    SearchInputDiv.classList.remove('d-none');
-    SearchInputDiv.classList.add('d-md-flex');
-    AppHeaderSearch.classList.remove('mb-4');
+  function setBar() {
+    AppNavBar.classList.add("fixed-top");
+    NavbarContainer.classList.remove("container");
+    NavbarContainer.classList.add("container-fluid");
+    LinkList.classList.remove("d-md-flex");
+    SocialLinks.classList.remove("d-md-flex");
+    SocialLinks.classList.add("d-none");
+    SearchInputDiv.classList.remove("d-none");
+    SearchInputDiv.classList.add("d-md-flex");
+    AppHeaderSearch.classList.remove("mb-4");
   }
 
   function setBarInit() {
-    NavbarContainer.classList.add('container');
-    NavbarContainer.classList.remove('container-fluid');
-    AppNavBar.classList.remove('fixed-top');
-    LinkList.classList.add('d-md-flex');
-    SocialLinks.classList.remove('d-none');
-    SocialLinks.classList.add('d-md-flex');
-    SearchInputDiv.classList.add('d-none');
-    SearchInputDiv.classList.remove('d-md-flex');
+    NavbarContainer.classList.add("container");
+    NavbarContainer.classList.remove("container-fluid");
+    AppNavBar.classList.remove("fixed-top");
+    LinkList.classList.add("d-md-flex");
+    SocialLinks.classList.remove("d-none");
+    SocialLinks.classList.add("d-md-flex");
+    SearchInputDiv.classList.add("d-none");
+    SearchInputDiv.classList.remove("d-md-flex");
   }
 
   function setBarMovilInit() {
-    AppNavBar.classList.remove('fixed-top');
-    SearchInputDiv.classList.add('d-none');
-    SearchInputDivMov.classList.add('d-none');
+    AppNavBar.classList.remove("fixed-top");
+    SearchInputDiv.classList.add("d-none");
+    SearchInputDivMov.classList.add("d-none");
   }
 
   const setActiveItem = item => {
@@ -159,70 +174,84 @@ function Navbar(props) {
   };
 
   const renderRegisterButton = () => {
-    if (terms.conditions &&
-        terms.privacy &&
-        form.first_name !== '' &&
-        form.last_name !== '' &&
-        form.username !== '' &&
-        form.password !== '' &&
-        form.phone !== '' &&
-        form.birth_date !== '') {
-      return "justify-content-center Modal-Button-Active Register-Modal-Button"
+    if (
+      terms.conditions &&
+      terms.privacy &&
+      form.first_name !== "" &&
+      form.last_name !== "" &&
+      form.username !== "" &&
+      form.password !== "" &&
+      form.phone !== "" &&
+      form.birth_date !== ""
+    ) {
+      return "justify-content-center Modal-Button-Active Register-Modal-Button";
     } else {
-      return "justify-content-center Register-Modal-Button"
+      return "justify-content-center Register-Modal-Button";
     }
   };
 
   const clickRegisterButton = () => {
-    if (terms.conditions &&
-        terms.privacy &&
-        form.first_name !== '' &&
-        form.last_name !== '' &&
-        form.username !== '' &&
-        form.password !== '' &&
-        form.phone !== '' &&
-        form.birth_date !== '' &&
-        response) {
+    if (
+      terms.conditions &&
+      terms.privacy &&
+      form.first_name !== "" &&
+      form.last_name !== "" &&
+      form.username !== "" &&
+      form.password !== "" &&
+      form.phone !== "" &&
+      form.birth_date !== "" &&
+      response
+    ) {
       registerUser(form);
       handleClose();
-      handleShowAlert();
+      setTimeout(function() {
+        handleShowAlert(loggedIn);
+      }, 2000);
     }
   };
 
   const renderLoginButton = () => {
-    if (form.username !== '' && form.password !== '') {
-      return "justify-content-center Modal-Button-Active Register-Modal-Button"
+    if (form.username !== "" && form.password !== "") {
+      return "justify-content-center Modal-Button-Active Register-Modal-Button";
     } else {
-      return "justify-content-center Register-Modal-Button"
+      return "justify-content-center Register-Modal-Button";
     }
   };
 
-    const clickLoginButton = () => {
-    if (form.username !== '' && form.password !== '') {
-      authUser(form.username, form.password)
+  const clickLoginButton = () => {
+    if (form.username !== "" && form.password !== "") {
+      authUser(form.username, form.password);
       handleClose();
     }
   };
 
-  const responseFacebook = (response) => {
-    socialAuth(response.email, response.accessToken, 'facebook');
+  const responseFacebook = response => {
+    socialAuth(response.email, response.accessToken, "facebook");
     setShow(false);
     validateUser();
-  }
-  const responseGoogle = (response) => {
-    socialAuth(response.profileObj.email, response.tokenId, 'google');
+  };
+  const responseGoogle = response => {
+    socialAuth(response.profileObj.email, response.tokenId, "google");
     setShow(false);
     validateUser();
-  }
+  };
 
   return (
     <Row className="App-Navbar">
       <Container id="Navbar-Container">
         <Row className="App-Navbar justify-content-between py-4">
-          <div className="col-auto">
+          <div>
             <Link to="/">
-              <img src={logoMobile} className="App-logo d-md-none d-block" alt="logo" />
-              <img src={logoDesktop} className="App-logo d-none d-md-block" alt="logo" />
+              <img
+                src={logoMobile}
+                className="App-logo d-md-none d-block"
+                alt="logo"
+              />
+              <img
+                src={logoDesktop}
+                className="App-logo d-none d-md-block"
+                alt="logo"
+              />
             </Link>
           </div>
           <div
@@ -249,29 +278,45 @@ function Navbar(props) {
               </a>
             </div>
           </div>
-          {
-            token===null || token === 'undefined' || token === '' || token === undefined  ?
-             <div className="col-auto d-flex align-items-center">
-                <Button
-                  onClick={ loggedIn ? null : handleShow }
-                  className="App-Button">
-                  Acceder
-                </Button>
-             </div>
-            :
-             <div className="col-auto d-flex align-items-center">
-                <div className="btn-group" role="group" onClick={logOut}>
-                  <button type="button" className="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
-                  <button type="button" className="Nav-Bar-Btn-R">Salir</button>
-                </div>
-             </div>
-          }
+          {token === null ||
+          token === "undefined" ||
+          token === "" ||
+          token === undefined ? (
+            <div className="col-auto d-flex align-items-center">
+              <Button
+                onClick={loggedIn ? null : handleShow}
+                className="App-Button"
+              >
+                Acceder
+              </Button>
+            </div>
+          ) : (
+            <div className="col-auto d-flex align-items-center">
+              <div className="btn-group" role="group">
+                <Link to="/auth/user" className="Nav-Bar-Btn-L">
+                  <span className="icon-usuario"></span>
+                </Link>
+                <button
+                  type="button"
+                  onClick={logOut}
+                  className="Nav-Bar-Btn-R"
+                >
+                  Salir
+                </button>
+              </div>
+            </div>
+          )}
         </Row>
         <Row id="Search-Input-Id-Mov" className="d-none align-items-center">
           <SearchInput />
         </Row>
       </Container>
-      <Modal className="Register-Modal" show={show} onHide={handleClose} centered>
+      <Modal
+        className="Register-Modal"
+        show={show}
+        onHide={handleClose}
+        centered
+      >
         <Tabs defaultActiveKey="register" id="uncontrolled-tab-example">
           <Tab.Container
             className="Modal-Tab"
@@ -283,9 +328,8 @@ function Navbar(props) {
                 <div className="Modal-Input-Box">
                   <label
                     className={
-                      form.first_name === '' ?
-                        'text-hide' :
-                        'Modal-Input-Label'}
+                      form.first_name === "" ? "text-hide" : "Modal-Input-Label"
+                    }
                   >
                     Nombres*
                   </label>
@@ -295,21 +339,20 @@ function Navbar(props) {
                       placeholder="Nombres*"
                       aria-label="first_name"
                       aria-describedby="basic-addon1"
-                      onChange={event => writeForm(
-                        {
+                      onChange={event =>
+                        writeForm({
                           ...form,
                           first_name: event.target.value
-                        }
-                      )}
+                        })
+                      }
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
                   <label
                     className={
-                      form.phone === '' ?
-                        'text-hide' :
-                        'Modal-Input-Label'}
+                      form.phone === "" ? "text-hide" : "Modal-Input-Label"
+                    }
                   >
                     Celular*
                   </label>
@@ -318,19 +361,20 @@ function Navbar(props) {
                       className="Modal-Input"
                       placeholder="Celular*"
                       aria-label="phone"
+                      maxLength="10"
+                      pattern="[0-9]+"
                       aria-describedby="basic-addon1"
-                      onChange={event => writeForm(
-                        {
+                      onChange={event =>
+                        writeForm({
                           ...form,
                           phone: event.target.value
-                        }
-                      )}
+                        })
+                      }
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
-                  <label
-                    className="Modal-Input-Label">
+                  <label className="Modal-Input-Label">
                     Fecha de nacimiento*
                   </label>
                   <InputGroup className="mb-3">
@@ -339,12 +383,12 @@ function Navbar(props) {
                       placeholder="DD/MM/AAAA"
                       aria-label="birth_date"
                       aria-describedby="basic-addon1"
-                      onChange={event => writeForm(
-                        {
+                      onChange={event =>
+                        writeForm({
                           ...form,
                           birth_date: event.target.value
-                        }
-                      )}
+                        })
+                      }
                     />
                   </InputGroup>
                 </div>
@@ -353,9 +397,8 @@ function Navbar(props) {
                 <div className="Modal-Input-Box">
                   <label
                     className={
-                      form.last_name === '' ?
-                        'text-hide' :
-                        'Modal-Input-Label'}
+                      form.last_name === "" ? "text-hide" : "Modal-Input-Label"
+                    }
                   >
                     Apellidos*
                   </label>
@@ -365,21 +408,20 @@ function Navbar(props) {
                       placeholder="Apellidos*"
                       aria-label="last_name"
                       aria-describedby="basic-addon1"
-                      onChange={event => writeForm(
-                        {
+                      onChange={event =>
+                        writeForm({
                           ...form,
                           last_name: event.target.value
-                        }
-                      )}
+                        })
+                      }
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
-                   <label
+                  <label
                     className={
-                      form.username === '' ?
-                        'text-hide' :
-                        'Modal-Input-Label'}
+                      form.username === "" ? "text-hide" : "Modal-Input-Label"
+                    }
                   >
                     Correo*
                   </label>
@@ -389,37 +431,36 @@ function Navbar(props) {
                       placeholder="Correo*"
                       aria-label="username"
                       aria-describedby="basic-addon1"
-                      onChange={event => writeForm(
-                        {
+                      onChange={event =>
+                        writeForm({
                           ...form,
                           username: event.target.value
-                        }
-                      )}
+                        })
+                      }
                     />
                   </InputGroup>
                 </div>
                 <div className="Modal-Input-Box">
                   <label
                     className={
-                      form.password === '' ?
-                        'text-hide' :
-                        'Modal-Input-Label'}
+                      form.password === "" ? "text-hide" : "Modal-Input-Label"
+                    }
                   >
                     Contraseña*
                   </label>
                   <InputGroup className="mb-3">
                     <FormControl
-                      type={keyMask ? 'password' : 'text'}
+                      type={keyMask ? "password" : "text"}
                       className="Modal-Input"
                       placeholder="Contraseña*"
                       aria-label="password"
                       aria-describedby="basic-addon1"
-                      onChange={event => writeForm(
-                        {
+                      onChange={event =>
+                        writeForm({
                           ...form,
                           password: event.target.value
-                        }
-                      )}
+                        })
+                      }
                     />
                     <InputGroup.Append>
                       <Button
@@ -438,14 +479,18 @@ function Navbar(props) {
                 aria-label="terms"
                 className="checkbox"
                 checked={terms.conditions}
-                onChange={ () => setTerms({
-                  ...terms,
-                  conditions: !terms.conditions
-                })}
+                onChange={() =>
+                  setTerms({
+                    ...terms,
+                    conditions: !terms.conditions
+                  })
+                }
               />
               <div className="Terms-Text Terms-Start">
                 Acepto
-                <a href="#" className="Terms-Text">terminos y condiciones</a>
+                <a href="#" className="Terms-Text">
+                  terminos y condiciones
+                </a>
               </div>
             </Row>
             <Row className="Modal-Row Terms">
@@ -453,20 +498,25 @@ function Navbar(props) {
                 aria-label="privacy"
                 className="checkbox"
                 checked={terms.privacy}
-                onChange={ () => setTerms({
-                  ...terms,
-                  privacy: !terms.privacy
-                })}
+                onChange={() =>
+                  setTerms({
+                    ...terms,
+                    privacy: !terms.privacy
+                  })
+                }
               />
               <div className="Terms-Text Terms-Start">
                 Acepto
-                <a href="#" className="Terms-Text">politicas de privacidad</a>
+                <a href="#" className="Terms-Text">
+                  politicas de privacidad
+                </a>
               </div>
             </Row>
             <Row className="justify-content-center">
               <Button
                 onClick={clickRegisterButton}
-                className={renderRegisterButton()}>
+                className={renderRegisterButton()}
+              >
                 Registrarme
               </Button>
             </Row>
@@ -477,11 +527,10 @@ function Navbar(props) {
             title="INICIAR SESIÓN"
           >
             <div className="Modal-Input-Box">
-               <label
+              <label
                 className={
-                  form.username === '' ?
-                    'text-hide' :
-                    'Modal-Input-Label'}
+                  form.username === "" ? "text-hide" : "Modal-Input-Label"
+                }
               >
                 Correo*
               </label>
@@ -491,37 +540,36 @@ function Navbar(props) {
                   placeholder="Correo*"
                   aria-label="username"
                   aria-describedby="basic-addon1"
-                  onChange={event => writeForm(
-                    {
+                  onChange={event =>
+                    writeForm({
                       ...form,
                       username: event.target.value
-                    }
-                  )}
+                    })
+                  }
                 />
               </InputGroup>
             </div>
             <div className="Modal-Input-Box">
               <label
                 className={
-                  form.password === '' ?
-                    'text-hide' :
-                    'Modal-Input-Label'}
+                  form.password === "" ? "text-hide" : "Modal-Input-Label"
+                }
               >
                 Contraseña*
               </label>
               <InputGroup className="mb-3">
                 <FormControl
-                  type={keyMask ? 'password' : 'text'}
+                  type={keyMask ? "password" : "text"}
                   className="Modal-Input"
                   placeholder="Contraseña*"
                   aria-label="password"
                   aria-describedby="basic-addon1"
-                  onChange={event => writeForm(
-                    {
+                  onChange={event =>
+                    writeForm({
                       ...form,
                       password: event.target.value
-                    }
-                  )}
+                    })
+                  }
                 />
                 <InputGroup.Append>
                   <Button
@@ -544,16 +592,18 @@ function Navbar(props) {
           </Tab.Container>
         </Tabs>
 
-        <Row className="Section-Social-Networks-Text ">
-          <li type="circle">Utiliza tus redes</li>
+        <Row className="Section-Social-Networks-Text">
+          <p>O utiliza tus redes</p>
         </Row>
-
-        <Row className="justify-content-center align-items-center Section-Social-Networks">
+        <Row
+          className="justify-content-center align-items-center
+          Section-Social-Networks"
+        >
           <FacebookLogin
-            appId="754706191708393"
+            appId="277106176566024"
             fields="name,email,picture"
             textButton="FACEBOOK"
-            responseType='code'
+            responseType="code"
             icon="fa-facebook"
             cssClass="btnFacebook"
             callback={responseFacebook}
@@ -565,30 +615,49 @@ function Navbar(props) {
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           >
-            <i className="fa fa-google"/> <span>GOOGLE</span>
+            <i className="fa fa-google" /> <span>GOOGLE</span>
           </GoogleLogin>
         </Row>
       </Modal>
-      <Modal
-        className="Register-Modal"
-        show={showAlert}
-        onHide={handleCloseAlert}
-        centered
-      >
-        <Row className="justify-content-center">
-          <div className="Alert-Modal-Text">
-            ¡Registro exitoso!
-          </div>
-        </Row>
-        <Row className="justify-content-center">
-          <Button
-            onClick={handleCloseAlert}
-            className="justify-content-center Modal-Button-Active Register-Modal-Button"
-          >
-            Aceptar
-          </Button>
-        </Row>
-      </Modal>
+      {loggedIn ? (
+        <Modal
+          className="Register-Modal"
+          show={showAlert}
+          onHide={handleCloseAlert}
+          centered
+        >
+          <Row className="justify-content-center">
+            <div className="Alert-Modal-Text">¡Registro exitoso!</div>
+          </Row>
+          <Row className="justify-content-center">
+            <Button
+              onClick={handleCloseAlert}
+              className="justify-content-center Modal-Button-Active Register-Modal-Button"
+            >
+              Aceptar
+            </Button>
+          </Row>
+        </Modal>
+      ) : (
+        <Modal
+          className="Register-Modal"
+          show={showAlert}
+          onHide={handleCloseAlert}
+          centered
+        >
+          <Row className="justify-content-center">
+            <div className="Alert-Modal-Text">¡Registro Fallido!</div>
+          </Row>
+          <Row className="justify-content-center">
+            <Button
+              onClick={handleCloseAlert}
+              className="justify-content-center Modal-Button-Active Register-Modal-Button"
+            >
+              Intenta de nuevo
+            </Button>
+          </Row>
+        </Modal>
+      )}
     </Row>
   );
 }
@@ -598,7 +667,7 @@ const mapStateToProps = state => {
     list: state.categories.list,
     loggedIn: state.authentication.loggedIn,
     token: state.authentication.token,
-    response: state.authentication.response,
+    response: state.authentication.response
   };
 };
 

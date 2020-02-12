@@ -21,11 +21,6 @@
   }
 }
 
-.App-Navbar-Link-List {
-  margin-left: 3.5vw;
-  margin-right: 3.5vw;
-}
-
 .App-Navbar-Link {
   text-transform: uppercase;
   margin-left: 1.5vw;
@@ -88,9 +83,8 @@
   font-family: "MontserratMedium", sans-serif;
   font-weight: 500;
   color: var(--color-negro) !important;
-  background-color: var(--color-blanco) !important;
-  border-width: 1px;
-  border-color: var(--color-negro) !important;
+  background-color: var(--color-dorado) !important;
+  border: none;
   border-radius: 1.5em;
   padding: 5px 24px;
 }
@@ -157,7 +151,7 @@
   border-color: var(--color-gris-claro);
   font-family: "MontserratMedium", sans-serif;
   color: var(--color-gris-oscuro);
-  font-size: 16px;
+  font-size: 0.9em;
   padding: 0;
   padding-left: 5px;
   box-shadow: none;
@@ -167,7 +161,7 @@
 .Modal-Input-Label {
   margin: 0;
   padding-left: 5px;
-  font-size: 0.8em;
+  font-size: 0.7em;
 }
 
 .App-Navbar.fixed-top {
@@ -194,9 +188,9 @@
   max-width: 580px !important;
 }
 
-.btnFacebook{
+.btnFacebook {
   width: 150px;
-  height:35px;
+  height: 35px;
   background: #3b5998;
   color: white;
   font-family: Roboto, sans-serif;
@@ -227,7 +221,7 @@
   display: none;
 }
 
-.btnGoogle span{
+.btnGoogle span {
   padding: 0px !important;
 }
 
@@ -239,8 +233,8 @@
   margin-right: 8px;
 }
 
-.Section-Social-Networks{
-  height: 80px;
+.Section-Social-Networks {
+  height: 130px;
   background-color: var(--color-gris-claro);
   margin-right: 0px !important;
   margin-left: 0px !important;
@@ -248,25 +242,23 @@
   border-bottom-right-radius: 18px;
 }
 
-.Section-Social-Networks-Text{
-  height: 30px;
+.Section-Social-Networks-Text {
   background-color: var(--color-gris-claro);
-  margin-right: 0px !important;
-  margin-left: 0px !important;
-  padding-top: 5px;
-  padding-left: 30px !important;
+  padding: 30px 25px;
+  padding-bottom: 0;
+  margin: 0;
 }
 
 .Nav-Bar-Btn-L {
   font-size: 1.5em;
   color: var(--color-negro);
   background-color: var(--color-dorado);
-  border-width: 1px;
-  border-color: var(--color-negro);
+  border: var(--color-negro) 1px solid;
   border-top-left-radius: 1.5em !important;
   border-bottom-left-radius: 1.5em !important;
   border-right: 0;
   width: 70px;
+  text-align: center;
 }
 
 .Nav-Bar-Btn-R {
@@ -297,7 +289,7 @@
 
 .Nav-Bar-Btn-L:active,
 .Nav-Bar-Btn-L:focus,
-.Nav-Bar-Btn-L:hover ~ .Nav-Bar-Btn-R{
+.Nav-Bar-Btn-L:hover {
   background-color: #f14336 !important;
   color: var(--color-blanco);
 }

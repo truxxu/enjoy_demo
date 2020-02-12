@@ -41,7 +41,7 @@ function ServiceListPage(props) {
     getFavorites();
   }, []);
 
-  const renderService = service => {
+  const renderServices = () => {
     if (servicesList.length !== 0) {
       return servicesList.map(service => (
         <ServiceListItem key={service.id} data={service} />
@@ -61,7 +61,7 @@ function ServiceListPage(props) {
       <Header data={activeCategory} />
       <Filters />
       <Container>
-        {servicesList.map(service => renderService(service))}
+        { renderServices() }
       </Container>
       <Footer />
     </Container>
