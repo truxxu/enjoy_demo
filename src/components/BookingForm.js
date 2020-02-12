@@ -214,7 +214,7 @@ const BookingForm = (props) => {
           </div>
           <div className="Booking-Form-Body">
             <div className="Services-Box">
-              <p style ={{marginBottom: '15px'}}>Servicios</p>
+              <p className="Services-Box-Text">Servicios</p>
               <div className="d-flex flex-row flex-wrap">
                 {list.map(item => renderService(item))}
               </div>
@@ -248,7 +248,7 @@ const BookingForm = (props) => {
               </div>
             </div>
             <div className="Input-Box">
-              <p>¿Prefieres algún profesional?</p>
+              <p className="Input-Box-Text">¿Prefieres algún profesional?</p>
               <InputGroup className="mb-3">
                 <FormControl
                   maxLength={40}
@@ -261,7 +261,7 @@ const BookingForm = (props) => {
               </InputGroup>
             </div>
             <div className="Payment-Box">
-              <p>Selecciona una forma de pago</p>
+              <p className="Input-Box-Text">Selecciona una forma de pago</p>
               <div className="Cash d-flex flex-row">
                 <InputGroup.Radio
                   aria-label="cash"
@@ -269,7 +269,7 @@ const BookingForm = (props) => {
                   checked={checkedRadio === 1}
                   onChange={() => setCheckedRadio(1)}
                 />
-                <p>Pagar en el centro de belleza</p>
+                <p className="Payment-Box-Text">Pagar en el centro de belleza</p>
               </div>
               <div className="Online d-flex flex-row">
                 <InputGroup.Radio
@@ -278,7 +278,7 @@ const BookingForm = (props) => {
                   checked={checkedRadio === 2}
                   onChange={() => setCheckedRadio(2)}
                 />
-                <p>¡Paga online!</p>
+                <p className="Payment-Box-Text">¡Paga online!</p>
               </div>
             </div>
             <div
@@ -295,7 +295,7 @@ const BookingForm = (props) => {
                   />
                 </InputGroup>
               <div className="Total-Price">
-                <p>Precio total</p>
+                <p className="Total-Price-Text">Precio total</p>
                 <p className="Total">${priceStr(totalPrice)}</p>
               </div>
             </div>
@@ -312,7 +312,7 @@ const BookingForm = (props) => {
                   ¡RESERVAR YA!
                 </Button>
               </div>
-              <p>Consulta nuestras <a href="#">políticas de pago</a> y
+              <p className="Booking-Terms">Consulta nuestras <a href="#">políticas de pago</a> y
               <a href="#"> cancelación de servicio</a></p>
             </div>
           </div>

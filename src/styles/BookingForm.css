@@ -7,8 +7,8 @@
 
 .modal-content p{
   margin: 0;
-  font-family: "LatoRegular", sans-serif;
-  font-size: 14px;
+/*  font-family: "LatoRegular", sans-serif;
+  font-size: 14px;*/
 }
 
 .modal-dialog-centered {
@@ -27,17 +27,36 @@
 .Date-Box p {
   text-align: center;
   margin: 10px 0 20px 0;
+  font-size: 0.875em;
+  font-family: "MontserratRegular", sans-serif;
 }
 
 .Input-Box .Modal-Input {
   margin-top: 6px;
   background-color: white;
+  font-size: 0.875em;
+  font-family: "MontserratRegular", sans-serif;
   border: 1px solid var(--color-gris-oscuro)
+}
+
+.Payment-Box-Text {
+  font-size: 0.875em;
+  font-family: "MontserratRegular", sans-serif;
+}
+
+.Total-Price-Text {
+  font-size: 0.875em;
+  font-family: "MontserratBold", sans-serif
 }
 
 .Payment-Box .Cash,
 .Coupon-Box {
   margin-top: 10px;
+}
+
+.Input-Box-Text {
+  font-size: 0.875em;
+  font-family: "MontserratSemiBold", sans-serif;
 }
 
 .Coupon-Box .input-group{
@@ -57,7 +76,14 @@
 }
 
 .Coupon-Box .Total {
-  font-size: 25px;
+  font-size: 30px;
+  font-family: "MontserratBold", sans-serif
+}
+
+.Booking-Terms {
+  font-size: 0.75em;
+  font-family: "MontserratRegular", sans-serif;
+  color: #808080;
 }
 
 .Register-Modal-Button,
@@ -83,8 +109,13 @@
 }
 
 .Booking-Form-Header .Title-Box p {
-  font-size: 30px;
-  font-family: "LatoRegular", sans-serif;
+  font-size: 22px;
+  font-family: "MontserratMedium", sans-serif;
+}
+
+.Booking-Form-Header {
+  font-size: 0.875em;
+  font-family: "MontserratSemiBold", sans-serif;
 }
 
 .Services-Box,
@@ -96,8 +127,14 @@
   padding-right: 20px;
 }
 
+.Services-Box-Text {
+  font-size: 0.875em;
+  font-family: "MontserratSemiBold", sans-serif;
+  margin-bottom: 15px !important;
+}
+
 .Services-Box .Service {
-  background-color: #bbe4d5;
+  background-color: #7abebb;
   border-radius: 15px;
   height: 30px;
   width: 45%;
@@ -105,20 +142,22 @@
 }
 
 .Services-Box .Service p{
+  font-size: 0.875em;
+  font-family: "MontserratRegular", sans-serif;
   color: white;
 }
 
 .Non-User-Modal-Header {
   padding: 40px;
   text-align: center;
-  background-color: #bbe4d5;
+  background-color: #7abebb;
   border: 1px black solid;
   border-top-right-radius: 40px;
   border-top-left-radius: 40px;
 }
 
 .Non-User-Modal {
-  font-family: "LatoRegular", sans-serif;
+  font-family: "MontserratRegular", sans-serif;
 }
 
 .modal-dialog {
@@ -137,7 +176,7 @@
 
 .react-datepicker {
   border: none !important;
-  font-family: "LatoRegular", sans-serif !important;
+  font-family: "MontserratRegular", sans-serif !important;
 }
 
 .react-datepicker__header {
@@ -155,7 +194,7 @@
 .react-datepicker__quarter-text--in-selecting-range,
 .react-datepicker__quarter-text--in-range {
     border-radius: 1.3rem !important;
-    background-color: #bbe4d5 !important;
+    background-color: #7abebb !important;
     color: white !important;
 }
 
@@ -184,12 +223,12 @@
 
 .Time-Display {
   font-size: 25px;
-  font-family: "LatoRegular", sans-serif;
+  font-family: "MontserratSemiBold", sans-serif;
 }
 
 .rc-slider-handle {
-  border: solid 2px #bbe4d5 !important;
-  background-color: #bbe4d5 !important;
+  border: solid 2px #7abebb !important;
+  background-color: #7abebb !important;
 }
 
 .rc-slider-rail {
