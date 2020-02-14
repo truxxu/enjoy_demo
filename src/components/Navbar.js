@@ -595,7 +595,6 @@ function Navbar(props) {
         <Row className="Section-Social-Networks-Text">
           <p>O utiliza tus redes</p>
         </Row>
-
         <Row
           className="justify-content-center align-items-center
           Section-Social-Networks"

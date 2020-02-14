@@ -9,11 +9,22 @@ import PropTypes from "prop-types";
 
 import "../styles/ServiceList.css";
 import ServiceItemSmall from "./ServiceItemSmall";
+import BookingForm from "./BookingForm";
 import { getCategories } from "../actions/categories";
 import { getSalonServices } from "../actions/salon";
+import { showForm } from "../actions/bookings";
 
 function ServiceList(props) {
-  const { getCategories, list, getSalonServices, servicesList, total } = props;
+  const {
+    getCategories,
+    list,
+    getSalonServices,
+    servicesList,
+    showForm,
+    bookingList,
+    totalPrice
+  } = props;
+
   const salonId = props.salonId;
   const scheduleSalon = props.schedule;
 
@@ -116,8 +127,13 @@ function ServiceList(props) {
     }
   };
 
+  const priceStr = num => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
   return (
     <Row className="ServiceList-Row ">
+      <BookingForm data={props.data}/>
       <Col sm={8} className="ServiceList-Body ">
         <div className="Title-Body my-4">
           <h2>Servicios</h2>
@@ -164,11 +180,19 @@ function ServiceList(props) {
       </Col>
       <Col>
         <Row className="Reserve-Mobile d-md-none">
-          <button className="Reserve-Button my-3">Reserva Ya!</button>
+          <button
+            onClick={() => showForm(true)}
+            className="Reserve-Button my-3">
+            Reserva Ya!
+          </button>
         </Row>
         <Row className="Reserve flex-column my-4 pb-4 align-items-center ">
-          <h1 className="Price-Reserve">${total}</h1>
-          <button className="Reserve-Button my-3">Reserva Ya!</button>
+          <h1 className="Price-Reserve">${priceStr(totalPrice)}</h1>
+          <button
+            onClick={() => showForm(true)}
+            className="Reserve-Button my-3">
+            Reserva Ya!
+          </button>
           <p className="Reserve-Description px-4">
             Lorem ipsum dolor sit amet, consect etuer adipiscing elit.{" "}
           </p>
@@ -206,21 +230,24 @@ const mapStateToProps = state => {
   return {
     list: state.categories.list,
     servicesList: state.services.list,
-    total: state.bookings.total
+    bookingList: state.bookings.list,
+    totalPrice: state.bookings.total,
   };
 };
 
 const mapDispatchToProps = {
   getCategories,
-  getSalonServices
+  getSalonServices,
+  showForm
 };
 
 ServiceList.prototype = {
   list: PropTypes.array.isRequired,
   getCategories: PropTypes.func.isRequired,
   getSalonServices: PropTypes.func.isRequired,
+  showForm: PropTypes.func.isRequired,
   servicesList: PropTypes.array.isRequired,
-  total: PropTypes.number.isRequired
+  bookingList: PropTypes.array.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ServiceList);

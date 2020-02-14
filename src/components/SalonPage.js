@@ -14,6 +14,8 @@ import { getSalon, getSalonServices } from "../actions/salon";
 import { getFavorites } from "../actions/favoriteService";
 
 function SalonPage(props) {
+  
+  const data = props.location.data;
   const { getFavorites, getSalon, activeItem, match } = props;
   let id = match.params.id;
 
@@ -178,7 +180,7 @@ function SalonPage(props) {
       </Row>
       <Row className="SalonPage-Body">
         <Container>
-          <ServiceList salonId={id} schedule={activeItem.schedule} />
+          <ServiceList data={data} salonId={id} schedule={activeItem.schedule} />
         </Container>
       </Row>
       <Row className="SalonPage-About" id="idSalonPageAbout">

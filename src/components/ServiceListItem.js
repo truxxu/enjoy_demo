@@ -5,17 +5,18 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import "../styles/ServiceListItem.css";
+import BookingForm from "./BookingForm";
 import { addFavoriteService } from "../actions/favoriteService";
+import { showForm, addBooking } from "../actions/bookings";
+import { getSalon } from "../actions/salon";
 
 function ServiceListItem(props) {
   const data = props.data;
-  const { addFavoriteService, favoritesList } = props;
-
+  const { addFavoriteService, favoritesList, showForm , addBooking, getSalon } = props;
   const [isShown, setIsShown] = useState(false);
 
   const priceStr = string => {
     return string
-      .split(".")[0]
       .split(".")[0]
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
@@ -33,6 +34,7 @@ function ServiceListItem(props) {
 
   return (
     <div className="Service-Item d-flex flex-column flex-md-row  my-5 px-md-5 ">
+      <BookingForm />
       <div className="Service-Img col px-0 d-md-flex ">
         <img className="Salon-Img " src={data.salon_image} alt="Salon"></img>
         <Button
@@ -77,9 +79,20 @@ function ServiceListItem(props) {
           </p>
         </div>
         <div className="Service-Buttons pb-4 d-flex flex-row justify-content-around">
-          <Button className="Button mr-2">RESERVAR YA</Button>
-          <Link className="Gray-Button " to={`/salon/${data.salon_id}`}>
-            VER SALÓN
+          <Button
+            onClick={() => {
+              showForm(true);
+              getSalon(data.salon_id);
+              addBooking(data);
+            }}
+            className="Button mr-2">
+            RESERVAR YA
+          </Button>
+          <Link
+            to={{pathname: `/salon/${data.salon_id}`, data: data}}>
+            <div className="Gray-Button">
+              VER SALÓN
+            </div>
           </Link>
         </div>
       </div>
@@ -94,11 +107,17 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  addFavoriteService
+  addFavoriteService,
+  showForm,
+  addBooking,
+  getSalon
 };
 
 ServiceListItem.prototype = {
   addFavoriteService: PropTypes.func.isRequired,
+  showForm: PropTypes.func.isRequired,
+  addBooking: PropTypes.func.isRequired,
+  getSalon: PropTypes.func.isRequired,
   favoritesList: PropTypes.array.isRequired
 };
 

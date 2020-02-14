@@ -35,10 +35,16 @@
 }
 
 /*Modal Styles*/
+.Register-Modal {
+  max-height: 100%;
+  overflow-y: auto;
+}
 
 .Register-Modal .modal-content {
   border-radius: 20px;
   border: none;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .Register-Modal .nav.nav-tabs {

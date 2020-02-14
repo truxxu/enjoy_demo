@@ -5,34 +5,19 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import "../styles/ServiceItemSmall.css";
-import { addOrRemoveFromBookings } from "../actions/bookings";
+import { addBooking } from "../actions/bookings";
 import { addFavoriteService } from "../actions/favoriteService";
 
 function ServiceItemSmall(props) {
   const data = props.data;
 
-  const { addOrRemoveFromBookings, favoritesList, addFavoriteService } = props;
-
-  const [isShown, setIsShown] = useState(false);
-
   const priceStr = string => {
-    return string
-      .split(".")[0]
-      .split(".")[0]
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-  };
-
-  function toggleChange(id_service, price) {
-    addOrRemoveFromBookings(id_service, price);
+    return string.split(".")[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".")
   }
 
-  const finalPrice = function(price, discount_price) {
-    if (discount_price === null) {
-      return price;
-    } else {
-      return discount_price;
-    }
-  };
+  const { addBooking, favoritesList, addFavoriteService } = props;
+
+  const [isShown, setIsShown] = useState(false);
 
   const favoriteHeart = (id) => {
     const filter = favoritesList.filter(item => item.service === id)
@@ -96,9 +81,7 @@ function ServiceItemSmall(props) {
             name="inlineRadioOptions"
             id="inlineRadio1"
             value="option1"
-            onChange={() =>
-              toggleChange(data.id, finalPrice(data.price, data.discount_price))
-            }
+            onChange={() => addBooking(data)}
           />
           <label className="ml-2">Agregar</label>
         </div>
@@ -114,12 +97,12 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  addOrRemoveFromBookings,
+  addBooking,
   addFavoriteService,
 };
 
 ServiceItemSmall.prototype = {
-  addOrRemoveFromBookings: PropTypes.func.isRequired,
+  addBooking: PropTypes.func.isRequired,
   addFavoriteService: PropTypes.func.isRequired,
   favoritesList: PropTypes.array.isRequired
 };
