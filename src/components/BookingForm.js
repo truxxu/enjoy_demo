@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
@@ -12,6 +12,7 @@ import Slider from 'rc-slider';
 import Tooltip from 'rc-tooltip';
 import axios from "axios";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 import "../styles/BookingForm.css";
 import "react-datepicker/dist/react-datepicker.css";
@@ -21,6 +22,10 @@ import { showForm, removeBooking, cleanBookings } from "../actions/bookings";
 import { env } from "../env";
 
 const BookingForm = (props) => {
+
+  useEffect(() => {
+    cleanBookings();
+  }, []);
 
   // Time Sliders
   const createSliderWithTooltip = Slider.createSliderWithTooltip;
@@ -82,10 +87,10 @@ const BookingForm = (props) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   };
 
-  const renderService = (item) => {
+  const renderService = (item,index) => {
     return (
       <div
-        key={item.id}
+        key={index}
         className="Service d-flex flex-row justify-content-around
         align-items-center">
         <p>{item.name}</p>
@@ -146,28 +151,30 @@ const BookingForm = (props) => {
 
   const [bookingStatus, setBookingStatus] = useState('');
   const [showStatusModal, setShowStatusModal] = useState(false);
-  console.log(bookingStatus)
-  console.log(showStatusModal)
+
   const renderBookingStatus = () => {
     if (bookingStatus === 'success') {
       return (
         <div>
-          <div className="Non-User-Modal-Header">
-            ¡Todo Listo! <br/> Gracias por preferir a enjoy. Tu servicio a sido
-            reservado con éxito. <br/> Por favor revisa tu correo o ingresa a tu
+          <div className="Status-Text">
+            ¡Todo Listo! <br/><br/> Gracias por preferir a enjoy. Tu servicio a sido
+            reservado con éxito. <br/><br/> Por favor revisa tu correo o ingresa a tu
             perfil para ver los datos completos de tu reserva.
           </div>
           <div className="Non-User-Modal-Footer">
             <div className="d-flex justify-content-around">
-              <Button
-                onClick={ () => {
-                  showForm(false);
-                }}
-                className="justify-content-center Modal-Button-Active
-                Register-Modal-Button"
-              >
-                IR A PERFIL
-              </Button>
+              <Link to="/auth/user">
+                <Button
+                  onClick={ () => {
+                    cleanBookings();
+                    setShowStatusModal(false);
+                  }}
+                  className="justify-content-center Modal-Button-Active
+                  Register-Modal-Button"
+                >
+                  IR A PERFIL
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -175,16 +182,16 @@ const BookingForm = (props) => {
     } else if (bookingStatus === 'error') {
       return (
         <div>
-          <div className="Non-User-Modal-Header">
-            Parece que tenemos un problema. <br/> Por favor intenta reservar tu
-            servicio mas tarde. <br/> Si el problema persiste, por favor
-            escribenos a soporte@enjoycol.com
+          <div className="Status-Text">
+            Parece que tenemos un problema. <br/><br/> Por favor intenta
+            reservar tu servicio mas tarde. <br/><br/> Si el problema persiste,
+            por favor escribenos a soporte@enjoycol.com
           </div>
           <div className="Non-User-Modal-Footer">
             <div className="d-flex justify-content-around">
               <Button
                 onClick={ () => {
-                  showForm(false);
+                  setShowStatusModal(false);
                 }}
                 className="justify-content-center Modal-Button-Active
                 Register-Modal-Button"
@@ -274,7 +281,7 @@ const BookingForm = (props) => {
               <div className="Services-Box">
                 <p className="Services-Box-Text">Servicios</p>
                 <div className="d-flex flex-row flex-wrap">
-                  {list.map(item => renderService(item))}
+                  {list.map((item,index) => renderService(item,index))}
                 </div>
               </div>
               <div className="Date-Box">

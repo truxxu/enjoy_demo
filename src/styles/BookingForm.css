@@ -172,6 +172,11 @@
   border-radius: 40px;
 }
 
+.Status-Text {
+  text-align: center;
+  padding: 40px 10px 0 10px;
+}
+
 /*Date Picker*/
 
 .react-datepicker {
