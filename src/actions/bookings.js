@@ -6,7 +6,7 @@ import {
   REMOVE_FROM_BOOKINGS,
   SHOW_FORM,
   CLEAN_BOOKINGS,
-  GET_BOOKINGS
+  GET_BOOKINGS,
 } from ".";
 import store from "../store";
 

@@ -26,7 +26,7 @@ const BookingForm = (props) => {
   useEffect(() => {
     cleanBookings();
   }, []);
-
+  
   // Time Sliders
   const createSliderWithTooltip = Slider.createSliderWithTooltip;
   const Handle = Slider.Handle;
