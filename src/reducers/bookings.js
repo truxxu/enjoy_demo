@@ -2,8 +2,8 @@ import {
   ADD_TO_BOOKINGS,
   REMOVE_FROM_BOOKINGS,
   SHOW_FORM,
-  CLEAN_BOOKINGS
-  GET_BOOKINGS
+  CLEAN_BOOKINGS,
+  GET_BOOKINGS,
 } from "../actions/index";
 
 const initialState =  {
