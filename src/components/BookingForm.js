@@ -185,7 +185,8 @@ const BookingForm = (props) => {
           <div className="Status-Text">
             Parece que tenemos un problema. <br/><br/> Por favor intenta
             reservar tu servicio mas tarde. <br/><br/> Si el problema persiste,
-            por favor escribenos a soporte@enjoycol.com
+            por favor escribenos a <a href="mailto:soporte@enjoycol.com">
+            soporte@enjoycol.com</a>
           </div>
           <div className="Non-User-Modal-Footer">
             <div className="d-flex justify-content-around">
