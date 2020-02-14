@@ -144,6 +144,60 @@ const BookingForm = (props) => {
   const [checkedRadio, setCheckedRadio] = useState(1);
   const [proName, setProName] = useState('');
 
+  const [bookingStatus, setBookingStatus] = useState('');
+  const [showStatusModal, setShowStatusModal] = useState(false);
+  console.log(bookingStatus)
+  console.log(showStatusModal)
+  const renderBookingStatus = () => {
+    if (bookingStatus === 'success') {
+      return (
+        <div>
+          <div className="Non-User-Modal-Header">
+            ¡Todo Listo! <br/> Gracias por preferir a enjoy. Tu servicio a sido
+            reservado con éxito. <br/> Por favor revisa tu correo o ingresa a tu
+            perfil para ver los datos completos de tu reserva.
+          </div>
+          <div className="Non-User-Modal-Footer">
+            <div className="d-flex justify-content-around">
+              <Button
+                onClick={ () => {
+                  showForm(false);
+                }}
+                className="justify-content-center Modal-Button-Active
+                Register-Modal-Button"
+              >
+                IR A PERFIL
+              </Button>
+            </div>
+          </div>
+        </div>
+      )
+    } else if (bookingStatus === 'error') {
+      return (
+        <div>
+          <div className="Non-User-Modal-Header">
+            Parece que tenemos un problema. <br/> Por favor intenta reservar tu
+            servicio mas tarde. <br/> Si el problema persiste, por favor
+            escribenos a soporte@enjoycol.com
+          </div>
+          <div className="Non-User-Modal-Footer">
+            <div className="d-flex justify-content-around">
+              <Button
+                onClick={ () => {
+                  showForm(false);
+                }}
+                className="justify-content-center Modal-Button-Active
+                Register-Modal-Button"
+              >
+                CERRAR
+              </Button>
+            </div>
+          </div>
+        </div>
+      )
+    }
+  }
+
   const createReservation = () => {
     const getPaymentMethod = () => {
       if (checkedRadio === 1) {
@@ -182,142 +236,152 @@ const BookingForm = (props) => {
       .post(env.apiUrl + "reservations/", payload, { headers: headers })
       .then(res => {
         showForm(false);
+        setBookingStatus('success');
+        setShowStatusModal(true);
       })
       .catch(err =>{
-        window.alert("No se pudo realizar la reserva");
+        setBookingStatus('error');
+        setShowStatusModal(true);
       });
   }
 
   if (token !== null && list.length > 0) {
     return (
-      <Modal
-        show={show}
-        onHide={() => {
-          cleanBookings();
-          showForm(false);
-        }}>
-        <div className="Booking-Form">
-          <div className="Booking-Form-Header">
-            <div className="Title-Box d-flex flex-row justify-content-between">
-              <p>{salon.name}</p>
-              <Button
-                style={{padding: 0}}
-                variant={'none'}
-                onClick={ () => {
-                  cleanBookings();
-                  showForm(false);
-                }}>
-                <p>X</p>
-              </Button>
-            </div>
-            <p>Tiempo estimado de tu reserva: {duration} minutos</p>
-          </div>
-          <div className="Booking-Form-Body">
-            <div className="Services-Box">
-              <p className="Services-Box-Text">Servicios</p>
-              <div className="d-flex flex-row flex-wrap">
-                {list.map(item => renderService(item))}
-              </div>
-            </div>
-            <div className="Date-Box">
-              <p>Selecciona Fecha y Hora</p>
-              <div className="d-flex justify-content-center">
-                <DatePicker
-                  selected={startDate}
-                  onChange={date => setStartDate(date)}
-                  minDate={new Date()}
-                  filterDate={serviceDays}
-                  locale="es"
-                  inline
-                />
-              </div>
-              <div className="Time-Box d-flex flex-row justify-content-center">
-                <div
-                className="Time-Display d-flex justify-content-center
-                align-items-center">
-                  {hourValue} : { minuteValue === 0 ? '00' : minuteValue }
-                </div>
-                <div className="Time-Sliders">
-                  <Slider
-                    min={parseInt(workingHours('opening_hour'))}
-                    max={parseInt(workingHours('closing_hour')) - 1}
-                    step={1}
-                    handle={handleHourSlider} />
-                  <Slider min={0} max={50} step={10} handle={handleMinSlider} />
-                </div>
-              </div>
-            </div>
-            <div className="Input-Box">
-              <p className="Input-Box-Text">¿Prefieres algún profesional?</p>
-              <InputGroup className="mb-3">
-                <FormControl
-                  maxLength={40}
-                  placeholder={'Escribe el nombre'}
-                  className="Modal-Input"
-                  aria-label="pro_name"
-                  aria-describedby="basic-addon1"
-                  onChange={event => setProName(event.target.value)}
-                />
-              </InputGroup>
-            </div>
-            <div className="Payment-Box">
-              <p className="Input-Box-Text">Selecciona una forma de pago</p>
-              <div className="Cash d-flex flex-row">
-                <InputGroup.Radio
-                  aria-label="cash"
-                  className="checkbox"
-                  checked={checkedRadio === 1}
-                  onChange={() => setCheckedRadio(1)}
-                />
-                <p className="Payment-Box-Text">Pagar en el centro de belleza</p>
-              </div>
-              <div className="Online d-flex flex-row">
-                <InputGroup.Radio
-                  aria-label="online"
-                  className="checkbox"
-                  checked={checkedRadio === 2}
-                  onChange={() => setCheckedRadio(2)}
-                />
-                <p className="Payment-Box-Text">¡Paga online!</p>
-              </div>
-            </div>
-            <div
-              className="Coupon-Box d-flex flex-row justify-content-between
-              align-content-end">
-                <InputGroup>
-                  <FormControl
-                    maxLength={40}
-                    placeholder={'Ingresa tu cupón de descuento'}
-                    className="Modal-Input"
-                    aria-label="coupon"
-                    aria-describedby="basic-addon1"
-                    // onChange={}
-                  />
-                </InputGroup>
-              <div className="Total-Price">
-                <p className="Total-Price-Text">Precio total</p>
-                <p className="Total">${priceStr(totalPrice)}</p>
-              </div>
-            </div>
-            <div className="Booking-Form-Footer">
-              <div className="d-flex justify-content-center">
+      <div>
+        <Modal
+          show={show}
+          onHide={() => {
+            cleanBookings();
+            showForm(false);
+          }}>
+          <div className="Booking-Form">
+            <div className="Booking-Form-Header">
+              <div className="Title-Box d-flex flex-row justify-content-between">
+                <p>{salon.name}</p>
                 <Button
+                  style={{padding: 0}}
+                  variant={'none'}
                   onClick={ () => {
+                    cleanBookings();
                     showForm(false);
-                    createReservation();
-                  }}
-                  className="justify-content-center Modal-Button-Active
-                  Register-Modal-Button"
-                >
-                  ¡RESERVAR YA!
+                  }}>
+                  <p>X</p>
                 </Button>
               </div>
-              <p className="Booking-Terms">Consulta nuestras <a href="#">políticas de pago</a> y
-              <a href="#"> cancelación de servicio</a></p>
+              <p>Tiempo estimado de tu reserva: {duration} minutos</p>
+            </div>
+            <div className="Booking-Form-Body">
+              <div className="Services-Box">
+                <p className="Services-Box-Text">Servicios</p>
+                <div className="d-flex flex-row flex-wrap">
+                  {list.map(item => renderService(item))}
+                </div>
+              </div>
+              <div className="Date-Box">
+                <p>Selecciona Fecha y Hora</p>
+                <div className="d-flex justify-content-center">
+                  <DatePicker
+                    selected={startDate}
+                    onChange={date => setStartDate(date)}
+                    minDate={new Date()}
+                    filterDate={serviceDays}
+                    locale="es"
+                    inline
+                  />
+                </div>
+                <div className="Time-Box d-flex flex-row justify-content-center">
+                  <div
+                  className="Time-Display d-flex justify-content-center
+                  align-items-center">
+                    {hourValue} : { minuteValue === 0 ? '00' : minuteValue }
+                  </div>
+                  <div className="Time-Sliders">
+                    <Slider
+                      min={parseInt(workingHours('opening_hour'))}
+                      max={parseInt(workingHours('closing_hour')) - 1}
+                      step={1}
+                      handle={handleHourSlider} />
+                    <Slider min={0} max={50} step={10} handle={handleMinSlider} />
+                  </div>
+                </div>
+              </div>
+              <div className="Input-Box">
+                <p className="Input-Box-Text">¿Prefieres algún profesional?</p>
+                <InputGroup className="mb-3">
+                  <FormControl
+                    maxLength={40}
+                    placeholder={'Escribe el nombre'}
+                    className="Modal-Input"
+                    aria-label="pro_name"
+                    aria-describedby="basic-addon1"
+                    onChange={event => setProName(event.target.value)}
+                  />
+                </InputGroup>
+              </div>
+              <div className="Payment-Box">
+                <p className="Input-Box-Text">Selecciona una forma de pago</p>
+                <div className="Cash d-flex flex-row">
+                  <InputGroup.Radio
+                    aria-label="cash"
+                    className="checkbox"
+                    checked={checkedRadio === 1}
+                    onChange={() => setCheckedRadio(1)}
+                  />
+                  <p className="Payment-Box-Text">Pagar en el centro de belleza</p>
+                </div>
+                <div className="Online d-flex flex-row">
+                  <InputGroup.Radio
+                    aria-label="online"
+                    className="checkbox"
+                    checked={checkedRadio === 2}
+                    onChange={() => setCheckedRadio(2)}
+                  />
+                  <p className="Payment-Box-Text">¡Paga online!</p>
+                </div>
+              </div>
+              <div
+                className="Coupon-Box d-flex flex-row justify-content-between
+                align-content-end">
+                  <InputGroup>
+                    <FormControl
+                      maxLength={40}
+                      placeholder={'Ingresa tu cupón de descuento'}
+                      className="Modal-Input"
+                      aria-label="coupon"
+                      aria-describedby="basic-addon1"
+                      // onChange={}
+                    />
+                  </InputGroup>
+                <div className="Total-Price">
+                  <p className="Total-Price-Text">Precio total</p>
+                  <p className="Total">${priceStr(totalPrice)}</p>
+                </div>
+              </div>
+              <div className="Booking-Form-Footer">
+                <div className="d-flex justify-content-center">
+                  <Button
+                    onClick={ () => {
+                      showForm(false);
+                      createReservation();
+                    }}
+                    className="justify-content-center Modal-Button-Active
+                    Register-Modal-Button"
+                  >
+                    ¡RESERVAR YA!
+                  </Button>
+                </div>
+                <p className="Booking-Terms">Consulta nuestras <a href="#">políticas de pago</a> y
+                <a href="#"> cancelación de servicio</a></p>
+              </div>
             </div>
           </div>
-        </div>
-      </Modal>
+        </Modal>
+        <Modal centered show={showStatusModal}>
+          <div className="Non-User-Modal">
+            { renderBookingStatus() }
+          </div>
+        </Modal>
+      </div>
     )
   } else if (list.length === 0) {
     showForm(false);
