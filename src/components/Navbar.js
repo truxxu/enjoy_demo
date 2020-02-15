@@ -264,9 +264,9 @@ function Navbar(props) {
              </div>
             :
              <div className="col-auto d-flex align-items-center">
-                <div class="btn-group" role="group" onClick={logOut}>
-                  <button type="button" class="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
-                  <button type="button" class="Nav-Bar-Btn-R">Salir</button>
+                <div className="btn-group" role="group" onClick={logOut}>
+                  <button type="button" className="Nav-Bar-Btn-L"><span className="icon-usuario"></span></button>
+                  <button type="button" className="Nav-Bar-Btn-R">Salir</button>
                 </div>
              </div>
           }

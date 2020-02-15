@@ -6,6 +6,7 @@ import salons from "./salons";
 import authentication from "./authentication";
 import favoriteService from "./favoriteService";
 import bookings from "./bookings";
+import reserves from "./reserves";
 
 export default combineReducers({
   categories,
@@ -13,5 +14,6 @@ export default combineReducers({
   salons,
   authentication,
   favoriteService,
-  bookings
+  bookings,
+  reserves
 });

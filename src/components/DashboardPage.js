@@ -15,6 +15,7 @@ import logo from "../images/logo_black_white.png";
 import { logOut } from "../actions/authentication";
 import DashboardFooter from "./DashboardFooter";
 import Board from "./Board";
+import Reserves from "./Reserves";
 
 function DashboardPage(props) {
   const data = props.data;
@@ -68,11 +69,9 @@ function DashboardPage(props) {
               </Nav.Item>
               <hr />
               <Nav.Item>
-                <Nav.Link className="App-Dashboard-Link">
-                  <a onClick={logOut} className="App-Dashboard-Link App-Board-Pointer" >
-                    <span className="icon-logout Tab-Icon ico-red"></span>
-                    <label className="App-Board-Pointer ml-2">Cerrar sesión</label>
-                  </a>
+                <Nav.Link className="App-Dashboard-Link" onClick={logOut}>
+                  <span className="icon-logout Tab-Icon ico-red"></span>
+                  <label className="App-Board-Pointer ml-2">Cerrar sesión</label>
                 </Nav.Link>
               </Nav.Item>
             </Nav>
@@ -129,7 +128,7 @@ function DashboardPage(props) {
               </Tab.Pane>
               
               <Tab.Pane eventKey="favorites">
-                <label className="Profile-Label">Servicios Favoritos</label>
+                <Reserves />
               </Tab.Pane>
 
               <Tab.Pane eventKey="reservations">

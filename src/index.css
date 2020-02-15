@@ -54,11 +54,11 @@ body {
 
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?abs65p');
-  src:  url('fonts/icomoon.eot?abs65p#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?abs65p') format('truetype'),
-    url('fonts/icomoon.woff?abs65p') format('woff'),
-    url('fonts/icomoon.svg?abs65p#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?xz8d8p');
+  src:  url('fonts/icomoon.eot?xz8d8p#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?xz8d8p') format('truetype'),
+    url('fonts/icomoon.woff?xz8d8p') format('woff'),
+    url('fonts/icomoon.svg?xz8d8p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -79,93 +79,156 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-campana:before {
-  content: "\e901";
-}
-.icon-campana_cancelar:before {
-  content: "\e902";
-}
-.icon-calendario:before {
+.icon-cal_mal:before {
   content: "\e900";
 }
-.icon-controles:before {
+.icon-calendario:before {
+  content: "\e901";
+}
+.icon-campana:before {
+  content: "\e902";
+}
+.icon-campana_cancelar:before {
   content: "\e903";
 }
-.icon-corazones:before {
+.icon-controles:before {
   content: "\e904";
 }
-.icon-corazones_border:before {
+.icon-corazones:before {
   content: "\e905";
 }
-.icon-dashboar:before {
+.icon-corazones_border:before {
   content: "\e906";
 }
-.icon-despleg:before {
+.icon-cupon:before {
   content: "\e907";
 }
-.icon-estrella_full:before {
+.icon-dashboar:before {
   content: "\e908";
 }
-.icon-estrella_med:before {
+.icon-despleg:before {
   content: "\e909";
 }
-.icon-estrella_none:before {
+.icon-estrella_full:before {
   content: "\e90a";
 }
-.icon-facebook:before {
+.icon-estrella_med:before {
   content: "\e90b";
 }
-.icon-furgoneta:before {
+.icon-estrella_none:before {
   content: "\e90c";
 }
-.icon-gestionar_reservas:before {
+.icon-facebook:before {
   content: "\e90d";
 }
-.icon-google:before {
+.icon-furgoneta:before {
   content: "\e90e";
 }
-.icon-grafico-de-barras:before {
+.icon-gestionar_reservas:before {
   content: "\e90f";
 }
-.icon-instagram:before {
+.icon-google:before {
   content: "\e910";
 }
-.icon-logout:before {
+.icon-grafico-de-barras:before {
   content: "\e911";
 }
-.icon-lupa:before {
+.icon-instagram:before {
   content: "\e912";
 }
-.icon-mapa-de-ubicacion:before {
+.icon-logout:before {
   content: "\e913";
 }
-.icon-menu:before {
+.icon-lupa:before {
   content: "\e914";
 }
-.icon-objetivo:before {
+.icon-mapa-de-ubicacion:before {
   content: "\e915";
 }
-.icon-ojo_cont:before {
+.icon-mas_derecha:before {
   content: "\e916";
 }
-.icon-pagar_online:before {
+.icon-mas_derecha_color:before {
   content: "\e917";
 }
-.icon-pin:before {
+.icon-mas_izquierda:before {
   content: "\e918";
 }
-.icon-poos-favor:before {
+.icon-mas_izquierda_color:before {
   content: "\e919";
 }
-.icon-tienda:before {
+.icon-menu:before {
   content: "\e91a";
 }
-.icon-tijera_peine:before {
+.icon-objetivo:before {
   content: "\e91b";
 }
-.icon-ubicacion:before {
+.icon-ojo_cont:before {
   content: "\e91c";
 }
-.icon-usuario:before {
+.icon-pagar_online:before {
   content: "\e91d";
+}
+.icon-payu .path1:before {
+  content: "\e91e";
+  color: rgb(240, 239, 235);
+}
+.icon-payu .path2:before {
+  content: "\e91f";
+  margin-left: -1em;
+  color: rgb(186, 208, 0);
+}
+.icon-payu .path3:before {
+  content: "\e920";
+  margin-left: -1em;
+  color: rgb(174, 183, 2);
+}
+.icon-payu .path4:before {
+  content: "\e921";
+  margin-left: -1em;
+  color: rgb(186, 208, 0);
+}
+.icon-payu .path5:before {
+  content: "\e922";
+  margin-left: -1em;
+  color: rgb(186, 208, 0);
+}
+.icon-payu .path6:before {
+  content: "\e923";
+  margin-left: -1em;
+  color: rgb(186, 208, 0);
+}
+.icon-payu .path7:before {
+  content: "\e924";
+  margin-left: -1em;
+  color: rgb(186, 208, 0);
+}
+.icon-payu .path8:before {
+  content: "\e925";
+  margin-left: -1em;
+  color: rgb(186, 208, 0);
+}
+.icon-pin:before {
+  content: "\e926";
+}
+.icon-poos-favor:before {
+  content: "\e927";
+}
+.icon-tienda:before {
+  content: "\e928";
+}
+.icon-tijera_peine:before {
+  content: "\e929";
+}
+.icon-ubicacion:before {
+  content: "\e92a";
+}
+.icon-usuario:before {
+  content: "\e92b";
+}
+.icon-verificado:before {
+  content: "\e92c";
+}
+.icon-verificado_full:before {
+  content: "\e92d";
 }
