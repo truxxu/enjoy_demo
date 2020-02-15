@@ -17,17 +17,14 @@ function Reserves(props) {
   const { getReserves, token, reservesList } = props;
   moment.locale('es' );
 
-  let startDate = '';
-  let months = [];
-
   useEffect(() => {
     let month = new Date().getMonth()+1;
     getReserves(token, month);    
   }, []);
 
   const getInitDate = () => {
-    startDate = new Date();
-    startDate.setDate(startDate.getDate()-2);
+    let startDate = new Date();
+    startDate.setDate(startDate.getDate()-1);
     return startDate;
   }
 
@@ -66,7 +63,7 @@ function Reserves(props) {
   const renderMonths = () => {
     let new_date = moment(new Date(), "YYYY-MM-DD");
     let strInitMonth = moment(new_date).format('MMMM');
-    months = moment.months();
+    let months = moment.months();
     const indexMonth = months.indexOf(strInitMonth)+1;
     months = months.splice(0, indexMonth);
     return(
@@ -87,7 +84,7 @@ function Reserves(props) {
 
   const renderServices = (services) => {
     return services.map(service => 
-      <label className="d-flex App-Reserves-Service">
+      <label key={service.service_name} className="d-flex App-Reserves-Service">
         <label className="App-Reserves-Point align-self-center mr-2">&nbsp;</label> 
         <label >{service.service_name.toUpperCase()}</label>
       </label>
@@ -155,7 +152,9 @@ function Reserves(props) {
 
         if(moment(currentDate).format('MMMM')===moment(initialDay).format('MMMM')){
           itemsDays.push(
-            <div id={'calendar'+1} key={i} className="App-Reserves-Column App_Reserves_TodayDate col-md-3 border-top border-left border-right pb-4">
+            <div id={'calendar'+1} key={i} className={`App-Reserves-Column 
+              ${ moment(currentDate).format('DD')===moment(new Date()).format('DD') && 'App-Reserves-Current-Column' } 
+              col-md-3 border-top border-left border-right pb-4`}>
               <div className="d-flex border-bottom justify-content-center py-2">
                 {moment(currentDate).format('dddd DD').toUpperCase()}
               </div>
@@ -254,13 +253,13 @@ function Reserves(props) {
               </div>
               <div className="d-flex justify-content-center py-3">
                 <div className="align-self-center d-flex">
-                  <span className="icon-mas_izquierda App-Reserves-Arrow"></span>
+                  <span onClick={ handlePrev }  className="icon-mas_izquierda App-Reserves-Arrow"></span>
                 </div>  
                 <div className="align-self-center d-flex">
                   <span className="mx-3">Ver más días</span>
                 </div>  
                 <div className="align-self-center d-flex">
-                  <span className="icon-mas_derecha App-Reserves-Arrow"></span>
+                  <span onClick={ handleNext }  className="icon-mas_derecha App-Reserves-Arrow"></span>
                 </div>  
               </div>
             </div>

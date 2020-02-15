@@ -5,7 +5,7 @@
     background-color: yellow;
 }
 .gre{
-    background-color: green;
+    background-color: green !important;
 }
 
 .App-Dashboard{
@@ -129,4 +129,8 @@
 
 .App-Reserves-Service{
     margin-bottom: 0px;
+}
+
+.App-Reserves-Current-Column{
+    background-color: var(--color-gris-claro);
 }
