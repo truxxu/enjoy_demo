@@ -37,6 +37,10 @@
     background-color: #F4F5FB;
 }
 
+.App-Reserves-Blanco{
+    background-color: var(--color-blanco);
+}
+
 .App-Reserves-Card{
     border-radius: 7px;
     color: white;
@@ -134,3 +138,57 @@
 .App-Reserves-Current-Column{
     background-color: var(--color-gris-claro);
 }
+
+@media (max-width: 768px){
+    .App-Reserves-Table {
+      background-color: var(--color-gris-claro);
+      box-shadow: 0px 0px 0px var(--color-gris-oscuro);
+      margin-top: 10px;
+      width: 100% !important;
+      padding-left: -40px !important;
+      margin-left: 0px !important;
+      border: none !important;
+    }
+
+    .barraaa{
+        padding-right: 0px !important ;
+        padding-left: 0px !important ;
+    }
+    .App-Reserves-Column{
+      border: none !important;  
+      background-color: #F4F5FB !important;
+    }  
+
+    .barraaa{
+        margin-top:10px;
+    }
+
+    .fixed-top {
+        -moz-transition: top 2s;
+        -webkit-transition: top 2s;
+        -o-transition: top 2s;
+        top: 0px;
+        transition: all 0.3s ease-out;
+        z-index: 1000;
+        background-color: white;
+      }
+}
+
+.App-Reserves-fixed{
+    position: fixed;
+    z-index: 1000;
+}
+
+.App-Reserver-Filter{
+    width: 50%;
+}
+
+.App-Reserves-More{
+    font-size: 18px;
+    font-weight: normal !important;
+}
+
+.Barra-Fija{
+    box-shadow: 0 4px 2px -2px gray;
+}
+

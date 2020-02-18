@@ -13,14 +13,44 @@ import "../styles/Reserves.css";
 
 import { getReserves } from "../actions/reserves";
 
+let cardNumToRender = 1;
+let numSteps = 1;
+if(window.innerWidth>768){
+  cardNumToRender = 4;
+  numSteps = 2;
+}else{
+  cardNumToRender = 1;
+  numSteps = 1;
+}
+
 function Reserves(props) {
   const { getReserves, token, reservesList } = props;
   moment.locale('es' );
 
+  let AppReservesActionBar = '';
+
   useEffect(() => {
+    window.addEventListener('scroll', handleScroll, true);
+    AppReservesActionBar = document.getElementsByClassName('App-Reserves-Action-Bar')[0];
     let month = new Date().getMonth()+1;
     getReserves(token, month);    
   }, []);
+
+  const handleScroll = () => {
+    positionBar();
+  };
+
+  function positionBar() {
+    var widthBrowser = window.outerWidth;
+
+    if(widthBrowser <= 768){
+      if (window.pageYOffset >= 250){
+        AppReservesActionBar.classList.add('fixed-top');
+      } else {
+        AppReservesActionBar.classList.remove('fixed-top');
+      }
+    }
+  }
 
   const getInitDate = () => {
     let startDate = new Date();
@@ -29,18 +59,18 @@ function Reserves(props) {
   }
 
   const addTwoDays = () => {
-    if(moment(initialDay).format('MMMM')!==moment(moment(initialDay, "YYYY-MM-DD").add(2, 'days')._d).format('MMMM')){
+    if(moment(initialDay).format('MMMM')!==moment(moment(initialDay, "YYYY-MM-DD").add(numSteps, 'days')._d).format('MMMM')){
       if(moment(initialDay).format('MMMM')!==moment(moment(initialDay, "YYYY-MM-DD").add(1, 'days')._d).format('MMMM')){
         return initialDay;
       }else{  
         return moment(initialDay, "YYYY-MM-DD").add(1, 'days')._d;    
       }
     }
-    return moment(initialDay, "YYYY-MM-DD").add(2, 'days')._d;
+    return moment(initialDay, "YYYY-MM-DD").add(numSteps, 'days')._d;
   }
 
   const removeTwoDays = () => {
-    if(moment(initialDay).format('MMMM')!==moment(moment(initialDay, "YYYY-MM-DD").add(-2, 'days')._d).format('MMMM')){
+    if(moment(initialDay).format('MMMM')!==moment(moment(initialDay, "YYYY-MM-DD").add(-numSteps, 'days')._d).format('MMMM')){
       if(moment(initialDay).format('MMMM')!==moment(moment(initialDay, "YYYY-MM-DD").add(-1, 'days')._d).format('MMMM')){
         return initialDay;
       }else{
@@ -48,7 +78,7 @@ function Reserves(props) {
         return moment(initialDay, "YYYY-MM-DD").add(-1, 'days')._d;    
       }
     }
-    return moment(initialDay, "YYYY-MM-DD").add(-2, 'days')._d;
+    return moment(initialDay, "YYYY-MM-DD").add(-numSteps, 'days')._d;
   }
 
   const renderHeadMonth = () => {
@@ -145,7 +175,7 @@ function Reserves(props) {
 
     if(reservesList && reservesList.length>0){
       i=0;
-      while(contView < 4 && i < reservesList.length){
+      while(contView < cardNumToRender && i < reservesList.length){
         if(contView!=0)
           currentDate = getNewDate(currentDate);
         initDay = moment(currentDate).format('DD');
@@ -190,10 +220,51 @@ function Reserves(props) {
         </Col>
       </Row>
 
-      <Row className=" d-flex pb-5 align-items-center App-Reserves-Gris mr-3">
-      
+<div className="App-Reserves-Action-Bar d-sm-block d-md-none">
+   <div className=" col-md-12 d-flex align-items-center">
+                <div className="App-Reserver-Filter d-flex align-self-center border-right my-2 justify-content-center">
+                  <div className=" d-flex mr-2">
+                    <span className="icon-calendario"></span> 
+                  </div>
+                  <div className=" d-flex">
+                    <span className="first-letter-Capital">{ moment(initialDay).format('MMMM') }</span>
+                  </div>
+                </div>
+                <div className="App-Reserver-Filter d-flex justify-content-center my-2">
+                  <Dropdown className="d-md-flex align-self-center">
+                    <Dropdown.Toggle className="App-Reserves-Drd Filter-Button align-self-center">
+                      Mes
+                      <span className="icon-despleg Filter-Icon-Arrow"></span>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="Filter-Dropdown-List">
+                      {
+                        renderMonths()
+                      }
+                    </Dropdown.Menu>
+                  </Dropdown>
+                </div>
+              </div>
+              
+              <div className="App-Reserves-More col-md-12 d-sm-block d-md-none justify-content-center py-3">
+                <div className="row justify-content-center">  
+                  <div className="d-flex ign-self-center">
+                    <span onClick={ handlePrev }  className="icon-mas_izquierda App-Reserves-Arrow"></span>
+                  </div>  
+                  <div className="d-flex align-self-center">
+                    <span className="mx-3">Ver más días</span>
+                  </div>  
+                  <div className="d-flex align-self-center">
+                    <span onClick={ handleNext }  className="icon-mas_derecha App-Reserves-Arrow"></span>
+                  </div>  
+                </div>
+              </div>  
+            </div>  
+
+
+
+      <Row className="barraaa d-flex pb-5 align-items-center App-Reserves-Gris pr-3">
         <Col className="align-items-center">
-          <div className="App-Reserves-Table row mx-3 App-Reserver-Full-Width">  
+          <div className="App-Reserves-Table row mx-md-3 App-Reserver-Full-Width">  
             <div className=" col-md-12 d-none d-md-flex justify-content-between  py-2 ">
               <div className="d-flex">
                 <div className="align-self-center d-flex mr-2">
@@ -230,39 +301,7 @@ function Reserves(props) {
             </div>
 
             
-            <div className=" col-md-12 d-block d-sm-block d-md-none justify-content-between">
-              <div className="d-flex py-3 border-bottom">
-                <div className="col-md-6 d-flex border-right">
-                  <div className="align-self-center d-flex mr-2">
-                    <span className="icon-calendario"></span> 
-                  </div>
-                  <div className="align-self-center d-flex">
-                    <span className="">ENERO</span>
-                  </div>
-                </div>
-                <div className="col-md-6 align-self-center d-flex justify-content-center">
-                  <Dropdown className="d-md-flex align-self-center">
-                    <Dropdown.Toggle className="App-Reserves-Drd Filter-Button">
-                      Mes
-                      <span className="icon-despleg Filter-Icon-Arrow"></span>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="Filter-Dropdown-List">
-                    </Dropdown.Menu>
-                  </Dropdown>
-                </div>
-              </div>
-              <div className="d-flex justify-content-center py-3">
-                <div className="align-self-center d-flex">
-                  <span onClick={ handlePrev }  className="icon-mas_izquierda App-Reserves-Arrow"></span>
-                </div>  
-                <div className="align-self-center d-flex">
-                  <span className="mx-3">Ver más días</span>
-                </div>  
-                <div className="align-self-center d-flex">
-                  <span onClick={ handleNext }  className="icon-mas_derecha App-Reserves-Arrow"></span>
-                </div>  
-              </div>
-            </div>
+
             {
               renderReserverDays(initialDay)
             }
